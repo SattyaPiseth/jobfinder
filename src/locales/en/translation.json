@@ -1,0 +1,17 @@
+{
+    "navbar" : {
+        "home" : "Home",
+        "jobs" : "Jobs",
+        "media" : "Media",
+        "about-us" : "About Us",
+        "contact-us" : "Contact Us"
+    },
+    "translate" : {
+        "english" : "English (EN)",
+        "khmer" : "Khmer (KH)"
+    },
+    "auth" : {
+        "login": "login",
+        "register" : "sign up"
+    }
+}
