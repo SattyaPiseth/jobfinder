@@ -27,12 +27,3 @@ dist-ssr
 # .env.development
 # .env.production
 
-# Ignore Dockerfile
-Dockerfile
-
-# Ignore Docker ignore file
-.dockerignore
-
-# Ignore Docker-compose file if not needed in VCS
-docker-compose.yml
-
