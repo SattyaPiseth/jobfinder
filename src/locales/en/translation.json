@@ -9,7 +9,22 @@
     "footer" : {
         "notification" : "Get job notifications",
         "description" : "The lastest job news, articles, sent to your inbox weekly.",
-        "email" : "Your email address..."
+        "email" : "Your email address...",
+        "website" : {
+            "name" : "website",
+            "jobs" : "Jobs",
+            "media" : "Media"
+        },
+        "information" : {
+            "name" : "information",
+            "about-us" : "About Us",
+            "privacy-policy" : "Privicy Policy"
+        },
+        "contact-us" : {
+            "name" : "contact us",
+            "phone" : "Phone Number",
+            "email" : "Email"
+        }
     },
     "translate" : {
         "english" : "English (EN)",

@@ -8,45 +8,45 @@ const FooterComponent = () => {
   const { t } = useTranslation();
 
   return (
-    <Footer container className="py-10 px-5 absolute left-0 right-0 bottom-0">
+    <Footer container className="py-10 px-5 absolute bottom-0 left-0 right-0">
       <div className="container mx-auto">
         <div className="w-full px-4">
           <div className="flex flex-wrap justify-between gap-8">
             <div className="flex-shrink-0">
               <Footer.Brand
-                href="https://flowbite.com"
+                href="/"
                 src="https://surveybox.istad.co/surveybox-logo.png"
-                alt="Flowbite Logo"
-                name="JOB FINDER"
+                alt="Job Finder Logo"
+                name="Job Finder"
                 className="font-kantumruy"
               />
             </div>
-            <div className="flex-grow grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-16 justify-items-center mx-auto">
-              <div className="text-left">
-                <Footer.Title title="About" />
-                <Footer.LinkGroup col>
-                  <Footer.Link href="#">Flowbite</Footer.Link>
-                  <Footer.Link href="#">Tailwind CSS</Footer.Link>
+            <div className={`${fontClass} flex-grow grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-16 justify-items-center mx-auto`}>
+              <div className="text-center sm:text-left">
+                <Footer.Title title={t('footer.website.name')} className="text-gray-600 text-lg"/>
+                <Footer.LinkGroup col className="text-base">
+                  <Footer.Link href="#">{t('footer.website.jobs')}</Footer.Link>
+                  <Footer.Link href="#">{t('footer.website.media')} CSS</Footer.Link>
                 </Footer.LinkGroup>
               </div>
-              <div className="text-left">
-                <Footer.Title title="Follow us" />
-                <Footer.LinkGroup col>
-                  <Footer.Link href="#">Github</Footer.Link>
-                  <Footer.Link href="#">Discord</Footer.Link>
+              <div className="text-center sm:text-left">
+                <Footer.Title title={t('footer.information.name')} className="text-gray-600 text-lg"/>
+                <Footer.LinkGroup col className="text-base">
+                  <Footer.Link href="#">{t('footer.information.about-us')}</Footer.Link>
+                  <Footer.Link href="#">{t('footer.information.privacy-policy')}</Footer.Link>
                 </Footer.LinkGroup>
               </div>
-              <div className="text-left">
-                <Footer.Title title="Legal" />
-                <Footer.LinkGroup col >
-                  <Footer.Link href="#">Privacy Policy</Footer.Link>
-                  <Footer.Link href="#">Terms & Conditions</Footer.Link>
+              <div className="text-center sm:text-left">
+                <Footer.Title title={t('footer.contact-us.name')} className="text-gray-600 text-lg"/>
+                <Footer.LinkGroup col className="text-base">
+                  <Footer.Link href="#">{t('footer.contact-us.phone')}</Footer.Link>
+                  <Footer.Link href="#">{t('footer.contact-us.email')}</Footer.Link>
                 </Footer.LinkGroup>
               </div>
             </div>
             <div className="w-full md:w-auto xl:w-96 flex justify-center md:justify-end">
               <div>
-                <h3 className={`${fontClass} mb-2 text-base font-semibold text-gray-600 dark:text-white text-left`}>
+                <h3 className={`${fontClass} mb-2 text-lg uppercase font-semibold text-gray-600 dark:text-white text-left`}>
                   {t("footer.notification")}
                 </h3>
                 <p className={`${fontClass} text-left mb-3 text-sm font-medium text-gray-500 dark:text-gray-300`}>
