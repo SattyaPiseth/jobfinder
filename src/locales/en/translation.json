@@ -6,6 +6,11 @@
         "about-us" : "About Us",
         "contact-us" : "Contact Us"
     },
+    "footer" : {
+        "notification" : "Get job notifications",
+        "description" : "The lastest job news, articles, sent to your inbox weekly.",
+        "email" : "Your email address..."
+    },
     "translate" : {
         "english" : "English (EN)",
         "khmer" : "Khmer (KH)"

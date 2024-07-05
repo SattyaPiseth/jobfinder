@@ -1,7 +1,6 @@
 import "./App.css";
 
 function App() {
-  console.log(import.meta.env)
   return (
     <>
     <h1 className="mt-20 text-3xl text-blue-800 font-bold text-center">

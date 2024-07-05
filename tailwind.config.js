@@ -77,6 +77,7 @@ module.exports = {
       },
       fontFamily: {
         suwannaphum: ['Suwannaphum', 'serif'],
+        kantumruy: ['"Kantumruy Pro"', 'sans-serif'],  
       },
       fontWeight: {
         hairline: 100,   // Sometimes referred to as 'Thin'

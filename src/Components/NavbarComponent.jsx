@@ -1,18 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLanguage } from "@fortawesome/free-solid-svg-icons";
-import { Button, Navbar } from "flowbite-react";
+import { Navbar } from "flowbite-react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import useFontClass from "../common/useFontClass";
+
 
 export default function NavbarComponent() {
   const { i18n, t } = useTranslation();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const {fontClass} = useFontClass();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -64,8 +68,8 @@ export default function NavbarComponent() {
                 to={menu.path}
                 className={({ isActive }) =>
                   isActive
-                    ? "font-suwannaphum text-lg font-medium text-white"
-                    : "font-suwannaphum font-medium text-lg text-gray-300"
+                    ? `${fontClass} text-lg font-medium text-white`
+                    : `${fontClass} font-medium text-lg text-gray-300`
                 }
                 key={index}
               >
@@ -89,9 +93,13 @@ export default function NavbarComponent() {
                   onClick={() => changeLanguage("en")}
                   className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                 >
-                  <img src="https://img.icons8.com/?size=96&id=xapj7ZzAUZKI&format=png" alt="English icons" className="w-6 h-6 mr-2" />
-                  
-                  <span className="font-suwannaphum text-sm font-normal">
+                  <img
+                    src="https://img.icons8.com/?size=96&id=xapj7ZzAUZKI&format=png"
+                    alt="English icons"
+                    className="w-6 h-6 mr-2"
+                  />
+
+                  <span className={`${fontClass} text-sm font-normal`}>
                     {t("translate.english")}
                   </span>
                 </button>
@@ -104,7 +112,7 @@ export default function NavbarComponent() {
                     alt="Khmer icon"
                     className="w-6 h-6 mr-2"
                   />
-                  <span className="font-suwannaphum text-sm font-normal">
+                  <span className={`${fontClass} text-sm font-normal`}>
                     {t("translate.khmer")}
                   </span>
                 </button>
@@ -142,7 +150,7 @@ export default function NavbarComponent() {
                     d="M288 336l80-80-80-80M80 256h272"
                   ></path>
                 </svg>
-                <span className="hidden lg:inline font-suwannaphum font-medium">
+                <span className={`${fontClass} hidden lg:inline font-medium`}>
                   {t("auth.login")}
                 </span>
               </span>
@@ -167,7 +175,7 @@ export default function NavbarComponent() {
                 >
                   <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
                 </svg>
-                <span className="hidden lg:inline font-suwannaphum font-medium">
+                <span className={`${fontClass} hidden lg:inline font-medium`}>
                   {t("auth.register")}
                 </span>
               </span>
