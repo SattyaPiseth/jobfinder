@@ -8,7 +8,7 @@ const FooterComponent = () => {
   const { t } = useTranslation();
 
   return (
-    <Footer container className="py-10 px-5 absolute bottom-0 left-0 right-0">
+    <Footer container className="py-10 px-5 absolute bottom-0 left-0 right-0 bg-gray-100">
       <div className="container mx-auto">
         <div className="w-full px-4">
           <div className="flex flex-wrap justify-between gap-8">
@@ -26,7 +26,7 @@ const FooterComponent = () => {
                 <Footer.Title title={t('footer.website.name')} className="text-gray-600 text-lg"/>
                 <Footer.LinkGroup col className="text-base">
                   <Footer.Link href="#">{t('footer.website.jobs')}</Footer.Link>
-                  <Footer.Link href="#">{t('footer.website.media')} CSS</Footer.Link>
+                  <Footer.Link href="#">{t('footer.website.media')}</Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div className="text-center sm:text-left">

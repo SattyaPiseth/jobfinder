@@ -62,7 +62,7 @@ export default function NavbarComponent() {
 
         <div className="relative flex order-1 md:order-2 gap-x-6 items-center">
           <LanguageDropdown fontClass={fontClass} />
-          
+
           <NavLink to="/login">
             <button
               type="button"
@@ -130,22 +130,24 @@ export default function NavbarComponent() {
             </button>
           </NavLink>
 
-          <button 
-            onClick={toggleNavbar} 
+          <button
+            onClick={toggleNavbar}
             className="md:hidden ml-3 p-2 text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 rounded-lg focus:ring-2"
+            aria-label="Toggle navigation"
+            aria-expanded={isOpen}
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-6 w-6" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
               strokeWidth={2}
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                d="M4 6h16M4 12h16M4 18h16" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
           </button>
