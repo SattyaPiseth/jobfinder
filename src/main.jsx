@@ -7,6 +7,9 @@ import MainLayout from './Layouts/MainLayout.jsx'
 import './i18n.js'
 import { Provider } from 'react-redux'
 import { store } from './redux/store.js'
+import RegisterForm from './Components/auth/RegisterForm.jsx'
+import LoginForm from './Components/auth/LoginForm.jsx'
+import OtpForm from './Components/auth/OtpForm.jsx'
 
 const route = createBrowserRouter([
   {
@@ -18,6 +21,18 @@ const route = createBrowserRouter([
         element: <App/>
       }
     ]
+  },
+  {
+    path: "/register",
+    element: <RegisterForm/>
+  },
+  {
+    path: "/verifyCode",
+    element: <OtpForm/>
+  },
+  {
+    path: "/login",
+    element: <LoginForm/>
   }
 ]);
 

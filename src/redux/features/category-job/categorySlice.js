@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { BASE_URL } from "../../api";
+import { fetchJobCategories as fetchCategoriesAPI } from "../../api/jobCategoryApi.js";
 
 export const fetchJobCategories = createAsyncThunk(
   "job_category/fetchJobCategories",
-  async () => {
-    const response = await fetch(`${BASE_URL}job_categories/`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch job categories");
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await fetchCategoriesAPI();
+      console.log(data)
+      return data.results;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-    const data = await response.json();
-    console.log("data: ", data.results);
-    return data.results;
   }
 );
 
@@ -21,7 +21,6 @@ const categorySlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchJobCategories.pending, (state) => {
@@ -33,12 +32,13 @@ const categorySlice = createSlice({
       })
       .addCase(fetchJobCategories.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message;
+        state.error = action.payload || "Failed to load job categories";
       });
   }
 });
 
 export default categorySlice.reducer;
+// Selectors
 export const selectAllJobCategories = (state) => state.category.job_category;
 export const getJobCategoriesStatus = (state) => state.category.status;
 export const getJobCategoriesError = (state) => state.category.error;
