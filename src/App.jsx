@@ -4,10 +4,6 @@ import { useEffect } from "react";
 import { fetchJobCategories, selectAllJobCategories, getJobCategoriesStatus, getJobCategoriesError } from "./redux/features/category-job/categorySlice";
 import { BASE_URL } from "./redux/api/api";
 
-
-
-
-
 function App() {
   const dispatch = useDispatch();
   const categories = useSelector(selectAllJobCategories);
