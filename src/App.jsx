@@ -37,15 +37,9 @@ function App() {
           name="thumbnail"
           content="https://surveybox.istad.co/surveybox-logo.png"
         />
-        <meta property="og:title" content="Available Courses" />
-        <meta
-          property="og:description"
-          content="There are many courses of ISTAD that you can see"
-        />
-        <meta
-          property="og:image"
-          content="https://surveybox.istad.co/surveybox-logo.png"
-        />
+           <meta property="og:title" content="Available Courses" />
+          <meta property="og:description" content="There are many courses of ISTAD that you can see" />
+          <meta property="og:image" content="https://www.istad.co/resources/img/istad-thumbnail.png" />
       </Helmet>
 
       <div className="mt-20">
