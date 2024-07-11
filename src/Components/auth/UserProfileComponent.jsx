@@ -2,8 +2,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile } from "../../redux/features/user/userSlice";
-import LogoutButton from "./LogoutButton";
-
 const UserProfileComponent = () => {
   const dispatch = useDispatch();
   const { user, accessToken, isLoading, error } = useSelector(
@@ -38,7 +36,7 @@ const UserProfileComponent = () => {
       ) : (
         <div>Please log in to see your profile.</div>
       )}
-      <LogoutButton />
+      {/* <LogoutButton /> */}
     </div>
   );
 };

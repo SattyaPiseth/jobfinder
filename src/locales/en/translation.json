@@ -45,7 +45,9 @@
             "username" : "Name",
             "email" : "Email",
             "password" : "Password",
-            "confirmPassword" : "Confirm Password"
+            "confirmPassword" : "Confirm Password",
+            "haveAccount" : "Already Have an Account?",
+            "login" : "Login"
         },
         "placeholders" : {
             "username" : "Enter name",
@@ -60,6 +62,7 @@
             "password" : "Password must be 8+ characters, with uppercase, lowercase, number, and special character",
             "confirmPassword" : "confirm password is required",
             "not-match" : "confirm password not match!"
+            
         }
     },
     "verification" : {
@@ -74,5 +77,26 @@
         "time" : "Request a new code in",
         "unreceived" : "Didn't receive the code?",
         "resend" : "Resend Code"
+    },
+    "loginForm" : {
+        "title" : "Login Account",
+        "labels" : {
+            "email" : "Email",
+            "password" : "Password",
+            "forgotPassword" : "Forgot Password",
+            "login" : "Login",
+            "logining" : "Logining...",
+            "unauthorized" : "Don't Have An Account?",
+            "signUp" : "Sign Up"
+        },
+        "placeholders" : {
+            "email" : "Enter email",
+            "password" : "Enter password"
+        },
+        "validation" : {
+            "invalid" : "Invalid email",
+            "email" :  "email is required",
+            "password" : "password is required"
+        }
     }
 }

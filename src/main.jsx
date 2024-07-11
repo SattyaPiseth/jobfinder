@@ -8,13 +8,13 @@ import MainLayout from "./Layouts/MainLayout.jsx";
 import "./i18n.js";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.js"; 
-import LoginForm from "./Components/auth/LoginForm.jsx";
 import JobsPage from "./pages/JobsPage.jsx";
 import UserProfileComponent from "./Components/auth/UserProfileComponent.jsx";
 import useAppInitializer from "./common/useAppInitializer.js";
 import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
 import EmailVerification from "./pages/EmailVerification.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 
 const route = createBrowserRouter([
   {
@@ -34,19 +34,20 @@ const route = createBrowserRouter([
         path: "/profile",
         element: <ProtectedRoute element={<UserProfileComponent />} />,
       },
+      {
+        path: "/register",
+        element: <RegistrationPage/>
+      },
+      {
+        path: "/verifyCode",
+        element: <EmailVerification/>
+      },
     ],
   },
-  {
-    path: "/register",
-    element: <RegistrationPage/>
-  },
-  {
-    path: "/verifyCode",
-    element: <EmailVerification/>
-  },
+  
   {
     path: "/login",
-    element: <LoginForm />,
+    element: <LoginPage/>
   },
 ]);
 

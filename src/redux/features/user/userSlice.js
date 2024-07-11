@@ -164,6 +164,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.user = action.payload;
         state.error = null;
+        state.isAuthenticated = false;
       })
       .addCase(verifyOtp.rejected, (state, action) => {
         state.isLoading = false;

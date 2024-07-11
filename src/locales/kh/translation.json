@@ -45,7 +45,9 @@
             "username" : "ឈ្មោះអ្នកប្រើប្រាស់",
             "email" : "អ៊ីមែល",
             "password" : "ពាក្យសម្ងាត់",
-            "confirmPassword" : "បញ្ចាក់ពាក្យសម្ងាត់"
+            "confirmPassword" : "បញ្ចាក់ពាក្យសម្ងាត់",
+            "haveAccount" : "មានគណនីរួចហើយ?",
+            "login" : "ចូលគណនី"
         },
         "placeholders" : {
             "username" : "ឈ្មោះអ្នកប្រើប្រាស់",
@@ -74,5 +76,26 @@
             "time" : "ស្នើសុំលេខកូដថ្មីនៅក្នុងរយៈពេល",
             "unreceived" : "មិនបានទទួលលេខកូដ?",
             "resend" : "ផ្ញើលេខកូដឡើងវិញ"
-        }
+        },
+    "loginForm" : {
+            "title" : "ចូលប្រើគណនី",
+            "labels" : {
+                "email" : "អ៊ីមែល",
+                "password" : "ពាក្យសម្ងាត់",
+                "forgotPassword" : "ភ្លេច​ពាក្យសម្ងាត់​",
+                "login" : "ចូលគណនី",
+                "logining" : "កំពុងចូលប្រើ...",
+                "unauthorized" : "មិនមានគណនីមែនទេ?",
+                "signUp" : "ចុះ​ឈ្មោះ"
+            },
+            "placeholders" : {
+                "email" : "name@example.com",
+                "password" : "ពាក្យសម្ងាត់"
+            },
+            "validation" : {
+                "invalid" : "អ៊ីមែលមិនត្រឹមត្រូវ",
+                "email" :  "អ៊ីមែលត្រូវបានទាមទារ",
+                "password" : "ពាក្យសម្ងាត់ត្រូវបានទាមទារ"
+            }
+        }   
 }

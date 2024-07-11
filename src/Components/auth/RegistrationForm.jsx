@@ -6,7 +6,7 @@
     import InputField from '../../common/InputField.jsx';
     import useFontClass from '../../common/useFontClass.js';
     import { useTranslation } from 'react-i18next';
-    import { useNavigate } from 'react-router-dom';
+    import { NavLink, useNavigate } from 'react-router-dom';
 
     const RegistrationForm = () => {
     const { fontClass } = useFontClass();
@@ -28,6 +28,7 @@
             navigate('/verifyCode');
             dispatch(logout());
         }
+        
     },[isAuthenticated, navigate])
 
     const validationSchema = Yup.object({
@@ -61,7 +62,7 @@
         >
         {formik => (
             <Form className={`${fontClass} flex flex-col space-y-6 bg-white p-8 rounded-lg shadow-md`}>
-            <h2 className="text-2xl font-semibold text-primary-700">{t('registrationForm.title')}</h2>
+            <h2 className="text-3xl font-semibold text-primary-700 text-left">{t('registrationForm.title')}</h2>
             <InputField label={t('registrationForm.labels.username')} name="username" placeholder={t('registrationForm.placeholders.username')} />
             <InputField label={t('registrationForm.labels.email')} name="email" type="email" placeholder={t('registrationForm.placeholders.email')} />
             <InputField label={t('registrationForm.labels.password')} name="password" type="password" placeholder={t('registrationForm.placeholders.password')} />
@@ -74,6 +75,12 @@
             <button type="submit" disabled={isLoading || !formik.isValid} className="w-full bg-primary-700 text-white font-medium rounded-lg py-2 hover:bg-primary-750 disabled:opacity-50">
                 {isLoading ? t('registrationForm.registering') : t('registrationForm.submit')}
             </button>
+            <p className={`${fontClass} mt-8 sm:mt-10 text-base sm:text-lg text-center text-gray-600 `}>
+            {t('registrationForm.labels.haveAccount')}{" "}
+            <NavLink  to={'/login'} className="text-blue-600 hover:underline font-medium px-1">
+            {t('registrationForm.labels.login')}
+            </NavLink>
+      </p>
             </Form>
         )}
         </Formik>
