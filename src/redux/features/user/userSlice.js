@@ -20,6 +20,8 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await register(userData);
+      console.log('email',userData.email)
+      localStorage.setItem("email", userData.email);
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -93,6 +95,7 @@ const userSlice = createSlice({
     isAuthenticated: !!localStorage.getItem('access'),
     isLoading: false,
     error: null,
+    showModal: false,
   },
   reducers: {
     loginSuccess(state, action) {
@@ -116,6 +119,12 @@ const userSlice = createSlice({
       state.refreshToken = localStorage.getItem('refresh');
       state.isAuthenticated = !!localStorage.getItem('access');
     },
+    showModal(state) {
+      state.showModal = true;
+    },
+    hideModal(state) {
+      state.showModal = false;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -126,6 +135,8 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.user = action.payload;
         state.error = null;
+        state.isAuthenticated = true;
+        state.showModal = true; // Show success modal
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -184,5 +195,5 @@ const userSlice = createSlice({
       });
   },
 });
-export const { logout, loadTokens, loginSuccess } = userSlice.actions;
+export const { logout, loadTokens, loginSuccess,showModal, hideModal } = userSlice.actions;
 export default userSlice.reducer;

@@ -11,7 +11,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error, user } = useSelector((state) => state.user);
-  console.log('Login Form',user)
+  
   const [message, setMessage] = useState("");
 
   const formik = useFormik({
