@@ -11,7 +11,7 @@ import {
 const getErrorMessage = (error) => {
   return error.response && error.response.data && error.response.data.message
     ? error.response.data.message
-    : "An unexpected error occurred";
+    : null;
 };
 
 // Asynchronous thunk for user registration

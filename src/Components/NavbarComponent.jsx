@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
 import { Navbar } from "flowbite-react";
 import { NavLink } from "react-router-dom";
-import { LanguageDropdown } from "../common/LanguageDropdown";
+import  LanguageDropdown  from "../common/LanguageDropdown";
 import { useState } from "react";
 
 export default function NavbarComponent() {

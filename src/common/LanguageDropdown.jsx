@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 
-// Reusable Language Dropdown Component
-export const LanguageDropdown = ({ fontClass }) => {
+const LanguageDropdown = () => {
     const { i18n, t } = useTranslation();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
@@ -24,6 +23,8 @@ export const LanguageDropdown = ({ fontClass }) => {
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
+        const newFontClass = lng === "kh" ? "font-suwannaphum" : "font-kantumruy";
+        localStorage.setItem('fontClass', newFontClass);
     };
 
     return (
@@ -42,7 +43,7 @@ export const LanguageDropdown = ({ fontClass }) => {
                             alt="English icons"
                             className="w-6 h-6 mr-2"
                         />
-                        <span className={`${fontClass} text-sm font-normal`}>
+                        <span className={`${localStorage.getItem('fontClass')} text-sm font-normal`}>
                             {t("translate.english")}
                         </span>
                     </button>
@@ -55,7 +56,7 @@ export const LanguageDropdown = ({ fontClass }) => {
                             alt="Khmer icon"
                             className="w-6 h-6 mr-2"
                         />
-                        <span className={`${fontClass} text-sm font-normal`}>
+                        <span className={`${localStorage.getItem('fontClass')} text-sm font-normal`}>
                             {t("translate.khmer")}
                         </span>
                     </button>
@@ -64,3 +65,5 @@ export const LanguageDropdown = ({ fontClass }) => {
         </div>
     );
 };
+
+export default LanguageDropdown;

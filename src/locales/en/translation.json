@@ -61,5 +61,18 @@
             "confirmPassword" : "confirm password is required",
             "not-match" : "confirm password not match!"
         }
+    },
+    "verification" : {
+        "title" : "Email Verification",
+        "desc" : "Please enter the 6-digit code sent to your email",
+        "verify" : "Verify",
+        "verifying" : "Verifying...",
+        "otp_code" : {
+            "failed" : "Incorrect OTP, please try again.",
+            "success" : "OTP verified successfully!"
+        },
+        "time" : "Request a new code in",
+        "unreceived" : "Didn't receive the code?",
+        "resend" : "Resend Code"
     }
 }
