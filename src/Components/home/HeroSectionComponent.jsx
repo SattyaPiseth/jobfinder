@@ -3,8 +3,8 @@ import React from 'react'
 const HeroSectionComponent = () => {
   return (
     <div>
-      <section class="flex flex-col pt-11 pb-20 bg-white">
-        <div class="flex justify-center items-center px-16 py-20 bg-white max-md:px-5 max-md:max-w-full">
+      <section class="flex flex-col pb-20 bg-white">
+        <div class="flex justify-center items-center px-16 py-10 bg-white max-md:px-5 max-md:max-w-full">
             <div class="mt-12 w-full max-w-[1031px] max-md:mt-10 max-md:max-w-full">
                 <div class="flex gap-5 max-md:flex-col max-md:gap-0">
                     <div class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
