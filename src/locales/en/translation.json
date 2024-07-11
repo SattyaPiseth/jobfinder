@@ -33,5 +33,33 @@
     "auth" : {
         "login": "login",
         "register" : "sign up"
+    },
+    "registrationForm" : {
+        "title" : "Register Account",
+        "submit" : "Create Account",  
+        "email" : "email must be a valid email",  
+        "min" : "Minimum 6 characters required",
+        "registering" : "Registering...",
+        "message" : "",
+        "labels" : {
+            "username" : "Name",
+            "email" : "Email",
+            "password" : "Password",
+            "confirmPassword" : "Confirm Password"
+        },
+        "placeholders" : {
+            "username" : "Enter name",
+            "email" : "Enter email",
+            "password" : "Enter password",
+            "confirmPassword" : "Enter confirm password"
+        },
+        "validation" : {
+            "username" : "name is required",
+            "min" : "Minimum 3 characters required",
+            "email" : "email is required",
+            "password" : "Password must be 8+ characters, with uppercase, lowercase, number, and special character",
+            "confirmPassword" : "confirm password is required",
+            "not-match" : "confirm password not match!"
+        }
     }
 }

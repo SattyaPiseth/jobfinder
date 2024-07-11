@@ -6,7 +6,6 @@ export const fetchJobCategories = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await fetchCategoriesAPI();
-      console.log(data)
       return data.results;
     } catch (error) {
       return rejectWithValue(error.message);
