@@ -11,6 +11,7 @@ import RegisterForm from "./Components/auth/RegisterForm.jsx";
 import LoginForm from "./Components/auth/LoginForm.jsx";
 import OtpForm from "./Components/auth/OtpForm.jsx";
 import JobsPage from "./pages/JobsPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
 
 const route = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const route = createBrowserRouter([
     path: "/login",
     element: <LoginForm />,
   },
+  {
+    path: "/home",
+    element: <HomePage/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
