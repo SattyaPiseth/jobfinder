@@ -13,3 +13,19 @@ export const login = (userCredentials) => {
 export const verifyOtpCode = ({ email, otp_code }) => {
   return axios.post(`${API_URL}verify-otp/`, { email, otp_code });
 };
+
+export const getProfile = (token) => {
+  return axios.get(`${API_URL}profile/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const updateProfile = (token, profileData) => {
+  return axios.put(`${API_URL}profile/`, profileData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

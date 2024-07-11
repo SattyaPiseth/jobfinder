@@ -1,3 +1,4 @@
+// src/main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -11,6 +12,9 @@ import RegisterForm from "./Components/auth/RegisterForm.jsx";
 import LoginForm from "./Components/auth/LoginForm.jsx";
 import OtpForm from "./Components/auth/OtpForm.jsx";
 import JobsPage from "./pages/JobsPage.jsx";
+import UserProfileComponent from "./Components/auth/UserProfileComponent.jsx";
+import useAppInitializer from "./common/useAppInitializer.js";
+import ProtectedRoute from "./common/ProtectedRoute.jsx";
 
 const route = createBrowserRouter([
   {
@@ -24,6 +28,10 @@ const route = createBrowserRouter([
       {
         path: "/jobs",
         element: <JobsPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProtectedRoute element={<UserProfileComponent />} />,
       },
     ],
   },
@@ -41,10 +49,15 @@ const route = createBrowserRouter([
   },
 ]);
 
+const AppWrapper = () => {
+  useAppInitializer();
+  return <RouterProvider router={route} />;
+};
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={route} />
+      <AppWrapper />
     </Provider>
   </React.StrictMode>
 );

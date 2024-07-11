@@ -1,14 +1,20 @@
 import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
 import { Footer } from "flowbite-react";
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
+import {
+  BsDribbble,
+  BsFacebook,
+  BsGithub,
+  BsInstagram,
+  BsTwitter,
+} from "react-icons/bs";
 
 const FooterComponent = () => {
   const { fontClass } = useFontClass();
   const { t } = useTranslation();
 
   return (
-    <Footer container className="py-10 px-5 absolute bottom-0 left-0 right-0 bg-gray-100">
+    <Footer container className="m-5 w-full py-20 px-5 absolute left-0 right-0">
       <div className="container mx-auto">
         <div className="w-full px-4">
           <div className="flex flex-wrap justify-between gap-8">
@@ -21,35 +27,60 @@ const FooterComponent = () => {
                 className="font-kantumruy"
               />
             </div>
-            <div className={`${fontClass} flex-grow grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-16 justify-items-center mx-auto`}>
+            <div
+              className={`${fontClass} flex-grow grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-16 justify-items-center mx-auto`}
+            >
               <div className="text-center sm:text-left">
-                <Footer.Title title={t('footer.website.name')} className="text-gray-600 text-lg"/>
+                <Footer.Title
+                  title={t("footer.website.name")}
+                  className="text-gray-600 text-lg"
+                />
                 <Footer.LinkGroup col className="text-base">
-                  <Footer.Link href="#">{t('footer.website.jobs')}</Footer.Link>
-                  <Footer.Link href="#">{t('footer.website.media')}</Footer.Link>
+                  <Footer.Link href="#">{t("footer.website.jobs")}</Footer.Link>
+                  <Footer.Link href="#">
+                    {t("footer.website.media")}
+                  </Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div className="text-center sm:text-left">
-                <Footer.Title title={t('footer.information.name')} className="text-gray-600 text-lg"/>
+                <Footer.Title
+                  title={t("footer.information.name")}
+                  className="text-gray-600 text-lg"
+                />
                 <Footer.LinkGroup col className="text-base">
-                  <Footer.Link href="#">{t('footer.information.about-us')}</Footer.Link>
-                  <Footer.Link href="#">{t('footer.information.privacy-policy')}</Footer.Link>
+                  <Footer.Link href="#">
+                    {t("footer.information.about-us")}
+                  </Footer.Link>
+                  <Footer.Link href="#">
+                    {t("footer.information.privacy-policy")}
+                  </Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div className="text-center sm:text-left">
-                <Footer.Title title={t('footer.contact-us.name')} className="text-gray-600 text-lg"/>
+                <Footer.Title
+                  title={t("footer.contact-us.name")}
+                  className="text-gray-600 text-lg"
+                />
                 <Footer.LinkGroup col className="text-base">
-                  <Footer.Link href="#">{t('footer.contact-us.phone')}</Footer.Link>
-                  <Footer.Link href="#">{t('footer.contact-us.email')}</Footer.Link>
+                  <Footer.Link href="#">
+                    {t("footer.contact-us.phone")}
+                  </Footer.Link>
+                  <Footer.Link href="#">
+                    {t("footer.contact-us.email")}
+                  </Footer.Link>
                 </Footer.LinkGroup>
               </div>
             </div>
             <div className="w-full md:w-auto xl:w-96 flex justify-center md:justify-end">
               <div>
-                <h3 className={`${fontClass} mb-2 text-lg uppercase font-semibold text-gray-600 dark:text-white text-left`}>
+                <h3
+                  className={`${fontClass} mb-2 text-lg uppercase font-semibold text-gray-600 dark:text-white text-left`}
+                >
                   {t("footer.notification")}
                 </h3>
-                <p className={`${fontClass} text-left mb-3 text-sm font-medium text-gray-500 dark:text-gray-300`}>
+                <p
+                  className={`${fontClass} text-left mb-3 text-sm font-medium text-gray-500 dark:text-gray-300`}
+                >
                   {t("footer.description")}
                 </p>
                 <form
@@ -95,7 +126,7 @@ const FooterComponent = () => {
                           className={`${fontClass} formkit-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
                           name="email_address"
                           aria-label="Email Address"
-                          placeholder={t('footer.email')}
+                          placeholder={t("footer.email")}
                           required
                           type="email"
                         />
