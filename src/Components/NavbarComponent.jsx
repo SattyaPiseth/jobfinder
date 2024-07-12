@@ -28,16 +28,6 @@ export default function NavbarComponent() {
 
   return (
     <>
-      <div className="flex justify-center items-center px-8 py-2 w-full text-white bg-blue-600 max-md:px-5 max-md:max-w-full">
-        <div className="flex gap-4">
-          <div className="justify-center px-3 py-1 text-xs leading-4 text-center whitespace-nowrap bg-blue-600 rounded-3xl">
-            NEW
-          </div>
-          <div className="text-base tracking-tight leading-6">
-            We have released the new feature
-          </div>
-        </div>
-      </div>
       <Navbar
         fluid
         className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50"
