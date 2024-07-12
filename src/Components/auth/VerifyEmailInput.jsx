@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Alert } from "flowbite-react";
@@ -12,8 +12,8 @@ const EmailVerificationInput = () => {
   const { fontClass } = useFontClass();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
-  const { isLoading, error, user, isAuthenticated } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const { isLoading, error, user } = useSelector((state) => state.user);
   const [timer, setTimer] = useState(30);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const EmailVerificationInput = () => {
         verifyOtp({ email: localStorage.getItem("email"), otp_code: otp })
       ).unwrap();
 
-      navigate('/'); 
+      navigate('/');
     } catch (error) {
       setFieldError("otp_code", t("verification.otp_code.failed"));
     } finally {
@@ -54,7 +54,7 @@ const EmailVerificationInput = () => {
   };
 
   const handlePaste = (e, setFieldValue) => {
-    const pasteData = e.clipboardData.getData("text").replace(/\s+/g, ""); 
+    const pasteData = e.clipboardData.getData("text").replace(/\s+/g, "");
     if (/^\d{6}$/.test(pasteData)) {
       pasteData.split("").forEach((char, index) => {
         setFieldValue(`otp_code[${index}]`, char);

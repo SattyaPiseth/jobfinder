@@ -13,7 +13,7 @@ const EmailVerification = () => {
           />
         </section>
         <section className="flex flex-col w-full md:w-1/2 lg:w-5/12">
-          <EmailVerificationInput/>
+          <EmailVerificationInput />
         </section>
       </div>
     </main>
