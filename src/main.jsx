@@ -9,6 +9,7 @@ import "./i18n.js";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.js"; 
 import JobsPage from "./pages/JobsPage.jsx";
+import JobDetail from "./pages/job_detail/JobDetail.jsx";
 import UserProfileComponent from "./Components/auth/UserProfileComponent.jsx";
 import useAppInitializer from "./common/useAppInitializer.js";
 import ProtectedRoute from "./common/ProtectedRoute.jsx";
@@ -28,6 +29,14 @@ const route = createBrowserRouter([
       {
         path: "/jobs",
         element: <JobsPage />,
+      },
+      {
+        path:"/job-detail",
+        element: <JobDetail/>
+      },
+      {
+        path:"/jobs/job-detail",
+        element: <JobDetail/>
       },
       
       {
