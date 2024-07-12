@@ -15,7 +15,6 @@ import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
 import EmailVerification from "./pages/EmailVerification.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import HomePage from "./pages/HomePage.jsx";
 
 const route = createBrowserRouter([
   {
