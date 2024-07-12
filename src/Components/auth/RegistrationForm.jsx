@@ -58,7 +58,7 @@ const RegistrationForm = () => {
       onSubmit={handleSubmit}
     >
       {(formik) => (
-        <Form className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-lg sm:max-w-2xl lg:max-w-3xl`}>
+        <Form className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-2xl sm:max-w-3xl lg:max-w-4xl`}>
           <h2 className="text-2xl sm:text-3xl font-semibold text-primary-700 text-left mb-4">{t('registrationForm.title')}</h2>
           <InputField
             label={t('registrationForm.labels.username')}
