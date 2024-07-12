@@ -16,6 +16,7 @@ import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
 import EmailVerification from "./pages/EmailVerification.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
 
 const route = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const route = createBrowserRouter([
       {
         path: "/verifyCode",
         element: <EmailVerification/>
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs/>
       },
     ],
   },
