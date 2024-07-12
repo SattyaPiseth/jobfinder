@@ -9,7 +9,8 @@
     "dev:production": "vite --mode production",
     "build:development": "vite build --mode development",
     "build:stage": "vite build --mode stage",
-    "build:production": "vite build --mode production"
+    "build:production": "vite build --mode production",
+    "serve": "vite preview"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
