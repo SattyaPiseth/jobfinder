@@ -85,7 +85,7 @@ const EmailVerificationInput = () => {
   };
 
   return (
-    <div className={`max-w-md w-full mx-auto bg-white rounded-lg shadow-lg p-6 sm:p-8 ${fontClass}`}>
+    <div className={`max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl w-full mx-auto bg-white rounded-lg shadow-lg p-6 sm:p-8 ${fontClass}`}>
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-primary-700">
         {t("verification.title")}
       </h2>
