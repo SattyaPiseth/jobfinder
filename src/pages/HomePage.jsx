@@ -11,14 +11,12 @@ import FeatureDetailComponent from '../Components/home/FeatureDetailComponent'
 const HomePage = () => {
   return (
     <div>
-        <NavbarComponent/>
         <HeroSectionComponent/>
         <SliderComponent/>
         <SearchComponent/>
         <PositionCardComponent/>
         <AdvertisingComponent/>
         <FeatureDetailComponent/>
-        <FooterComponent/>
     </div>
   )
 }
