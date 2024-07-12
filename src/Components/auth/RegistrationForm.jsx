@@ -27,7 +27,7 @@ const RegistrationForm = () => {
       .required(t('registrationForm.validation.username'))
       .min(3, t('registrationForm.validation.min')),
     email: Yup.string()
-      .email(t('registrationForm.email'))
+      .email(t('registrationForm.validation.invalidEmail'))
       .required(t('registrationForm.validation.email')),
     password: Yup.string()
       .matches(
@@ -36,7 +36,7 @@ const RegistrationForm = () => {
       )
       .required(t('registrationForm.validation.password')),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], t('registrationForm.validation.not-match'))
+      .oneOf([Yup.ref('password'), null], t('registrationForm.validation.notMatch'))
       .required(t('registrationForm.validation.confirmPassword')),
   });
 
@@ -46,7 +46,6 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      console.log('register Auth : ',isAuthenticated)
       dispatch(setIsAuthenticatedFalse());
       navigate('/verifyCode');
     }
@@ -59,8 +58,8 @@ const RegistrationForm = () => {
       onSubmit={handleSubmit}
     >
       {(formik) => (
-        <Form className={`${fontClass} flex flex-col space-y-6 bg-white p-8 rounded-lg shadow-md w-full`}>
-          <h2 className="text-3xl font-semibold text-primary-700 text-left">{t('registrationForm.title')}</h2>
+        <Form className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white p-4 sm:p-6 lg:p-8 rounded-lg shadow-lg w-full max-w-sm sm:max-w-md lg:max-w-lg`}>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-primary-700 text-left mb-4">{t('registrationForm.title')}</h2>
           <InputField
             label={t('registrationForm.labels.username')}
             name="username"
@@ -92,9 +91,9 @@ const RegistrationForm = () => {
           >
             {isLoading ? t('registrationForm.registering') : t('registrationForm.submit')}
           </button>
-          <p className={`${fontClass} mt-8 text-base text-center text-gray-600`}>
+          <p className={`${fontClass} mt-6 text-base text-center text-gray-600`}>
             {t('registrationForm.labels.haveAccount')}{' '}
-            <NavLink to="/login" className="text-blue-600 hover:underline font-medium px-1">
+            <NavLink to="/login" className="text-blue-600 hover:underline font-medium">
               {t('registrationForm.labels.login')}
             </NavLink>
           </p>

@@ -3,6 +3,7 @@ import {
   getProfile,
   login,
   register,
+  resendOtp,
   updateProfile,
   verifyOtpCode,
 } from "../../api/userApi";
@@ -78,6 +79,19 @@ export const updateUserProfile = createAsyncThunk(
   async ({ token, profileData }, { rejectWithValue }) => {
     try {
       const response = await updateProfile(token, profileData);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
+// Asynchronous thunk for resending OTP
+export const resendOtpCode = createAsyncThunk(
+  "user/resendOtp",
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = await resendOtp(email);
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -187,6 +201,19 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(resendOtpCode.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(resendOtpCode.fulfilled, (state, action) => {
+        state.isLoading = false;
+        // You can choose to update the state in some way here if needed
+        // For example, show a message that OTP has been resent
+        console.log("OTP resent successfully");
+      })
+      .addCase(resendOtpCode.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

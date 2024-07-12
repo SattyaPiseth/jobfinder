@@ -11,6 +11,7 @@ function App() {
   const status = useSelector(getJobCategoriesStatus);
   const error = useSelector(getJobCategoriesError);
 
+  console.log('category',categories)
 
   useEffect(() => {
     if (status === 'idle') {

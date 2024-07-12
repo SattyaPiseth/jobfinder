@@ -29,3 +29,7 @@ export const updateProfile = (token, profileData) => {
     },
   });
 };
+
+export const resendOtp = (email) => {
+  return axios.post(`${API_URL}resend-otp/`, { email });
+};

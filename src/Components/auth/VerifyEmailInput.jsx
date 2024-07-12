@@ -7,6 +7,7 @@ import { Alert } from "flowbite-react";
 import { verifyOtp } from "../../redux/features/user/userSlice";
 import useFontClass from "../../common/useFontClass";
 import { useTranslation } from "react-i18next";
+import { resendOtp } from "../../redux/api/userApi";
 
 const EmailVerificationInput = () => {
   const { fontClass } = useFontClass();
@@ -71,6 +72,7 @@ const EmailVerificationInput = () => {
 
   const handleResendCode = () => {
     setTimer(30);
+    dispatch(resendOtp(localStorage.getItem('email')));
   };
 
   const handlePaste = (e, setFieldValue) => {
@@ -83,8 +85,8 @@ const EmailVerificationInput = () => {
   };
 
   return (
-    <div className={`max-w-lg mx-auto mt-20 p-8 bg-white rounded-lg shadow-lg ${fontClass}`}>
-      <h2 className="text-3xl font-bold text-center mb-8 text-primary-700">
+    <div className={`max-w-md w-full mx-auto bg-white rounded-lg shadow-lg p-6 sm:p-8 ${fontClass}`}>
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-primary-700">
         {t("verification.title")}
       </h2>
       <p className="text-center text-gray-600 mb-6">{t("verification.desc")}</p>
@@ -96,7 +98,7 @@ const EmailVerificationInput = () => {
         {({ isSubmitting, values, setFieldValue, errors, touched }) => (
           <Form onPaste={(e) => handlePaste(e, setFieldValue)}>
             <div className="mb-6">
-              <div className="flex gap-4 justify-center">
+              <div className="flex gap-2 sm:gap-4 justify-center">
                 {[0, 1, 2, 3, 4, 5].map((index) => (
                   <Field
                     key={index}
@@ -109,7 +111,7 @@ const EmailVerificationInput = () => {
                         : errors.otp_code && touched.otp_code
                         ? "border-red-500"
                         : "border-gray-300"
-                    } h-16 w-16 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    } h-12 w-10 sm:h-16 sm:w-12 text-lg sm:text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500`}
                     aria-label={`Verification code digit ${index + 1}`}
                     onChange={(e) => {
                       const { value } = e.target;
@@ -153,19 +155,19 @@ const EmailVerificationInput = () => {
             <button
               type="submit"
               disabled={isSubmitting || isLoading}
-              className={`w-full h-14 text-lg bg-primary-700 hover:bg-primary-750 rounded-lg text-white ${fontClass}`}
+              className={`w-full h-12 sm:h-14 text-lg sm:text-xl bg-primary-700 hover:bg-primary-750 rounded-lg text-white ${fontClass}`}
             >
               {isLoading ? t("verification.verifying") : t("verification.verify")}
             </button>
           </Form>
         )}
       </Formik>
-      <p className="text-center mt-6 text-lg leading-6 text-gray-500">
+      <p className="text-center mt-6 text-sm sm:text-lg leading-6 text-gray-500">
         {t("verification.time")} {Math.floor(timer / 60)}:
         {timer % 60 < 10 ? "0" : ""}
         {timer % 60}
       </p>
-      <div className="flex justify-center gap-2 mt-4 text-lg leading-6">
+      <div className="flex justify-center gap-1 sm:gap-2 mt-4 text-sm sm:text-lg leading-6">
         <p className="text-gray-500">{t("verification.unreceived")}</p>
         <button
           className={`text-blue-600 hover:text-blue-800 ${
