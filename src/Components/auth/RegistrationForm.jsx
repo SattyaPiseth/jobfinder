@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { registerUser } from '../../redux/features/user/userSlice';
+import { registerUser, setIsAuthenticatedFalse } from '../../redux/features/user/userSlice';
 import InputField from '../../common/InputField';
 import useFontClass from '../../common/useFontClass';
 
@@ -46,6 +46,8 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
+      console.log('register Auth : ',isAuthenticated)
+      dispatch(setIsAuthenticatedFalse());
       navigate('/verifyCode');
     }
   }, [isAuthenticated, navigate]);

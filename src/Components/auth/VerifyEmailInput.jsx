@@ -13,8 +13,10 @@ const EmailVerificationInput = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, error, user } = useSelector((state) => state.user);
+  const { isLoading, error } = useSelector((state) => state.user);
   const [timer, setTimer] = useState(30);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [successCountdown, setSuccessCountdown] = useState(5);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,6 +25,24 @@ const EmailVerificationInput = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (showSuccess) {
+      const countdownInterval = setInterval(() => {
+        setSuccessCountdown((prevCountdown) => {
+          if (prevCountdown > 0) {
+            return prevCountdown - 1;
+          } else {
+            clearInterval(countdownInterval);
+            navigate('/');
+            return 0;
+          }
+        });
+      }, 1000);
+
+      return () => clearInterval(countdownInterval);
+    }
+  }, [showSuccess, navigate]);
 
   const initialValues = {
     otp_code: ["", "", "", "", "", ""],
@@ -40,8 +60,8 @@ const EmailVerificationInput = () => {
       await dispatch(
         verifyOtp({ email: localStorage.getItem("email"), otp_code: otp })
       ).unwrap();
-
-      navigate('/');
+      setShowSuccess(true);
+      setSuccessCountdown(5);
     } catch (error) {
       setFieldError("otp_code", t("verification.otp_code.failed"));
     } finally {
@@ -125,9 +145,9 @@ const EmailVerificationInput = () => {
                 {error}
               </Alert>
             )}
-            {user && (
+            {showSuccess && (
               <Alert color="success" className="mb-6">
-                {t("verification.otp_code.success")}
+                {t("verification.otp_code.success")} ({successCountdown})
               </Alert>
             )}
             <button

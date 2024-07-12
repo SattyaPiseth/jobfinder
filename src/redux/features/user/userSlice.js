@@ -92,7 +92,7 @@ const userSlice = createSlice({
     user: null,
     accessToken: localStorage.getItem("access" || null),
     refreshToken: localStorage.getItem("refresh" || null),
-    isAuthenticated: !!localStorage.getItem('access'),
+    isAuthenticated: false,
     isLoading: false,
     error: null,
     showModal: false,
@@ -119,12 +119,9 @@ const userSlice = createSlice({
       state.refreshToken = localStorage.getItem('refresh');
       state.isAuthenticated = !!localStorage.getItem('access');
     },
-    showModal(state) {
-      state.showModal = true;
+    setIsAuthenticatedFalse(state) {
+      state.isAuthenticated = false;
     },
-    hideModal(state) {
-      state.showModal = false;
-    }
   },
   extraReducers: (builder) => {
     builder
@@ -136,7 +133,6 @@ const userSlice = createSlice({
         state.user = action.payload;
         state.error = null;
         state.isAuthenticated = true;
-        state.showModal = true; // Show success modal
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -196,5 +192,5 @@ const userSlice = createSlice({
       });
   },
 });
-export const { logout, loadTokens, loginSuccess,showModal, hideModal } = userSlice.actions;
+export const { logout, loadTokens, loginSuccess, setIsAuthenticatedFalse  } = userSlice.actions;
 export default userSlice.reducer;
