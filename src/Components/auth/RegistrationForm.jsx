@@ -27,7 +27,7 @@ const RegistrationForm = () => {
       .required(t('registrationForm.validation.username'))
       .min(3, t('registrationForm.validation.min')),
     email: Yup.string()
-      .email(t('registrationForm.email'))
+      .email(t('registrationForm.validation.invalidEmail'))
       .required(t('registrationForm.validation.email')),
     password: Yup.string()
       .matches(
@@ -58,7 +58,7 @@ const RegistrationForm = () => {
       onSubmit={handleSubmit}
     >
       {(formik) => (
-        <Form className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-sm sm:max-w-md lg:max-w-lg`}>
+        <Form className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white p-4 sm:p-8 rounded-lg shadow-lg w-full max-w-lg sm:max-w-xl lg:max-w-2xl`}>
           <h2 className="text-2xl sm:text-3xl font-semibold text-primary-700 text-left mb-4">{t('registrationForm.title')}</h2>
           <InputField
             label={t('registrationForm.labels.username')}
