@@ -49,10 +49,6 @@ const route = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage/>
-  },
-  {
-    path: "/home",
-    element: <HomePage/>
   }
 ]);
 
