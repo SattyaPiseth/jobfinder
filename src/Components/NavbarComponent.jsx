@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import useFontClass from '../common/useFontClass';
-import { Navbar, Dropdown, Avatar } from 'flowbite-react';
-import { NavLink } from 'react-router-dom';
-import LanguageDropdown from '../common/LanguageDropdown';
-import { useSelector } from 'react-redux';
-import useLogout from '../common/useLogout';
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import useFontClass from "../common/useFontClass";
+import { Navbar, Dropdown, Avatar } from "flowbite-react";
+import { NavLink } from "react-router-dom";
+import LanguageDropdown from "../common/LanguageDropdown";
+import { useSelector } from "react-redux";
+import useLogout from "../common/useLogout";
 
 export default function NavbarComponent() {
   const { t } = useTranslation();
@@ -15,11 +15,11 @@ export default function NavbarComponent() {
   const logout = useLogout();
 
   const menuList = [
-    { path: '/', title: t('navbar.home') },
-    { path: '/jobs', title: t('navbar.jobs') },
-    { path: '/media', title: t('navbar.media') },
-    { path: '/about-us', title: t('navbar.about-us') },
-    { path: '/contact-us', title: t('navbar.contact-us') },
+    { path: "/", title: t("navbar.home") },
+    { path: "/jobs", title: t("navbar.jobs") },
+    { path: "/media", title: t("navbar.media") },
+    { path: "/about-us", title: t("navbar.about-us") },
+    { path: "/contact-us", title: t("navbar.contact-us") },
   ];
 
   const toggleNavbar = () => {
@@ -28,7 +28,20 @@ export default function NavbarComponent() {
 
   return (
     <>
-      <Navbar fluid className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50">
+      <div className="flex justify-center items-center px-8 py-2 w-full text-white bg-blue-600 max-md:px-5 max-md:max-w-full">
+        <div className="flex gap-4">
+          <div className="justify-center px-3 py-1 text-xs leading-4 text-center whitespace-nowrap bg-blue-600 rounded-3xl">
+            NEW
+          </div>
+          <div className="text-base tracking-tight leading-6">
+            We have released the new feature
+          </div>
+        </div>
+      </div>
+      <Navbar
+        fluid
+        className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50"
+      >
         <div className="container mx-auto flex flex-wrap items-center justify-between py-2 px-4">
           <Navbar.Brand href="/" className="flex items-center">
             <img
@@ -47,7 +60,11 @@ export default function NavbarComponent() {
           </Navbar.Brand>
 
           <div className="flex flex-grow justify-center order-2 md:order-1 w-full md:w-auto">
-            <Navbar.Collapse className={`flex justify-center space-x-4 ${isOpen ? 'block' : 'hidden'} md:flex`}>
+            <Navbar.Collapse
+              className={`flex justify-center space-x-4 ${
+                isOpen ? "block" : "hidden"
+              } md:flex`}
+            >
               {menuList.map((menu, index) => (
                 <NavLink
                   to={menu.path}
@@ -66,19 +83,26 @@ export default function NavbarComponent() {
           </div>
 
           <div className="relative flex order-1 md:order-2 gap-x-10 items-center">
+            {" "}
+            {/* Adjusted gap-x value */}
             <LanguageDropdown fontClass={fontClass} />
-
             {isAuthenticated ? (
               <Dropdown
                 arrowIcon={false}
                 inline
                 label={
-                  <Avatar alt="User settings" img="https://app.convertkit.com/forms/4692392/subscriptions" rounded />
+                  <Avatar
+                    alt="User settings"
+                    img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    rounded
+                  />
                 }
               >
                 <Dropdown.Header>
                   <span className="block text-sm">Bonnie Green</span>
-                  <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+                  <span className="block truncate text-sm font-medium">
+                    name@flowbite.com
+                  </span>
                 </Dropdown.Header>
                 <Dropdown.Item>Dashboard</Dropdown.Item>
                 <Dropdown.Item>Settings</Dropdown.Item>
@@ -120,8 +144,10 @@ export default function NavbarComponent() {
                             d="M288 336l80-80-80-80M80 256h272"
                           ></path>
                         </svg>
-                        <span className={`${fontClass} hidden lg:inline font-medium`}>
-                          {t('auth.login')}
+                        <span
+                          className={`${fontClass} hidden lg:inline font-medium`}
+                        >
+                          {t("auth.login")}
                         </span>
                       </span>
                     </span>
@@ -147,8 +173,10 @@ export default function NavbarComponent() {
                         >
                           <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
                         </svg>
-                        <span className={`${fontClass} hidden lg:inline font-medium`}>
-                          {t('auth.register')}
+                        <span
+                          className={`${fontClass} hidden lg:inline font-medium`}
+                        >
+                          {t("auth.register")}
                         </span>
                       </span>
                     </span>
@@ -156,7 +184,6 @@ export default function NavbarComponent() {
                 </NavLink>
               </>
             )}
-
             <button
               onClick={toggleNavbar}
               className="md:hidden ml-3 p-2 text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 rounded-lg focus:ring-2"
