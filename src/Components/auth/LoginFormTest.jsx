@@ -8,7 +8,7 @@ import { loginUser } from "../../redux/features/user/userSlice";
 import useFontClass from "../../common/useFontClass";
 import { useTranslation } from "react-i18next";
 
-const LoginFormTest = () => {
+const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { fontClass } = useFontClass();
@@ -17,7 +17,6 @@ const LoginFormTest = () => {
     (state) => state.user
   );
   const [message, setMessage] = useState("");
-  console.log("isAuthenticated", isAuthenticated);
 
   const formik = useFormik({
     initialValues: {
@@ -57,7 +56,7 @@ const LoginFormTest = () => {
           <Label
             htmlFor="email"
             value={t('loginForm.labels.email')}
-            className={`${fontClass} text-base  mb-2`}
+            className={`${fontClass} text-base mb-2`}
           />
           <TextInput 
             id="email"
@@ -124,17 +123,17 @@ const LoginFormTest = () => {
           disabled={isLoading}
           className={`${fontClass} w-full bg-primary-700 text-white font-medium rounded-lg py-3 hover:bg-primary-750 disabled:opacity-50`}
         >
-          {isLoading ?  t('loginForm.labels.logining') : t('loginForm.labels.login')}
+          {isLoading ? t('loginForm.labels.logining') : t('loginForm.labels.login')}
         </button>
       </form>
       <p className={`${fontClass} mt-8 sm:mt-10 text-base sm:text-lg text-center text-gray-600`}>
         {t('loginForm.labels.unauthorized')}{" "}
-        <NavLink  to={'/register'} className="text-blue-600 hover:underline font-medium">
-         {t('loginForm.labels.signUp')}
+        <NavLink to={'/register'} className="text-blue-600 hover:underline font-medium">
+          {t('loginForm.labels.signUp')}
         </NavLink>
       </p>
     </div>
   );
 };
 
-export default LoginFormTest;
+export default LoginForm;

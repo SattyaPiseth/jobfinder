@@ -82,7 +82,7 @@ export default function NavbarComponent() {
             </Navbar.Collapse>
           </div>
 
-          <div className="relative flex order-1 md:order-2 gap-x-10 items-center">
+          <div className="relative flex order-1 md:order-2 gap-x-7 items-center">
             {" "}
             {/* Adjusted gap-x value */}
             <LanguageDropdown fontClass={fontClass} />
