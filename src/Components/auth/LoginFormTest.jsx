@@ -45,7 +45,7 @@ const LoginForm = () => {
 
   return (
     <div
-      className={`${fontClass} bg-white rounded-lg shadow-lg p-6 sm:p-8 max-w-md w-full mx-auto`}
+      className={`${fontClass} bg-white rounded-lg shadow-lg p-6 sm:p-8 max-w-md sm:max-w-lg w-full mx-auto`}
     >
       <h2
         className={`${fontClass} text-2xl sm:text-3xl font-semibold mb-6 sm:mb-8 text-left text-primary-700`}
