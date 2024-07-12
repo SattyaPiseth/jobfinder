@@ -8,7 +8,7 @@ const ProtectedRoute = ({ element }) => {
 
   console.log("isAuthenticated : ", isAuthenticated);
 
-  return isAuthenticated ? element : <Navigate to="/login" />;
+  return isAuthenticated ? element : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;

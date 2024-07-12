@@ -45,7 +45,9 @@
             "username" : "Name",
             "email" : "Email",
             "password" : "Password",
-            "confirmPassword" : "Confirm Password"
+            "confirmPassword" : "Confirm Password",
+            "haveAccount" : "Already Have an Account?",
+            "login" : "Login"
         },
         "placeholders" : {
             "username" : "Enter name",
@@ -60,6 +62,41 @@
             "password" : "Password must be 8+ characters, with uppercase, lowercase, number, and special character",
             "confirmPassword" : "confirm password is required",
             "not-match" : "confirm password not match!"
+            
+        }
+    },
+    "verification" : {
+        "title" : "Email Verification",
+        "desc" : "Please enter the 6-digit code sent to your email",
+        "verify" : "Verify",
+        "verifying" : "Verifying...",
+        "otp_code" : {
+            "failed" : "Incorrect OTP, please try again.",
+            "success" : "OTP verified successfully!"
+        },
+        "time" : "Request a new code in",
+        "unreceived" : "Didn't receive the code?",
+        "resend" : "Resend Code"
+    },
+    "loginForm" : {
+        "title" : "Login Account",
+        "labels" : {
+            "email" : "Email",
+            "password" : "Password",
+            "forgotPassword" : "Forgot Password",
+            "login" : "Login",
+            "logining" : "Logining...",
+            "unauthorized" : "Don't Have An Account?",
+            "signUp" : "Sign Up"
+        },
+        "placeholders" : {
+            "email" : "Enter email",
+            "password" : "Enter password"
+        },
+        "validation" : {
+            "invalid" : "Invalid email",
+            "email" :  "email is required",
+            "password" : "password is required"
         }
     }
 }

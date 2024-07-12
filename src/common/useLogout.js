@@ -10,7 +10,7 @@ const useLogout = () => {
 
     const handleLogout = () => {
         dispatch(logout());
-        navigate('/login', { replace: true });
+        navigate('/', { replace: true });
     };
     return handleLogout;
 }

@@ -3,7 +3,7 @@ import EmailVerificationInput from '../Components/auth/VerifyEmailInput';
 
 const EmailVerification = () => {
   return (
-    <main className="px-10 py-20 sm:px-5">
+    <main className="px-10 py-[150px] sm:px-5">
       <div className="container mx-auto flex flex-wrap gap-10 justify-center items-center">
         <section className="flex flex-col w-full md:w-1/2 lg:w-5/12">
           <img
@@ -13,7 +13,7 @@ const EmailVerification = () => {
           />
         </section>
         <section className="flex flex-col w-full md:w-1/2 lg:w-5/12">
-          <EmailVerificationInput/>
+          <EmailVerificationInput />
         </section>
       </div>
     </main>

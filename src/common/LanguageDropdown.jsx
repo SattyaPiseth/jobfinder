@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 
-// Reusable Language Dropdown Component
-export const LanguageDropdown = ({ fontClass }) => {
+const LanguageDropdown = () => {
     const { i18n, t } = useTranslation();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
@@ -24,6 +23,8 @@ export const LanguageDropdown = ({ fontClass }) => {
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
+        const newFontClass = lng === "kh" ? "font-suwannaphum" : "font-kantumruy";
+        localStorage.setItem('fontClass', newFontClass);
     };
 
     return (
@@ -34,19 +35,6 @@ export const LanguageDropdown = ({ fontClass }) => {
             {isDropdownOpen && (
                 <div className="absolute left-0 mt-3 py-2 w-48 bg-white rounded shadow-xl border border-gray-200 transition duration-300 ease-in-out z-50">
                     <button
-                        onClick={() => changeLanguage("en")}
-                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                    >
-                        <img
-                            src="https://img.icons8.com/?size=96&id=xapj7ZzAUZKI&format=png"
-                            alt="English icons"
-                            className="w-6 h-6 mr-2"
-                        />
-                        <span className={`${fontClass} text-sm font-normal`}>
-                            {t("translate.english")}
-                        </span>
-                    </button>
-                    <button
                         onClick={() => changeLanguage("kh")}
                         className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                     >
@@ -55,8 +43,21 @@ export const LanguageDropdown = ({ fontClass }) => {
                             alt="Khmer icon"
                             className="w-6 h-6 mr-2"
                         />
-                        <span className={`${fontClass} text-sm font-normal`}>
+                        <span className={`${localStorage.getItem('fontClass')} text-sm font-normal`}>
                             {t("translate.khmer")}
+                        </span>
+                    </button>
+                    <button
+                        onClick={() => changeLanguage("en")}
+                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                    >
+                        <img
+                            src="https://img.icons8.com/?size=96&id=xapj7ZzAUZKI&format=png"
+                            alt="English icons"
+                            className="w-6 h-6 mr-2"
+                        />
+                        <span className={`${localStorage.getItem('fontClass')} text-sm font-normal`}>
+                            {t("translate.english")}
                         </span>
                     </button>
                 </div>
@@ -64,3 +65,5 @@ export const LanguageDropdown = ({ fontClass }) => {
         </div>
     );
 };
+
+export default LanguageDropdown;

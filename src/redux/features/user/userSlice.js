@@ -11,7 +11,7 @@ import {
 const getErrorMessage = (error) => {
   return error.response && error.response.data && error.response.data.message
     ? error.response.data.message
-    : "An unexpected error occurred";
+    : null;
 };
 
 // Asynchronous thunk for user registration
@@ -164,6 +164,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.user = action.payload;
         state.error = null;
+        state.isAuthenticated = false;
       })
       .addCase(verifyOtp.rejected, (state, action) => {
         state.isLoading = false;
