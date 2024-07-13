@@ -25,9 +25,9 @@ const LoginForm = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email(t('loginForm.validation.invalid'))
-        .required(t('loginForm.validation.email')),
-      password: Yup.string().required(t('loginForm.validation.password')),
+        .email(t("loginForm.validation.invalid"))
+        .required(t("loginForm.validation.email")),
+      password: Yup.string().required(t("loginForm.validation.password")),
     }),
     onSubmit: (values) => {
       dispatch(loginUser(values));
@@ -44,21 +44,33 @@ const LoginForm = () => {
   }, [isAuthenticated, error, navigate, formik.values.email]);
 
   return (
-    <div className={`${fontClass} bg-white rounded-lg shadow-lg p-8 sm:p-10 max-w-xl w-full mx-auto`}>
-      <h2 className={`${fontClass} text-3xl font-semibold mb-8 sm:mb-10 text-left text-primary-700`}>
-        {t('loginForm.title')}
+    <div
+      className={`${fontClass} bg-white rounded-lg shadow-lg p-6 sm:p-8 w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto`}
+    >
+      <h2
+        className={`${fontClass} text-2xl sm:text-3xl font-semibold mb-6 sm:mb-8 text-left text-primary-700`}
+      >
+        {t("loginForm.title")}
       </h2>
+      {message && (
+        <Alert
+          color={error ? "failure" : "success"}
+          className={`${fontClass} text-base sm:text-lg mb-4`}
+        >
+          {t('loginForm.error')}
+        </Alert>
+      )}
       <form
         onSubmit={formik.handleSubmit}
-        className="flex flex-col gap-6 sm:gap-8"
+        className="flex flex-col gap-4 sm:gap-6"
       >
         <div className="text-left">
           <Label
             htmlFor="email"
-            value={t('loginForm.labels.email')}
+            value={t("loginForm.labels.email")}
             className={`${fontClass} text-base mb-2`}
           />
-          <TextInput 
+          <TextInput
             id="email"
             name="email"
             type="email"
@@ -78,7 +90,7 @@ const LoginForm = () => {
         <div className="text-left">
           <Label
             htmlFor="password"
-            value={t('loginForm.labels.password')}
+            value={t("loginForm.labels.password")}
             className={`${fontClass} text-base mb-2`}
           />
           <TextInput
@@ -107,29 +119,28 @@ const LoginForm = () => {
             href="#"
             className={`${fontClass} text-base sm:text-lg text-blue-600 hover:underline`}
           >
-            {t('loginForm.labels.forgotPassword')}
+            {t("loginForm.labels.forgotPassword")}
           </a>
         </div>
-        {message && (
-          <Alert
-            color={error ? "failure" : "success"}
-            className={`${fontClass} text-base sm:text-lg`}
-          >
-            {message}
-          </Alert>
-        )}
         <button
           type="submit"
           disabled={isLoading}
           className={`${fontClass} w-full bg-primary-700 text-white font-medium rounded-lg py-3 hover:bg-primary-750 disabled:opacity-50`}
         >
-          {isLoading ? t('loginForm.labels.logining') : t('loginForm.labels.login')}
+          {isLoading
+            ? t("loginForm.labels.logining")
+            : t("loginForm.labels.login")}
         </button>
       </form>
-      <p className={`${fontClass} mt-8 sm:mt-10 text-base sm:text-lg text-center text-gray-600`}>
-        {t('loginForm.labels.unauthorized')}{" "}
-        <NavLink to={'/register'} className="text-blue-600 hover:underline font-medium">
-          {t('loginForm.labels.signUp')}
+      <p
+        className={`${fontClass} mt-6 sm:mt-8 text-base sm:text-lg text-center text-gray-600`}
+      >
+        {t("loginForm.labels.unauthorized")}{" "}
+        <NavLink
+          to={"/register"}
+          className="text-blue-600 hover:underline font-medium"
+        >
+          {t("loginForm.labels.signUp")}
         </NavLink>
       </p>
     </div>

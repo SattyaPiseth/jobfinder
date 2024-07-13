@@ -46,7 +46,6 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      console.log('register Auth : ',isAuthenticated)
       dispatch(setIsAuthenticatedFalse());
       navigate('/verifyCode');
     }
@@ -59,8 +58,8 @@ const RegistrationForm = () => {
       onSubmit={handleSubmit}
     >
       {(formik) => (
-        <Form className={`${fontClass} flex flex-col space-y-6 bg-white p-8 rounded-lg shadow-md w-full`}>
-          <h2 className="text-3xl font-semibold text-primary-700 text-left">{t('registrationForm.title')}</h2>
+        <Form className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl`}>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-primary-700 text-left mb-4">{t('registrationForm.title')}</h2>
           <InputField
             label={t('registrationForm.labels.username')}
             name="username"
@@ -92,9 +91,9 @@ const RegistrationForm = () => {
           >
             {isLoading ? t('registrationForm.registering') : t('registrationForm.submit')}
           </button>
-          <p className={`${fontClass} mt-8 text-base text-center text-gray-600`}>
+          <p className={`${fontClass} mt-6 text-base text-center text-gray-600`}>
             {t('registrationForm.labels.haveAccount')}{' '}
-            <NavLink to="/login" className="text-blue-600 hover:underline font-medium px-1">
+            <NavLink to="/login" className="text-blue-600 hover:underline font-medium">
               {t('registrationForm.labels.login')}
             </NavLink>
           </p>

@@ -3,18 +3,20 @@ import EmailVerificationInput from '../Components/auth/VerifyEmailInput';
 
 const EmailVerification = () => {
   return (
-    <main className="px-10 py-[150px] sm:px-5">
-      <div className="container mx-auto flex flex-wrap gap-10 justify-center items-center">
-        <section className="flex flex-col w-full md:w-1/2 lg:w-5/12">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/dfc88a762229238be0ba236bdc53e7231de668be5613407739ad520eb7f8a51b?apiKey=ad7733614e794f228aa68fbfd330edec&"
-            alt="Registration illustration"
-            className="w-full h-auto object-cover"
-          />
-        </section>
-        <section className="flex flex-col w-full md:w-1/2 lg:w-5/12">
-          <EmailVerificationInput />
-        </section>
+    <main className="min-h-screen flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="flex items-center justify-center p-4 lg:p-0">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/dfc88a762229238be0ba236bdc53e7231de668be5613407739ad520eb7f8a51b?apiKey=ad7733614e794f228aa68fbfd330edec&"
+              alt="Email verification illustration"
+              className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg"
+            />
+          </div>
+          <div className="flex items-center justify-center p-4 lg:p-0">
+            <EmailVerificationInput />
+          </div>
+        </div>
       </div>
     </main>
   );
