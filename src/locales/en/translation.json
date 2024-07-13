@@ -80,6 +80,7 @@
     },
     "loginForm" : {
         "title" : "Login Account",
+        "error" : "Invalid email or password",
         "labels" : {
             "email" : "Email",
             "password" : "Password",

@@ -57,7 +57,7 @@ const LoginForm = () => {
           color={error ? "failure" : "success"}
           className={`${fontClass} text-base sm:text-lg mb-4`}
         >
-          {message}
+          {t('loginForm.error')}
         </Alert>
       )}
       <form
