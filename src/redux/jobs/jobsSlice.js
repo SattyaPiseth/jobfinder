@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getJobs } from '../api/jobsApi';
+import { getJobById, getJobs } from '../api/jobsApi';
 import { BASE_URL } from '../api/api';
 
 // Helper function to extract error message
@@ -23,11 +23,14 @@ export const fetchJobs = createAsyncThunk(
 
 export const fetchJobById = createAsyncThunk(
   'jobs/fetchJobById', 
-  async (id) =>  {
-    const response = await fetch(`${BASE_URL}jobs/${id}`);
-    const data = await response.json();
-    console.log("Jobs: ", data.results);
-    return data.results;
+  async (id, {rejectWithValue}) =>  {
+    try{
+      const data = await getJobById(id);
+      console.log("Jobs ById: ", data);
+      return data.results;
+    } catch (error){
+      return rejectWithValue(getErrorMessage(error));
+    }
   }
 )
 
