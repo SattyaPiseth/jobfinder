@@ -6,7 +6,6 @@ export const fetchJobCategories = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await fetchCategoriesAPI();
-      console.log(data)
       return data.results;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -38,6 +37,7 @@ const categorySlice = createSlice({
 });
 
 export default categorySlice.reducer;
+
 // Selectors
 export const selectAllJobCategories = (state) => state.category.job_category;
 export const getJobCategoriesStatus = (state) => state.category.status;
