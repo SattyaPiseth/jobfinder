@@ -3,7 +3,7 @@ import React from 'react'
 const SearchComponent = () => {
   return (
     <div>
-      <section class="flex border-2 border-solid border-slate-200 rounded-lg justify-between pt-4 pb-16 mt-16 px-4 text-2xl leading-8 whitespace-nowrap text-slate-700 gap-4 max-md:flex-wrap max-md:mr-1.5">
+      <section class="flex border-2 border-solid border-slate-200 rounded-lg justify-between pt-4 pb-4 mt-16 px-4 text-2xl leading-8 whitespace-nowrap text-slate-700 gap-4 max-md:flex-wrap max-md:mr-1.5">
         <div class="relative flex items-center w-full max-md:w-full">
             <span class="absolute left-4 text-gray-500">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -13,14 +13,20 @@ const SearchComponent = () => {
             <input type="text" placeholder="search for position" class="pl-14 pr-4 py-4 rounded-lg border-2 border-solid border-slate-100 bg-slate-100 w-full" />
         </div>
 
-        <select class="px-4 py-2  rounded-lg border-2 border-solid border-slate-100 w-full max-md:w-full">
+        <select class="px-4 py-2  rounded-lg border-2 border-solid border-slate-100 w-72 max-md:w-full">
             <option value="" disabled selected>Select a category</option>
             <option value="category1">Category 1</option>
             <option value="category2">Category 2</option>
             <option value="category3">Category 3</option>
         </select>
+        <select class="px-4 py-2  rounded-lg border-2 border-solid border-slate-100 w-72 max-md:w-full">
+            <option value="" disabled selected>Select a skill</option>
+            <option value="category1">Category 1</option>
+            <option value="category2">Category 2</option>
+            <option value="category3">Category 3</option>
+        </select>
 
-        <button class="justify-center p-2 px-8 text-white bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:px-5">
+        <button class="justify-center p-2 px-8 text-white font-kantumruy text-xl bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-lg:text-lg max-xl:text-xl max-2xl:text-xl max-md:px-6">
             Search
         </button>
       </section>

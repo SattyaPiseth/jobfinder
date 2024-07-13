@@ -18,7 +18,7 @@ const HeroSectionComponent = () => {
                                 Great platform for the job seeker that searching for new career heights and passionate about startups.
                             </p>
                         </div>
-                        <button class="justify-center self-start px-8 py-1.5 mt-0 text-lg font-medium leading-8 text-white bg-blue-800 shadow-sm rounded-[96px] max-md:px-5 max-sm:mt-4">
+                        <button class="justify-center self-start px-8 py-1.5 mt-6 text-lg font-medium leading-8 text-white bg-blue-800 shadow-sm rounded-[96px] max-md:px-5 max-sm:mt-8">
                             Try now
                         </button>
                     </div>

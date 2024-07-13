@@ -17,6 +17,8 @@ import RegistrationPage from "./pages/RegistrationPage.jsx";
 import EmailVerification from "./pages/EmailVerification.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
+import PageNotFoundComponent from "./Components/home/MediaComponent.jsx";
+import MediaComponent from "./Components/home/MediaComponent.jsx";
 
 const route = createBrowserRouter([
   {
@@ -56,6 +58,10 @@ const route = createBrowserRouter([
         path: "/contact-us",
         element: <ContactUs/>
       },
+      {
+        path: "/media",
+        element: <MediaComponent/>
+      }
     ],
   },
   
