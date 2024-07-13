@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getJobs } from '../api/jobsApi';
+import { getJobById, getJobs } from '../api/jobsApi';
+import { BASE_URL } from '../api/api';
 
 // Helper function to extract error message
 const getErrorMessage = (error) => {
@@ -9,7 +10,7 @@ const getErrorMessage = (error) => {
 };
 
 export const fetchJobs = createAsyncThunk(
-  'jobs/fetchJobs',
+  "jobs/fetchJobs",
   async (_, { rejectWithValue }) => {
     try {
       const jobs = await getJobs();
@@ -20,28 +21,54 @@ export const fetchJobs = createAsyncThunk(
   }
 );
 
+export const fetchJobById = createAsyncThunk(
+  'jobs/fetchJobById', 
+  async (id, {rejectWithValue}) =>  {
+    try{
+      const data = await getJobById(id);
+      console.log("Jobs ById: ", data);
+      return data.results;
+    } catch (error){
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
 const jobsSlice = createSlice({
-  name: 'jobs',
+  name: "jobs",
   initialState: {
     jobs: [],
-    status: 'idle',
+    job: {},
+    status: "idle",
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchJobs.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
       })
       .addCase(fetchJobs.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.jobs = action.payload;
       })
       .addCase(fetchJobs.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
+        state.error = action.payload; // Adjusted to use action.payload for error
+      })
+      .addCase(fetchJobById.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchJobById.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.job = action.payload;
+      })
+      .addCase(fetchJobById.rejected, (state, action) => {
+        state.status = "failed";
         state.error = action.payload; // Adjusted to use action.payload for error
       });
   },
 });
 
 export default jobsSlice.reducer;
+export const selectJobById = (state) => state.jobs.job;
