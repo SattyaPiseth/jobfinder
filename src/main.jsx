@@ -1,5 +1,5 @@
 // src/main.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -17,9 +17,12 @@ import RegistrationPage from "./pages/RegistrationPage.jsx";
 import EmailVerification from "./pages/EmailVerification.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
-import PageNotFoundComponent from "./Components/home/MediaComponent.jsx";
 import MediaComponent from "./Components/home/MediaComponent.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
+import 'aos/dist/aos.css'; // Import AOS CSS
+import AOS from 'aos'; // Import AOS
+import 'swiper/swiper-bundle.css';
+
 
 const route = createBrowserRouter([
   {
@@ -82,6 +85,9 @@ const route = createBrowserRouter([
 
 const AppWrapper = () => {
   useAppInitializer();
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return <RouterProvider router={route} />;
 };
 

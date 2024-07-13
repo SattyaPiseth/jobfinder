@@ -18,7 +18,7 @@ useEffect(() => {
     dispatch(fetchJobs());
 }, [dispatch]);
   return (
-    <div>
+    <div  >
         <HeroSectionComponent/>
         <SliderComponent/>
         <SearchComponent/>

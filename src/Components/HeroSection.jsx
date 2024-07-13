@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const HeroSection = () => {
   return (
@@ -7,10 +7,13 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div className="flex flex-col space-y-6">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight">
-              Discover more than <span className="text-blue-600">5000+ Jobs</span>
+              Discover more than{" "}
+              <span className="text-blue-600">5000+ Jobs</span>
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
-              Explore a platform tailor-made for job seekers aiming for new career heights in the vibrant startup ecosystem. Join thousands who've found their ideal job through our network.
+              Explore a platform tailor-made for job seekers aiming for new
+              career heights in the vibrant startup ecosystem. Join thousands
+              who've found their ideal job through our network.
             </p>
             <button className="bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition-colors duration-150 py-2 px-6 sm:px-8 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
               Try now
