@@ -19,6 +19,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import PageNotFoundComponent from "./Components/home/MediaComponent.jsx";
 import MediaComponent from "./Components/home/MediaComponent.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 const route = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const route = createBrowserRouter([
       {
         path: "/media",
         element: <MediaComponent/>
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage/>
       }
     ],
   },
