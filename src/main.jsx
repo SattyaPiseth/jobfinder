@@ -7,7 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout.jsx";
 import "./i18n.js";
 import { Provider } from "react-redux";
-import { store } from "./redux/store.js"; 
+import { store } from "./redux/store.js";
 import JobsPage from "./pages/JobsPage.jsx";
 import JobDetail from "./pages/job_detail/JobDetail.jsx";
 import UserProfileComponent from "./Components/auth/UserProfileComponent.jsx";
@@ -32,37 +32,42 @@ const route = createBrowserRouter([
         element: <JobsPage />,
       },
       {
-        path:"/job-detail",
-        element: <JobDetail/>
+        path: "/job-detail",
+        element: <JobDetail />,
       },
       {
-        path:"/jobs/job-detail",
-        element: <JobDetail/>
+        path: "/jobs/:id",
+        element: <JobDetail />,
       },
-      
+      {
+        path: "/jobs/job-detail",
+        element: <JobDetail />,
+      },
+
       {
         path: "/profile",
         element: <ProtectedRoute element={<UserProfileComponent />} />,
       },
       {
         path: "/register",
-        element: <RegistrationPage/>
+        element: <RegistrationPage />,
       },
       {
         path: "/verifyCode",
-        element: <EmailVerification/>
+        element: <EmailVerification />,
       },
       {
         path: "/contact-us",
-        element: <ContactUs/>
+        element: <ContactUs />,
       },
+      {},
     ],
   },
-  
+
   {
     path: "/login",
-    element: <LoginPage/>
-  }
+    element: <LoginPage />,
+  },
 ]);
 
 const AppWrapper = () => {

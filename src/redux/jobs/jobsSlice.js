@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getJobs } from '../api/jobsApi';
+import { BASE_URL } from '../api/api';
 
 // Helper function to extract error message
 const getErrorMessage = (error) => {
@@ -20,10 +21,21 @@ export const fetchJobs = createAsyncThunk(
   }
 );
 
+export const fetchJobById = createAsyncThunk(
+  'jobs/fetchJobById', 
+  async (id) =>  {
+    const response = await fetch(`${BASE_URL}jobs/${id}`);
+    const data = await response.json();
+    console.log("Jobs: ", data.results);
+    return data.results;
+  }
+)
+
 const jobsSlice = createSlice({
   name: 'jobs',
   initialState: {
     jobs: [],
+    job: {},
     status: 'idle',
     error: null,
   },
@@ -40,8 +52,20 @@ const jobsSlice = createSlice({
       .addCase(fetchJobs.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload; // Adjusted to use action.payload for error
+      })
+      .addCase(fetchJobById.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchJobById.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.job = action.payload;
+      })
+      .addCase(fetchJobById.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload; // Adjusted to use action.payload for error
       });
   },
 });
 
 export default jobsSlice.reducer;
+export const selectJobById = (state) => state.jobs.job;
