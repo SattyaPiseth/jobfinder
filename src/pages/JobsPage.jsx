@@ -18,7 +18,7 @@ const JobsPage = () => {
       <h1 className="mt-20 text-blue-600 font-kantumruy text-4xl text-start font-bold">
         Job Listing
       </h1>
-      <div className="flex flex-wrap gap-10 mt-10 justify-center">
+      <div className="grid gap-5 mt-10 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {jobs.map((job) => (
           <CardComponent key={job.id} job={job} />
         ))}
