@@ -64,7 +64,7 @@ const route = createBrowserRouter([
         element: <MediaComponent/>
       },
       {
-        path: "/profile",
+        path: "/profile-detail",
         element: <ProfilePage/>
       }
     ],
