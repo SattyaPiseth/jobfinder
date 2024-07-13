@@ -10,7 +10,7 @@ const getErrorMessage = (error) => {
 };
 
 export const fetchJobs = createAsyncThunk(
-  'jobs/fetchJobs',
+  "jobs/fetchJobs",
   async (_, { rejectWithValue }) => {
     try {
       const jobs = await getJobs();
@@ -32,39 +32,39 @@ export const fetchJobById = createAsyncThunk(
       return rejectWithValue(getErrorMessage(error));
     }
   }
-)
+);
 
 const jobsSlice = createSlice({
-  name: 'jobs',
+  name: "jobs",
   initialState: {
     jobs: [],
     job: {},
-    status: 'idle',
+    status: "idle",
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchJobs.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
       })
       .addCase(fetchJobs.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.jobs = action.payload;
       })
       .addCase(fetchJobs.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.error = action.payload; // Adjusted to use action.payload for error
       })
       .addCase(fetchJobById.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
       })
       .addCase(fetchJobById.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.job = action.payload;
       })
       .addCase(fetchJobById.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.error = action.payload; // Adjusted to use action.payload for error
       });
   },
