@@ -27,7 +27,7 @@ const RegistrationForm = () => {
       .required(t('registrationForm.validation.username'))
       .min(3, t('registrationForm.validation.min')),
     email: Yup.string()
-      .email(t('registrationForm.validation.invalidEmail'))
+      .email(t('registrationForm.email'))
       .required(t('registrationForm.validation.email')),
     password: Yup.string()
       .matches(
@@ -36,7 +36,7 @@ const RegistrationForm = () => {
       )
       .required(t('registrationForm.validation.password')),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], t('registrationForm.validation.notMatch'))
+      .oneOf([Yup.ref('password'), null], t('registrationForm.validation.not-match'))
       .required(t('registrationForm.validation.confirmPassword')),
   });
 
