@@ -1,36 +1,73 @@
-import * as React from "react";
+import React from "react";
 
-export function CardComponent() {
+export function CardComponent({ job }) {
   return (
-    <div className="flex flex-col p-6 text-base leading-6 bg-white border border-solid border-zinc-200 max-w-[274px] rounded-lg">
+    <div className="flex flex-col p-6 text-base leading-6 bg-white border border-solid border-zinc-200 max-w-[274px]">
       <div className="flex gap-5 justify-between text-center text-indigo-600">
         <img
           loading="lazy"
-          srcSet="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg"
+          srcSet="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStrmfUD5w9JWPnvQRkS5zAzu4ZaRhic78kGA&s"
           className="shrink-0 w-12 aspect-square"
         />
-        <div className="justify-center self-start px-3 py-1 border border-primary-600 border-solid rounded-lg">
+        <div className="justify-center self-start px-3 py-1 border border-indigo-600 border-solid">
           Full Time
         </div>
       </div>
-      <div className="mt-4 text-lg font-semibold text-slate-800 text-start">
+      <div className="mt-4 text-lg font-semibold text-slate-800">
         Email Marketing
       </div>
-      <div className="flex gap-2 justify-between text-slate-600 ">
-        <div className="text-start">Revolut</div>
-        <div className="">Madrid, Spain</div>
+      <div className="flex gap-2 justify-between text-slate-600">
+        <div>Revolut</div>
+        <div>Madrid, Spain</div>
       </div>
-      <div className="mt-4 leading-7 text-slate-500 text-start">
+      <div className="mt-4 leading-7 text-slate-500">
         Revolut is looking for Email Marketing to help team ma ...
       </div>
       <div className="flex gap-2 mt-4 text-sm font-semibold whitespace-nowrap">
-        <div className="justify-center px-4 py-1 font-semibold bg-primary-800 rounded-lg text-white">
+        <div className="justify-center px-4 py-1 bg- bg-orange-400 bg-opacity-10 rounded-[80px]">
           Marketing
         </div>
-        <div className="justify-center px-4 py-1 font-semibold bg-primary-800 rounded-lg text-white">
+        <div className="justify-center px-4 py-1 text-emerald-300 bg-emerald-300 bg-opacity-10 rounded-[80px]">
           Design
         </div>
       </div>
     </div>
   );
 }
+
+// import * as React from "react";
+
+// export function CardComponent() {
+//   return (
+//     <div className="flex flex-col p-6 text-base leading-6 bg-white border border-solid border-zinc-200 max-w-[274px]">
+//       <div className="flex gap-5 justify-between text-center text-indigo-600">
+//         <img
+//           loading="lazy"
+//           srcSet="..."
+//           className="shrink-0 w-12 aspect-square"
+//         />
+//         <div className="justify-center self-start px-3 py-1 border border-indigo-600 border-solid">
+//           Full Time
+//         </div>
+//       </div>
+//       <div className="mt-4 text-lg font-semibold text-slate-800">
+//         Email Marketing
+//       </div>
+//       <div className="flex gap-2 justify-between text-slate-600">
+//         <div>Revolut</div>
+//         <div>Madrid, Spain</div>
+//       </div>
+//       <div className="mt-4 leading-7 text-slate-500">
+//         Revolut is looking for Email Marketing to help team ma ...
+//       </div>
+//       <div className="flex gap-2 mt-4 text-sm font-semibold whitespace-nowrap">
+//         <div className="justify-center px-4 py-1 bg- bg-orange-400 bg-opacity-10 rounded-[80px]">
+//           Marketing
+//         </div>
+//         <div className="justify-center px-4 py-1 text-emerald-300 bg-emerald-300 bg-opacity-10 rounded-[80px]">
+//           Design
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
