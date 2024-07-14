@@ -31,6 +31,7 @@ const LoginForm = () => {
     }),
     onSubmit: (values) => {
       dispatch(loginUser(values));
+      console.log('values',values)
     },
   });
 

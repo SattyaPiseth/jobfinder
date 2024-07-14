@@ -37,6 +37,7 @@ const categorySlice = createSlice({
 });
 
 export default categorySlice.reducer;
+
 // Selectors
 export const selectAllJobCategories = (state) => state.category.job_category;
 export const getJobCategoriesStatus = (state) => state.category.status;
