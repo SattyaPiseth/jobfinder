@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import LanguageDropdown from "../common/LanguageDropdown";
 import { useSelector } from "react-redux";
 import useLogout from "../common/useLogout";
@@ -85,7 +85,7 @@ export default function NavbarComponent() {
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>Dashboard</Dropdown.Item>
-              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/profile-detail">Settings</Dropdown.Item>
               <Dropdown.Item>Earnings</Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>

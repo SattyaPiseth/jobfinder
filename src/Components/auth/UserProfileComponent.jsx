@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile } from "../../redux/features/user/userSlice";
+import ProfileDetailComponent from "../profile-detail/ProfileDetailComponent";
 const UserProfileComponent = () => {
   const dispatch = useDispatch();
   const { user, accessToken, isLoading, error } = useSelector(
@@ -26,13 +27,9 @@ const UserProfileComponent = () => {
   return (
     <div className="mt-20">
       {user ? (
-        <div>
-          <h1>Welcome, {user.username}</h1>
-          <p>Email: {user.email}</p>
-          <p>User Id : {user.id}</p>
-          <p>Username : {user.username}</p>
-          {/* Add more user details as needed */}
-        </div>
+        <>
+         <ProfileDetailComponent username={user.n}/> 
+        </>
       ) : (
         <div>Please log in to see your profile.</div>
       )}
