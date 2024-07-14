@@ -1,21 +1,24 @@
+// pages/JobDetail/JobDetail.jsx
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import JobDetailComponent from "../../Components/card/JobDetailcomponent";
 import { fetchJobById, selectJobById } from "../../redux/jobs/jobsSlice";
+import JobDetailComponent from "../../Components/card/JobDetailcomponent";
 
-export default function JobDetail() {
+const JobDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const job = useSelector(selectJobById);
+  const job = useSelector((state) => selectJobById(state, id));
 
   useEffect(() => {
-    dispatch(fetchJobById(id));
+    if (id) {
+      dispatch(fetchJobById(id));
+    }
   }, [dispatch, id]);
 
   return (
-    <div>
-      <JobDetailComponent job={job} />
-    </div>
+    <div>{job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}</div>
   );
-}
+};
+
+export default JobDetail;

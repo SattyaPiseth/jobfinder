@@ -1,12 +1,12 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getJobById, getJobs } from '../api/jobsApi';
-import { BASE_URL } from '../api/api';
+// redux/jobs/jobsSlice.js
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { getJobById, getJobs } from "../api/jobsApi";
 
 // Helper function to extract error message
 const getErrorMessage = (error) => {
   return error.response && error.response.data && error.response.data.message
     ? error.response.data.message
-    : null;
+    : error.message;
 };
 
 export const fetchJobs = createAsyncThunk(
@@ -22,13 +22,12 @@ export const fetchJobs = createAsyncThunk(
 );
 
 export const fetchJobById = createAsyncThunk(
-  'jobs/fetchJobById', 
-  async (id, {rejectWithValue}) =>  {
-    try{
+  "jobs/fetchJobById",
+  async (id, { rejectWithValue }) => {
+    try {
       const data = await getJobById(id);
-      console.log("Jobs ById: ", data);
-      return data.results;
-    } catch (error){
+      return data; // Assuming getJobById returns the job object directly
+    } catch (error) {
       return rejectWithValue(getErrorMessage(error));
     }
   }
@@ -38,7 +37,7 @@ const jobsSlice = createSlice({
   name: "jobs",
   initialState: {
     jobs: [],
-    job: {},
+    job: null,
     status: "idle",
     error: null,
   },
@@ -54,7 +53,7 @@ const jobsSlice = createSlice({
       })
       .addCase(fetchJobs.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload; // Adjusted to use action.payload for error
+        state.error = action.payload;
       })
       .addCase(fetchJobById.pending, (state) => {
         state.status = "loading";
@@ -65,7 +64,7 @@ const jobsSlice = createSlice({
       })
       .addCase(fetchJobById.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload; // Adjusted to use action.payload for error
+        state.error = action.payload;
       });
   },
 });
