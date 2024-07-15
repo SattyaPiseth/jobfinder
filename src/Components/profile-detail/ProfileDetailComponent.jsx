@@ -5,16 +5,12 @@ import { IoMdAdd } from "react-icons/io";
 
 const ProfileDetailComponent = ({
   username,
-  first_name,
-  last_name,
   email,
   address,
   bio,
   phone_num,
   gender,
-  facebook,
-  twitter,
-  linkedin,
+  join,
   avatar,
   cover,
 }) => {
@@ -54,11 +50,8 @@ const ProfileDetailComponent = ({
                 </div>
                 <div className="flex flex-col ml-36 max-md:ml-0">
                   <div className="flex flex-row gap-2 w-full">
-                    <h2 className="self-start -mb-2 text-2xl font-semibold leading-7 text-black max-md:ml-5">
-                      {first_name}
-                    </h2>
-                    <h2 className="self-start -mb-2 text-2xl font-semibold leading-7 text-black max-md:ml-1">
-                      {last_name}
+                    <h2 className="self-start -mb-2 text-2xl mt-1 font-sowanphum font-semibold leading-7 text-black max-md:ml-5">
+                      {username}
                     </h2>
                   </div>
                   <span className="self-start text-sm text-gray-500 font-semibold leading-7 text-black max-md:ml-5">
@@ -67,18 +60,18 @@ const ProfileDetailComponent = ({
                   </span>
                 </div>
                 <div className="flex gap-5 justify-between items-end gap-2 mr-5 ml-5 text-base max-md:flex-wrap max-md:mr-2.5 max-md:mt-3 max-md:max-w-full">
-                  <div className="flex flex-col ">
+                  <div className="flex flex-col mt-3">
                     <div className="flex gap-3 text-black leading-[175%]">
                       <IoHome className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
 
                       <p className="flex-auto text-left my-auto max-md:text-sm">
-                        {address}
+                        {address || "No location"}
                       </p>
                     </div>
                     <div className="flex mt-2 gap-3 text-black leading-[175%]">
                       <FaClock className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
                       <p className="flex-auto text-left my-auto max-md:text-sm">
-                        Joined May 2024
+                        {join || "No date joined"}
                       </p>
                     </div>
                   </div>
@@ -102,7 +95,7 @@ const ProfileDetailComponent = ({
                   </div>
                 </div>
                 <p className="self-start mt-4 ml-0.5 text-left text-lg font-medium text-neutral-500 max-md:mt-2 max-md:text-sm max-md:max-w-full">
-                  {bio}
+                  {bio || "No bio"}
                 </p>
               </article>
             </div>
@@ -148,7 +141,7 @@ const ProfileDetailComponent = ({
                 <input
                   id="phone"
                   type="tel"
-                  value={phone_num}
+                  value={phone_num || "+855 "}
                   className="justify-center items-start text-gray-500 px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:py-2 max-md:text-sm max-md:max-w-full"
                 />
                 <label

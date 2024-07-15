@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 import JobsPage from "./pages/JobsPage.jsx";
 import JobDetail from "./pages/job_detail/JobDetail.jsx";
-import UserProfileComponent from "./Components/auth/UserProfileComponent.jsx";
 import useAppInitializer from "./common/useAppInitializer.js";
 import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
@@ -44,7 +43,7 @@ const route = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <ProtectedRoute element={<UserProfileComponent />} />,
+        element: <ProtectedRoute element={<ProfilePage />} />,
       },
       {
         path: "/register",
@@ -61,10 +60,6 @@ const route = createBrowserRouter([
       {
         path: "/media",
         element: <MediaComponent/>
-      },
-      {
-        path: "profile-detail",
-        element: <ProfilePage/>
       },
       {
         path: "about-us",
