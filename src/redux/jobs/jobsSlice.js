@@ -11,9 +11,9 @@ const getErrorMessage = (error) => {
 
 export const fetchJobs = createAsyncThunk(
   "jobs/fetchJobs",
-  async (_, { rejectWithValue }) => {
+  async ({ page, pageSize }, { rejectWithValue }) => {
     try {
-      const jobs = await getJobs();
+      const jobs = await getJobs(page, pageSize);
       return jobs;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -26,7 +26,7 @@ export const fetchJobById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const data = await getJobById(id);
-      return data; // Assuming getJobById returns the job object directly
+      return data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
     }
@@ -40,8 +40,15 @@ const jobsSlice = createSlice({
     job: null,
     status: "idle",
     error: null,
+    totalJobs: 0,
+    currentPage: 1,
+    pageSize: 10,
   },
-  reducers: {},
+  reducers: {
+    setPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchJobs.pending, (state) => {
@@ -49,7 +56,8 @@ const jobsSlice = createSlice({
       })
       .addCase(fetchJobs.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.jobs = action.payload;
+        state.jobs = action.payload.jobs;
+        state.totalJobs = action.payload.totalJobs;
       })
       .addCase(fetchJobs.rejected, (state, action) => {
         state.status = "failed";
@@ -69,5 +77,10 @@ const jobsSlice = createSlice({
   },
 });
 
+export const { setPage } = jobsSlice.actions;
 export default jobsSlice.reducer;
 export const selectJobById = (state) => state.jobs.job;
+export const selectJobs = (state) => state.jobs.jobs;
+export const selectTotalJobs = (state) => state.jobs.totalJobs;
+export const selectCurrentPage = (state) => state.jobs.currentPage;
+export const selectPageSize = (state) => state.jobs.pageSize;

@@ -37,3 +37,4 @@ export function CardComponent({ job }) {
     </div>
   );
 }
+  

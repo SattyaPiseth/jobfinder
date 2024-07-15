@@ -11,8 +11,8 @@ const HeroSectionComponent = () => {
       >
         <div className="flex justify-center items-center px-16 py-10 bg-white max-md:px-5 max-md:max-w-full">
           <div className="mt-12 w-full max-w-[1031px] max-md:mt-10 max-md:max-w-full">
-            <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-              <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
+            <div className="grid grid-cols-2 gap-5 max-md:grid-cols-1 max-md:gap-0">
+              <div className="flex flex-col max-md:ml-0">
                 <div className="flex flex-col grow mt-3.5 max-md:mt-4 max-md:max-w-full">
                   <h1 className="mt-1.5 text-7xl font-semibold text-blue-800 leading-[79px] text-left max-md:max-w-full max-md:text-4xl max-md:leading-[49px]">
                     <span className="font-bold text-slate-800">
@@ -35,12 +35,12 @@ const HeroSectionComponent = () => {
                   Try now
                 </button>
               </div>
-              <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+              <div className="flex flex-col ml-5 max-md:ml-0">
                 <img
                   loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/f908122607d41b6de160066a6b86ec3eb718d71c1fc9ea9f38888831235a8168?apiKey=ff00f11844934b2d9618929d5184b9ad&"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/7620bd35db1e99b287d0833a4e21720c284eae51b18eac7bbdab11c40b01bc31?apiKey=391ff68a63584b0181b4aa51e20262f0&"
                   alt="Job seeker illustration"
-                  className="w-full aspect-[0.96] max-md:max-w-full max-sm:mt-2"
+                  className="w-full h-[60%] aspect-[0.96] max-md:max-w-full max-sm:mt-2 mt-20"
                 />
               </div>
             </div>

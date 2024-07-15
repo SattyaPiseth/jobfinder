@@ -4,7 +4,7 @@ const MediaComponent = () => {
   return (
     <div>
       <section
-        class="flex justify-center items-center py-16  text-5xl text-black max-md:px-5 max-md:text-xl"
+        class="flex justify-center items-center py-16  text-5xl text-black max-md:px-5 max-md:text-xl custom-height "
         data-aos="flip-left"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="1000"
