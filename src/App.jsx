@@ -3,7 +3,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { selectAllJobCategories, getJobCategoriesStatus, getJobCategoriesError, fetchJobCategories } from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
-import JobDetailcomponent from "./Components/card/JobDetailcomponent";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function App() {
 
   return (
     <>
-    <HomePage/>
+    <HomePage categories={categories}/>
     </>
   );
 }

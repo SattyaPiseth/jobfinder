@@ -25,7 +25,7 @@ const HomePage = () => {
     <div>
       <HeroSectionComponent />
       <SliderComponent />
-      <SearchComponent />
+      <SearchComponent categories={categories} />
       <PositionCardComponent />
       <AdvertisingComponent />
       <FeatureDetailComponent />

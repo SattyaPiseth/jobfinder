@@ -9,7 +9,7 @@ export const fetchJobCategories = async () => {
 };
 
 // Fetch skills by category ID
-export const fetchSkillsByCategory = async (categoryId) => {
-  const response = await axios.get(`${BASE_URL}/job_categories/${categoryId}/skills`);
-  return response.data;
+export const fetchSkillsByCategoryId = async (categoryId) => {
+  const response = await axios.get(`${BASE_URL}job_categories/${categoryId}/`);
+  return response.data.skills;
 };
