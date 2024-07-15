@@ -3,7 +3,13 @@ import ContactForm from "./ContactUsForm";
 
 function ContactUsPage() {
   return (
-    <main className="flex gap-5 max-md:flex-col max-md:gap-0">
+    <main
+      className="flex gap-5 max-md:flex-col max-md:gap-0"
+      data-aos="fade-left"
+      data-aos-anchor="#example-anchor"
+      data-aos-offset="500"
+      data-aos-duration="500"
+    >
       <section className="flex flex-col w-[44%] max-md:ml-0 max-md:w-full">
         <ContactForm />
       </section>

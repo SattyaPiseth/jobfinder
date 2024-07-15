@@ -31,6 +31,7 @@ const LoginForm = () => {
     }),
     onSubmit: (values) => {
       dispatch(loginUser(values));
+      console.log('values',values)
     },
   });
 
@@ -56,8 +57,10 @@ const LoginForm = () => {
         <Alert
           color={error ? "failure" : "success"}
           className={`${fontClass} text-base sm:text-lg mb-4`}
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-center"
         >
-          {t('loginForm.error')}
+          {t("loginForm.error")}
         </Alert>
       )}
       <form

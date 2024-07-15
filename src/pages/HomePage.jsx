@@ -8,24 +8,23 @@ import FeatureDetailComponent from '../Components/home/FeatureDetailComponent'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchJobs } from '../redux/jobs/jobsSlice'
 
-const HomePage = () => {
+const HomePage = ({ categories }) => {
+  const dispatch = useDispatch();
+  const jobs = useSelector((state) => state.jobs.jobs);
 
-const dispatch = useDispatch();
-const jobs = useSelector((state) => state.jobs.jobs);
-
-useEffect(() => {
+  useEffect(() => {
     dispatch(fetchJobs());
-}, [dispatch]);
+  }, [dispatch]);
   return (
     <div>
-        <HeroSectionComponent/>
-        <SliderComponent/>
-        <SearchComponent/>
-        <PositionCardComponent/>
-        <AdvertisingComponent/>
-        <FeatureDetailComponent/>
+      <HeroSectionComponent />
+      <SliderComponent />
+      <SearchComponent categories={categories} />
+      <PositionCardComponent />
+      <AdvertisingComponent />
+      <FeatureDetailComponent />
     </div>
-  )
+  );
 }
 
 export default HomePage
