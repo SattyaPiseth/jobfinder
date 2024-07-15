@@ -35,18 +35,9 @@ const route = createBrowserRouter([
         element: <JobsPage />,
       },
       {
-        path: "/job-detail",
-        element: <JobDetail />,
-      },
-      {
         path: "/jobs/:id",
         element: <JobDetail />,
       },
-      {
-        path: "/jobs/job-detail",
-        element: <JobDetail />,
-      },
-
       {
         path: "/profile",
         element: <ProtectedRoute element={<UserProfileComponent />} />,

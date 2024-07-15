@@ -12,7 +12,6 @@ const HomePage = () => {
 
 const dispatch = useDispatch();
 const jobs = useSelector((state) => state.jobs.jobs);
-console.log("job page", jobs);
 
 useEffect(() => {
     dispatch(fetchJobs());

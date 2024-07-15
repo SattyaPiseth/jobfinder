@@ -6,7 +6,7 @@ import { IoMdAdd } from "react-icons/io";
 const ProfileDetailComponent = ({
   username,
   first_name,
-  lastname,
+  last_name,
   email,
   address,
   bio,
@@ -28,11 +28,14 @@ const ProfileDetailComponent = ({
           <div className="flex gap-5 max-md:flex-col max-md:gap-0">
             <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
               <article className="flex flex-col grow pb-3.5 w-full bg-gray-50 rounded-lg max-md:mt-3 max-md:max-w-full">
-                <div className="flex relative flex-col pt-2.5 pr-3 pl-3 w-full min-h-[127px] max-md:pl-5 max-md:max-w-full">
+                <div className="flex relative flex-col pt-2.5 pr-3 pl-5 w-full min-h-[127px] max-md:pl-5 max-md:max-w-full">
                   <div>
                     <img
                       loading="lazy"
-                      src={cover || "https://cdn.builder.io/api/v1/image/assets/TEMP/3f12d4226ada8a92d9f6e286bcd915f8d95f574ecbe753098a13433ce6079566?apiKey=ff00f11844934b2d9618929d5184b9ad&"}
+                      src={
+                        cover ||
+                        "https://cdn.builder.io/api/v1/image/assets/TEMP/3f12d4226ada8a92d9f6e286bcd915f8d95f574ecbe753098a13433ce6079566?apiKey=ff00f11844934b2d9618929d5184b9ad&"
+                      }
                       alt="cover"
                       className="object-cover rounded-t-lg absolute inset-0 size-full"
                     />
@@ -41,15 +44,29 @@ const ProfileDetailComponent = ({
 
                   <img
                     loading="lazy"
-                    src={avatar || "https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0="}
+                    src={
+                      avatar ||
+                      "https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/449477760_3586716934973920_8504040381177330817_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGmOimc66FuBKIkdaXenR8UbBvoWt64ACFsG-ha3rgAIT6kBl-fELq8SKwJNzOM5zm1UUR4bc1dMNQaKrumdVIG&_nc_ohc=g3X-ZQto3isQ7kNvgHgqhM1&_nc_ht=scontent.fpnh10-1.fna&oh=00_AYBjTnDP0OE1vIqYQBaIhUBLY7IQzFkbx4V6HxpYAt_1lQ&oe=669AC143"
+                    }
                     alt="User profile picture"
-                    className="z-10 mt-11 -mb-10  max-w-full aspect-[1.03] w-[100px] max-md:mt-8 max-md:mb-2.5"
+                    className="z-10 mt-11 -mb-10 rounded-lg  max-w-full aspect-[1.03] w-[100px] max-md:mt-8 max-md:mb-2.5"
                   />
                 </div>
-                <h2 className="self-start mt-3 ml-36 text-lg font-semibold leading-7 text-black max-md:ml-5">
-                  {username}
-                </h2>
-                <div className="flex gap-5 justify-between items-end gap-2 mt-8 mr-5 ml-5 text-base max-md:flex-wrap max-md:mr-2.5 max-md:mt-3 max-md:max-w-full">
+                <div className="flex flex-col ml-36 max-md:ml-0">
+                  <div className="flex flex-row gap-2 w-full">
+                    <h2 className="self-start -mb-2 text-2xl font-semibold leading-7 text-black max-md:ml-5">
+                      {first_name}
+                    </h2>
+                    <h2 className="self-start -mb-2 text-2xl font-semibold leading-7 text-black max-md:ml-1">
+                      {last_name}
+                    </h2>
+                  </div>
+                  <span className="self-start text-sm text-gray-500 font-semibold leading-7 text-black max-md:ml-5">
+                    <span className="text-[14px]">@</span>
+                    {username}
+                  </span>
+                </div>
+                <div className="flex gap-5 justify-between items-end gap-2 mr-5 ml-5 text-base max-md:flex-wrap max-md:mr-2.5 max-md:mt-3 max-md:max-w-full">
                   <div className="flex flex-col ">
                     <div className="flex gap-3 text-black leading-[175%]">
                       <IoHome className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
@@ -66,11 +83,11 @@ const ProfileDetailComponent = ({
                     </div>
                   </div>
                   <div className="flex gap-2 text-white whitespace-nowrap max-md:-mt-2">
-                    <button className="justify-center px-2.5 py-1.5 bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:px-5 max-md:text-sm">
+                    <button className="justify-center px-2.5 py-1.5 bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:text-sm">
                       Save
                     </button>
                     <button className="justify-center px-2.5 py-1.5 bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:py-[5px] max-md:text-sm">
-                      Update
+                      Edit profile
                     </button>
                   </div>
                 </div>
