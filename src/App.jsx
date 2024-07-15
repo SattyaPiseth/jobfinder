@@ -7,6 +7,7 @@ import {
   fetchJobCategories,
 } from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
+import "./App.css"
 
 function App() {
   const dispatch = useDispatch();
