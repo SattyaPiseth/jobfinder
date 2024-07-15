@@ -26,7 +26,7 @@ const JobsPage = () => {
           <CardComponent key={job.id} job={job} />
         ))}
       </div>
-      <div className="mt-10 text-center">
+      <div className="mt-10 text-center mb-12">
         <Pagination />
       </div>
     </div>
