@@ -12,12 +12,13 @@ import {
   selectPageSize,
 } from "../redux/jobs/jobsSlice";
 
-const HomePage = () => {
+const HomePage = ({categories}) => {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs.jobs);
   const currentPage = useSelector(selectCurrentPage);
   const pageSize = useSelector(selectPageSize);
 
+  
   useEffect(() => {
     dispatch(fetchJobs({ page: currentPage, pageSize }));
   }, [dispatch, currentPage, pageSize]);

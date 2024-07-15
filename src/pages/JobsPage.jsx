@@ -30,7 +30,7 @@ const JobsPage = () => {
       </h1>
       <div className="grid gap-5 mt-10 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {jobs.map((job) => (
-          <CardComponent key={job.id} job={job} />
+          <CardComponent key={job.id} job={job}  />
         ))}
       </div>
       <div className="text-center py-10 custom-height">
