@@ -9,7 +9,7 @@ const FooterComponent = () => {
   const { t } = useTranslation();
 
   return (
-    <Footer container className="w-full py-10 px-5 relative left-0 right-0 bg-gray-100 dark:bg-gray-800">
+    <Footer container className="w-full py-10 px-5 absolute left-0 right-0 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between gap-4">
           <div className="flex-shrink-0 mb-6 md:mb-0">
