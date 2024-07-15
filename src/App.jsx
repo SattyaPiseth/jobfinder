@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { useEffect } from "react";
-import { selectAllJobCategories, getJobCategoriesStatus, getJobCategoriesError, fetchJobCategories } from "./redux/features/category-job/categorySlice";
+import {
+  selectAllJobCategories,
+  getJobCategoriesStatus,
+  getJobCategoriesError,
+  fetchJobCategories,
+} from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
-
 
 function App() {
   const dispatch = useDispatch();
@@ -11,18 +15,18 @@ function App() {
   const status = useSelector(getJobCategoriesStatus);
   const error = useSelector(getJobCategoriesError);
 
-  console.log('category',categories)
+  console.log("category", categories);
+  console.log("category", categories);
 
   useEffect(() => {
-    if (status === 'idle') {
+    if (status === "idle") {
       dispatch(fetchJobCategories());
     }
   }, [status, dispatch]);
 
-
   return (
     <>
-    <HomePage categories={categories}/>
+      <HomePage categories={categories} />
     </>
   );
 }
