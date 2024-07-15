@@ -85,7 +85,7 @@ export default function NavbarComponent() {
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>Dashboard</Dropdown.Item>
-              <Dropdown.Item as={Link} to="/profile-detail">Settings</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/profile">Settings</Dropdown.Item>
               <Dropdown.Item>Earnings</Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>

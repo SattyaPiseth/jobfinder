@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-// import "./App.css";
 import { useEffect } from "react";
 import { selectAllJobCategories, getJobCategoriesStatus, getJobCategoriesError, fetchJobCategories } from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
