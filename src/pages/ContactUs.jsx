@@ -3,7 +3,7 @@ import ContactUsPage from "../Components/contactUs/ContactUsPage";
 
 export default function ContactUs() {
   return (
-    <div>
+    <div className="mb-10">
       <ContactUsPage />
     </div>
   );

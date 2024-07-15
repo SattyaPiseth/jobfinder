@@ -1,16 +1,23 @@
+// Components/feat-jobs/JobsPage.jsx
 import React, { useEffect } from "react";
 import { Pagination } from "../Components/card/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchJobs } from "../redux/jobs/jobsSlice";
+import {
+  fetchJobs,
+  selectCurrentPage,
+  selectPageSize,
+} from "../redux/jobs/jobsSlice";
 import { CardComponent } from "../Components/feat-jobs/CardComponent";
 
 const JobsPage = () => {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs.jobs);
+  const currentPage = useSelector(selectCurrentPage);
+  const pageSize = useSelector(selectPageSize);
 
   useEffect(() => {
-    dispatch(fetchJobs());
-  }, [dispatch]);
+    dispatch(fetchJobs({ page: currentPage, pageSize }));
+  }, [dispatch, currentPage, pageSize]);
 
   return (
     <div
@@ -23,10 +30,10 @@ const JobsPage = () => {
       </h1>
       <div className="grid gap-5 mt-10 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {jobs.map((job) => (
-          <CardComponent key={job.id} job={job} />
+          <CardComponent key={job.id} job={job}  />
         ))}
       </div>
-      <div className="mt-10 text-center">
+      <div className="text-center py-10 custom-height">
         <Pagination />
       </div>
     </div>

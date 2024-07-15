@@ -4,7 +4,7 @@ import ContactForm from "./ContactUsForm";
 function ContactUsPage() {
   return (
     <main
-      className="flex gap-5 max-md:flex-col max-md:gap-0"
+      className="flex gap-5 max-md:flex-col max-md:gap-0 "
       data-aos="fade-left"
       data-aos-anchor="#example-anchor"
       data-aos-offset="500"

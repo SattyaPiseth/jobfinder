@@ -9,7 +9,7 @@ function ContactForm() {
   ];
 
   return (
-    <form className="flex flex-col text-2xl whitespace-nowrap text-black text-opacity-100 max-md:mt-10 max-md:max-w-full mt-2">
+    <form className="flex flex-col text-2xl whitespace-nowrap text-black text-opacity-100 max-md:mt-10 max-md:max-w-full mt-2 custom-height">
       <h1 className="mt-20 text-4xl text-start font-kantumruy max-md:max-w-full text-primary-800 font-bold">
         Contact Us!
       </h1>

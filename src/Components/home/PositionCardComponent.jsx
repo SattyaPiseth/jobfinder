@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Autoplay, Pagination, Scrollbar } from "swiper/modules";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchJobs,
+  selectJobs,
+  selectCurrentPage,
+  selectPageSize,
+} from "../../redux/jobs/jobsSlice";
+import { CardComponent } from "../feat-jobs/CardComponent";
 
 const PositionCardComponent = () => {
+  const dispatch = useDispatch();
+  const jobs = useSelector(selectJobs);
+  const currentPage = useSelector(selectCurrentPage);
+  const pageSize = useSelector(selectPageSize);
+
+  useEffect(() => {
+      dispatch(fetchJobs({ page: currentPage, pageSize }));
+  }, [dispatch, status, currentPage, pageSize]);
+
   return (
     <div>
       <section
@@ -46,41 +63,11 @@ const PositionCardComponent = () => {
               },
             }}
           >
-            {Array(6)
-              .fill()
-              .map((_, index) => (
-                <SwiperSlide key={index} className="h-auto pb-10">
-                  <article className="flex flex-col w-full max-w-xs mx-auto h-full bg-white shadow-lg rounded-lg border border-gray-200">
-                    <div className="flex flex-col rounded-lg grow p-6 w-full text-base leading-6 bg-white">
-                      <header className="flex gap-5 justify-between text-center text-indigo-600">
-                        <img
-                          loading="lazy"
-                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5b56424f758fec61a49032145e42510f80e63232849847e7e8a597820af9287?apiKey=ff00f11844934b2d9618929d5184b9ad&"
-                          alt="Twitter logo"
-                          className="shrink-0 w-12 rounded-full aspect-square"
-                        />
-                        <span className="justify-center self-start px-3 py-1 rounded-md border border-indigo-600 border-solid">
-                          Full-time
-                        </span>
-                      </header>
-                      <h3 className="mt-4 text-lg text-left font-semibold text-slate-800">
-                        Backend Developer
-                      </h3>
-                      <div className="flex gap-2 text-slate-600">
-                        <span>Twitter - </span>
-                        <span>Phnom Penh</span>
-                      </div>
-                      <p className="mt-4 leading-7 text-left text-slate-500">
-                        qwertyuio sfljwpi fghjkl cvbnm cvbnm......
-                      </p>
-                      <span className="justify-center px-4 py-2 mt-4 text-sm font-semibold text-white whitespace-nowrap bg-blue-800 rounded-[80px]">
-                        Detail
-                      </span>
-                    </div>
-                    <div className="mt-6 border-t border-gray-200"></div>
-                  </article>
-                </SwiperSlide>
-              ))}
+            {jobs.map((job) => (
+              <SwiperSlide key={job.id} className="h-auto pb-10">
+                <CardComponent job={job} />
+              </SwiperSlide>
+            ))}
             <div className="swiper-pagination mt-8"></div>
           </Swiper>
         </div>
