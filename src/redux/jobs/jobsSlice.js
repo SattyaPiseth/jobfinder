@@ -1,31 +1,34 @@
 // redux/jobs/jobsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getJobById, getJobs } from "../api/jobsApi";
+import { BASE_URL } from "../api/api";
 
-// Helper function to extract error message
 const getErrorMessage = (error) => {
   return error.response && error.response.data && error.response.data.message
     ? error.response.data.message
     : error.message;
 };
 
-export const fetchJobs = createAsyncThunk(
-  "jobs/fetchJobs",
-  async ({ page, pageSize }, { rejectWithValue }) => {
+export const fetchJobById = createAsyncThunk(
+  "jobs/fetchJobById",
+  async (id, { rejectWithValue }) => {
     try {
-      const jobs = await getJobs(page, pageSize);
-      return jobs;
+      const data = await getJobById(id);
+      return data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
     }
   }
 );
 
-export const fetchJobById = createAsyncThunk(
-  "jobs/fetchJobById",
-  async (id, { rejectWithValue }) => {
+export const fetchJobs = createAsyncThunk(
+  "jobs/fetchJobs",
+  async ({ page, pageSize }, { rejectWithValue }) => {
     try {
-      const data = await getJobById(id);
+      const response = await fetch(
+        `${BASE_URL}jobs/?page=${page}&page_size=${pageSize}`
+      );
+      const data = await response.json();
       return data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -42,7 +45,7 @@ const jobsSlice = createSlice({
     error: null,
     totalJobs: 0,
     currentPage: 1,
-    pageSize: 10,
+    pageSize: 20,
   },
   reducers: {
     setPage: (state, action) => {
@@ -56,8 +59,8 @@ const jobsSlice = createSlice({
       })
       .addCase(fetchJobs.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.jobs = action.payload.jobs;
-        state.totalJobs = action.payload.totalJobs;
+        state.jobs = action.payload.results; // Adjust based on API response
+        state.totalJobs = action.payload.count; // Adjust based on API response
       })
       .addCase(fetchJobs.rejected, (state, action) => {
         state.status = "failed";

@@ -9,7 +9,7 @@ export function CardComponent({ job }) {
           <div className="flex gap-5 justify-between items-center text-indigo-600">
             <img
               loading="lazy"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNL_ZnOTpXSvhf1UaK7beHey2BX42U6solRA&s"
+              src={job.thumbnail}
               className="shrink-0 w-12 h-12 rounded-full"
               alt="company logo"
             />
