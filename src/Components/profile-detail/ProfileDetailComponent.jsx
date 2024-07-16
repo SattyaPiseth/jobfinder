@@ -9,8 +9,7 @@ const ProfileDetailComponent = ({
   address,
   bio,
   phone_num,
-  gender,
-  join,
+  created_at,
   avatar,
   cover,
 }) => {
@@ -68,10 +67,10 @@ const ProfileDetailComponent = ({
                         {address || "No location"}
                       </p>
                     </div>
-                    <div className="flex mt-2 gap-3 text-black leading-[175%]">
+                    <div className="flex mt-1 gap-3 text-black leading-[175%]">
                       <FaClock className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
                       <p className="flex-auto text-left my-auto max-md:text-sm">
-                        {join || "No date joined"}
+                        {created_at || "No date joined"}
                       </p>
                     </div>
                   </div>
