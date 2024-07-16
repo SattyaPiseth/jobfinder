@@ -12,24 +12,34 @@ import {
   selectPageSize,
 } from "../redux/jobs/jobsSlice";
 
-const HomePage = ({categories}) => {
+const HomePage = ({ categories }) => {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs.jobs);
   const currentPage = useSelector(selectCurrentPage);
   const pageSize = useSelector(selectPageSize);
 
-  
   useEffect(() => {
     dispatch(fetchJobs({ page: currentPage, pageSize }));
   }, [dispatch, currentPage, pageSize]);
+
   return (
-    <div>
+    <div className="container mx-auto p-4">
       <HeroSectionComponent />
-      <SliderComponent />
-      <SearchComponent categories={categories} />
-      <PositionCardComponent />
-      <AdvertisingComponent />
-      <FeatureDetailComponent />
+      <div className="mt-8">
+        <SliderComponent />
+      </div>
+      <div className="mt-8">
+        <SearchComponent categories={categories} />
+      </div>
+      <div className="mt-8">
+        <PositionCardComponent />
+      </div>
+      <div className="mt-8">
+        <AdvertisingComponent />
+      </div>
+      <div className="mt-8">
+        <FeatureDetailComponent />
+      </div>
     </div>
   );
 };

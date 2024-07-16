@@ -81,80 +81,81 @@ export default function AboutUsComponent() {
 
   return (
     <div className="flex flex-col items-center bg-white">
-      <div className="mt-20 text-3xl font-bold font-suwannaphum text-center text-black max-md:mt-10" data-aos="zoom-in">
+      <div
+        className="mt-20 text-3xl font-bold font-suwannaphum text-center text-black max-md:mt-10"
+        data-aos="zoom-in"
+      >
         ពួកយេីងជានរណា?
       </div>
 
-      <div className="my-8 w-full max-w-[1324px] max-md:mt-10 max-md:max-w-full">
-        <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-          <div className="flex flex-col w-6/12 max-md:w-full">
-            <div className="flex flex-col self-stretch px-5 my-auto text-black max-md:mt-10"  data-aos="fade-right">
-              <div className="text-3xl font-bold font-suwannaphum text-center max-md:max-w-full">
-                អំពី​ពួក​យើង
-              </div>
-              <div className="mt-2.5 text-3xl font-suwannaphum leading-[52px] max-md:max-w-full">
+      <div className="my-8 w-full max-w-[1324px] px-5 max-md:mt-10 max-md:px-3">
+        <div className="flex gap-5 max-md:flex-col">
+          <div className="flex flex-col w-1/2 max-md:w-full" data-aos="fade-right">
+            <div className="flex flex-col px-5 py-5 text-black max-md:py-3">
+              <div className="text-3xl font-bold font-suwannaphum text-center">អំពី​ពួក​យើង</div>
+              <div className="mt-2.5 text-3xl font-suwannaphum leading-[52px]">
                 Job Finder គឺជាគេហទំព័រស្វែងរកការងារតាមអ៊ីនធឺណិតដែលត្រូវបានបង្កើតឡើងក្នុងឆ្នាំ2024
                 ដោយនិស្សិតជំនាញមូលដ្ឋានគ្រឹះមកពីមជ្ឈមណ្ឌលវិទ្យាសស្ត្រនិងបច្ចេកវិទ្យាអភិវឌ្ឍន៍កម្រិតខ្ពសដែលអនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ស្វែងរកដាក់ពាក្យនិងតមដនឱកាសការងារសម្រួលដល់វឌ្ឍនភាពការងារដែលជំរុញដោយទិន្នន័យ។
               </div>
             </div>
           </div>
-          <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full" data-aos="fade-up">
+          <div className="flex flex-col w-1/2 max-md:w-full" data-aos="fade-up">
             <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/14d60b765aa680482bc6790be018038a0f5cc01743feb27e7bf787e9a922e198?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7"
               srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/14d60b765aa680482bc6790be018038a0f5cc01743feb27e7bf787e9a922e198?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/14d60b765aa680482bc6790be018038a0f5cc01743feb27e7bf787e9a922e198?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/14d60b765aa680482bc6790be018038a0f5cc01743feb27e7bf787e9a922e198?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/14d60b765aa680482bc6790be018038a0f5cc01743feb27e7bf787e9a922e198?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/14d60b765aa680482bc6790be018038a0f5cc01743feb27e7bf787e9a922e198?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/14d60b765aa680482bc6790be018038a0f5cc01743feb27e7bf787e9a922e198?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/14d60b765aa680482bc6790be018038a0f5cc01743feb27e7bf787e9a922e198?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=2000 2000w"
-              className="grow w-full aspect-[1.18] max-md:mt-10 max-md:max-w-full"
+              className="w-full aspect-[1.18] max-md:mt-10"
               alt="Job Finder"
             />
           </div>
         </div>
       </div>
 
-      <div className="px-5 mt-16 w-full max-w-[1334px] max-md:mt-10 max-md:max-w-full">
-        <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-          <div className="flex flex-col w-[33%] max-md:w-full" data-aos="fade-up">
-            <div className="flex flex-col grow items-center text-2xl text-black max-md:mt-10">
+      <div className="px-5 mt-16 w-full max-w-[1334px] max-md:mt-10 max-md:px-3">
+        <div className="flex gap-5 max-md:flex-col">
+          <div className="flex flex-col w-1/3 max-md:w-full" data-aos="fade-up">
+            <div className="flex flex-col items-center text-2xl text-black max-md:mt-10">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/2469ae50e4211d88e9c457bb5bc8d673eec8f7c9e79563a35c74219510458138?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7"
                 srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/2469ae50e4211d88e9c457bb5bc8d673eec8f7c9e79563a35c74219510458138?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/2469ae50e4211d88e9c457bb5bc8d673eec8f7c9e79563a35c74219510458138?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/2469ae50e4211d88e9c457bb5bc8d673eec8f7c9e79563a35c74219510458138?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/2469ae50e4211d88e9c457bb5bc8d673eec8f7c9e79563a35c74219510458138?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/2469ae50e4211d88e9c457bb5bc8d673eec8f7c9e79563a35c74219510458138?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/2469ae50e4211d88e9c457bb5bc8d673eec8f7c9e79563a35c74219510458138?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/2469ae50e4211d88e9c457bb5bc8d673eec8f7c9e79563a35c74219510458138?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=2000 2000w"
-                className="max-w-full aspect-[1.03] w-[150px]"
+                className="w-[150px] aspect-[1.03]"
                 alt="Team Member"
               />
               <div className="mt-4 font-bold font-suwannaphum">យើង​ជា​នរណា</div>
-              <div className="font-suwannaphum self-stretch mt-7 text-center">
+              <div className="font-suwannaphum mt-7 text-center">
                 ពួកយើងគឺជានិសិត្សអាហារូបករណ៍ជំនាញមូលដ្ឋានគ្រឹះជំនាន់ទីពីរនៃមជ្ឈមណ្ឌលវិទ្យាសាស្ត្រនិងបច្ចេកវិទ្យាអភិវឌ្ឍន៍កម្រិតខ្ពសដែលបានបញ្ចប់វគ្គសិក្សារយៈពេល៤ខែទៅលើជំនាញ Java និង Website Design ។
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full" data-aos="fade-up">
+          <div className="flex flex-col w-1/3 max-md:w-full" data-aos="fade-up">
             <div className="flex flex-col items-center text-2xl text-black max-md:mt-10">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/dd4f69b0a22997cc99923b24acd4051a855f3aa5f8b3e5b3ddd87f277f908b32?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7"
                 srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/dd4f69b0a22997cc99923b24acd4051a855f3aa5f8b3e5b3ddd87f277f908b32?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/dd4f69b0a22997cc99923b24acd4051a855f3aa5f8b3e5b3ddd87f277f908b32?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/dd4f69b0a22997cc99923b24acd4051a855f3aa5f8b3e5b3ddd87f277f908b32?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/dd4f69b0a22997cc99923b24acd4051a855f3aa5f8b3e5b3ddd87f277f908b32?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/dd4f69b0a22997cc99923b24acd4051a855f3aa5f8b3e5b3ddd87f277f908b32?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/dd4f69b0a22997cc99923b24acd4051a855f3aa5f8b3e5b3ddd87f277f908b32?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/dd4f69b0a22997cc99923b24acd4051a855f3aa5f8b3e5b3ddd87f277f908b32?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=2000 2000w"
-                className="max-w-full aspect-[1.1] w-[151px]"
+                className="w-[151px] aspect-[1.1]"
                 alt="Team Member"
               />
-              <div className="mt-5 font-bold font-suwannaphum">បេ​សកម្ម​របស់​យើង</div>
-              <div className="font-suwannaphum self-stretch mt-6 text-center">
+              <div className="mt-5 font-bold font-suwannaphum">បេសកម្ម​របស់​យើង</div>
+              <div className="font-suwannaphum mt-6 text-center">
                 បេសកកម្មរបស់យើងគឺអនុញ្ញាតឲ្យអ្នកស្វែងរកការងារលើបណ្តាញអ៊ីនធឺណិតនូវវេទិកាដែលងាយស្រួលប្រើនិងសុវត្ថិភាពដែលភ្ជាប់អ្នកស្វែងរកការងារជាមួយនិយោជកប្រកបដោយប្រសិទ្ធភាព។
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full" data-aos="fade-up">
+          <div className="flex flex-col w-1/3 max-md:w-full" data-aos="fade-up">
             <div className="flex flex-col items-center text-2xl text-black max-md:mt-10">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ee0e3a04bd5f0bf8764a70e4203a49b24b6a25b930db18d54d01c66d9087a10?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7"
                 srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/3ee0e3a04bd5f0bf8764a70e4203a49b24b6a25b930db18d54d01c66d9087a10?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/3ee0e3a04bd5f0bf8764a70e4203a49b24b6a25b930db18d54d01c66d9087a10?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/3ee0e3a04bd5f0bf8764a70e4203a49b24b6a25b930db18d54d01c66d9087a10?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/3ee0e3a04bd5f0bf8764a70e4203a49b24b6a25b930db18d54d01c66d9087a10?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/3ee0e3a04bd5f0bf8764a70e4203a49b24b6a25b930db18d54d01c66d9087a10?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/3ee0e3a04bd5f0bf8764a70e4203a49b24b6a25b930db18d54d01c66d9087a10?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/3ee0e3a04bd5f0bf8764a70e4203a49b24b6a25b930db18d54d01c66d9087a10?apiKey=1c7a5c0793e54dc191c5a3180c0c43c7&width=2000 2000w"
-                className="max-w-full aspect-[1.1] w-[151px]"
+                className="w-[151px] aspect-[1.1]"
                 alt="Team Member"
               />
               <div className="font-suwannaphum mt-3 font-bold">ទស្សនវិស័យ​របស់​យើង</div>
-              <div className="font-suwannaphum self-stretch mt-8 text-center">
+              <div className="font-suwannaphum mt-8 text-center">
                 ក្លាយខ្លួនទៅជាគេហទំព័រមួយដែលមានភាពច្នៃប្រឌិតនិងការកែសម្រួលតាមតម្រូវការរបស់អ្នកប្រើប្រាស់។
               </div>
             </div>
@@ -165,11 +166,11 @@ export default function AboutUsComponent() {
       <div className="mt-16 text-4xl font-suwannaphum font-bold text-black max-md:mt-10">អ្នកណែនាំរបស់យើង</div>
 
       <div className="mt-16 max-w-full w-[562px] max-md:mt-10">
-        <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+        <div className="flex gap-5 max-md:flex-col">
           {teachers.map((teacher) => (
             <div
               key={teacher.name}
-              className="flex flex-col justify-center items-center w-[50%] max-md:w-full"
+              className="flex flex-col justify-center items-center w-1/2 max-md:w-full"
               data-aos="fade-up"
             >
               <div className="flex flex-col justify-center items-center grow text-2xl font-bold text-black max-md:mt-2">
@@ -217,12 +218,22 @@ export default function AboutUsComponent() {
       <div className="container px-5 my-10 mx-auto">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {teamMembers.map((person) => (
-            <div key={person.name} className="flex flex-col items-center text-2xl font-bold text-black" data-aos="fade-up">
+            <div
+              key={person.name}
+              className="flex flex-col items-center text-2xl font-bold text-black"
+              data-aos="fade-up"
+            >
               <div className="mt-10 rounded-full aspect-square bg-zinc-300 h-[200px] w-[200px] overflow-hidden">
                 {person.image ? (
-                  <img src={person.image} alt={person.name} className="h-full w-full object-cover" />
+                  <img
+                    src={person.image}
+                    alt={person.name}
+                    className="h-full w-full object-cover"
+                  />
                 ) : (
-                  <div className="h-full w-full flex items-center justify-center">No Image</div>
+                  <div className="h-full w-full flex items-center justify-center">
+                    No Image
+                  </div>
                 )}
               </div>
               <div className="mt-9 mb-3">{person.name}</div>

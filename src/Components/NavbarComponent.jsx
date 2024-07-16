@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import LanguageDropdown from "../common/LanguageDropdown";
 import { useSelector } from "react-redux";
 import useLogout from "../common/useLogout";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function NavbarComponent() {
   const { t } = useTranslation();
@@ -13,6 +15,28 @@ export default function NavbarComponent() {
   const [isOpen, setIsOpen] = useState(false);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const logout = useLogout();
+  const location = useLocation();
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        AOS.refresh();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const menuList = [
     { path: "/", title: t("navbar.home") },
@@ -27,10 +51,7 @@ export default function NavbarComponent() {
   };
 
   return (
-    <Navbar
-      fluid
-      className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50"
-    >
+    <Navbar fluid className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto flex flex-wrap items-center justify-between py-2 px-4">
         <Navbar.Brand href="/" className="flex items-center">
           <img
@@ -49,11 +70,7 @@ export default function NavbarComponent() {
         </Navbar.Brand>
 
         <div className="flex flex-grow justify-center order-2 md:order-1 w-full md:w-auto">
-          <Navbar.Collapse
-            className={`md:flex justify-center space-x-4 ${
-              isOpen ? "block" : "hidden"
-            }`}
-          >
+          <Navbar.Collapse className={`md:flex justify-center space-x-4 ${isOpen ? "block" : "hidden"}`}>
             {menuList.map((menu, index) => (
               <NavLink
                 to={menu.path}
@@ -63,7 +80,10 @@ export default function NavbarComponent() {
                     : `${fontClass} font-medium text-lg text-gray-300`
                 }
                 key={index}
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  window.scrollTo(0, 0);
+                }}
               >
                 {menu.title}
               </NavLink>
@@ -87,9 +107,7 @@ export default function NavbarComponent() {
             >
               <Dropdown.Header>
                 <span className="block text-sm">Bonnie Green</span>
-                <span className="block truncate text-sm font-medium">
-                  name@flowbite.com
-                </span>
+                <span className="block truncate text-sm font-medium">name@flowbite.com</span>
               </Dropdown.Header>
               <Dropdown.Item>Dashboard</Dropdown.Item>
               <Dropdown.Item as={Link} to="/profile">
@@ -131,11 +149,7 @@ export default function NavbarComponent() {
                       d="M288 336l80-80-80-80M80 256h272"
                     ></path>
                   </svg>
-                  <span
-                    className={`${fontClass} hidden lg:inline font-medium uppercase`}
-                  >
-                    {t("auth.login")}
-                  </span>
+                  <span className={`${fontClass} hidden lg:inline font-medium uppercase`}>{t("auth.login")}</span>
                 </button>
               </NavLink>
 
@@ -156,11 +170,7 @@ export default function NavbarComponent() {
                   >
                     <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
                   </svg>
-                  <span
-                    className={`${fontClass} hidden lg:inline font-medium uppercase`}
-                  >
-                    {t("auth.register")}
-                  </span>
+                  <span className={`${fontClass} hidden lg:inline font-medium uppercase`}>{t("auth.register")}</span>
                 </button>
               </NavLink>
             </>
@@ -179,11 +189,7 @@ export default function NavbarComponent() {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
