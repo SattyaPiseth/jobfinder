@@ -12,7 +12,7 @@ import {
 const getErrorMessage = (error) => {
   return error.response && error.response.data && error.response.data.message
     ? error.response.data.message
-    : null;
+    : error.message;
 };
 
 // Asynchronous thunk for user registration
@@ -21,7 +21,6 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await register(userData);
-      console.log('email',userData.email)
       localStorage.setItem("email", userData.email);
       return response.data;
     } catch (error) {
@@ -36,8 +35,7 @@ export const loginUser = createAsyncThunk(
   async (userCredentials, { rejectWithValue }) => {
     try {
       const response = await login(userCredentials);
-      const { access, refresh} = response.data;
-      console.log('User Slice : ',response)
+      const { access, refresh } = response.data;
       localStorage.setItem("access", access);
       localStorage.setItem("refresh", refresh);
       return response.data;
@@ -63,9 +61,9 @@ export const verifyOtp = createAsyncThunk(
 // Asynchronous thunk for getting profile
 export const fetchProfile = createAsyncThunk(
   "user/fetchProfile",
-  async (token, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await getProfile(token);
+      const response = await getProfile();
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -76,9 +74,9 @@ export const fetchProfile = createAsyncThunk(
 // Asynchronous thunk for updating profile
 export const updateUserProfile = createAsyncThunk(
   "user/updateProfile",
-  async ({ token, profileData }, { rejectWithValue }) => {
+  async (profileData, { rejectWithValue }) => {
     try {
-      const response = await updateProfile(token, profileData);
+      const response = await updateProfile(profileData);
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -104,9 +102,9 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
-    accessToken: localStorage.getItem("access" || null),
-    refreshToken: localStorage.getItem("refresh" || null),
-    isAuthenticated: false,
+    accessToken: localStorage.getItem("access") || null,
+    refreshToken: localStorage.getItem("refresh") || null,
+    isAuthenticated: !!localStorage.getItem("access"),
     isLoading: false,
     error: null,
     showModal: false,
@@ -118,7 +116,6 @@ const userSlice = createSlice({
       state.accessToken = action.payload.access;
       state.refreshToken = action.payload.refresh;
     },
-    // Add logout reducer to clear state and localStorage
     logout: (state) => {
       state.isAuthenticated = false;
       state.user = null;
@@ -127,7 +124,6 @@ const userSlice = createSlice({
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
     },
-    // Load tokens from localStorage on initialization
     loadTokens: (state) => {
       state.accessToken = localStorage.getItem('access');
       state.refreshToken = localStorage.getItem('refresh');
@@ -175,8 +171,8 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.user = action.payload;
         state.error = null;
-        state.isAuthenticated = false;
       })
+     
       .addCase(verifyOtp.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
@@ -210,8 +206,6 @@ const userSlice = createSlice({
       })
       .addCase(resendOtpCode.fulfilled, (state, action) => {
         state.isLoading = false;
-        // You can choose to update the state in some way here if needed
-        // For example, show a message that OTP has been resent
         console.log("OTP resent successfully");
       })
       .addCase(resendOtpCode.rejected, (state, action) => {
@@ -220,5 +214,6 @@ const userSlice = createSlice({
       });
   },
 });
-export const { logout, loadTokens, loginSuccess, setIsAuthenticatedFalse  } = userSlice.actions;
+
+export const { logout, loadTokens, loginSuccess, setIsAuthenticatedFalse } = userSlice.actions;
 export default userSlice.reducer;

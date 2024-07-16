@@ -8,27 +8,25 @@ import FeatureDetailComponent from "../Components/home/FeatureDetailComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAllJobs,
-  fetchJobs,
   selectAllJobs,
-  selectCurrentPage,
-  selectPageSize,
+  selectStatus,
 } from "../redux/jobs/jobsSlice";
 
 const HomePage = ({ categories }) => {
   const dispatch = useDispatch();
   const jobs = useSelector(selectAllJobs);
+  const status = useSelector(selectStatus);
 
   useEffect(() => {
-    dispatch(fetchAllJobs())
-  },[dispatch])
-
+    dispatch(fetchAllJobs());
+  }, [dispatch]);
 
   return (
     <div className="container mx-auto p-4">
-      <HeroSectionComponent />
+      <HeroSectionComponent isLoading={status === "loading"}  />
       <SliderComponent />
-      <SearchComponent categories={categories} />
-      <PositionCardComponent jobs={jobs} />
+      <SearchComponent categories={categories} isLoading={status === "loading"}/>
+      <PositionCardComponent jobs={jobs} isLoading={status === "loading"} />
       <AdvertisingComponent />
       <FeatureDetailComponent />
     </div>

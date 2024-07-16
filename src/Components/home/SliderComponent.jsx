@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Autoplay, Pagination, Scrollbar } from "swiper/modules";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const SliderComponent = () => {
   const imageUrls = [
@@ -13,6 +15,22 @@ const SliderComponent = () => {
     "https://ibccambodia.com/wp-content/uploads/2023/09/ABA-Logo-Secondary.png.webp",
   ];
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const imagePromises = imageUrls.map((url) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = resolve;
+      });
+    });
+
+    Promise.all(imagePromises).then(() => {
+      setIsLoading(false);
+    });
+  }, [imageUrls]);
+
   return (
     <div>
       <section className="product-gallery" data-aos="fade-up-left">
@@ -20,8 +38,6 @@ const SliderComponent = () => {
           modules={[Autoplay, Pagination, Scrollbar]}
           spaceBetween={20}
           slidesPerView={1}
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
@@ -46,18 +62,29 @@ const SliderComponent = () => {
             },
           }}
         >
-          {imageUrls.map((url, index) => (
-            <SwiperSlide key={index} className="h-auto pb-10">
-              <figure className="flex flex-col grow justify-center w-full bg-white rounded-xl">
-                <img
-                  loading="lazy"
-                  src={url}
-                  className="w-full aspect-[2]"
-                  alt={`Product image ${index + 1}`}
-                />
-              </figure>
-            </SwiperSlide>
-          ))}
+          {isLoading
+            ? Array(6)
+                .fill(0)
+                .map((_, index) => (
+                  <SwiperSlide key={index} className="h-auto pb-10">
+                    <figure className="flex flex-col grow justify-center w-full bg-white rounded-xl">
+                      <Skeleton className="w-full aspect-[2]" />
+                    </figure>
+                  </SwiperSlide>
+                ))
+            : imageUrls.map((url, index) => (
+                <SwiperSlide key={index} className="h-auto pb-10">
+                  <figure className="flex flex-col grow justify-center w-full bg-white rounded-xl">
+                    <img
+                      loading="lazy"
+                      src={url}
+                      className="w-full aspect-[2]"
+                      alt={`Product image ${index + 1}`}
+                    />
+                  </figure>
+                </SwiperSlide>
+              ))}
+          <div className="swiper-scrollbar mt-8"></div>
           <div className="swiper-pagination mt-8"></div>
         </Swiper>
       </section>

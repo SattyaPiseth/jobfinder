@@ -9,36 +9,45 @@ import useLogout from "../common/useLogout";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { fetchProfile } from "../redux/features/user/userSlice";
-import { use } from "i18next";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function NavbarComponent() {
   const { t } = useTranslation();
   const { fontClass } = useFontClass();
   const [isOpen, setIsOpen] = useState(false);
+  const [localLoading, setLocalLoading] = useState(true);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const logout = useLogout();
   const location = useLocation();
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
+
+    // Simulate a loading delay of 2 seconds
+    const timer = setTimeout(() => {
+      setLocalLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer); // Cleanup the timer on component unmount
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [location]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY === 0) {
-        AOS.refresh();
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY === 0) {
+  //       AOS.refresh();
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   const menuList = [
     { path: "/", title: t("navbar.home") },
@@ -53,10 +62,12 @@ export default function NavbarComponent() {
   };
 
   const dispatch = useDispatch();
-  const { user, accessToken, isLoading, error } = useSelector(
-    (state) => state.user
-  );
-  console.log("User Profile1 : ", user);
+  const {
+    user,
+    accessToken,
+    isLoading: globalLoading,
+    error,
+  } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (accessToken) {
@@ -64,72 +75,102 @@ export default function NavbarComponent() {
     }
   }, [accessToken, dispatch]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  const isLoading = localLoading || globalLoading;
 
   return (
-    <Navbar fluid className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50">
+    <Navbar
+      fluid
+      className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50"
+    >
       <div className="container mx-auto flex flex-wrap items-center justify-between py-2 px-4">
         <Navbar.Brand href="/" className="flex items-center">
-          <img
-            alt="Logo"
-            loading="lazy"
-            width="100"
-            height="100"
-            decoding="async"
-            data-nimg="1"
-            className="mr-3 w-9 h-9 object-contain"
-            src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
-          />
-          <span className="self-center font-extrabold whitespace-nowrap text-md sm:text-xl uppercase text-secondary-300 dark:text-blue-600">
-            Job Quick
-          </span>
+          {isLoading ? (
+            <Skeleton
+              circle={true}
+              height={36}
+              width={36}
+              className="mr-3 animate-pulse"
+            />
+          ) : (
+            <img
+              alt="Logo"
+              loading="lazy"
+              width="36"
+              height="36"
+              decoding="async"
+              className="mr-3 w-9 h-9 object-contain"
+              src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
+            />
+          )}
+          {isLoading ? (
+            <Skeleton height={20} width={100} className="animate-pulse" />
+          ) : (
+            <div className="font-extrabold text-md sm:text-xl uppercase text-secondary-300 dark:text-blue-600">
+              Job Quick
+            </div>
+          )}
         </Navbar.Brand>
 
         <div className="flex flex-grow justify-center order-2 md:order-1 w-full md:w-auto">
-          <Navbar.Collapse className={`md:flex justify-center space-x-4 ${isOpen ? "block" : "hidden"}`}>
-            {menuList.map((menu, index) => (
-              <NavLink
-                to={menu.path}
-                className={({ isActive }) =>
-                  isActive
-                    ? `${fontClass} text-lg font-medium text-white`
-                    : `${fontClass} font-medium text-lg text-gray-300`
-                }
-                key={index}
-                onClick={() => {
-                  setIsOpen(false);
-                  window.scrollTo(0, 0);
-                }}
-              >
-                {menu.title}
-              </NavLink>
-            ))}
+          <Navbar.Collapse
+            className={`md:flex justify-center space-x-4 ${
+              isOpen ? "block" : "hidden"
+            }`}
+          >
+            {isLoading
+              ? Array(5)
+                  .fill(0)
+                  .map((_, index) => (
+                    <div key={index} className="mx-2">
+                      <Skeleton
+                        height={30}
+                        width={100}
+                        className="rounded animate-pulse"
+                      />
+                    </div>
+                  ))
+              : menuList.map((menu, index) => (
+                  <NavLink
+                    to={menu.path}
+                    className={({ isActive }) =>
+                      isActive
+                        ? `${fontClass} text-lg font-medium text-white`
+                        : `${fontClass} font-medium text-lg text-gray-300`
+                    }
+                    key={index}
+                    onClick={() => {
+                      setIsOpen(false);
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    {menu.title}
+                  </NavLink>
+                ))}
           </Navbar.Collapse>
         </div>
 
         <div className="relative flex order-1 md:order-2 items-center gap-x-6">
           <LanguageDropdown fontClass={fontClass} />
-          {isAuthenticated ? (
+          {isLoading ? (
+            <Skeleton
+              circle={true}
+              height={40}
+              width={40}
+              className="animate-pulse"
+            />
+          ) : isAuthenticated ? (
             <Dropdown
               arrowIcon={false}
               inline
-              label={
-                <Avatar
-                  alt="User settings"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded
-                />
-              }
+              label={<Avatar alt="User settings" img={user?.avatar} rounded />}
             >
               <Dropdown.Header>
-                <span className="block text-sm text-left">{user?.username}</span>
-                <span className="block truncate text-sm font-medium">{user?.email}</span>
+                <span className="block text-sm text-left">
+                  {user?.username}
+                </span>
+                <span className="block truncate text-sm font-medium">
+                  {user?.email}
+                </span>
               </Dropdown.Header>
               <Dropdown.Item as={Link} to="/profile">
                 Settings
@@ -169,7 +210,11 @@ export default function NavbarComponent() {
                       d="M288 336l80-80-80-80M80 256h272"
                     ></path>
                   </svg>
-                  <span className={`${fontClass} hidden lg:inline font-medium uppercase`}>{t("auth.login")}</span>
+                  <span
+                    className={`${fontClass} hidden lg:inline font-medium uppercase`}
+                  >
+                    {t("auth.login")}
+                  </span>
                 </button>
               </NavLink>
 
@@ -190,7 +235,11 @@ export default function NavbarComponent() {
                   >
                     <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
                   </svg>
-                  <span className={`${fontClass} hidden lg:inline font-medium uppercase`}>{t("auth.register")}</span>
+                  <span
+                    className={`${fontClass} hidden lg:inline font-medium uppercase`}
+                  >
+                    {t("auth.register")}
+                  </span>
                 </button>
               </NavLink>
             </>
@@ -209,7 +258,11 @@ export default function NavbarComponent() {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
         </div>

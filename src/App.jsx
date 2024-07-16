@@ -7,16 +7,13 @@ import {
   fetchJobCategories,
 } from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
-import "./App.css"
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
   const categories = useSelector(selectAllJobCategories);
   const status = useSelector(getJobCategoriesStatus);
   const error = useSelector(getJobCategoriesError);
-
-  console.log("category", categories);
-  console.log("category", categories);
 
   useEffect(() => {
     if (status === "idle") {
@@ -26,7 +23,7 @@ function App() {
 
   return (
     <>
-      <HomePage categories={categories} />
+      <HomePage categories={categories} isLoading={status === "loading"} />
     </>
   );
 }

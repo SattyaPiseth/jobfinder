@@ -41,7 +41,6 @@ export const getAllJobs = async () => {
     hasMore = allJobs.length < totalJobs;
     page += 1;
   }
-  console.log('all jobs',allJobs)
   return {
     jobs: allJobs,
     totalJobs: totalJobs,
