@@ -24,7 +24,7 @@ const FooterComponent = () => {
           <div className="flex-shrink-0 mb-6 md:mb-0">
             <Footer.Brand
               href="/"
-              src="http://188.166.240.174:15000/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
+              src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
               alt="Job Quick Logo"
               name="Job Quick"
               className="font-kantumruy uppercase"
