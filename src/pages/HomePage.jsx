@@ -7,39 +7,30 @@ import AdvertisingComponent from "../Components/home/AdvertisingComponent";
 import FeatureDetailComponent from "../Components/home/FeatureDetailComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  fetchAllJobs,
   fetchJobs,
+  selectAllJobs,
   selectCurrentPage,
   selectPageSize,
 } from "../redux/jobs/jobsSlice";
 
 const HomePage = ({ categories }) => {
   const dispatch = useDispatch();
-  const jobs = useSelector((state) => state.jobs.jobs);
-  const currentPage = useSelector(selectCurrentPage);
-  const pageSize = useSelector(selectPageSize);
+  const jobs = useSelector(selectAllJobs);
 
   useEffect(() => {
-    dispatch(fetchJobs({ page: currentPage, pageSize }));
-  }, [dispatch, currentPage, pageSize]);
+    dispatch(fetchAllJobs())
+  },[dispatch])
+
 
   return (
     <div className="container mx-auto p-4">
       <HeroSectionComponent />
-      <div className="mt-8">
-        <SliderComponent />
-      </div>
-      <div className="mt-8">
-        <SearchComponent categories={categories} />
-      </div>
-      <div className="mt-8">
-        <PositionCardComponent />
-      </div>
-      <div className="mt-8">
-        <AdvertisingComponent />
-      </div>
-      <div className="mt-8">
-        <FeatureDetailComponent />
-      </div>
+      <SliderComponent />
+      <SearchComponent categories={categories} />
+      <PositionCardComponent jobs={jobs} />
+      <AdvertisingComponent />
+      <FeatureDetailComponent />
     </div>
   );
 };

@@ -17,6 +17,33 @@ export const getJobs = async (page, pageSize) => {
 // Fetch job by ID
 export const getJobById = async (jobId) => {
   const response = await axios.get(`${BASE_URL}jobs/${jobId}/`);
-  console.log(response.data)
   return response.data;
+};
+
+
+export const getAllJobs = async () => {
+  let allJobs = [];
+  let page = 1;
+  let pageSize = 10;
+  let totalJobs = 0;
+  let hasMore = true;
+
+  while (hasMore) {
+    const response = await axios.get(`${BASE_URL}jobs/`, {
+      params: {
+        page: page,
+        pageSize: pageSize,
+      },
+    });
+    const { results, count } = response.data;
+    allJobs = [...allJobs, ...results];
+    totalJobs = count;
+    hasMore = allJobs.length < totalJobs;
+    page += 1;
+  }
+  console.log('all jobs',allJobs)
+  return {
+    jobs: allJobs,
+    totalJobs: totalJobs,
+  };
 };

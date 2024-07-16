@@ -1,7 +1,7 @@
 // Components/card/Pagination.jsx
-import { Pagination as FlowbitePagination } from "flowbite-react";
-import { useDispatch, useSelector } from "react-redux";
-import { setPage } from "../../redux/jobs/jobsSlice";
+import { Pagination as FlowbitePagination } from 'flowbite-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPage } from '../../redux/jobs/jobsSlice';
 
 export function Pagination() {
   const dispatch = useDispatch();

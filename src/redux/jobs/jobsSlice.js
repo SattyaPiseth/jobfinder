@@ -1,25 +1,11 @@
-// redux/jobs/jobsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getJobById, getJobs } from "../api/jobsApi";
+import { getAllJobs, getJobById, getJobs } from "../api/jobsApi";
 
-// Helper function to extract error message
 const getErrorMessage = (error) => {
   return error.response && error.response.data && error.response.data.message
     ? error.response.data.message
     : error.message;
 };
-
-export const fetchJobs = createAsyncThunk(
-  "jobs/fetchJobs",
-  async ({ page, pageSize }, { rejectWithValue }) => {
-    try {
-      const jobs = await getJobs(page, pageSize);
-      return jobs;
-    } catch (error) {
-      return rejectWithValue(getErrorMessage(error));
-    }
-  }
-);
 
 export const fetchJobById = createAsyncThunk(
   "jobs/fetchJobById",
@@ -33,16 +19,41 @@ export const fetchJobById = createAsyncThunk(
   }
 );
 
+export const fetchJobs = createAsyncThunk(
+  "jobs/fetchJobs",
+  async ({ page, pageSize }, { rejectWithValue }) => {
+    try {
+      const { jobs, totalJobs } = await getJobs(page, pageSize);
+      return { jobs, totalJobs };
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
+export const fetchAllJobs = createAsyncThunk(
+  "jobs/fetchAllJobs",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { jobs, totalJobs } = await getAllJobs();
+      return { jobs, totalJobs };
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
 const jobsSlice = createSlice({
   name: "jobs",
   initialState: {
     jobs: [],
+    allJobs: [],
     job: null,
     status: "idle",
     error: null,
     totalJobs: 0,
     currentPage: 1,
-    pageSize: 10,
+    pageSize: 12,
   },
   reducers: {
     setPage: (state, action) => {
@@ -73,14 +84,28 @@ const jobsSlice = createSlice({
       .addCase(fetchJobById.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
+      })
+      .addCase(fetchAllJobs.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchAllJobs.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.allJobs = action.payload.jobs;
+      })
+      .addCase(fetchAllJobs.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
       });
   },
 });
 
 export const { setPage } = jobsSlice.actions;
+
 export default jobsSlice.reducer;
+
 export const selectJobById = (state) => state.jobs.job;
 export const selectJobs = (state) => state.jobs.jobs;
+export const selectAllJobs = (state) => state.jobs.allJobs;
 export const selectTotalJobs = (state) => state.jobs.totalJobs;
 export const selectCurrentPage = (state) => state.jobs.currentPage;
 export const selectPageSize = (state) => state.jobs.pageSize;
