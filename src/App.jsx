@@ -8,6 +8,7 @@ import {
 } from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
 import "./App.css";
+import Aos from "aos";
 
 function App() {
   const dispatch = useDispatch();

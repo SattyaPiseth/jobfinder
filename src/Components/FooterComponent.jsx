@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
 import { Footer } from "flowbite-react";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';
+import "react-loading-skeleton/dist/skeleton.css";
 import {
   BsDribbble,
   BsFacebook,
@@ -35,7 +35,7 @@ const FooterComponent = ({ isLoading }) => {
   return (
     <Footer
       container
-      className="w-full py-10 px-5 absolute left-0 right-0 bg-gray-100 dark:bg-gray-800"
+      className="w-full py-10 px-5 absolute left-0 right-0 bg-primary-800 dark:bg-primary-900 text-white"
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between gap-4">
@@ -51,7 +51,7 @@ const FooterComponent = ({ isLoading }) => {
                 src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
                 alt="Job Quick Logo"
                 name="Job Quick"
-                className="font-kantumruy uppercase"
+                className="font-kantumruy uppercase text-secondary-300"
               />
             )}
           </div>
@@ -71,7 +71,7 @@ const FooterComponent = ({ isLoading }) => {
                 <div className="text-center md:text-left mb-6 md:mb-0">
                   <Footer.Title
                     title={t("footer.website.name")}
-                    className="text-gray-600 dark:text-gray-300 text-lg"
+                    className="text-gray-300"
                   />
                   <Footer.LinkGroup col className="text-base">
                     <Footer.Link href="#">{t("footer.website.jobs")}</Footer.Link>
@@ -81,7 +81,7 @@ const FooterComponent = ({ isLoading }) => {
                 <div className="text-center md:text-left mb-6 md:mb-0">
                   <Footer.Title
                     title={t("footer.information.name")}
-                    className="text-gray-600 dark:text-gray-300 text-lg"
+                    className="text-gray-300"
                   />
                   <Footer.LinkGroup col className="text-base">
                     <Footer.Link href="#">
@@ -95,7 +95,7 @@ const FooterComponent = ({ isLoading }) => {
                 <div className="text-center md:text-left mb-6 md:mb-0">
                   <Footer.Title
                     title={t("footer.contact-us.name")}
-                    className="text-gray-600 dark:text-gray-300 text-lg"
+                    className="text-gray-300"
                   />
                   <Footer.LinkGroup col className="text-base">
                     <Footer.Link href="#">
@@ -118,12 +118,12 @@ const FooterComponent = ({ isLoading }) => {
             ) : (
               <div>
                 <h3
-                  className={`${fontClass} mb-2 text-lg uppercase font-semibold text-gray-600 dark:text-white text-left`}
+                  className={`${fontClass} mb-2 text-lg uppercase font-semibold text-gray-300`}
                 >
                   {t("footer.notification")}
                 </h3>
                 <p
-                  className={`${fontClass} text-left mb-3 text-sm font-medium text-gray-500 dark:text-gray-300`}
+                  className={`${fontClass} text-left mb-3 text-sm font-medium text-gray-400`}
                 >
                   {t("footer.description")}
                 </p>
@@ -167,7 +167,7 @@ const FooterComponent = ({ isLoading }) => {
                         />
                       </div>
                       <button data-element="submit" className="formkit-submit">
-                        <span className="px-6 py-3 text-sm font-semibold text-center text-white bg-primary-800 rounded-lg cursor-pointer hover:bg-primary-850 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <span className="px-6 py-3 text-sm font-semibold text-center text-white bg-primary-900 rounded-lg cursor-pointer hover:bg-primary-850 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                           Subscribe
                         </span>
                       </button>
