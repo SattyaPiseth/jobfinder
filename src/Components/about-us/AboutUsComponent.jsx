@@ -3,6 +3,79 @@ import { FaFacebook } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 
 export default function AboutUsComponent() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
+  const teamMembers = [
+    {
+      name: "Chao Kimhay",           
+      image:
+        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/441192084_1916856482089375_4465425687677839651_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEOwV9NHKz7kaI-FckHxiquqiiZEnV9P_CqKJkSdX0_8CXFvrWozGSpWPfL8ERnwi-pVtXomuoWoCbMaO9ypMau&_nc_ohc=H28TCZyNKfEQ7kNvgF_R77m&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYCxZEWFy2C8Pkk6VetGaa4wBYFW6Khtyf4s69lD42Sc9w&oe=669BBFEE",
+      position: "Full Stack Developer",
+    },
+    {
+      name: "Jun Thearith",
+      image:
+        "https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/449477760_3586716934973920_8504040381177330817_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGmOimc66FuBKIkdaXenR8UbBvoWt64ACFsG-ha3rgAIT6kBl-fELq8SKwJNzOM5zm1UUR4bc1dMNQaKrumdVIG&_nc_ohc=g3X-ZQto3isQ7kNvgHgqhM1&_nc_ht=scontent.fpnh10-1.fna&oh=00_AYBjTnDP0OE1vIqYQBaIhUBLY7IQzFkbx4V6HxpYAt_1lQ&oe=669AC143",
+      position: "Backend Developer",
+    },
+    {
+      name: "Bour Suorcdey",
+      image:
+        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/434657101_1137410810611098_2617317298085307546_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEzfVe8c8bVoAD4ZsdFuKKJA9RmOUreuAUD1GY5St64BduDaF1nIahWMU8OdNISHnrFYn-tHSishFOD_OgO1l2R&_nc_ohc=FIzCr2CasU8Q7kNvgF7zckT&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYCK7ZN_JlP5I18tHBHmetCVu6ykOrMt3jqVi1TGfccxGw&oe=669BD38A",
+      position: "Frontend Developer",
+    },
+    {
+      name: "Oum Chansopheak",
+      image:
+        "https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-1/332167642_1006353843669992_1168317270522529645_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeEvDvAuChivUuWkVGJxubEL-DIuSFUchNz4Mi5IVRyE3B4XmtpYNPST6lk_s3O6G6snds7bLCBiJK7osz2OxX9q&_nc_ohc=91NAue9CuRQQ7kNvgHLocIT&_nc_ht=scontent.fpnh10-1.fna&oh=00_AYAu73m3D8TrnrePkkWc4WnZxoqDsu-afEdCuskcIHs1qg&oe=669AAD01",
+      position: "Full Stack Developer",
+    },
+    {
+      name: "Sey Bunrong",
+      image: "https://avatar.iran.liara.run/public/boy",
+      position: "Frontend Developer",
+    },
+    {
+      name: "Porn Sreynit",
+      image: "https://avatar.iran.liara.run/public/girl",
+      position: "Backend Developer",
+    },
+    {
+      name: "Mom Rotha",
+      image:
+        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/320925807_692883932440956_39998940771575535_n.jpg?stp=cp6_dst-jpg_p720x720&_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGOkMg6O78QyHrY1QuFLjeIC5ViwBM8zkYLlWLAEzzORsYXGaUmscW0KPBsFreOdoYLTEqH1BWzWKOnu3C7r16R&_nc_ohc=l0q8lMhlSYYQ7kNvgHAJVhp&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYBSfHETbm6ggvUuMpsKfv8HF-oZ_rKATT5aW_8NgRCXyQ&oe=669BC72E",
+      position: "Full Stack Developer",
+    },
+    {
+      name: "Choeurn Triya",
+      image: "https://avatar.iran.liara.run/public/girl",
+      position: "Frontend Developer",
+    },
+  ];
+
+  const teachers = [
+    {
+      name: "Ing Muyleang",
+      image:
+        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/315397373_103340025937791_1662063095834796465_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeH7ugqXU4CG1_s2nk8Zt1OYuHQlSfrlMBm4dCVJ-uUwGYMiEiIZnL7I1NGmnbaoOCwDJWUZTZ8XV53kIYMHad8g&_nc_ohc=-9wV60tyOOAQ7kNvgEAzj7w&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYDO-7WdgQtTyeFV3WaDXvHdHjUa3XUqvFjatbhbAxoMkQ&oe=669BCAE2",
+      position: "Instructor",
+    },
+    {
+      name: "Kim Chansokpheng",
+      image: "https://cyber-stad.vercel.app/images/team/sokpheng.jpg",
+      position: "Instructor",
+    },
+  ];
+
+  const teamLead = {
+    name: "Piseth Satthya",
+    image:
+      "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/399618439_2118987915126245_8162232501416778588_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGrgfzolRJSM811981AJ0IqIAn3Dk-mWZkgCfcOT6ZZmXnrOJGq8cNa65ItxKJs6NcnXorE8WrU_BVZhRux4S8v&_nc_ohc=q6z-7Lu-wqAQ7kNvgGuoqAp&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYD47stbze98WAv3SIq15UISm0zfH1tJK8vvdZc5ZH3zzw&oe=669BA192",
+    position: "Team Leader - Frontend Developer",
+  };
+
   return (
     <>
       <div className="flex flex-col items-center bg-white max-md:mt-1 max-xl:mt-6">
