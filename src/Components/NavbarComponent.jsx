@@ -38,7 +38,7 @@ export default function NavbarComponent() {
             decoding="async"
             data-nimg="1"
             className="mr-3 w-9 h-9 object-contain"
-            src="https://surveybox.istad.co/surveybox-logo.png"
+            src="http://188.166.240.174:15000/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
           />
           <span className="self-center font-extrabold whitespace-nowrap text-md sm:text-xl uppercase text-secondary-300 dark:text-blue-600">
             Job Finder
