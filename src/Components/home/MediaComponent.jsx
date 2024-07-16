@@ -4,12 +4,12 @@ const MediaComponent = () => {
   return (
     <div>
       <section
-        class="flex justify-center items-center py-16  text-5xl text-black max-md:px-5 max-md:text-xl custom-height "
+        class="flex justify-center items-center my-16 text-5xl text-black max-md:px-5 max-md:text-xl custom-height "
         data-aos="flip-left"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="1000"
       >
-        <div class="flex flex-col items-center mt-15 max-w-[1070px] max-md:mt-10 max-md:max-w-full max-md:text-xl">
+        <div class="flex flex-col items-center  max-w-[1070px] max-md:mt-10 max-md:max-w-full max-md:text-xl">
           <h1 class="pb-2max-md:max-w-full max-md:text-2xl">OOPs !!</h1>
           <img
             loading="lazy"
