@@ -7,9 +7,9 @@ export default function AboutUsComponent() {
     <>
       <div className="flex flex-col items-center bg-white max-md:mt-1 max-xl:mt-6">
         <div className="mt-20 text-4xl font-bold font-suwannaphum text-primary-800 text-center max-md:text-3xl max-xl:text-3xl">
-          ពួកយេីងជានរណា?
+          ពួកយេីងជានរណា? 
         </div>
-        <div className="my-8 w-full max-w-[1324px] max-md:mt-6 max-md:max-w-full">
+        <div className="my-8 w-full max-w-[1324px] max-md:mt-6 max-md:max-w-full">   
           <div className="flex gap-5 max-md:flex-col max-md:gap-0">
             <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
               <div className="flex flex-col self-stretch my-auto text-black max-md:mt-1 max-md:max-w-full">
