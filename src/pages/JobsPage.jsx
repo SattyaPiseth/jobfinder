@@ -1,4 +1,3 @@
-// Components/feat-jobs/JobsPage.jsx
 import React, { useEffect } from "react";
 import { Pagination } from "../Components/card/Pagination";
 import { useDispatch, useSelector } from "react-redux";

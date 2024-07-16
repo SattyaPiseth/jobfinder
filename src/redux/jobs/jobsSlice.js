@@ -1,7 +1,5 @@
-// redux/jobs/jobsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getJobById, getJobs } from "../api/jobsApi";
-import { BASE_URL } from "../api/api";
+import { getAllJobs, getJobById, getJobs } from "../api/jobsApi";
 
 const getErrorMessage = (error) => {
   return error.response && error.response.data && error.response.data.message
@@ -25,11 +23,20 @@ export const fetchJobs = createAsyncThunk(
   "jobs/fetchJobs",
   async ({ page, pageSize }, { rejectWithValue }) => {
     try {
-      const response = await fetch(
-        `${BASE_URL}jobs/?page=${page}&page_size=${pageSize}`
-      );
-      const data = await response.json();
-      return data;
+      const { jobs, totalJobs } = await getJobs(page, pageSize);
+      return { jobs, totalJobs };
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
+export const fetchAllJobs = createAsyncThunk(
+  "jobs/fetchAllJobs",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { jobs, totalJobs } = await getAllJobs();
+      return { jobs, totalJobs };
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
     }
@@ -40,12 +47,13 @@ const jobsSlice = createSlice({
   name: "jobs",
   initialState: {
     jobs: [],
+    allJobs: [],
     job: null,
     status: "idle",
     error: null,
     totalJobs: 0,
     currentPage: 1,
-    pageSize: 20,
+    pageSize: 12,
   },
   reducers: {
     setPage: (state, action) => {
@@ -59,8 +67,8 @@ const jobsSlice = createSlice({
       })
       .addCase(fetchJobs.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.jobs = action.payload.results; // Adjust based on API response
-        state.totalJobs = action.payload.count; // Adjust based on API response
+        state.jobs = action.payload.jobs;
+        state.totalJobs = action.payload.totalJobs;
       })
       .addCase(fetchJobs.rejected, (state, action) => {
         state.status = "failed";
@@ -76,14 +84,28 @@ const jobsSlice = createSlice({
       .addCase(fetchJobById.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
+      })
+      .addCase(fetchAllJobs.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchAllJobs.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.allJobs = action.payload.jobs;
+      })
+      .addCase(fetchAllJobs.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
       });
   },
 });
 
 export const { setPage } = jobsSlice.actions;
+
 export default jobsSlice.reducer;
+
 export const selectJobById = (state) => state.jobs.job;
 export const selectJobs = (state) => state.jobs.jobs;
+export const selectAllJobs = (state) => state.jobs.allJobs;
 export const selectTotalJobs = (state) => state.jobs.totalJobs;
 export const selectCurrentPage = (state) => state.jobs.currentPage;
 export const selectPageSize = (state) => state.jobs.pageSize;

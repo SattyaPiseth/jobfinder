@@ -11,15 +11,8 @@ import {
 } from "../../redux/jobs/jobsSlice";
 import { CardComponent } from "../feat-jobs/CardComponent";
 
-const PositionCardComponent = () => {
+const PositionCardComponent = ({ jobs }) => {
   const dispatch = useDispatch();
-  const jobs = useSelector(selectJobs);
-  const currentPage = useSelector(selectCurrentPage);
-  const pageSize = useSelector(selectPageSize);
-
-  useEffect(() => {
-      dispatch(fetchJobs({ page: currentPage, pageSize }));
-  }, [dispatch, status, currentPage, pageSize]);
 
   return (
     <div>
