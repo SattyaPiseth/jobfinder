@@ -80,22 +80,22 @@ export default function AboutUsComponent() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-white">
+    <div className="flex flex-col items-center bg-white max-sm:mt-16 max-lg:mt-28">
       <div
-        className="mt-20 text-3xl font-bold font-suwannaphum text-center text-black max-md:mt-10"
+        className="mt-16 text-3xl font-bold font-suwannaphum text-center text-primary-800"
         data-aos="zoom-in"
       >
         ពួកយេីងជានរណា?
       </div>
 
-      <div className="my-8 w-full max-w-[1324px] px-5 max-md:mt-10 max-md:px-3">
+      <div className="my-8 w-full max-w-[1324px] max-sm:mt-4 max-md:mt-10 max-md:px-3">
         <div className="flex gap-5 max-md:flex-col">
           <div className="flex flex-col w-1/2 max-md:w-full" data-aos="fade-right">
-            <div className="flex flex-col px-5 py-5 text-black max-md:py-3">
-              <div className="text-3xl font-bold font-suwannaphum text-center">អំពី​ពួក​យើង</div>
-              <div className="mt-2.5 text-3xl font-suwannaphum leading-[52px]">
+            <div className="flex flex-col py-5 text-black max-md:py-3">
+              <div className="text-3xl font-bold text-primary-800 font-suwannaphum text-center max-sm:text-2xl max-lg:text-2xl">អំពី​ពួក​យើង</div>
+              <div className="mt-2.5 text-3xl text-left font-suwannaphum leading-[52px] max-sm:text-xl max-lg:text-xl">
                 Job Finder គឺជាគេហទំព័រស្វែងរកការងារតាមអ៊ីនធឺណិតដែលត្រូវបានបង្កើតឡើងក្នុងឆ្នាំ2024
-                ដោយនិស្សិតជំនាញមូលដ្ឋានគ្រឹះមកពីមជ្ឈមណ្ឌលវិទ្យាសស្ត្រនិងបច្ចេកវិទ្យាអភិវឌ្ឍន៍កម្រិតខ្ពសដែលអនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ស្វែងរកដាក់ពាក្យនិងតមដនឱកាសការងារសម្រួលដល់វឌ្ឍនភាពការងារដែលជំរុញដោយទិន្នន័យ។
+                ដោយនិស្សិតជំនាញមូលដ្ឋានគ្រឹះមកពីមជ្ឈមណ្ឌលវិទ្យាសាស្ត្រនិងបច្ចេកវិទ្យាអភិវឌ្ឍន៍កម្រិតខ្ពស់ដែលអនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ស្វែងរកដាក់ពាក្យនិងតាមដានឱកាសការងារសម្រួលដល់វឌ្ឍនភាពការងារដែលជំរុញដោយទិន្នន័យ។
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function AboutUsComponent() {
         </div>
       </div>
 
-      <div className="px-5 mt-16 w-full max-w-[1334px] max-md:mt-10 max-md:px-3">
+      <div className="mt-16 w-full max-w-[1334px] max-md:mt-10 max-md:px-3">
         <div className="flex gap-5 max-md:flex-col">
           <div className="flex flex-col w-1/3 max-md:w-full" data-aos="fade-up">
             <div className="flex flex-col items-center text-2xl text-black max-md:mt-10">
@@ -122,9 +122,9 @@ export default function AboutUsComponent() {
                 className="w-[150px] aspect-[1.03]"
                 alt="Team Member"
               />
-              <div className="mt-4 font-bold font-suwannaphum">យើង​ជា​នរណា</div>
-              <div className="font-suwannaphum mt-7 text-center">
-                ពួកយើងគឺជានិសិត្សអាហារូបករណ៍ជំនាញមូលដ្ឋានគ្រឹះជំនាន់ទីពីរនៃមជ្ឈមណ្ឌលវិទ្យាសាស្ត្រនិងបច្ចេកវិទ្យាអភិវឌ្ឍន៍កម្រិតខ្ពសដែលបានបញ្ចប់វគ្គសិក្សារយៈពេល៤ខែទៅលើជំនាញ Java និង Website Design ។
+              <div className="mt-2 font-bold font-suwannaphum">យើង​ជា​នរណា</div>
+              <div className="font-suwannaphum px-2 mt-7 text-center max-sm:text-xl max-lg:text-xl">
+                ពួកយើងគឺជានិស្សិតអាហារូបករណ៍ជំនាញមូលដ្ឋានគ្រឹះជំនាន់ទីពីរនៃមជ្ឈមណ្ឌលវិទ្យាសាស្ត្រនិងបច្ចេកវិទ្យាអភិវឌ្ឍន៍កម្រិតខ្ពស់ដែលបានបញ្ចប់វគ្គសិក្សារយៈពេល៤ខែទៅលើជំនាញ Java និង Website Design ។
               </div>
             </div>
           </div>
@@ -139,8 +139,8 @@ export default function AboutUsComponent() {
                 alt="Team Member"
               />
               <div className="mt-5 font-bold font-suwannaphum">បេសកម្ម​របស់​យើង</div>
-              <div className="font-suwannaphum mt-6 text-center">
-                បេសកកម្មរបស់យើងគឺអនុញ្ញាតឲ្យអ្នកស្វែងរកការងារលើបណ្តាញអ៊ីនធឺណិតនូវវេទិកាដែលងាយស្រួលប្រើនិងសុវត្ថិភាពដែលភ្ជាប់អ្នកស្វែងរកការងារជាមួយនិយោជកប្រកបដោយប្រសិទ្ធភាព។
+              <div className="font-suwannaphum px-2 mt-6 text-center max-sm:text-xl max-lg:text-xl">
+                បេសកកម្មរបស់យើងគឺអនុញ្ញាតឱ្យអ្នកស្វែងរកការងារលើបណ្តាញអ៊ីនធឺណិតនូវវេទិកាដែលងាយស្រួលប្រើនិងសុវត្ថិភាពដែលភ្ជាប់អ្នកស្វែងរកការងារជាមួយនិយោជកប្រកបដោយប្រសិទ្ធភាព។
               </div>
             </div>
           </div>
@@ -155,15 +155,15 @@ export default function AboutUsComponent() {
                 alt="Team Member"
               />
               <div className="font-suwannaphum mt-3 font-bold">ទស្សនវិស័យ​របស់​យើង</div>
-              <div className="font-suwannaphum mt-8 text-center">
-                ក្លាយខ្លួនទៅជាគេហទំព័រមួយដែលមានភាពច្នៃប្រឌិតនិងការកែសម្រួលតាមតម្រូវការរបស់អ្នកប្រើប្រាស់។
+              <div className="font-suwannaphum px-2 mt-8 text-center max-sm:text-xl max-lg:text-xl">
+                ក្លាយខ្លួនទៅជាគេហទំព័រមួយដែលមានភាពច្នៃប្រតិដ្ឋនិងការកែសម្រួលតាមតម្រូវការរបស់អ្នកប្រើប្រាស់។
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-16 text-4xl font-suwannaphum font-bold text-black max-md:mt-10">អ្នកណែនាំរបស់យើង</div>
+      <div className="mt-16 text-4xl font-suwannaphum font-bold text-primary-800 max-md:mt-10 max-sm:text-3xl">អ្នកណែនាំរបស់យើង</div>
 
       <div className="mt-16 max-w-full w-[562px] max-md:mt-10">
         <div className="flex gap-5 max-md:flex-col">
@@ -195,7 +195,7 @@ export default function AboutUsComponent() {
         </div>
       </div>
 
-      <div className="mt-16 text-4xl font-suwannaphum font-bold text-black max-md:mt-10">សមាជិកក្រុមរបស់យើង</div>
+      <div className="mt-16 text-4xl font-suwannaphum font-bold text-primary-800 max-md:mt-10 max-sm:text-3xl">សមាជិកក្រុមរបស់យើង</div>
 
       <div className="flex flex-col items-center mt-10" data-aos="fade-up">
         <img
@@ -215,7 +215,7 @@ export default function AboutUsComponent() {
         </div>
       </div>
 
-      <div className="container px-5 my-10 mx-auto">
+      <div className="container my-10 mx-auto">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {teamMembers.map((person) => (
             <div

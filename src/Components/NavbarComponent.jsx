@@ -4,10 +4,12 @@ import useFontClass from "../common/useFontClass";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import LanguageDropdown from "../common/LanguageDropdown";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useLogout from "../common/useLogout";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { fetchProfile } from "../redux/features/user/userSlice";
+import { use } from "i18next";
 
 export default function NavbarComponent() {
   const { t } = useTranslation();
@@ -49,6 +51,26 @@ export default function NavbarComponent() {
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+
+  const dispatch = useDispatch();
+  const { user, accessToken, isLoading, error } = useSelector(
+    (state) => state.user
+  );
+  console.log("User Profile1 : ", user);
+
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(fetchProfile(accessToken));
+    }
+  }, [accessToken, dispatch]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <Navbar fluid className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50">
@@ -106,8 +128,8 @@ export default function NavbarComponent() {
               }
             >
               <Dropdown.Header>
-                <span className="block text-sm">Bonnie Green</span>
-                <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+                <span className="block text-sm">{user?.username}</span>
+                <span className="block truncate text-sm font-medium">{user?.email}</span>
               </Dropdown.Header>
               <Dropdown.Item>Dashboard</Dropdown.Item>
               <Dropdown.Item as={Link} to="/profile">
