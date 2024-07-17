@@ -29,6 +29,7 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: "dist",
+      sourcemap: true, // Enable source maps
     },
     server: {
       port: 3000,
