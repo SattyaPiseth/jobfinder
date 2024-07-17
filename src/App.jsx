@@ -8,7 +8,7 @@ import {
 } from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
 import "./App.css";
-import Aos from "aos";
+import { Helmet } from "react-helmet";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +24,10 @@ function App() {
 
   return (
     <>
+      <Helmet>
+      <title>Home - Job Quick</title>
+      <meta name="description" content="Welcome to the Job Quick website" />
+      </Helmet>
       <HomePage categories={categories} isLoading={status === "loading"} />
     </>
   );

@@ -22,6 +22,7 @@ import AboutUsPage from "./pages/AboutUsPage.jsx";
 import 'aos/dist/aos.css'; // Import AOS CSS
 import AOS from 'aos'; // Import AOS
 import 'swiper/swiper-bundle.css';
+import { HelmetProvider } from "react-helmet-async";
 
 
 const route = createBrowserRouter([
@@ -85,7 +86,9 @@ const AppWrapper = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <AppWrapper />
+      <HelmetProvider>
+        <AppWrapper />
+      </HelmetProvider>
     </Provider>
   </React.StrictMode>
 );

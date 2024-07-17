@@ -15,7 +15,7 @@ const FeatureDetailComponent = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <section className="flex flex-col justify-center items-center py-16 max-w-full">
         {isLoading ? (
           <>
@@ -48,7 +48,7 @@ const FeatureDetailComponent = () => {
           </>
         )}
       </section>
-    </div>
+    </>
   );
 };
 

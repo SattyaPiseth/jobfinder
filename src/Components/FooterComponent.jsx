@@ -34,134 +34,89 @@ const FooterComponent = ({ isLoading }) => {
   return (
     <Footer
       container
-      className="w-full py-10 px-5 bg-primary-800 dark:bg-primary-900 text-white absolute left-0 right-0 rounded-none"
+      className="w-full py-10 px-5 bg-primary-800 dark:bg-primary-900 text-white absolute left-0 right-0 no-rounded"
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between items-center gap-8">
-          <div className="flex-shrink-0 mb-6 md:mb-0">
+          <div className="flex-shrink-0 mb-6 md:mb-0 text-center md:text-left w-full md:w-auto mx-auto md:mx-0">
             {isComponentLoading ? (
-              <div className="flex items-center">
-                <Skeleton
-                  circle={true}
-                  height={36}
-                  width={36}
-                  className="animate-pulse mr-3"
-                />
-                <Skeleton
-                  height={36}
-                  width={100}
-                  className="animate-pulse mr-36"
-                />
+              <div className="flex flex-col items-center md:items-start">
+                <Skeleton circle={true} height={48} width={48} className="animate-pulse mb-2" />
+                <Skeleton height={24} width={100} className="animate-pulse" />
               </div>
             ) : (
-              <Footer.Brand
-                href="/"
-                src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
-                alt="Job Quick Logo"
-                name="Job Quick"
-                className="font-extrabold text-md sm:text-xl uppercase text-white pr-24"
-              />
+              <div className="flex flex-col items-center md:items-start mx-auto md:mx-0 px-12">
+                <a href="/">
+                  <img
+                    src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
+                    className="h-12 mb-2"
+                    alt="Job Quick Logo"
+                  />
+                </a>
+                <span className={`text-2xl font-semibold ${fontClass}`}>
+                  Job Quick
+                </span>
+              </div>
             )}
           </div>
-          <div
-            className={`${fontClass} flex-grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-24`}
-          >
+          <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-0 mx-32">
             {isComponentLoading ? (
               Array(3)
                 .fill(0)
                 .map((_, index) => (
-                  <div
-                    key={index}
-                    className="text-center md:text-left mb-6 md:mb-0"
-                  >
-                    <Skeleton
-                      height={24}
-                      width={150}
-                      className="mb-4 animate-pulse"
-                    />
-                    <Skeleton
-                      height={20}
-                      width={100}
-                      className="mb-2 animate-pulse"
-                    />
-                    <Skeleton
-                      height={20}
-                      width={100}
-                      className="animate-pulse"
-                    />
+                  <div key={index} className="text-center sm:text-left mb-6 sm:mb-0">
+                    <Skeleton height={24} width={150} className="mb-4 animate-pulse" />
+                    <Skeleton height={20} width={100} className="mb-2 animate-pulse" />
+                    <Skeleton height={20} width={100} className="animate-pulse" />
                   </div>
                 ))
             ) : (
               <>
-                <div className="text-center md:text-left mb-6 md:mb-0">
+                <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
                   <Footer.Title
-                    title={t("footer.website.name")}
-                    className="text-gray-100 font-semibold text-lg"
-                  />
-                  <Footer.LinkGroup col className="text-base text-gray-300 ">
-                    <Footer.Link href="#">
-                      {t("footer.website.jobs")}
-                    </Footer.Link>
-                    <Footer.Link href="#">
-                      {t("footer.website.media")}
-                    </Footer.Link>
-                  </Footer.LinkGroup>
-                </div>
-                <div className="text-center md:text-left mb-6 md:mb-0">
-                  <Footer.Title
-                    title={t("footer.information.name")}
+                    title={t("គេហទំព័រ")}
                     className="text-gray-100 font-semibold text-lg"
                   />
                   <Footer.LinkGroup col className="text-base text-gray-300">
-                    <Footer.Link href="#">
-                      {t("footer.information.about-us")}
-                    </Footer.Link>
-                    <Footer.Link href="#">
-                      {t("footer.information.privacy-policy")}
-                    </Footer.Link>
+                    <Footer.Link href="#">{t("ការងារ")}</Footer.Link>
+                    <Footer.Link href="#">{t("ប្រព័ន្ធផ្សព្វផ្សាយ")}</Footer.Link>
                   </Footer.LinkGroup>
                 </div>
-                <div className="text-center md:text-left mb-6 md:mb-0 px-5">
+                <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
                   <Footer.Title
-                    title={t("footer.contact-us.name")}
+                    title={t("ព័ត៌មានទូទៅ")}
                     className="text-gray-100 font-semibold text-lg"
                   />
                   <Footer.LinkGroup col className="text-base text-gray-300">
-                    <Footer.Link href="#">
-                      {t("footer.contact-us.phone")}
-                    </Footer.Link>
-                    <Footer.Link href="#">
-                      {t("footer.contact-us.email")}
-                    </Footer.Link>
+                    <Footer.Link href="#">{t("អំពីពួកយើង")}</Footer.Link>
+                    <Footer.Link href="#">{t("គោលការណ៍ភាពឯកជន")}</Footer.Link>
+                  </Footer.LinkGroup>
+                </div>
+                <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
+                  <Footer.Title
+                    title={t("ទាក់ទងមកខ្ញុំ")}
+                    className="text-gray-100 font-semibold text-lg"
+                  />
+                  <Footer.LinkGroup col className="text-base text-gray-300">
+                    <Footer.Link href="#">{t("លេខទូរស័ព្ទ")}</Footer.Link>
+                    <Footer.Link href="#">{t("អ៊ីមែល")}</Footer.Link>
                   </Footer.LinkGroup>
                 </div>
               </>
             )}
           </div>
-          <div className="w-full md:w-auto xl:w-96 flex justify-center md:justify-end">
+          <div className="w-full md:w-auto flex justify-center md:justify-end">
             {isComponentLoading ? (
               <div>
-                <Skeleton
-                  height={24}
-                  width={250}
-                  className="mb-4 animate-pulse"
-                />
-                <Skeleton
-                  height={20}
-                  width={200}
-                  className="mb-2 animate-pulse"
-                />
+                <Skeleton height={24} width={250} className="mb-4 animate-pulse" />
+                <Skeleton height={20} width={200} className="mb-2 animate-pulse" />
               </div>
             ) : (
-              <div>
-                <h3
-                  className={`${fontClass} mb-2 text-lg uppercase font-semibold text-gray-100`}
-                >
+              <div className={`text-center md:text-left ${fontClass}`}>
+                <h3 className="mb-2 text-lg uppercase font-semibold text-gray-100">
                   {t("footer.notification")}
                 </h3>
-                <p
-                  className={`${fontClass} text-left mb-3 text-sm font-medium text-gray-300`}
-                >
+                <p className="text-left mb-3 text-sm font-medium text-gray-300">
                   {t("footer.description")}
                 </p>
                 <form
@@ -174,10 +129,7 @@ const FooterComponent = ({ isLoading }) => {
                   data-version="5"
                   min-width="400 500 600 700"
                 >
-                  <div
-                    data-style="clean"
-                    className="flex flex-col md:flex-row items-end mb-3"
-                  >
+                  <div data-style="clean" className="flex flex-col md:flex-row items-end mb-3">
                     <ul
                       className="formkit-alert formkit-alert-error"
                       data-element="errors"
@@ -189,12 +141,10 @@ const FooterComponent = ({ isLoading }) => {
                       className="flex flex-col md:flex-row items-center w-full max-w-md mb-3 seva-fields formkit-fields"
                     >
                       <div className="relative w-full mb-3 md:mb-0 md:mr-3 formkit-field">
-                        <label htmlFor="member_email" className="sr-only">
-                          Email address
-                        </label>
+                        <label htmlFor="member_email" className="sr-only">Email address</label>
                         <input
                           id="member_email"
-                          className={`${fontClass} formkit-input bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-md`}
+                          className={`${fontClass} formkit-input bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 rounded-md`}
                           name="email_address"
                           aria-label="Email Address"
                           placeholder={t("footer.email")}
@@ -203,7 +153,7 @@ const FooterComponent = ({ isLoading }) => {
                         />
                       </div>
                       <button data-element="submit" className="formkit-submit">
-                        <span className="px-6 py-3 text-sm font-semibold text-center text-white bg-primary-900 cursor-pointer hover:bg-primary-850 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded-lg">
+                        <span className=" px-6 py-3 text-sm font-semibold text-center text-white bg-primary-900 cursor-pointer hover:bg-primary-850 focus:ring-4 focus:ring-blue-300 rounded-lg">
                           Subscribe
                         </span>
                       </button>
