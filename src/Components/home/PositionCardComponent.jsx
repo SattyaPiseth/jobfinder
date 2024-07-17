@@ -79,8 +79,8 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
             }}
           >
             {renderSlides()}
-            <div className="swiper-scrollbar mt-8"></div>
-            <div className="swiper-pagination mt-8"></div>
+            {/* <div className="swiper-scrollbar mt-8"></div>
+            <div className="swiper-pagination mt-8"></div> */}
           </Swiper>
         </div>
       </section>
