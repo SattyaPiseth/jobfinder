@@ -1,8 +1,19 @@
 import React from "react";
 import LoginForm from "../Components/auth/LoginFormTest";
+import Metadata from "../lib/Metadata";
 
 function LoginPage() {
   return (
+    <>
+    <Metadata
+        title="Login"
+        description="Access your account by logging in."
+        author="Your Name"
+        keywords="login, access, account"
+        thumbnail="https://cdn.builder.io/api/v1/image/assets/TEMP/336b00db8b95923de0a609ff638f4f11f286aa5d6f7453d35cdf68e5158f1387?apiKey=ad7733614e794f228aa68fbfd330edec&"
+        url="https://example.com/login"
+        type="website"
+      />
     <main
       className="min-h-screen flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8"
       data-aos="fade-left"
@@ -25,6 +36,7 @@ function LoginPage() {
         </div>
       </div>
     </main>
+    </>
   );
 }
 

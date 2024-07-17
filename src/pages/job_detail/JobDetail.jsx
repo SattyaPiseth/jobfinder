@@ -21,13 +21,13 @@ const JobDetail = () => {
   return (
     <>
       <Metadata
-        title={`Job Details - ${id}`}
-        description={`Details of job ${id}`}
+        title={`${job.title} - Job Finder`}
+        description={job.description}
         author="Your Name"
         keywords="jobs, careers, employment"
-        thumbnail="https://example.com/thumbnail.jpg"
-        url={`https://example.com/jobs/${id}`}
-        type="website"
+        thumbnail={job.image || 'https://example.com/og-image.jpg'}
+        url={`https://example.com/jobs/${job.id}`}
+        type="article"
       />
       {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}
     </>
