@@ -29,7 +29,7 @@ function App() {
         description="Welcome to the Job Finder website"
         author="Piseth Sattya"
         keywords="jobs, careers, employment"
-        thumbnail="https://www.notion.so/images/meta/default.png"
+        thumbnail="https://ecommerce.techinsights.guru/file/bc7612a9-2dbe-44b4-8b57-1143d2243442.jpg"
         url="https://www.notion.so"
         type="website"
       />
