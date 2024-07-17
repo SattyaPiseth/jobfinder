@@ -58,7 +58,8 @@ export const fetchProfile = createAsyncThunk(
   "user/fetchProfile",
   async (token, { rejectWithValue }) => {
     try {
-      const response = await getProfile(token);                                
+      const response = await getProfile(token);    
+      console.log('userSlice : ',response?.data)                            
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));

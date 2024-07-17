@@ -30,19 +30,19 @@ const ProfilePage = () => {
   return (
     <div className="mt-20">
       <ProfileDetailComponent
-        username={user.username}
-        first_name={user.first_name}
-        last_name={user.last_name}
-        email={user.email}
-        address={user.address}
-        bio={user.bio}
-        phone_num={user.phone_number}
-        gender={user.gender}
-        facebook={user.facebook}
-        twitter={user.twitter}
-        linkedin={user.linkedin}
-        github={user.github}
-        avatar={user.avatar}
+        username={user?.username}
+        first_name={user?.first_name}
+        last_name={user?.last_name}
+        email={user?.email}
+        address={user?.address}
+        bio={user?.bio}
+        phone_num={user?.phone_number}
+        gender={user?.gender}
+        facebook={user?.facebook}
+        twitter={user?.twitter}
+        linkedin={user?.linkedin}
+        github={user?.github}
+        avatar={user?.avatar}
       />
     </div>
   );
