@@ -36,31 +36,50 @@ const JobsPage = () => {
   const totalPages = Math.ceil(totalJobs / pageSize);
 
   return (
-    <div
-      data-aos="fade-left"
-      data-aos-offset="300"
-      data-aos-easing="ease-in-sine"
-    >
-      <h1 className="mt-20 text-blue-600 font-kantumruy text-4xl text-start font-bold">
-        Job Listing
-      </h1>
-      {status === "loading" && <p>Loading...</p>}
+    <section>
+      <header className="mt-20">
+        <h1 className="text-blue-600 font-kantumruy text-4xl text-start font-bold">
+          Job Listing
+        </h1>
+      </header>
+      {status === "loading" && (
+        <div className="grid gap-5 mt-10 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {Array.from({ length: pageSize }).map((_, index) => (
+            <div
+              key={index}
+              className="p-6 w-full max-w-xs mx-auto animate-pulse bg-white rounded-lg border border-gray-200 shadow-md"
+            >
+              <div className="flex gap-5 justify-between items-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-gray-300"></div>
+                <div className="w-20 h-6 rounded bg-gray-300"></div>
+              </div>
+              <div className="w-3/4 h-6 rounded bg-gray-300 mb-4"></div>
+              <div className="flex gap-2 justify-between mb-4">
+                <div className="w-1/3 h-4 rounded bg-gray-300"></div>
+                <div className="w-1/4 h-4 rounded bg-gray-300"></div>
+              </div>
+              <div className="h-20 bg-gray-300 rounded mb-4"></div>
+              <div className="w-3/4 h-9 rounded bg-gray-300 mx-auto"></div>
+            </div>
+          ))}
+        </div>
+      )}
       {status === "failed" && <p>Error loading jobs.</p>}
-      <div className="grid gap-5 mt-10 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {jobs.length > 0 ? (
-          jobs.map((job) => <CardComponent key={job.id} job={job} />)
-        ) : (
-          <p>No jobs available</p>
-        )}
-      </div>
-      <div className="text-center py-10">
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      </div>
-    </div>
+      {status === "succeeded" && (
+        <>
+          <div className="grid gap-8 mt-10 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {jobs.length > 0 ? (
+              jobs.map((job) => <CardComponent key={job.id} job={job} />)
+            ) : (
+              <p>No jobs available</p>
+            )}
+          </div>
+          <div className="text-center py-10">
+            <Pagination isLoading={status === "loading"} />
+          </div>
+        </>
+      )}
+    </section>
   );
 };
 

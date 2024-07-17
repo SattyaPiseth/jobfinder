@@ -1,4 +1,4 @@
-// src/main.jsx
+
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 import JobsPage from "./pages/JobsPage.jsx";
 import JobDetail from "./pages/job_detail/JobDetail.jsx";
-import UserProfileComponent from "./Components/auth/UserProfileComponent.jsx";
 import useAppInitializer from "./common/useAppInitializer.js";
 import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
@@ -19,9 +18,12 @@ import LoginPage from "./pages/LoginPage.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import MediaComponent from "./Components/home/MediaComponent.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
-import "aos/dist/aos.css"; // Import AOS CSS
-import AOS from "aos"; // Import AOS
-import "swiper/swiper-bundle.css";
+import AboutUsPage from "./pages/AboutUsPage.jsx";
+import 'aos/dist/aos.css'; // Import AOS CSS
+import AOS from 'aos'; // Import AOS
+import 'swiper/swiper-bundle.css';
+import { HelmetProvider } from "react-helmet-async";
+
 
 const route = createBrowserRouter([
   {
@@ -37,21 +39,12 @@ const route = createBrowserRouter([
         element: <JobsPage />,
       },
       {
-        path: "/job-detail",
-        element: <JobDetail />,
-      },
-      {
         path: "/jobs/:id",
         element: <JobDetail />,
       },
       {
-        path: "/jobs/job-detail",
-        element: <JobDetail />,
-      },
-
-      {
         path: "/profile",
-        element: <ProtectedRoute element={<UserProfileComponent />} />,
+        element: <ProtectedRoute element={<ProfilePage />} />,
       },
       {
         path: "/register",
@@ -69,10 +62,10 @@ const route = createBrowserRouter([
         path: "/media",
         element: <MediaComponent />,
       },
-      // {
-      //   path: "/profile",
-      //   element: <ProfilePage/>
-      // }
+      {
+        path: "about-us",
+        element: <AboutUsPage/>
+      }
     ],
   },
 
@@ -93,7 +86,9 @@ const AppWrapper = () => {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <AppWrapper />
+      <HelmetProvider>
+        <AppWrapper />
+      </HelmetProvider>
     </Provider>
   </React.StrictMode>
 );

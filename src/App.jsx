@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
 import { useEffect } from "react";
 import {
   selectAllJobCategories,
@@ -8,15 +7,14 @@ import {
   fetchJobCategories,
 } from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
+import "./App.css";
+import { Helmet } from "react-helmet";
 
 function App() {
   const dispatch = useDispatch();
   const categories = useSelector(selectAllJobCategories);
   const status = useSelector(getJobCategoriesStatus);
   const error = useSelector(getJobCategoriesError);
-
-  console.log("category", categories);
-  console.log("category", categories);
 
   useEffect(() => {
     if (status === "idle") {
@@ -26,7 +24,11 @@ function App() {
 
   return (
     <>
-      <HomePage categories={categories} />
+      <Helmet>
+      <title>Home - Job Quick</title>
+      <meta name="description" content="Welcome to the Job Quick website" />
+      </Helmet>
+      <HomePage categories={categories} isLoading={status === "loading"} />
     </>
   );
 }

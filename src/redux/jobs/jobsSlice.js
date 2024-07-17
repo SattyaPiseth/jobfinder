@@ -109,3 +109,4 @@ export const selectAllJobs = (state) => state.jobs.allJobs;
 export const selectTotalJobs = (state) => state.jobs.totalJobs;
 export const selectCurrentPage = (state) => state.jobs.currentPage;
 export const selectPageSize = (state) => state.jobs.pageSize;
+export const selectStatus = (state) => state.jobs.status;
