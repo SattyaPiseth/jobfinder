@@ -108,10 +108,10 @@ export default function NavbarComponent() {
               />
             ) : (
               <img
-                alt="Logo"
+                alt="Job Quick Logo"
                 loading="lazy"
-                width="30"
-                height="30"
+                width="48"
+                height="48"
                 decoding="async"
                 className="mr-3 w-7 h-7 object-contain"
                 src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
