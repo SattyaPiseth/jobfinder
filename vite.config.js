@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import viteCompression from "vite-plugin-compression";
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
     plugins: [
@@ -12,16 +11,16 @@ export default defineConfig(({ mode }) => {
         disable: false,
         deleteOriginFile: false,
         threshold: 10240,
-        algorithm: 'gzip',
-        ext: '.gz',
+        algorithm: "gzip",
+        ext: ".gz",
       }),
       viteCompression({
         verbose: true,
         disable: false,
         deleteOriginFile: false,
         threshold: 10240,
-        algorithm: 'brotliCompress',
-        ext: '.br',
+        algorithm: "brotliCompress",
+        ext: ".br",
       }),
     ],
     define: {
@@ -30,6 +29,7 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: "dist",
       sourcemap: true, // Enable source maps
+      cssCodeSplit: true, // Enable CSS code splitting
     },
     server: {
       port: 3000,

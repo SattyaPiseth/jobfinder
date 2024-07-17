@@ -69,53 +69,36 @@ const SearchComponent = ({ categories, isLoading }) => {
               className="pl-14 pr-4 py-4 rounded-lg border-2 border-solid border-slate-100 bg-slate-100 w-full"
             />
           </div>
-
-          <div className="flex flex-col w-72 max-md:w-full">
-            <label htmlFor="category-select" className="text-gray-500 mb-2">
-              Select a category
-            </label>
-            <select
-              id="category-select"
-              className="px-4 py-2 rounded-lg border-2 border-solid border-slate-100 w-full"
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-            >
-              <option value="" disabled>
-                Select a category
-              </option>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.category_name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex flex-col w-72 max-md:w-full">
-            <label htmlFor="skill-select" className="text-gray-500 mb-2">
-              Select a skill
-            </label>
-            <select
-              id="skill-select"
-              className="px-4 py-2 rounded-lg border-2 border-solid border-slate-100 w-full"
-              value={selectedSkill}
-              onChange={handleSkillChange}
-              disabled={!skills.length || loadingSkills}
-            >
-              <option value="" disabled>
-                {loadingSkills ? "Loading skills..." : "Select a skill"}
-              </option>
-              {skills.map((skill) => (
-                <option key={skill.id} value={skill.id}>
-                  {skill.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <button
-            className="justify-center p-2 px-8 text-white font-kantumruy text-xl bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-lg:text-lg max-xl:text-xl max-2xl:text-xl max-md:px-6"
+          <select
+            className="px-4 py-2 rounded-lg border-2 border-solid border-slate-100 w-72 max-md:w-full"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
           >
+            <option value="" disabled>
+              Select a category
+            </option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.category_name}
+              </option>
+            ))}
+          </select>
+          <select
+            className="px-4 py-2 rounded-lg border-2 border-solid border-slate-100 w-72 max-md:w-full"
+            value={selectedSkill}
+            onChange={handleSkillChange}
+            disabled={!skills.length || loadingSkills}
+          >
+            <option value="" disabled>
+              {loadingSkills ? "Loading skills..." : "Select a skill"}
+            </option>
+            {skills.map((skill) => (
+              <option key={skill.id} value={skill.id}>
+                {skill.name}
+              </option>
+            ))}
+          </select>
+          <button className="justify-center p-2 px-8 text-white font-kantumruy text-xl bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-lg:text-lg max-xl:text-xl max-2xl:text-xl max-md:px-6">
             Search
           </button>
         </>
