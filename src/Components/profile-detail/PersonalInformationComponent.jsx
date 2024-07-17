@@ -50,7 +50,7 @@ function PersonalInformationForm(
           {({ isSubmitting }) => (
             <Form>
               <div className="mt-6 max-md:max-w-full text-left">
-                <label htmlFor="username" className="block mb-2">
+                <label htmlFor="user_name" className="block mb-2">
                   Username
                 </label>
                 <Field
@@ -107,7 +107,7 @@ function PersonalInformationForm(
               </div>
 
               <div className="mt-6 max-md:max-w-full text-left">
-                <label htmlFor="phoneNumber" className="block mb-2">
+                <label htmlFor="phone_num" className="block mb-2">
                   Phone Number
                 </label>
                 <Field
