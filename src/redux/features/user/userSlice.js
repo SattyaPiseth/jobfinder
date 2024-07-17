@@ -21,7 +21,7 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await register(userData);
-      console.log('email',userData.email)
+      console.log("email", userData.email);
       localStorage.setItem("email", userData.email);
       return response.data;
     } catch (error) {
@@ -36,8 +36,8 @@ export const loginUser = createAsyncThunk(
   async (userCredentials, { rejectWithValue }) => {
     try {
       const response = await login(userCredentials);
-      const { access, refresh} = response.data;
-      console.log('User Slice : ',response)
+      const { access, refresh } = response.data;
+      console.log("User Slice : ", response);
       localStorage.setItem("access", access);
       localStorage.setItem("refresh", refresh);
       return response.data;
@@ -129,9 +129,9 @@ const userSlice = createSlice({
     },
     // Load tokens from localStorage on initialization
     loadTokens: (state) => {
-      state.accessToken = localStorage.getItem('access');
-      state.refreshToken = localStorage.getItem('refresh');
-      state.isAuthenticated = !!localStorage.getItem('access');
+      state.accessToken = localStorage.getItem("access");
+      state.refreshToken = localStorage.getItem("refresh");
+      state.isAuthenticated = !!localStorage.getItem("access");
     },
     setIsAuthenticatedFalse(state) {
       state.isAuthenticated = false;
@@ -220,5 +220,6 @@ const userSlice = createSlice({
       });
   },
 });
-export const { logout, loadTokens, loginSuccess, setIsAuthenticatedFalse  } = userSlice.actions;
+export const { logout, loadTokens, loginSuccess, setIsAuthenticatedFalse } =
+  userSlice.actions;
 export default userSlice.reducer;
