@@ -17,6 +17,7 @@ const LoginForm = () => {
     (state) => state.user
   );
   const [message, setMessage] = useState("");
+  console.log(message)
 
   const formik = useFormik({
     initialValues: {

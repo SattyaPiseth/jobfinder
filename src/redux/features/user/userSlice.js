@@ -1,12 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  getProfile,
-  login,
-  register,
-  resendOtp,
-  updateProfile,
-  verifyOtpCode,
-} from "../../api/userApi";
+import { getProfile, login, register, resendOtp, updateProfile, verifyOtpCode } from "../../api/userApi";
 
 // Helper function to extract error message
 const getErrorMessage = (error) => {
@@ -79,6 +72,7 @@ export const updateUserProfile = createAsyncThunk(
   async ({ token, profileData }, { rejectWithValue }) => {
     try {
       const response = await updateProfile(token, profileData);
+      console.log(response.data)
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
