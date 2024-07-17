@@ -56,3 +56,7 @@
 .custom-height {
   @apply h-[calc(100vh-299px)];
 }
+
+.no-rounded {
+  border-radius: 0 !important;
+}
