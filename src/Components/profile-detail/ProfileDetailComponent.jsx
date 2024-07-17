@@ -43,8 +43,7 @@ const ProfileDetailComponent = ({
                   <img
                     loading="lazy"
                     src={
-                      avatar ||
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNL_ZnOTpXSvhf1UaK7beHey2BX42U6solRA&s"
+                      avatar || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                     }
                     alt="User profile picture"
                     className="z-10 mt-11 -mb-10 rounded-lg  max-w-full aspect-[1.03] w-[100px] max-md:mt-8 max-md:mb-2.5"
