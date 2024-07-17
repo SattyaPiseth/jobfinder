@@ -53,7 +53,7 @@ const jobsSlice = createSlice({
     error: null,
     totalJobs: 0,
     currentPage: 1,
-    pageSize: 12,
+    pageSize: 12, // Set pageSize to 12
   },
   reducers: {
     setPage: (state, action) => {

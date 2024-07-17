@@ -19,10 +19,9 @@ import LoginPage from "./pages/LoginPage.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import MediaComponent from "./Components/home/MediaComponent.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
-import 'aos/dist/aos.css'; // Import AOS CSS
-import AOS from 'aos'; // Import AOS
-import 'swiper/swiper-bundle.css';
-
+import "aos/dist/aos.css"; // Import AOS CSS
+import AOS from "aos"; // Import AOS
+import "swiper/swiper-bundle.css";
 
 const route = createBrowserRouter([
   {
@@ -68,7 +67,7 @@ const route = createBrowserRouter([
       },
       {
         path: "/media",
-        element: <MediaComponent/>
+        element: <MediaComponent />,
       },
       // {
       //   path: "/profile",

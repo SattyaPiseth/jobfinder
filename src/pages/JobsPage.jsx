@@ -10,6 +10,8 @@ import {
   setPage,
 } from "../redux/jobs/jobsSlice";
 import { CardComponent } from "../Components/feat-jobs/CardComponent";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const JobsPage = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,10 @@ const JobsPage = () => {
   useEffect(() => {
     dispatch(fetchJobs({ page: currentPage, pageSize }));
   }, [dispatch, currentPage, pageSize]);
+
+  useEffect(() => {
+    AOS.refresh(); // Refresh AOS animations when jobs change
+  }, [jobs]);
 
   const handlePageChange = (newPage) => {
     dispatch(setPage(newPage));

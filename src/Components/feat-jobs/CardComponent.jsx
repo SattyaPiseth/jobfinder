@@ -17,14 +17,14 @@ export function CardComponent({ job }) {
               Full Time
             </div>
           </div>
-          <div className="mt-4 text-lg font-semibold text-gray-800 text-start">
+          <div className="mt-4 text-lg font-semibold text-gray-800 text-start line-clamp-1">
             {job.title}
           </div>
-          <div className="flex gap-2 justify-between text-gray-600 mt-1">
-            <div>{job.company_name}</div>
-            <div>{job.location}</div>
+          <div className="text-gray-600 mt-1">
+            <div className="line-clamp-1 text-start">{job.company_name}</div>
+            <div className="line-clamp-1 text-start">{job.location}</div>
           </div>
-          <div className="mt-4 text-gray-500 text-start leading-relaxed">
+          <div className="mt-4 text-gray-500 text-start leading-relaxed line-clamp-2">
             {job.description}
           </div>
           <div className="flex flex-wrap gap-2 mt-4 text-sm font-semibold justify-center">
