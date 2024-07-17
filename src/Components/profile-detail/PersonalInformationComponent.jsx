@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { updateProfile } from "../../redux/api/userApi";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
@@ -10,29 +11,54 @@ const validationSchema = Yup.object().shape({
   gender: Yup.string().required("Gender is required"),
 });
 
-function PersonalInformationForm(
-  {user_name,
-  gender, 
+function PersonalInformationForm({
+  user_name,
+  gender,
   email,
   phone_num,
-  address,}
-) {
+  address,
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const [profile, setProfile] = useState({
-    userName: user_name || "",
+    user_name: user_name || "",
     gender: gender || "",
     email: email || "",
-    phoneNumber: phone_num || "",
+    phone_num: phone_num || "",
     address: address || "",
   });
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setProfile(values); // Update the profile state with the new values
-      setSubmitting(false);
+  const handleSubmit = async (profile, { setSubmitting }) => {
+    try {
+      // Get the token from somewhere (e.g., localStorage, state, etc.)
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODM5OTQ3LCJpYXQiOjE3MjEyMzUxNDcsImp0aSI6Ijg2MzMwOTI2Yzg4NDQ4YWRiMjU5ODVkYjI3NTljMzM5IiwidXNlcl9pZCI6Ijc5ODk0ODZmLWFlNDctNGJjOC1hYjI3LTc1MWUyZDEwZTAyNSJ9.rDvSsPGbjXl0VxdfVvYg8e1EhAIl7DLOBeNo45X83Lo";
+
+      updateProfile(token, profile);
+
+      alert("Profile updated successfully!");
+      setProfile(profile); // Update the profile state with the new values
       setIsEditing(false); // Exit edit mode after submission
-    }, 400);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Error data:", error.response.data);
+        console.error("Error status:", error.response.status);
+        console.error("Error headers:", error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("Error request:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error message:", error.message);
+      }
+      alert(
+        "An error occurred while updating the profile. Check the console for more details."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -162,14 +188,14 @@ function PersonalInformationForm(
           <div className="mt-6 max-md:max-w-full text-left">
             <label className="block mb-2">Username</label>
             <div className="w-full px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:max-w-full">
-              {profile.userName}
+              {profile.user_name}
             </div>
           </div>
 
           <div className="mt-6 max-md:max-w-full text-left">
             <label className="block mb-2">Gender</label>
             <div className="w-full px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:max-w-full">
-              {profile.gender}
+              {profile.gender || "Other"}
             </div>
           </div>
 
@@ -183,14 +209,14 @@ function PersonalInformationForm(
           <div className="mt-6 max-md:max-w-full text-left">
             <label className="block mb-2">Phone Number</label>
             <div className="w-full px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:max-w-full">
-              {profile.phoneNumber}
+              {profile.phone_num || "+855 "}
             </div>
           </div>
 
           <div className="mt-6 max-md:max-w-full text-left">
             <label className="block mb-2">Address</label>
             <div className="w-full px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:max-w-full">
-              {profile.address}
+              {profile.address || "No location"}
             </div>
           </div>
 
