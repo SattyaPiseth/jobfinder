@@ -37,8 +37,8 @@ const JobsPage = () => {
         description="Browse through the latest job listings and find your perfect job."
         author="Your Name"
         keywords="jobs, careers, employment"
-        thumbnail="https://example.com/og-image.jpg"
-        url="https://example.com/jobs"
+        thumbnail="https://www.notion.so/images/meta/default.png"
+        url="https://www.notion.so"
         type="website"
       />
       <header className="mt-20">

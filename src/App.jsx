@@ -27,10 +27,10 @@ function App() {
       <Metadata
         title="Home"
         description="Welcome to the Job Finder website"
-        author="Your Name"
+        author="Piseth Sattya"
         keywords="jobs, careers, employment"
-        thumbnail="https://example.com/thumbnail.jpg"
-        url="https://example.com/"
+        thumbnail="https://www.notion.so/images/meta/default.png"
+        url="https://www.notion.so"
         type="website"
       />
       <HomePage categories={categories} isLoading={status === "loading"} />
