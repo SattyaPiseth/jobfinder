@@ -24,7 +24,6 @@ import AOS from 'aos'; // Import AOS
 import 'swiper/swiper-bundle.css';
 import { HelmetProvider } from "react-helmet-async";
 
-
 const route = createBrowserRouter([
   {
     path: "/",

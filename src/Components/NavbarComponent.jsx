@@ -172,6 +172,7 @@ export default function NavbarComponent() {
                 <NavLink to="/login">
                   <button
                     type="button"
+                    aria-label="Login"
                     className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800 rounded-lg focus:ring-2 whitespace-nowrap"
                   >
                     <svg
@@ -210,6 +211,7 @@ export default function NavbarComponent() {
                 <NavLink to="/register">
                   <button
                     type="button"
+                    aria-label="Register"
                     className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800 rounded-lg focus:ring-2 whitespace-nowrap"
                   >
                     <svg

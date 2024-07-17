@@ -29,7 +29,10 @@ const LanguageDropdown = () => {
 
     return (
         <div ref={dropdownRef}>
-            <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            <button 
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)} 
+                aria-label={t("translate.selectLanguage")}
+            >
                 <FontAwesomeIcon icon={faLanguage} className="text-3xl text-secondary-100" />
             </button>
             {isDropdownOpen && (
@@ -37,6 +40,7 @@ const LanguageDropdown = () => {
                     <button
                         onClick={() => changeLanguage("kh")}
                         className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                        aria-label={t("translate.khmer")}
                     >
                         <img
                             src="https://img.icons8.com/?size=96&id=2ui1n4CYeion&format=png"
@@ -50,10 +54,11 @@ const LanguageDropdown = () => {
                     <button
                         onClick={() => changeLanguage("en")}
                         className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                        aria-label={t("translate.english")}
                     >
                         <img
                             src="https://img.icons8.com/?size=96&id=xapj7ZzAUZKI&format=png"
-                            alt="English icons"
+                            alt="English icon"
                             className="w-6 h-6 mr-2"
                         />
                         <span className={`${localStorage.getItem('fontClass')} text-sm font-normal`}>

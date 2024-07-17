@@ -12,6 +12,7 @@ import {
 import { CardComponent } from "../Components/feat-jobs/CardComponent";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Metadata from "../lib/Metadata";
 
 const JobsPage = () => {
   const dispatch = useDispatch();
@@ -29,14 +30,17 @@ const JobsPage = () => {
     AOS.refresh(); // Refresh AOS animations when jobs change
   }, [jobs]);
 
-  const handlePageChange = (newPage) => {
-    dispatch(setPage(newPage));
-  };
-
-  const totalPages = Math.ceil(totalJobs / pageSize);
-
   return (
     <section>
+      <Metadata
+        title="Jobs"
+        description="Browse available jobs"
+        author="Your Name"
+        keywords="jobs, careers, employment"
+        thumbnail="https://example.com/thumbnail.jpg"
+        url="https://example.com/jobs"
+        type="website"
+      />
       <header className="mt-20">
         <h1 className="text-blue-600 font-kantumruy text-4xl text-start font-bold">
           Job Listing

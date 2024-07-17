@@ -8,7 +8,7 @@ import {
 } from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
 import "./App.css";
-import { Helmet } from "react-helmet";
+import Metadata from "./lib/Metadata";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,15 +24,15 @@ function App() {
 
   return (
     <>
-      <Helmet>
-        <title>Home - Job Quick</title>
-        <meta name="description" content="Welcome to the Job Quick website" />
-        <meta property="og:title" content="Home - Job Quick" />
-        <meta property="og:description" content="Welcome to the Job Quick website" />
-        <meta property="og:image" content="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png" />
-        <meta property="og:url" content="https://jobquick.techinsights.guru/" />
-        <meta name="twitter:card" content="https://istad.co/resources/img/CSTAD_120.png" />
-      </Helmet>
+      <Metadata
+        title="Home"
+        description="Welcome to the Job Finder website"
+        author="Your Name"
+        keywords="jobs, careers, employment"
+        thumbnail="https://example.com/thumbnail.jpg"
+        url="https://example.com/"
+        type="website"
+      />
       <HomePage categories={categories} isLoading={status === "loading"} />
     </>
   );

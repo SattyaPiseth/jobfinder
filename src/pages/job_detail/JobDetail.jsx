@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJobById, selectJobById } from "../../redux/jobs/jobsSlice";
 import JobDetailComponent from "../../Components/card/JobDetailcomponent";
+import Metadata from "../../lib/Metadata";
+
 
 const JobDetail = () => {
   const { id } = useParams();
@@ -17,7 +19,18 @@ const JobDetail = () => {
   }, [dispatch, id]);
 
   return (
-    <div>{job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}</div>
+    <>
+      <Metadata
+        title={`Job Details - ${id}`}
+        description={`Details of job ${id}`}
+        author="Your Name"
+        keywords="jobs, careers, employment"
+        thumbnail="https://example.com/thumbnail.jpg"
+        url={`https://example.com/jobs/${id}`}
+        type="website"
+      />
+      {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}
+    </>
   );
 };
 

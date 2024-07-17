@@ -24,7 +24,14 @@ const HeroSectionComponent = ({ isLoading }) => {
                     <span className="font-bold text-slate-800 dark:text-slate-200 block">Discover more than</span>
                     <span className="font-bold text-blue-800 dark:text-blue-400 block">5000+ Jobs</span>
                   </h1>
-                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d655f199c80b77e13498ccbdbb457b371b5e7da0adeaf1a1ed99dee40011475d?apiKey=ff00f11844934b2d9618929d5184b9ad&" alt="Job search illustration" className="mt-7 w-full md:w-[455px] aspect-[11.11]" />
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/d655f199c80b77e13498ccbdbb457b371b5e7da0adeaf1a1ed99dee40011475d?apiKey=ff00f11844934b2d9618929d5184b9ad&"
+                    alt="Job search illustration"
+                    className="mt-7 w-full md:w-[455px] aspect-[11.11]"
+                    width="455"
+                    height="455"
+                  />
                   <p className="mt-1.5 text-2xl leading-10 text-slate-600 dark:text-slate-300 text-left">Great platform for the job seeker that searching for new career heights and passionate about startups.</p>
                 </header>
               )}
@@ -42,7 +49,14 @@ const HeroSectionComponent = ({ isLoading }) => {
               {isLoading ? (
                 <Skeleton height={500} width={500} className="animate-pulse" />
               ) : (
-                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/7620bd35db1e99b287d0833a4e21720c284eae51b18eac7bbdab11c40b01bc31?apiKey=391ff68a63584b0181b4aa51e20262f0&" alt="Job seeker illustration" className="w-full h-auto md:max-w-full" />
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/7620bd35db1e99b287d0833a4e21720c284eae51b18eac7bbdab11c40b01bc31?apiKey=391ff68a63584b0181b4aa51e20262f0&"
+                  alt="Job seeker illustration"
+                  className="w-full h-auto md:max-w-full"
+                  width="500"
+                  height="500"
+                />
               )}
             </aside>
           </div>
