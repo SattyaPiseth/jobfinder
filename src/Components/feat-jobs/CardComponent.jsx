@@ -24,7 +24,7 @@ export function CardComponent({ job, isLoading }) {
     <article data-aos="fade-up">
       <Link to={`/jobs/${job.id}`}>
         <div className="flex flex-col p-6 text-base leading-6 bg-white border border-solid border-gray-200 rounded-lg shadow-md max-w-xs mx-auto">
-          <header className="flex gap-5 justify-between items-center text-indigo-600">
+          <div className="flex gap-5 justify-between items-center text-indigo-600">
             <img
               loading="lazy"
               src={job.thumbnail}
@@ -44,7 +44,7 @@ export function CardComponent({ job, isLoading }) {
           </div>
           <div className="mt-4 text-gray-500 text-start leading-relaxed line-clamp-2">
             {job.description}
-          </p>
+          </div>
           <div className="flex flex-wrap gap-2 mt-4 text-sm font-semibold justify-center">
             <button className="w-full justify-center p-2 px-8 text-white bg-blue-800 rounded-3xl border-2 border-blue-800 border-solid max-md:px-5">
               Detail
