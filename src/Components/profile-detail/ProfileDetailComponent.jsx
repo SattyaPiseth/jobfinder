@@ -2,6 +2,7 @@ import React from "react";
 import { FaEdit, FaClock } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
+import PersonalInformationComponent from "./PersonalInformationComponent";
 
 const ProfileDetailComponent = ({
   username,
@@ -9,10 +10,12 @@ const ProfileDetailComponent = ({
   address,
   bio,
   phone_num,
+  gender,
   created_at,
   avatar,
   cover,
 }) => {
+  console.log("profile username: ", username);
   return (
     <div>
       <section className="flex flex-col my-20">
@@ -20,9 +23,9 @@ const ProfileDetailComponent = ({
           User Profile
         </h1> */}
         <div className="w-full max-md:max-w-full">
-          <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+          <div className="flex gap-5 max-md:flex-col max-md:mt-2 max-lg:mt-8 max-md:gap-0">
             <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
-              <article className="flex flex-col grow pb-3.5 w-full bg-gray-50 rounded-lg max-md:mt-3 max-md:max-w-full">
+              <article className="flex flex-col grow pb-3.5 w-full bg-gray-50 rounded-lg max-md:max-w-full">
                 <div className="flex relative flex-col pt-2.5 pr-3 pl-5 w-full min-h-[127px] max-md:pl-5 max-md:max-w-full">
                   <div>
                     <img
@@ -41,7 +44,7 @@ const ProfileDetailComponent = ({
                     loading="lazy"
                     src={
                       avatar ||
-                      "https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/449477760_3586716934973920_8504040381177330817_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGmOimc66FuBKIkdaXenR8UbBvoWt64ACFsG-ha3rgAIT6kBl-fELq8SKwJNzOM5zm1UUR4bc1dMNQaKrumdVIG&_nc_ohc=g3X-ZQto3isQ7kNvgHgqhM1&_nc_ht=scontent.fpnh10-1.fna&oh=00_AYBjTnDP0OE1vIqYQBaIhUBLY7IQzFkbx4V6HxpYAt_1lQ&oe=669AC143"
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNL_ZnOTpXSvhf1UaK7beHey2BX42U6solRA&s"
                     }
                     alt="User profile picture"
                     className="z-10 mt-11 -mb-10 rounded-lg  max-w-full aspect-[1.03] w-[100px] max-md:mt-8 max-md:mb-2.5"
@@ -60,14 +63,14 @@ const ProfileDetailComponent = ({
                 </div>
                 <div className="flex gap-5 justify-between items-end gap-2 mr-5 ml-5 text-base max-md:flex-wrap max-md:mr-2.5 max-md:mt-3 max-md:max-w-full">
                   <div className="flex flex-col mt-3">
-                    <div className="flex gap-3 text-black leading-[175%]">
+                    <div className="flex gap-2 text-black leading-[175%]">
                       <IoHome className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
 
                       <p className="flex-auto text-left my-auto max-md:text-sm">
                         {address || "No location"}
                       </p>
                     </div>
-                    <div className="flex mt-1 gap-3 text-black leading-[175%]">
+                    <div className="flex mt-1 gap-2 text-black leading-[175%]">
                       <FaClock className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
                       <p className="flex-auto text-left my-auto max-md:text-sm">
                         {created_at || "No date joined"}
@@ -75,9 +78,6 @@ const ProfileDetailComponent = ({
                     </div>
                   </div>
                   <div className="flex gap-2 text-white whitespace-nowrap max-md:-mt-2">
-                    <button className="justify-center px-2.5 py-1.5 bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:text-sm">
-                      Save
-                    </button>
                     <button className="justify-center px-2.5 py-1.5 bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:py-[5px] max-md:text-sm">
                       Edit profile
                     </button>
@@ -93,7 +93,7 @@ const ProfileDetailComponent = ({
                     <FaEdit className="fill-gray-700 max-md:w-[16px]" />
                   </div>
                 </div>
-                <p className="self-start mt-4 ml-0.5 text-left text-lg font-medium text-neutral-500 max-md:mt-2 max-md:text-sm max-md:max-w-full">
+                <p className="self-start mt-4 ml-0.5 text-left text-md font-medium text-neutral-500 max-md:mt-2 max-md:text-sm max-md:max-w-full">
                   {bio || "No bio"}
                 </p>
               </article>
@@ -103,59 +103,13 @@ const ProfileDetailComponent = ({
         <div className="mt-5 w-full max-md:max-w-full">
           <div className="flex gap-5 max-md:flex-col max-md:gap-0">
             <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
-              <form className="flex flex-col grow px-6 py-5 w-full text-base font-medium text-black bg-gray-50 rounded-lg max-md:px-5 max-md:mt-2 max-md:max-w-full">
-                <h3 className="text-xl text-left font-semibold max-md:text-sm max-md:max-w-full">
-                  PERSONAL INFORMATION
-                </h3>
-                <label
-                  for="username"
-                  className="mt-6 text-left max-md:text-sm max-md:max-w-full"
-                >
-                  Username
-                </label>
-                <input
-                  id="username"
-                  type="text"
-                  value={username}
-                  className="justify-center items-start text-gray-500 px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:py-2 max-md:text-sm max-md:max-w-full"
-                />
-                <label
-                  for="email"
-                  className="mt-6 text-left max-md:text-sm max-md:max-w-full"
-                >
-                  Email address
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  className="justify-center items-start text-gray-500 px-3 py-4 mt-3 whitespace-nowrap rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:text-sm max-md:py-2 max-md:max-w-full"
-                />
-                <label
-                  for="phone"
-                  className="mt-6 text-left max-md:text-sm max-md:max-w-full"
-                >
-                  Phone Number
-                </label>
-                <input
-                  id="phone"
-                  type="tel"
-                  value={phone_num || "+855 "}
-                  className="justify-center items-start text-gray-500 px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:py-2 max-md:text-sm max-md:max-w-full"
-                />
-                <label
-                  for="role"
-                  className="mt-6 text-left max-md:text-sm max-md:max-w-full"
-                >
-                  Role
-                </label>
-                <input
-                  id="role"
-                  type="text"
-                  value="Senior Product Manager"
-                  className="justify-center items-start text-gray-500 p-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:py-2 max-md:text-sm max-md:max-w-full"
-                />
-              </form>
+            <PersonalInformationComponent 
+            user_name={username}
+            gender={gender}
+            email={email}
+            phone_num={phone_num}
+            address={address}
+            />
             </div>
             <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
               <div className="flex flex-col grow max-md:mt-5 max-md:max-w-full">

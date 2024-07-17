@@ -80,7 +80,7 @@ export default function AboutUsComponent() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-white max-sm:mt-16 max-lg:mt-28">
+    <div className="flex flex-col items-center bg-white max-sm:mt-8 max-lg:mt-16">
       <div
         className="mt-16 text-3xl font-bold font-suwannaphum text-center text-primary-800"
         data-aos="zoom-in"
