@@ -38,7 +38,7 @@ const JobsPage = () => {
         author="Your Name"
         keywords="jobs, careers, employment"
         thumbnail="https://ecommerce.techinsights.guru/file/bc7612a9-2dbe-44b4-8b57-1143d2243442.jpg"
-        url="https://www.notion.so"
+        url="https://jobquick.techinsights.guru/"
         type="website"
       />
       <header className="mt-20">
