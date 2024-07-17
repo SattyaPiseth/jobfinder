@@ -12,22 +12,6 @@ import { fetchProfile } from "../redux/features/user/userSlice";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-// Helper to load CSS asynchronously
-function loadCSS(href, before, media) {
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = href;
-  link.media = "only x";
-  if (before) {
-    before.parentNode.insertBefore(link, before);
-  } else {
-    document.head.appendChild(link);
-  }
-  requestAnimationFrame(() => {
-    link.media = media || "all";
-  });
-}
-
 const MenuList = ({ isLoading, menuList, fontClass, isOpen, setIsOpen }) => (
   <div
     className={`xl:flex justify-center space-x-10 ${
@@ -90,11 +74,6 @@ export default function NavbarComponent() {
       dispatch(fetchProfile(accessToken));
     }
   }, [accessToken, dispatch]);
-
-  useEffect(() => {
-    // Defer loading of non-critical CSS
-    loadCSS("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css", document.querySelector("link[rel='preconnect']"));
-  }, []);
 
   const isLoading = localLoading || globalLoading;
   const menuList = [
