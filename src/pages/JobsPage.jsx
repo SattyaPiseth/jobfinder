@@ -51,7 +51,7 @@ const JobsPage = () => {
         author="Your Name"
         keywords="jobs, careers, employment"
         thumbnail="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
-        url="https://jobquick.techinsights.guru/jobs"
+        url="https://jobquick.techinsights.guru/jobs" 
         type="website"
       />
       <header className="mt-20">

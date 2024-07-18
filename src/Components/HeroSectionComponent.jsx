@@ -14,23 +14,25 @@ const HeroSectionComponent = ({ title, subtitle, buttonText }) => {
   }, []);
 
   return (
-    <section className="flex flex-col pb-20 bg-white dark:bg-gray-900" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+    <section className="flex flex-col pb-20 bg-white dark:bg-gray-900 hero-section" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
       <div className="flex justify-center items-center px-4 py-10 bg-white dark:bg-gray-900 md:px-16">
         <div className="w-full max-w-[1031px] mt-12 md:mt-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="flex flex-col">
-              <header className="flex flex-col mt-4 md:mt-3.5 space-y-4">
+              <header className="flex flex-col mt-4 md:mt-3.5 space-y-4 hero-header">
                 <h1 className="text-4xl md:text-7xl font-semibold text-blue-800 dark:text-blue-400 leading-tight md:leading-[79px] text-left">
                   <span className="font-bold text-slate-800 dark:text-slate-200 block">{title.line1}</span>
                   <span className="font-bold text-blue-800 dark:text-blue-400 block">{title.line2}</span>
                 </h1>
                 <img
-                  loading="lazy"
+                  loading="eager"
                   srcSet={`${heroImage1} 320w, ${heroImage1} 480w, ${heroImage1} 800w`}
                   sizes="(max-width: 320px) 280px, (max-width: 480px) 440px, 800px"
                   src={heroImage1}
                   alt="Job search illustration"
                   className="mt-7 w-full md:w-[455px] aspect-[11.11]"
+                  width="500"
+                  height="500"
                 />
                 <p className="mt-1.5 text-2xl leading-10 text-slate-600 dark:text-slate-300 text-left">{subtitle}</p>
               </header>
@@ -46,6 +48,8 @@ const HeroSectionComponent = ({ title, subtitle, buttonText }) => {
                 src={heroImage2}
                 alt="Job seeker illustration"
                 className="w-full h-auto md:max-w-full"
+                width="500"
+                height="500"
               />
             </aside>
           </div>
