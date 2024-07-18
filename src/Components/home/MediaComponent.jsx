@@ -16,34 +16,34 @@ const MediaComponent = () => {
 
   return (
     <section
-      className="flex justify-center items-center my-16 text-5xl text-black max-md:px-5 max-md:text-xl custom-height"
+      className="flex justify-center items-center my-16 text-black custom-height"
       data-aos="flip-left"
       data-aos-easing="ease-out-cubic"
       data-aos-duration="1000"
     >
-      <div className="flex flex-col items-center max-w-[1070px] max-md:mt-10 max-md:max-w-full max-md:text-xl">
+      <div className="flex flex-col items-center max-w-[1070px] px-5 text-5xl max-md:text-xl">
         {isLoading ? (
           <>
-            <h1 className="pb-2 max-md:max-w-full max-md:text-2xl">
-              <Skeleton height={40} width={200} />
+            <h1 className="pb-2 w-full max-md:text-2xl">
+              <Skeleton height={40} width="100%" />
             </h1>
-            <div className="z-10 max-w-full aspect-[1.2] w-[300px] max-md:mt-10">
-              <Skeleton height={240} width={300} />
+            <div className="z-10 w-[300px] aspect-[1.2] max-md:mt-10">
+              <Skeleton height={240} width="100%" />
             </div>
-            <h2 className="self-stretch max-md:max-w-full max-md:text-xl">
-              <Skeleton height={30} width={250} />
+            <h2 className="self-stretch w-full max-md:text-xl">
+              <Skeleton height={30} width="100%" />
             </h2>
           </>
         ) : (
           <>
-            <h1 className="pb-2 max-md:max-w-full max-md:text-2xl">OOPs !!</h1>
+            <h1 className="pb-2 w-full max-md:text-2xl">OOPs !!</h1>
             <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/0ef7aac1eb8ae812f12af8a2c1f4dfd7a6fd524cfd95af281632236bd2ee02e4?apiKey=ff00f11844934b2d9618929d5184b9ad&"
               alt="404 Error Illustration"
-              className="z-10 max-w-full aspect-[1.2] w-[300px] max-md:mt-10"
+              className="z-10 w-[300px] aspect-[1.2] max-md:mt-10"
             />
-            <h2 className="self-stretch max-md:max-w-full max-md:text-xl">
+            <h2 className="self-stretch w-full max-md:text-xl">
               404 - Page Not Found
             </h2>
           </>
