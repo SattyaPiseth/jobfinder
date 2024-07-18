@@ -32,6 +32,9 @@ export default defineConfig(({ mode }) => {
       cssCodeSplit: true, // Enable CSS code splitting
     },
     server: {
+      headers: {
+        'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; font-src 'self'; frame-src 'none';"
+      },
       port: 3000,
     },
   };
