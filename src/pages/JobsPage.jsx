@@ -37,7 +37,7 @@ const JobsPage = () => {
         description="Browse through the latest job listings and find your perfect job."
         author="Your Name"
         keywords="jobs, careers, employment"
-        thumbnail="https://ecommerce.techinsights.guru/file/bc7612a9-2dbe-44b4-8b57-1143d2243442.jpg"
+        thumbnail="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
         url="https://jobquick.techinsights.guru/"
         type="website"
       />

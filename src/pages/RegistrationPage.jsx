@@ -11,7 +11,7 @@ const RegistrationPage = () => {
         author="Your Name"
         keywords="register, sign up, create account"
         thumbnail="https://cdn.builder.io/api/v1/image/assets/TEMP/dfc88a762229238be0ba236bdc53e7231de668be5613407739ad520eb7f8a51b?apiKey=ad7733614e794f228aa68fbfd330edec&"
-        url="https://example.com/register"
+        url="https://jobquick.techinsights.guru/register"
         type="website"
       />
       <main

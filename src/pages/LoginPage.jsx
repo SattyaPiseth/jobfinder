@@ -11,7 +11,7 @@ function LoginPage() {
         author="Your Name"
         keywords="login, access, account"
         thumbnail="https://cdn.builder.io/api/v1/image/assets/TEMP/336b00db8b95923de0a609ff638f4f11f286aa5d6f7453d35cdf68e5158f1387?apiKey=ad7733614e794f228aa68fbfd330edec&"
-        url="https://example.com/login"
+        url="https://jobquick.techinsights.guru/login"
         type="website"
       />
     <main
