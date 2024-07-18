@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getProfile, login, register, resendOtp, updateProfile, verifyOtpCode } from "../../api/userApi";
+import { getProfile, login, register, requestPasswordReset, resendOtp, updateProfile, verifyOtpCode } from "../../api/userApi";
 
 // Helper function to extract error message
 const getErrorMessage = (error) => {
@@ -87,6 +87,19 @@ export const resendOtpCode = createAsyncThunk(
   async (email, { rejectWithValue }) => {
     try {
       const response = await resendOtp(email);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
+// New async thunk for password reset request
+export const requestPasswordResetThunk = createAsyncThunk(
+  "user/requestPasswordReset",
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = await requestPasswordReset(email);
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -210,6 +223,19 @@ const userSlice = createSlice({
         console.log("OTP resent successfully");
       })
       .addCase(resendOtpCode.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+       // Handle requestPasswordResetThunk states
+       .addCase(requestPasswordResetThunk.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(requestPasswordResetThunk.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isPasswordResetRequested = true; // Update state on success
+        state.error = null;
+      })
+      .addCase(requestPasswordResetThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

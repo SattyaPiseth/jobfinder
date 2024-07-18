@@ -9,7 +9,14 @@ import useFontClass from "../../common/useFontClass";
 import { useTranslation } from "react-i18next";
 import { resendOtp } from "../../redux/api/userApi";
 
-const EmailVerificationInput = () => {
+const EmailVerificationInput = ({
+  email,
+  verifyAction,
+  resendAction,
+  successRedirect = "/",
+  title,
+  description,
+}) => {
   const { fontClass } = useFontClass();
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -35,7 +42,7 @@ const EmailVerificationInput = () => {
             return prevCountdown - 1;
           } else {
             clearInterval(countdownInterval);
-            navigate('/');
+            navigate(successRedirect);
             return 0;
           }
         });
@@ -43,7 +50,7 @@ const EmailVerificationInput = () => {
 
       return () => clearInterval(countdownInterval);
     }
-  }, [showSuccess, navigate]);
+  }, [showSuccess, navigate, successRedirect]);
 
   const initialValues = {
     otp_code: ["", "", "", "", "", ""],
@@ -55,24 +62,40 @@ const EmailVerificationInput = () => {
       .length(6, "OTP must be 6 digits"),
   });
 
+  // const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
+  //   try {
+  //     const otp = values.otp_code.join("");
+  //     await dispatch(
+  //       verifyOtp({ email: localStorage.getItem("email"), otp_code: otp })
+  //     ).unwrap();
+  //     setShowSuccess(true);
+  //     setSuccessCountdown(5);
+  //   } catch (error) {
+  //     setFieldError("otp_code", t("verification.otp_code.failed"));
+  //   } finally {
+  //     setSubmitting(false);
+  //   }
+  // };
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
     try {
       const otp = values.otp_code.join("");
-      await dispatch(
-        verifyOtp({ email: localStorage.getItem("email"), otp_code: otp })
-      ).unwrap();
+      await dispatch(verifyAction({ email, otp_code: otp })).unwrap();
       setShowSuccess(true);
       setSuccessCountdown(5);
     } catch (error) {
-      setFieldError("otp_code", t("verification.otp_code.failed"));
+      setFieldError("otp_code", "Verification failed"); // Adjust error handling as necessary
     } finally {
       setSubmitting(false);
     }
   };
 
+  // const handleResendCode = () => {
+  //   setTimer(30);
+  //   dispatch(resendOtp(localStorage.getItem('email')));
+  // };
   const handleResendCode = () => {
     setTimer(30);
-    dispatch(resendOtp(localStorage.getItem('email')));
+    dispatch(resendAction(email));
   };
 
   const handlePaste = (e, setFieldValue) => {
@@ -85,11 +108,13 @@ const EmailVerificationInput = () => {
   };
 
   return (
-    <div className={`max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl w-full mx-auto bg-white rounded-lg shadow-lg p-6 sm:p-8 ${fontClass}`}>
+    <div
+      className={`max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl w-full mx-auto bg-white rounded-lg shadow-lg p-6 sm:p-8 ${fontClass}`}
+    >
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-primary-700">
-        {t("verification.title")}
+        {title || t("verification.title")}
       </h2>
-      <p className="text-center text-gray-600 mb-6">{t("verification.desc")}</p>
+      <p className="text-center text-gray-600 mb-6">{ description || t("verification.desc")}</p>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -157,7 +182,9 @@ const EmailVerificationInput = () => {
               disabled={isSubmitting || isLoading}
               className={`w-full h-12 sm:h-14 text-lg sm:text-xl bg-primary-700 hover:bg-primary-750 rounded-lg text-white ${fontClass}`}
             >
-              {isLoading ? t("verification.verifying") : t("verification.verify")}
+              {isLoading
+                ? t("verification.verifying")
+                : t("verification.verify")}
             </button>
           </Form>
         )}

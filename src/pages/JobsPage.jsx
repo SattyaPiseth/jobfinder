@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import { Pagination } from "../Components/card/Pagination";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useCallback } from 'react';
+import { Pagination } from '../Components/card/Pagination';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchJobs,
   selectCurrentPage,
   selectPageSize,
   selectJobs,
   selectTotalJobs,
-  setPage,
-} from "../redux/jobs/jobsSlice";
-import { CardComponent } from "../Components/feat-jobs/CardComponent";
+} from '../redux/jobs/jobsSlice';
+import { CardComponent } from '../Components/feat-jobs/CardComponent';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Metadata from "../lib/Metadata";
+import Metadata from '../lib/Metadata';
+import useThrottleScroll from '../common/useThrottleScroll'; // Import the custom hook
 
 const JobsPage = () => {
   const dispatch = useDispatch();
@@ -29,6 +29,19 @@ const JobsPage = () => {
   useEffect(() => {
     AOS.refresh(); // Refresh AOS animations when jobs change
   }, [jobs]);
+
+  const saveScrollPosition = useCallback(() => {
+    localStorage.setItem('scrollPosition', window.scrollY);
+  }, []);
+
+  useThrottleScroll(saveScrollPosition, 200);
+
+  useEffect(() => {
+    const savedPosition = localStorage.getItem('scrollPosition');
+    if (savedPosition) {
+      window.scrollTo(0, parseInt(savedPosition, 10));
+    }
+  }, []);
 
   return (
     <section>
