@@ -10,8 +10,8 @@ import {
   setPage,
 } from "../redux/jobs/jobsSlice";
 import { CardComponent } from "../Components/feat-jobs/CardComponent";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Metadata from "../lib/Metadata";
 
 const JobsPage = () => {
@@ -33,12 +33,12 @@ const JobsPage = () => {
   return (
     <section>
       <Metadata
-        title="Job Listings - Job Finder"
-        description="Browse through the latest job listings and find your perfect job."
+        title="Jobs"
+        description="Browse available jobs"
         author="Your Name"
         keywords="jobs, careers, employment"
-        thumbnail="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
-        url="https://jobquick.techinsights.guru/"
+        thumbnail="https://example.com/thumbnail.jpg"
+        url="https://example.com/jobs"
         type="website"
       />
       <header className="mt-20">

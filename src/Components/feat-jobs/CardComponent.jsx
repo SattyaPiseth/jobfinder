@@ -23,10 +23,7 @@ export function CardComponent({ job, isLoading }) {
   return (
     <article data-aos="fade-up">
       <Link to={`/jobs/${job.id}`}>
-        <div
-          cl
-          assName="flex flex-col p-6 text-base leading-6 bg-white border border-solid border-gray-200 rounded-lg shadow-md max-w-xs mx-auto"
-        >
+        <div className="flex flex-col p-6 text-base leading-6 bg-white border border-solid border-gray-200 rounded-lg shadow-md max-w-xs mx-auto">
           <div className="flex gap-5 justify-between items-center text-indigo-600">
             <img
               loading="lazy"
