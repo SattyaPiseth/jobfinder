@@ -1,6 +1,7 @@
 import React from "react";
 
 const JobDetailComponent = ({ detail }) => {
+  
   return (
     <div className="mt-20 flex flex-col text-left">
       <div className="flex flex-col md:flex-row gap-5 items-center">
