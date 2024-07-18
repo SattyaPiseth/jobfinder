@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button } from "flowbite-react";
 import { NavLink } from "react-router-dom";
 import PropTypes from 'prop-types';
-import heroImage1 from '../assets/images/hero-section.png';
+import heroImage1 from '../assets/images/hero-section.webp';
 import heroImage2 from '../assets/images/react.svg';
 
 const HeroSectionComponent = ({ title, subtitle, buttonText }) => {
@@ -42,7 +42,7 @@ const HeroSectionComponent = ({ title, subtitle, buttonText }) => {
             </div>
             <aside className="flex flex-col justify-center mt-20 md:mt-0">
               <img
-                loading="eager"
+                loading="lazy"
                 srcSet={`${heroImage2} 320w, ${heroImage2} 480w, ${heroImage2} 800w`}
                 sizes="(max-width: 320px) 280px, (max-width: 480px) 440px, 800px"
                 src={heroImage2}
