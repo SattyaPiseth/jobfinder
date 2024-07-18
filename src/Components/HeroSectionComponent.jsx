@@ -27,7 +27,7 @@ const HeroSectionComponent = ({ isLoading }) => {
               </NavLink>
             </div>
             <aside className="flex flex-col justify-center mt-20 md:mt-0">
-              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/7620bd35db1e99b287d0833a4e21720c284eae51b18eac7bbdab11c40b01bc31?apiKey=391ff68a63584b0181b4aa51e20262f0&" alt="Job seeker illustration" className="w-full h-auto md:max-w-full" />
+              <img loading="lazy" src="/src/assets/images/hero-section.png" alt="Job seeker illustration" className="w-full h-auto md:max-w-full" />
             </aside>
           </div>
         </div>
