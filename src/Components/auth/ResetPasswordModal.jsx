@@ -46,7 +46,7 @@ const ResetPasswordModal = ({ isOpen, onClose }) => {
       data-aos="zoom-up"
     >
       <Modal.Header>
-        <h2 className="text-2xl text-primary-700 sm:text-3xl font-semibold text-left">{t('resetPasswordForm.title')}</h2>
+        <h2 className={`${fontClass}text-2xl text-primary-700 sm:text-3xl font-semibold text-left`}>{t('resetPasswordForm.title')}</h2>
       </Modal.Header>
       <Modal.Body>
         <Formik
