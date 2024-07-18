@@ -42,7 +42,7 @@ const HeroSectionComponent = ({ title, subtitle, buttonText }) => {
             </div>
             <aside className="flex flex-col justify-center mt-20 md:mt-0">
               <img
-                loading="lazy"
+                loading="eager"
                 srcSet={`${heroImage2} 320w, ${heroImage2} 480w, ${heroImage2} 800w`}
                 sizes="(max-width: 320px) 280px, (max-width: 480px) 440px, 800px"
                 src={heroImage2}
