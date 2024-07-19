@@ -42,7 +42,7 @@ const JobDetail = () => {
         type="article"
       />
       {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}
-    </div>
+    </>
   );
 };
 
