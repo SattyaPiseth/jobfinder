@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import * as Yup from "yup";
-import { TextInput, Alert, Label } from "flowbite-react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { loginUser } from "../../redux/features/user/userSlice";
-import useFontClass from "../../common/useFontClass";
-import { useTranslation } from "react-i18next";
+// LoginForm.jsx
+import React, { useEffect, useState } from 'react';
+import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
+import { TextInput, Alert, Label } from 'flowbite-react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { loginUser } from '../../redux/features/user/userSlice';
+import { useTranslation } from 'react-i18next';
+import useFontClass from '../../common/useFontClass';
+import ResetPasswordModal from './ResetPasswordModal'; // Adjust the path as needed
+import useModal from '../../common/useModal'; // Import the custom hook
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -16,30 +19,29 @@ const LoginForm = () => {
   const { isLoading, error, isAuthenticated } = useSelector(
     (state) => state.user
   );
-  const [message, setMessage] = useState("");
-  console.log(message)
+  const [message, setMessage] = useState('');
+  const { isModalOpen, openModal, closeModal } = useModal(); // Use the custom hook
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email(t("loginForm.validation.invalid"))
-        .required(t("loginForm.validation.email")),
-      password: Yup.string().required(t("loginForm.validation.password")),
+        .email(t('loginForm.validation.invalid'))
+        .required(t('loginForm.validation.email')),
+      password: Yup.string().required(t('loginForm.validation.password')),
     }),
     onSubmit: (values) => {
       dispatch(loginUser(values));
-      console.log('values',values)
     },
   });
 
   useEffect(() => {
     if (isAuthenticated) {
       setMessage(`ការចូលប្រើបានជោគជ័យ! សូមស្វាគមន៍ ${formik.values.email}!`);
-      navigate("/profile");
+      navigate('/profile');
     } else if (error) {
       setMessage(error);
     }
@@ -52,16 +54,16 @@ const LoginForm = () => {
       <h2
         className={`${fontClass} text-2xl sm:text-3xl font-semibold mb-6 sm:mb-8 text-left text-primary-700`}
       >
-        {t("loginForm.title")}
+        {t('loginForm.title')}
       </h2>
       {message && (
         <Alert
-          color={error ? "failure" : "success"}
+          color={error ? 'failure' : 'success'}
           className={`${fontClass} text-base sm:text-lg mb-4`}
           data-aos="fade-up"
           data-aos-anchor-placement="top-center"
         >
-          {t("loginForm.error")}
+          {t('loginForm.error')}
         </Alert>
       )}
       <form
@@ -71,7 +73,7 @@ const LoginForm = () => {
         <div className="text-left">
           <Label
             htmlFor="email"
-            value={t("loginForm.labels.email")}
+            value={t('loginForm.labels.email')}
             className={`${fontClass} text-base mb-2`}
           />
           <TextInput
@@ -83,7 +85,7 @@ const LoginForm = () => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
             color={
-              formik.touched.email && formik.errors.email ? "failure" : "gray"
+              formik.touched.email && formik.errors.email ? 'failure' : 'gray'
             }
             helperText={
               formik.touched.email && formik.errors.email && formik.errors.email
@@ -94,7 +96,7 @@ const LoginForm = () => {
         <div className="text-left">
           <Label
             htmlFor="password"
-            value={t("loginForm.labels.password")}
+            value={t('loginForm.labels.password')}
             className={`${fontClass} text-base mb-2`}
           />
           <TextInput
@@ -107,8 +109,8 @@ const LoginForm = () => {
             value={formik.values.password}
             color={
               formik.touched.password && formik.errors.password
-                ? "failure"
-                : "gray"
+                ? 'failure'
+                : 'gray'
             }
             helperText={
               formik.touched.password &&
@@ -119,12 +121,13 @@ const LoginForm = () => {
           />
         </div>
         <div className="flex justify-end">
-          <a
-            href="#"
+          <button
+            type="button"
             className={`${fontClass} text-base sm:text-lg text-blue-600 hover:underline`}
+            onClick={openModal}  // Use the custom hook to open the modal
           >
-            {t("loginForm.labels.forgotPassword")}
-          </a>
+            {t('loginForm.labels.forgotPassword')}
+          </button>
         </div>
         <button
           type="submit"
@@ -132,21 +135,22 @@ const LoginForm = () => {
           className={`${fontClass} w-full bg-primary-700 text-white font-medium rounded-lg py-3 hover:bg-primary-750 disabled:opacity-50`}
         >
           {isLoading
-            ? t("loginForm.labels.logining")
-            : t("loginForm.labels.login")}
+            ? t('loginForm.labels.logining')
+            : t('loginForm.labels.login')}
         </button>
       </form>
       <p
         className={`${fontClass} mt-6 sm:mt-8 text-base sm:text-lg text-center text-gray-600`}
       >
-        {t("loginForm.labels.unauthorized")}{" "}
+        {t('loginForm.labels.unauthorized')}{' '}
         <NavLink
-          to={"/register"}
+          to={'/register'}
           className="text-blue-600 hover:underline font-medium"
         >
-          {t("loginForm.labels.signUp")}
+          {t('loginForm.labels.signUp')}
         </NavLink>
       </p>
+      <ResetPasswordModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 };

@@ -1,9 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "./api";
 
-// const API_URL = import.meta.env.VITE_API_URL; // Adjust this URL to your actual API endpoint
-// console.log('API_URL',API_URL)
-
 export const register = (userData) => {
   return axios.post(`${BASE_URL}register/`, userData);
 };
@@ -34,4 +31,9 @@ export const updateProfile = (token, profileData) => {
 
 export const resendOtp = (email) => {
   return axios.post(`${BASE_URL}resend-otp/`, { email });
+};
+ 
+// Add this to your userApi.js
+export const requestPasswordReset = (email) => {
+  return axios.post(`${BASE_URL}password-reset-request/`, { email });
 };

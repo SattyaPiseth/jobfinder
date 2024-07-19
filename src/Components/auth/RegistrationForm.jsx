@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// RegistrationForm.jsx
+import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { registerUser, setIsAuthenticatedFalse } from '../../redux/features/user/userSlice';
+import { NavLink } from 'react-router-dom';
 import InputField from '../../common/InputField';
 import useFontClass from '../../common/useFontClass';
+import useRegistrationForm from '../../common/useRegistrationForm'; // Import the custom hook
 
 const RegistrationForm = () => {
   const { fontClass } = useFontClass();
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { isLoading, error, isAuthenticated } = useSelector((state) => state.user);
 
   const initialValues = {
     username: '',
@@ -27,7 +24,7 @@ const RegistrationForm = () => {
       .required(t('registrationForm.validation.username'))
       .min(3, t('registrationForm.validation.min')),
     email: Yup.string()
-      .email(t('registrationForm.email'))
+      .email(t('registrationForm.validation.email'))
       .required(t('registrationForm.validation.email')),
     password: Yup.string()
       .matches(
@@ -40,22 +37,14 @@ const RegistrationForm = () => {
       .required(t('registrationForm.validation.confirmPassword')),
   });
 
-  const handleSubmit = (values) => {
-    dispatch(registerUser(values));
-  };
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(setIsAuthenticatedFalse());
-      navigate('/verifyCode');
-    }
-  }, [isAuthenticated, navigate]);
-
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit}
+      onSubmit={(values, formik) => {
+        const { handleSubmit } = useRegistrationForm(formik); // Use the custom hook
+        handleSubmit(values);
+      }}
     >
       {(formik) => (
         <Form className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl`}>

@@ -1,8 +1,10 @@
 import React from "react";
-import Metadata from '../lib/Metadata';
+import Metadata from "../lib/Metadata";
 import EmailVerificationInput from "../Components/auth/VerifyEmailInput";
+import { resendOtpCode, verifyOtp } from "../redux/features/user/userSlice";
 
 const EmailVerification = () => {
+  const email = localStorage.getItem("email"); // Assume email is stored in localStorage after registration
   return (
     <>
       <Metadata
@@ -31,7 +33,12 @@ const EmailVerification = () => {
               />
             </div>
             <div className="flex items-center justify-center p-4 lg:p-0">
-              <EmailVerificationInput />
+              <EmailVerificationInput
+                email={email}
+                verifyAction={verifyOtp}
+                resendAction={resendOtpCode}
+                successRedirect="/"
+              />
             </div>
           </div>
         </div>
