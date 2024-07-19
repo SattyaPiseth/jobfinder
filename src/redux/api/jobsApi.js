@@ -4,35 +4,32 @@ import { BASE_URL } from "./api";
 export const getJobs = async (page, pageSize = 12) => {
   const jobsPerPage = 10; // Number of jobs per page returned by the API
   let jobs = [];
-  let currentPage = page;
+  let currentPage = Math.floor((pageSize * (page - 1)) / jobsPerPage) + 1;
+  let offset = (pageSize * (page - 1)) % jobsPerPage;
   let totalJobs = 0;
 
-  // Fetch data from multiple pages to get the required number of jobs
-  while (
-    jobs.length < pageSize &&
-    (jobs.length + jobsPerPage * (currentPage - page) < totalJobs ||
-      totalJobs === 0)
-  ) {
-    const response = await axios.get(`${BASE_URL}jobs/`, {
+  // Fetch the first page
+  const response1 = await axios.get(`${BASE_URL}jobs/`, {
+    params: {
+      page: currentPage,
+      pageSize: jobsPerPage,
+    },
+  });
+  const { results: results1, count } = response1.data;
+
+  jobs = jobs.concat(results1.slice(offset));
+  totalJobs = count;
+
+  if (jobs.length < pageSize && (currentPage * jobsPerPage < totalJobs)) {
+    // Fetch the next page to get additional jobs
+    const response2 = await axios.get(`${BASE_URL}jobs/`, {
       params: {
-        page: currentPage,
+        page: currentPage + 1,
         pageSize: jobsPerPage,
       },
     });
-
-    const { results, count } = response.data;
-
-    if (totalJobs === 0) {
-      totalJobs = count; // Set totalJobs on the first fetch
-    }
-
-    jobs = jobs.concat(results);
-
-    if (results.length < jobsPerPage) {
-      break; // No more jobs available
-    }
-
-    currentPage++;
+    const { results: results2 } = response2.data;
+    jobs = jobs.concat(results2);
   }
 
   // Return only the number of jobs needed to fill the page

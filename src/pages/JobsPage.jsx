@@ -10,8 +10,8 @@ import {
   setPage,
 } from "../redux/jobs/jobsSlice";
 import { CardComponent } from "../Components/feat-jobs/CardComponent";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Metadata from "../lib/Metadata";
 
 const JobsPage = () => {
