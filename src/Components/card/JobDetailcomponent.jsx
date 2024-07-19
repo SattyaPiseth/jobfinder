@@ -18,7 +18,7 @@ const JobDetailComponent = ({ detail }) => {
             <div className="text-lg leading-7 text-neutral-600 min-w-max">
               {detail?.company_name}
             </div>
-            <div className="flex items-center justify-center px-3 py-1 font-semibold text-white whitespace-nowrap bg-green-600 rounded">
+            <div className="flex items-center justify-center px-3 py-1 font-semibold text-white whitespace-nowrap bg-primary-800 rounded-lg">
               {detail?.job_type}
             </div>
             <div className="flex items-center justify-center px-3 py-1 whitespace-nowrap bg- rounded-[52px]">
@@ -27,7 +27,7 @@ const JobDetailComponent = ({ detail }) => {
           </div>
         </div>
       </div>
-      <div className="mt-8 w-full max-md:max-w-full">
+      <div className="mt-8 w-full max-md:max-w-full mb-10">
         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
           <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full">
             <div className="flex flex-col grow px-5 text-base leading-6 text-gray-500 max-md:mt-6 max-md:max-w-full">

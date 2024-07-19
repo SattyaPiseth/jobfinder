@@ -1,18 +1,19 @@
-import React, { useEffect, useCallback } from 'react';
-import { Pagination } from '../Components/card/Pagination';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useCallback } from "react";
+import { Pagination } from "../Components/card/Pagination";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchJobs,
   selectCurrentPage,
   selectPageSize,
   selectJobs,
   selectTotalJobs,
-} from '../redux/jobs/jobsSlice';
-import { CardComponent } from '../Components/feat-jobs/CardComponent';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import Metadata from '../lib/Metadata';
-import useThrottleScroll from '../common/useThrottleScroll'; // Import the custom hook
+} from "../redux/jobs/jobsSlice";
+import { CardComponent } from "../Components/feat-jobs/CardComponent";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Metadata from "../lib/Metadata";
+import useThrottleScroll from "../common/useThrottleScroll"; // Import the custom hook
+import SearchComponent from "../Components/home/SearchComponent";
 
 const JobsPage = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,13 @@ const JobsPage = () => {
   const pageSize = useSelector(selectPageSize);
   const totalJobs = useSelector(selectTotalJobs);
   const status = useSelector((state) => state.jobs.status);
+
+  // Define categories here (replace with actual data)
+  const categories = [
+    { id: 1, name: "Category 1" },
+    { id: 2, name: "Category 2" },
+    // Add more categories as needed
+  ];
 
   useEffect(() => {
     dispatch(fetchJobs({ page: currentPage, pageSize }));
@@ -31,13 +39,13 @@ const JobsPage = () => {
   }, [jobs]);
 
   const saveScrollPosition = useCallback(() => {
-    localStorage.setItem('scrollPosition', window.scrollY);
+    localStorage.setItem("scrollPosition", window.scrollY);
   }, []);
 
   useThrottleScroll(saveScrollPosition, 200);
 
   useEffect(() => {
-    const savedPosition = localStorage.getItem('scrollPosition');
+    const savedPosition = localStorage.getItem("scrollPosition");
     if (savedPosition) {
       window.scrollTo(0, parseInt(savedPosition, 10));
     }
@@ -59,6 +67,11 @@ const JobsPage = () => {
           Job Listing
         </h1>
       </header>
+      <SearchComponent
+        categories={categories}
+        isLoading={status === "loading"}
+      />
+
       {status === "loading" && (
         <div className="grid gap-5 mt-10 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {Array.from({ length: pageSize }).map((_, index) => (

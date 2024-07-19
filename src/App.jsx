@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useCallback } from "react";
 import {
   selectAllJobCategories,
   getJobCategoriesStatus,
   fetchJobCategories,
-} from './redux/features/category-job/categorySlice';
-import HomePage from './pages/HomePage';
-import './App.css';
-import Metadata from './lib/Metadata';
-import useThrottleScroll from './common/useThrottleScroll';
+} from "./redux/features/category-job/categorySlice";
+import HomePage from "./pages/HomePage";
+import "./App.css";
+import Metadata from "./lib/Metadata";
+import useThrottleScroll from "./common/useThrottleScroll";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,19 +17,19 @@ function App() {
   // const error = useSelector(getJobCategoriesError);
 
   useEffect(() => {
-    if (status === 'idle') {
+    if (status === "idle") {
       dispatch(fetchJobCategories());
     }
   }, [status, dispatch]);
 
   const saveScrollPosition = useCallback(() => {
-    localStorage.setItem('scrollPosition', window.scrollY);
+    localStorage.setItem("scrollPosition", window.scrollY);
   }, []);
 
   useThrottleScroll(saveScrollPosition, 200);
 
   useEffect(() => {
-    const savedPosition = localStorage.getItem('scrollPosition');
+    const savedPosition = localStorage.getItem("scrollPosition");
     if (savedPosition) {
       window.scrollTo(0, parseInt(savedPosition, 10));
     }
@@ -46,7 +46,7 @@ function App() {
         url="https://jobquick.techinsights.guru/"
         type="website"
       />
-      <HomePage categories={categories} isLoading={status === 'loading'} />
+      <HomePage categories={categories} isLoading={status === "loading"} />
     </>
   );
 }

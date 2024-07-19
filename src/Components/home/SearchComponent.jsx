@@ -32,7 +32,7 @@ const SearchComponent = ({ categories, isLoading }) => {
 
   return (
     <section
-      className="flex border-2 border-solid border-slate-200 rounded-lg justify-between pt-4 pb-4 mt-16 px-4 text-2xl leading-8 whitespace-nowrap text-slate-700 gap-4 max-md:flex-wrap max-md:mr-1.5"
+      className="flex border-2 border-solid border-slate-200 rounded-lg justify-between pt-4 pb-4 mt-10 px-4 text-2xl leading-8 whitespace-nowrap text-slate-700 gap-4 max-md:flex-wrap max-md:mr-1.5"
       data-aos="zoom-out-right"
     >
       {isLoading ? (

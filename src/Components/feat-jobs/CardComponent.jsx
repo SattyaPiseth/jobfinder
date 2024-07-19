@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SearchComponent from "../home/SearchComponent";
 
 export function CardComponent({ job, isLoading }) {
+  <SearchComponent />;
   if (isLoading) {
     return (
       <article className="p-6 w-full max-w-xs mx-auto animate-pulse bg-white rounded-lg border border-gray-200 shadow-md">
