@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaEdit, FaClock } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
@@ -15,7 +15,8 @@ const ProfileDetailComponent = ({
   avatar,
   cover,
 }) => {
-  console.log("profile username: ", username);
+
+  const [isEditing, setIsEditing] = useState(false);
   return (
     <div>
       <section className="flex flex-col my-20">
@@ -46,7 +47,7 @@ const ProfileDetailComponent = ({
                       avatar || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                     }
                     alt="User profile picture"
-                    className="z-10 mt-11 -mb-10 rounded-lg  max-w-full aspect-[1.03] w-[100px] max-md:mt-8 max-md:mb-2.5"
+                    className="z-10 mt-11 -mb-10 rounded-lg  max-w-full aspect-[1.03] w-[100px] max-md:mt-8 max-md:mb-2.5 p-0.5 rounded-lg ring-2 ring-gray-500 dark:ring-gray-500"
                   />
                 </div>
                 <div className="flex flex-col ml-36 max-md:ml-0">
@@ -77,7 +78,9 @@ const ProfileDetailComponent = ({
                     </div>
                   </div>
                   <div className="flex gap-2 text-white whitespace-nowrap max-md:-mt-2">
-                    <button className="justify-center px-2.5 py-1.5 bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:py-[5px] max-md:text-sm">
+                    <button
+                    onClick={() => setIsEditing(true)}
+                    className="justify-center px-2.5 py-1.5 bg-primary-800 rounded-lg border-2 border-primary-800 hover:bg-primary-900  border-solid max-md:py-[5px] max-md:text-sm">
                       Edit profile
                     </button>
                   </div>
@@ -108,6 +111,8 @@ const ProfileDetailComponent = ({
             email={email}
             phone_num={phone_num}
             address={address}
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
             />
             </div>
             <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">

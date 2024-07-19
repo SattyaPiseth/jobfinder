@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { updateProfile } from "../../redux/api/userApi";
 
+const token = localStorage.getItem('access');
+
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -11,30 +13,28 @@ const validationSchema = Yup.object().shape({
   gender: Yup.string().required("Gender is required"),
 });
 
-function PersonalInformationForm({
-  user_name,
-  gender,
+function PersonalInformationForm(
+  {user_name,
+  gender, 
   email,
   phone_num,
   address,
-}) {
-  const [isEditing, setIsEditing] = useState(false);
+  isEditing,
+  setIsEditing,
+}
+) {
   const [profile, setProfile] = useState({
-    user_name: user_name || "",
+    username: user_name || "",
     gender: gender || "",
     email: email || "",
-    phone_num: phone_num || "",
+    phoneNumber: phone_num || "",
     address: address || "",
   });
 
   const handleSubmit = async (profile, { setSubmitting }) => {
     try {
-      // Get the token from somewhere (e.g., localStorage, state, etc.)
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxODM5OTQ3LCJpYXQiOjE3MjEyMzUxNDcsImp0aSI6Ijg2MzMwOTI2Yzg4NDQ4YWRiMjU5ODVkYjI3NTljMzM5IiwidXNlcl9pZCI6Ijc5ODk0ODZmLWFlNDctNGJjOC1hYjI3LTc1MWUyZDEwZTAyNSJ9.rDvSsPGbjXl0VxdfVvYg8e1EhAIl7DLOBeNo45X83Lo";
-
-      updateProfile(token, profile);
-
+      await updateProfile(token, profile);
+      console.log("Submitting profile:", profile);
       alert("Profile updated successfully!");
       setProfile(profile); // Update the profile state with the new values
       setIsEditing(false); // Exit edit mode after submission
@@ -76,7 +76,7 @@ function PersonalInformationForm({
           {({ isSubmitting }) => (
             <Form>
               <div className="mt-6 max-md:max-w-full text-left">
-                <label htmlFor="user_name" className="block mb-2">
+                <label htmlFor="user_name" className="block">
                   Username
                 </label>
                 <Field
@@ -92,12 +92,12 @@ function PersonalInformationForm({
               </div>
 
               <div className="mt-6 max-md:max-w-full text-left">
-                <label htmlFor="gender" className="block mb-2">
+                <label htmlFor="gender" className="block pb-2">
                   Gender
                 </label>
                 <div role="group" aria-labelledby="gender">
                   <label>
-                    <Field type="radio" name="gender" value="male" />
+                    <Field className="mr-1" type="radio" name="gender" value="male" />
                     Male
                   </label>
                   <label className="ml-4">
@@ -117,7 +117,7 @@ function PersonalInformationForm({
               </div>
 
               <div className="mt-6 max-md:max-w-full text-left">
-                <label htmlFor="email" className="block mb-2">
+                <label htmlFor="email" className="block">
                   Email address
                 </label>
                 <Field
@@ -133,7 +133,7 @@ function PersonalInformationForm({
               </div>
 
               <div className="mt-6 max-md:max-w-full text-left">
-                <label htmlFor="phone_num" className="block mb-2">
+                <label htmlFor="phone_num" className="block">
                   Phone Number
                 </label>
                 <Field
@@ -149,7 +149,7 @@ function PersonalInformationForm({
               </div>
 
               <div className="mt-6 max-md:max-w-full text-left">
-                <label htmlFor="address" className="block mb-2">
+                <label htmlFor="address" className="block">
                   Address
                 </label>
                 <Field
@@ -164,21 +164,21 @@ function PersonalInformationForm({
                 />
               </div>
 
-              <div className="flex justify-start mt-6">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="px-4 py-2 bg-primary-800 text-white rounded-lg hover:bg-primary-700 transition-colors"
-                >
-                  Save
-                </button>
-                <button
+              <div className="flex justify-end mt-6">
+              <button
                   type="button"
                   onClick={() => setIsEditing(false)}
-                  className="ml-4 px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+                  className="px-4 py-2 bg-red-600 text-white rounded-lg border-2 border-red-600 hover:bg-red-700 transition-colors"
                 >
                   Cancel
                 </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="ml-2 px-4 py-2 bg-primary-800 text-white rounded-lg hover:bg-primary-900 border-2 border-primary-800 transition-colors"
+                >
+                  Save
+                </button> 
               </div>
             </Form>
           )}
@@ -188,14 +188,14 @@ function PersonalInformationForm({
           <div className="mt-6 max-md:max-w-full text-left">
             <label className="block mb-2">Username</label>
             <div className="w-full px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:max-w-full">
-              {profile.user_name}
+              {profile.username}
             </div>
           </div>
 
           <div className="mt-6 max-md:max-w-full text-left">
             <label className="block mb-2">Gender</label>
             <div className="w-full px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:max-w-full">
-              {profile.gender || "Other"}
+              {profile.gender || "Unknow"}
             </div>
           </div>
 
@@ -209,7 +209,7 @@ function PersonalInformationForm({
           <div className="mt-6 max-md:max-w-full text-left">
             <label className="block mb-2">Phone Number</label>
             <div className="w-full px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:max-w-full">
-              {profile.phone_num || "+855 "}
+              {profile.phoneNumber || "+855"}
             </div>
           </div>
 
@@ -221,6 +221,7 @@ function PersonalInformationForm({
           </div>
 
           <button
+            hidden
             onClick={() => setIsEditing(true)}
             className="mt-6 px-4 py-2 bg-primary-800 text-white rounded-lg hover:bg-primary-700 transition-colors"
           >
