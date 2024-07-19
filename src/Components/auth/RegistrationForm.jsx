@@ -1,24 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import { NavLink, useNavigate } from "react-router-dom";
-import {
-  registerUser,
-  setIsAuthenticatedFalse,
-} from "../../redux/features/user/userSlice";
+import { registerUser, setIsAuthenticatedFalse } from "../../redux/features/user/userSlice";
 import InputField from "../../common/InputField";
 import useFontClass from "../../common/useFontClass";
+import { toast } from "react-toastify";
 
 const RegistrationForm = () => {
   const { fontClass } = useFontClass();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, error, isAuthenticated } = useSelector(
-    (state) => state.user
-  );
+  const { isLoading, error, isAuthenticated } = useSelector((state) => state.user);
+  const [hasErrorToastShown, setHasErrorToastShown] = useState(false); // State to track error toast display
 
   const initialValues = {
     username: "",
@@ -49,15 +46,24 @@ const RegistrationForm = () => {
   });
 
   const handleSubmit = (values) => {
+    setHasErrorToastShown(false); // Reset error toast state on form submission
     dispatch(registerUser(values));
   };
 
   useEffect(() => {
     if (isAuthenticated) {
+      toast.success(<div className={`${fontClass} `}>{t("registrationForm.success")}</div>);
       dispatch(setIsAuthenticatedFalse());
       navigate("/verifyCode");
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, dispatch, t]);
+
+  useEffect(() => {
+    if (error && !hasErrorToastShown) {
+      toast.error(<div className={`${fontClass}`}>{t("registrationForm.error")}</div>);
+      setHasErrorToastShown(true); // Set error toast state to true after showing the toast
+    }
+  }, [error, hasErrorToastShown]);
 
   return (
     <Formik
@@ -95,7 +101,6 @@ const RegistrationForm = () => {
             type="password"
             placeholder={t("registrationForm.placeholders.confirmPassword")}
           />
-          {error && <div className="text-red-600 text-sm">{error}</div>}
           <button
             type="submit"
             disabled={isLoading || !formik.isValid}

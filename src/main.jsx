@@ -22,6 +22,9 @@ import "aos/dist/aos.css"; // Import AOS CSS
 import AOS from "aos"; // Import AOS
 import "swiper/swiper-bundle.css";
 import { HelmetProvider } from "react-helmet-async";
+import PasswordResetVerification from "./pages/PasswordResetVerification.jsx";
+import 'react-toastify/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 
 const route = createBrowserRouter([
@@ -64,6 +67,10 @@ const route = createBrowserRouter([
       {
         path: "about-us",
         element: <AboutUsPage />,
+      },
+      {
+        path: "password-reset-request",
+        element: <PasswordResetVerification/>
       }
     ],
   },
@@ -87,6 +94,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <HelmetProvider>
         <AppWrapper />
+        <ToastContainer />
       </HelmetProvider>
     </Provider>
   </React.StrictMode>

@@ -4,10 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Alert } from "flowbite-react";
-import { verifyOtp } from "../../redux/features/user/userSlice";
 import useFontClass from "../../common/useFontClass";
 import { useTranslation } from "react-i18next";
-import { resendOtp } from "../../redux/api/userApi";
 
 const EmailVerificationInput = ({
   email,
@@ -62,22 +60,9 @@ const EmailVerificationInput = ({
       .length(6, "OTP must be 6 digits"),
   });
 
-  // const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
-  //   try {
-  //     const otp = values.otp_code.join("");
-  //     await dispatch(
-  //       verifyOtp({ email: localStorage.getItem("email"), otp_code: otp })
-  //     ).unwrap();
-  //     setShowSuccess(true);
-  //     setSuccessCountdown(5);
-  //   } catch (error) {
-  //     setFieldError("otp_code", t("verification.otp_code.failed"));
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  // };
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
     try {
+      
       const otp = values.otp_code.join("");
       await dispatch(verifyAction({ email, otp_code: otp })).unwrap();
       setShowSuccess(true);
@@ -89,10 +74,6 @@ const EmailVerificationInput = ({
     }
   };
 
-  // const handleResendCode = () => {
-  //   setTimer(30);
-  //   dispatch(resendOtp(localStorage.getItem('email')));
-  // };
   const handleResendCode = () => {
     setTimer(30);
     dispatch(resendAction(email));
