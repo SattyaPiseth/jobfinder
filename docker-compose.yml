@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: ${REPOSITORY}:${TAG}
+    image: ${REPOSITORY}:${TAG} # These variables will be read from the environment
     build:
       context: .
       dockerfile: Dockerfile

@@ -19,11 +19,15 @@ echo $PASSWORD | docker login -u "$USERNAME" --password-stdin
 export REPOSITORY
 export TAG
 
-# Build and tag the Docker image
-echo "Building and tagging the Docker image..."
+# Build the Docker image using Docker Compose
+echo "Building the Docker image..."
 docker-compose build
-docker tag ${REPOSITORY}:${TAG}
+
+# Tag the built image for push to Docker Hub
+# Ensure you replace `local-image-name:current-tag` with the appropriate local image name and tag
+echo "Tagging the Docker image..."
+docker tag local-image-name:current-tag $REPOSITORY:$TAG
 
 # Push the Docker image
 echo "Pushing image to Docker Hub..."
-docker push ${REPOSITORY}:${TAG}
+docker push $REPOSITORY:$TAG
