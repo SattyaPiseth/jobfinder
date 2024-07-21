@@ -2,6 +2,9 @@
 # Ensure the script fails if any command fails
 set -e
 
+# Generate a unique container name based on timestamp
+CONTAINER_NAME="my_container_$(date +%s)"
+
 # Prompt the user for Docker Hub credentials
 read -p "Enter your Docker Hub username: " USERNAME
 read -sp "Enter your Docker Hub password: " PASSWORD
@@ -23,11 +26,10 @@ export TAG
 echo "Building the Docker image..."
 docker compose build
 
-# Tag the built image for push to Docker Hub
-# Ensure you replace `local-image-name:current-tag` with the appropriate local image name and tag
-echo "Tagging the Docker image..."
-docker tag local-image-name:current-tag $REPOSITORY:$TAG
-
 # Push the Docker image
 echo "Pushing image to Docker Hub..."
 docker push $REPOSITORY:$TAG
+
+# Run the Docker container
+echo "Running the Docker container..."
+docker run -d -p 8086:80 --name $CONTAINER_NAME $REPOSITORY:$TAG
