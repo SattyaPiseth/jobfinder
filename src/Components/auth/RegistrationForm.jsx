@@ -29,7 +29,7 @@ const RegistrationForm = () => {
       .required(t("registrationForm.validation.username"))
       .min(3, t("registrationForm.validation.min")),
     email: Yup.string()
-      .email(t("registrationForm.email"))
+      .email(t("registrationForm.validation.invalid"))
       .required(t("registrationForm.validation.email")),
     password: Yup.string()
       .matches(

@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   web:
+    image: ${REPOSITORY}:${TAG}
     build:
       context: .
       dockerfile: Dockerfile
