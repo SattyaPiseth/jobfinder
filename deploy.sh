@@ -21,7 +21,7 @@ export TAG
 
 # Build the Docker image using Docker Compose
 echo "Building the Docker image..."
-docker-compose build
+docker compose build
 
 # Tag the built image for push to Docker Hub
 # Ensure you replace `local-image-name:current-tag` with the appropriate local image name and tag
