@@ -1,91 +1,77 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
-import { Autoplay, Pagination, Scrollbar } from "swiper/modules";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { CardComponent } from "../feat-jobs/CardComponent";
+import { selectDataBySearch, fetchAllJobs } from "../../redux/jobs/jobsSlice";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const INITIAL_VISIBLE_JOBS = 8;
+const JOBS_INCREMENT = 8;
 
 const PositionCardComponent = ({ jobs, isLoading }) => {
-  const renderSlides = () => {
-    if (isLoading) {
-      return Array.from({ length: 4 }).map((_, index) => (
-        <SwiperSlide key={index} className="h-auto">
-          <div className="flex flex-col p-6 text-base leading-6 bg-white border border-solid border-gray-200 rounded-lg shadow-md max-w-xs mx-auto animate-pulse">
-            <div className="flex gap-5 justify-between items-center mb-4">
-              <Skeleton circle={true} height={48} width={48} />
-              <Skeleton height={24} width={80} className="rounded-full" />
-            </div>
-            <Skeleton height={20} width={`75%`} className="mb-4 rounded-full" />
-            <div className="flex gap-2 justify-between mb-4">
-              <Skeleton height={20} width={`30%`} className="rounded-full" />
-              <Skeleton height={20} width={`25%`} className="rounded-full" />
-            </div>
-            <Skeleton height={80} width={`100%`} className="mb-4 rounded" />
-            <Skeleton
-              height={36}
-              width={150}
-              className="self-center rounded-full"
-            />
-          </div>
-        </SwiperSlide>
-      ));
-    }
+  const dispatch = useDispatch();
+  const [visibleJobs, setVisibleJobs] = useState(INITIAL_VISIBLE_JOBS);
+  const searchResults = useSelector(selectDataBySearch) || [];
+  const notificationShown = useRef(false);
 
-    return jobs.map((job) => (
-      <SwiperSlide key={job.id} className="h-auto">
-        <CardComponent job={job} />
-      </SwiperSlide>
-    ));
-  };
+  useEffect(() => {
+    if (!jobs.length) {
+      dispatch(fetchAllJobs()).catch((error) => {
+        console.error("Failed to fetch jobs:", error);
+      });
+    }
+  }, [dispatch, jobs]);
+
+  useEffect(() => {
+    if (searchResults.length === 0 && !isLoading && !notificationShown.current) {
+      toast.info("No jobs found for your search query.");
+      notificationShown.current = true;
+    }
+  }, [searchResults, isLoading]);
+
+  const handleSeeMore = useCallback(() => {
+    setVisibleJobs(prevVisible => prevVisible + JOBS_INCREMENT);
+  }, []);
+
+  const displayJobs = searchResults.length ? searchResults : jobs;
 
   return (
-    <div>
-      <section
-        className="flex flex-col mt-16"
-        data-aos="fade-up"
-        data-aos-offset="200"
-        data-aos-easing="ease-in-sine"
-      >
-        <h2 className="self-start text-3xl leading-6 text-black max-md:ml-2.5">
-          List Jobs
-        </h2>
-        <div className="mt-8 w-full max-md:mt-10">
-          <Swiper
-            modules={[Autoplay, Pagination, Scrollbar]}
-            spaceBetween={20}
-            slidesPerView={1}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            loop={true}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-              1280: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-              },
-            }}
-          >
-            {renderSlides()}
-            {/* <div className="swiper-scrollbar mt-8"></div>
-            <div className="swiper-pagination mt-8"></div> */}
-          </Swiper>
+    <div className="my-12 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {isLoading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {Array.from({ length: visibleJobs }, (_, index) => (
+            <div key={index} className="bg-white shadow rounded-lg p-4 animate-pulse">
+              <Skeleton height={200} />
+            </div>
+          ))}
         </div>
-      </section>
+      ) : displayJobs.length ? (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {displayJobs.slice(0, visibleJobs).map(job => (
+              <CardComponent key={job.id} job={job} />
+            ))}
+          </div>
+          {displayJobs.length > visibleJobs && (
+            <div className="text-center mt-10">
+              <button
+                onClick={handleSeeMore}
+                className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 ease-in-out shadow-lg"
+              >
+                See More
+              </button>
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="text-center mt-4 text-lg text-gray-600" aria-live="polite">
+          No jobs available at the moment.
+        </div>
+      )}
     </div>
   );
 };
 
-export default PositionCardComponent;
+export default React.memo(PositionCardComponent);

@@ -1,45 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchSkills,
-  selectSkillsByCategoryId,
-} from "../../redux/features/category-job/categorySlice";
+import { fetchSkills, selectSkillsByCategoryId } from "../../redux/features/category-job/categorySlice";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { performGlobalSearch, clearSearchResults, selectSearchError } from "../../redux/jobs/jobsSlice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SearchComponent = ({ categories, isLoading }) => {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSkill, setSelectedSkill] = useState("");
   const [loadingSkills, setLoadingSkills] = useState(false);
+  const [query, setQuery] = useState("");
+  const error = useSelector(selectSearchError);
+  const skills = useSelector(state => selectSkillsByCategoryId(state, selectedCategory));
 
-  const skills = useSelector((state) =>
-    selectSkillsByCategoryId(state, selectedCategory)
-  );
+  useEffect(() => {
+    if (query.trim() === "") {
+      dispatch(clearSearchResults());
+    }
+  }, [query, dispatch]);
 
   const handleCategoryChange = async (e) => {
     const categoryId = e.target.value;
     setSelectedCategory(categoryId);
     setSelectedSkill("");
     setLoadingSkills(true);
-    await dispatch(fetchSkills(categoryId));
-    setLoadingSkills(false);
+    try {
+      await dispatch(fetchSkills(categoryId)).unwrap();
+    } catch (error) {
+      toast.error(error.message || "Failed to fetch skills.");
+    } finally {
+      setLoadingSkills(false);
+    }
   };
 
-  const handleSkillChange = (e) => {
-    setSelectedSkill(e.target.value);
+  const handleSearch = async () => {
+    if (query.trim()) {
+      try {
+        await dispatch(performGlobalSearch(query)).unwrap();
+      } catch (error) {
+        toast.error(error || "Failed to perform search.");
+      }
+    } else {
+      dispatch(clearSearchResults());
+    }
   };
 
   return (
-    <section
-      className="flex border-2 border-solid border-slate-200 rounded-lg justify-between pt-4 pb-4 mt-16 px-4 text-2xl leading-8 whitespace-nowrap text-slate-700 gap-4 max-md:flex-wrap max-md:mr-1.5"
-      data-aos="zoom-out-right"
-    >
+    <section className="flex border-2 border-solid border-slate-200 rounded-lg justify-between pt-4 pb-4 mt-16 px-4 text-2xl leading-8 whitespace-nowrap text-slate-700 gap-4 max-md:flex-wrap max-md:mr-1.5">
       {isLoading ? (
         <>
-          <div className="relative flex items-center w-full max-md:w-full">
-            <Skeleton height={50} className="w-full rounded-lg" />
-          </div>
+          <Skeleton height={50} className="w-full rounded-lg" />
           <Skeleton height={50} width={288} className="rounded-lg" />
           <Skeleton height={50} width={288} className="rounded-lg" />
           <Skeleton height={50} width={100} className="rounded-lg" />
@@ -58,15 +71,17 @@ const SearchComponent = ({ categories, isLoading }) => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
+                  strokeWidth={2}
                   d="M21 21l-4.35-4.35m1.85-6.4a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z"
-                ></path>
+                />
               </svg>
             </span>
             <input
               type="text"
               placeholder="Search for position"
               className="pl-14 pr-4 py-4 rounded-lg border-2 border-solid border-slate-100 bg-slate-100 w-full"
+              onChange={(e) => setQuery(e.target.value)}
+              value={query}
             />
           </div>
           <select
@@ -74,9 +89,7 @@ const SearchComponent = ({ categories, isLoading }) => {
             value={selectedCategory}
             onChange={handleCategoryChange}
           >
-            <option value="" disabled>
-              Select a category
-            </option>
+            <option value="" disabled>Select a category</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.category_name}
@@ -86,7 +99,7 @@ const SearchComponent = ({ categories, isLoading }) => {
           <select
             className="px-4 py-2 rounded-lg border-2 border-solid border-slate-100 w-72 max-md:w-full"
             value={selectedSkill}
-            onChange={handleSkillChange}
+            onChange={(e) => setSelectedSkill(e.target.value)}
             disabled={!skills.length || loadingSkills}
           >
             <option value="" disabled>
@@ -98,7 +111,10 @@ const SearchComponent = ({ categories, isLoading }) => {
               </option>
             ))}
           </select>
-          <button className="justify-center p-2 px-8 text-white font-kantumruy text-xl bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-lg:text-lg max-xl:text-xl max-2xl:text-xl max-md:px-6">
+          <button
+            className="justify-center p-2 px-8 text-white font-kantumruy text-xl bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-lg:text-lg max-xl:text-xl max-2xl:text-xl max-md:px-6"
+            onClick={handleSearch}
+          >
             Search
           </button>
         </>
@@ -107,4 +123,4 @@ const SearchComponent = ({ categories, isLoading }) => {
   );
 };
 
-export default SearchComponent;
+export default React.memo(SearchComponent);

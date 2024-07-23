@@ -73,3 +73,8 @@ export const getAllJobs = async () => {
     totalJobs: totalJobs,
   };
 };
+
+export const fetchGlobalSearch = async (query) => {
+  const response = await axios.get(`${BASE_URL}global_search/?q=${query}`);
+  return response.data.jobs;
+};
