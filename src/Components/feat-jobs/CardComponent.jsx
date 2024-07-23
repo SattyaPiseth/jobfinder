@@ -48,7 +48,7 @@ export function CardComponent({ job, isLoading }) {
             {job.description}
           </div>
           <div className="flex flex-wrap gap-2 mt-4 text-sm font-semibold justify-center">
-            <button className="w-full justify-center p-2 px-8 text-white bg-blue-800 rounded-3xl border-2 border-blue-800 border-solid max-md:px-5">
+            <button className="w-full justify-center p-2 px-8 text-white bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:px-5">
               Detail
             </button>
           </div>

@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { NavLink, useNavigate } from "react-router-dom";
 import { registerUser, setIsAuthenticatedFalse } from "../../redux/features/user/userSlice";
 import InputField from "../../common/InputField";
+import PasswordInput from "../../common/PasswordInput"; // Import PasswordInput component
 import useFontClass from "../../common/useFontClass";
 import { toast } from "react-toastify";
 
@@ -89,17 +90,29 @@ const RegistrationForm = () => {
             type="email"
             placeholder={t("registrationForm.placeholders.email")}
           />
-          <InputField
+          <PasswordInput
             label={t("registrationForm.labels.password")}
+            id="password"
             name="password"
-            type="password"
             placeholder={t("registrationForm.placeholders.password")}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.errors.password}
+            touched={formik.touched.password}
+            fontClass={fontClass}
           />
-          <InputField
+          <PasswordInput
             label={t("registrationForm.labels.confirmPassword")}
+            id="confirmPassword"
             name="confirmPassword"
-            type="password"
             placeholder={t("registrationForm.placeholders.confirmPassword")}
+            value={formik.values.confirmPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.errors.confirmPassword}
+            touched={formik.touched.confirmPassword}
+            fontClass={fontClass}
           />
           <button
             type="submit"

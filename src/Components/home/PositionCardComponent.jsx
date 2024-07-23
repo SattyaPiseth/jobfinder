@@ -6,15 +6,19 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const INITIAL_VISIBLE_JOBS = 8;
 const JOBS_INCREMENT = 8;
 
 const PositionCardComponent = ({ jobs, isLoading }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [visibleJobs, setVisibleJobs] = useState(INITIAL_VISIBLE_JOBS);
   const searchResults = useSelector(selectDataBySearch) || [];
   const notificationShown = useRef(false);
+  const previousPath = useRef(location.pathname);
 
   useEffect(() => {
     if (!jobs.length) {
@@ -26,14 +30,25 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
 
   useEffect(() => {
     if (searchResults.length === 0 && !isLoading && !notificationShown.current) {
-      toast.info("No jobs found for your search query.");
-      notificationShown.current = true;
+      if (location.pathname !== previousPath.current) {
+        toast.info("No jobs found for your search query.");
+        notificationShown.current = true;
+      }
     }
-  }, [searchResults, isLoading]);
+  }, [searchResults, isLoading, location]);
+
+  useEffect(() => {
+    // Update previousPath on location change
+    previousPath.current = location.pathname;
+  }, [location]);
 
   const handleSeeMore = useCallback(() => {
     setVisibleJobs(prevVisible => prevVisible + JOBS_INCREMENT);
   }, []);
+
+  const handleRedirect = () => {
+    navigate('/'); // Redirect to home page
+  };
 
   const displayJobs = searchResults.length ? searchResults : jobs;
 
@@ -58,7 +73,8 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
             <div className="text-center mt-10">
               <button
                 onClick={handleSeeMore}
-                className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 ease-in-out shadow-lg"
+                className="mx-auto flex items-center px-4 py-2 text-center font-medium text-white bg-primary-800 hover:bg-primary-850 focus:ring-primary-650 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800 rounded-lg focus:ring-2 whitespace-nowrap"
+                  
               >
                 See More
               </button>

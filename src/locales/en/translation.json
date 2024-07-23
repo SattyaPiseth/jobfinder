@@ -64,19 +64,23 @@
     "success": "Registration successful! Please check your email for verification.",
     "error": "Your account already exists. Failed to create a new account."
   },
-    "verification" : {
-        "title" : "Email Verification",
-        "desc" : "Please enter the 6-digit code sent to your email",
-        "verify" : "Verify",
-        "verifying" : "Verifying...",
-        "otp_code" : {
-            "failed" : "Incorrect OTP, please try again.",
-            "success" : "OTP verified successfully!"
-        },
-        "time" : "Request a new code in",
-        "unreceived" : "Didn't receive the code?",
-        "resend" : "Resend Code"
+  "verification": {
+    "title": "Email Verification",
+    "desc": "Please enter the 6-digit verification code sent to your email.",
+    "otp_code": {
+      "success": "Verification successful! Redirecting you..."
     },
+    "verification_failed": "Verification failed. Please try again.",
+    "code_resend": "Verification code has been resent. Please check your email.",
+    "unreceived": "Didn't receive the code?",
+    "resend": "Resend Code",
+    "verifying": "Verifying...",
+    "verify": "Verify"
+  },
+  "validation": {
+    "digit_required": "Must be 1 digit",
+    "otp_length": "OTP must be 6 digits"
+  },
     "loginForm": {
         "title": "Login",
         "validation": {
