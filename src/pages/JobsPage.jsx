@@ -15,6 +15,7 @@ import Metadata from "../lib/Metadata";
 import useThrottleScroll from "../common/useThrottleScroll"; // Import the custom hook
 import SearchComponent from "../Components/home/SearchComponent";
 import { useTranslation } from "react-i18next";
+import useFontClass from "../common/useFontClass";
 
 const JobsPage = () => {
   const { t } = useTranslation();
@@ -24,6 +25,7 @@ const JobsPage = () => {
   const pageSize = useSelector(selectPageSize);
   const totalJobs = useSelector(selectTotalJobs);
   const status = useSelector((state) => state.jobs.status);
+  const { fontClass } = useFontClass();
 
   // Define categories here (replace with actual data)
   const categories = [
@@ -60,12 +62,12 @@ const JobsPage = () => {
         description="Browse available jobs"
         author="Your Name"
         keywords="jobs, careers, employment"
-        thumbnail="https://example.com/thumbnail.jpg"
-        url="https://example.com/jobs"
+        thumbnail="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+        url="https://jobquick.techinsights.guru/jobs" 
         type="website"
       />
       <header className="mt-20">
-        <h1 className="text-blue-600 font-kantumruy text-4xl text-start font-bold">
+        <h1 className={`${fontClass} text-blue-600 font-kantumruy text-4xl text-start font-bold`}>
           {t("List-Jobs.List")}
         </h1>
       </header>

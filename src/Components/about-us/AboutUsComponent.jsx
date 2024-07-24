@@ -76,11 +76,10 @@ const teamLead = {
     "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/399618439_2118987915126245_8162232501416778588_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGrgfzolRJSM811981AJ0IqIAn3Dk-mWZkgCfcOT6ZZmXnrOJGq8cNa65ItxKJs6NcnXorE8WrU_BVZhRux4S8v&_nc_ohc=q6z-7Lu-wqAQ7kNvgGuoqAp&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYD47stbze98WAv3SIq15UISm0zfH1tJK8vvdZc5ZH3zzw&oe=669BA192",
   position: "Team Leader - Frontend Developer",
 };
-
 export default function AboutUsComponent() {
   const [loading, setLoading] = useState(true);
   const { t, i18n } = useTranslation();
-  const isKhmer = i18n.language === "khmer";
+  const isKhmer = i18n.language === "kh";
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -118,7 +117,9 @@ export default function AboutUsComponent() {
                 {loading ? (
                   <Skeleton count={5} />
                 ) : (
-                  t("About-us.About-description")
+                  <span className="font-medium text-3xl">
+                    {t("About-us.About-description")}
+                  </span>
                 )}
               </p>
             </div>

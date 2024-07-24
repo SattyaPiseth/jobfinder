@@ -32,8 +32,12 @@ export const updateProfile = (token, profileData) => {
 export const resendOtp = (email) => {
   return axios.post(`${BASE_URL}resend-otp/`, { email });
 };
- 
+
 // Add this to your userApi.js
 export const requestPasswordReset = (email) => {
   return axios.post(`${BASE_URL}password-reset-request/`, { email });
+};
+
+export const confirmPasswordReset = (resetData) => {
+  return axios.post(`${BASE_URL}password-reset/`, resetData);
 };
