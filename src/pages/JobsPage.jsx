@@ -60,8 +60,8 @@ const JobsPage = () => {
         description="Browse available jobs"
         author="Your Name"
         keywords="jobs, careers, employment"
-        thumbnail="https://example.com/thumbnail.jpg"
-        url="https://example.com/jobs"
+        thumbnail="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+        url="https://jobquick.techinsights.guru/jobs" 
         type="website"
       />
       <header className="mt-20">

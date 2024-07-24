@@ -5,7 +5,8 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Modal, Button } from 'flowbite-react';
+import { Modal } from 'flowbite-react';
+import { toast } from 'react-toastify';
 import { requestPasswordResetThunk } from '../../redux/features/user/userSlice';
 import InputField from '../../common/InputField';
 import useFontClass from '../../common/useFontClass';
@@ -27,13 +28,21 @@ const ResetPasswordModal = ({ isOpen, onClose }) => {
       .required(t('resetPasswordForm.validation.emailRequired')),
   });
 
-  const handleSubmit = (values) => {
-    dispatch(requestPasswordResetThunk(values.email));
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(requestPasswordResetThunk(values.email))
+      .unwrap()
+      .then(() => {
+        toast.success(<div className={`${fontClass} `}>{t('resetPasswordForm.successMessage')}</div>);
+        navigate('/password-reset-request');
+      })
+      .catch((err) => {
+        toast.error(<div className={`${fontClass}`}>{t('resetPasswordForm.errorMessage')}</div>)
+      });
   };
 
   useEffect(() => {
     if (isPasswordResetRequested) {
-      navigate('/verifyCode');
+      navigate('/password-reset-request');
     }
   }, [isPasswordResetRequested, navigate]);
 
@@ -42,11 +51,13 @@ const ResetPasswordModal = ({ isOpen, onClose }) => {
       show={isOpen}
       onClose={onClose}
       className="transition-opacity duration-300 ease-in-out"
-      size="lg" // Ensures a larger modal size for better form fit
+      size="lg"
       data-aos="zoom-up"
     >
       <Modal.Header>
-        <h2 className="text-2xl text-primary-700 sm:text-3xl font-semibold text-left">{t('resetPasswordForm.title')}</h2>
+        <h2 className={`${fontClass} text-2xl text-primary-700 sm:text-3xl font-semibold text-left`}>
+          {t('resetPasswordForm.title')}
+        </h2>
       </Modal.Header>
       <Modal.Body>
         <Formik
@@ -72,7 +83,7 @@ const ResetPasswordModal = ({ isOpen, onClose }) => {
               </button>
               <p className={`${fontClass} mt-6 text-base text-center text-gray-600`}>
                 {t('resetPasswordForm.labels.rememberPassword')}{' '}
-                <NavLink to="/register" className="text-blue-600 hover:underline font-medium">
+                <NavLink to="/login" className="text-blue-600 hover:underline font-medium" onClick={onClose}>
                   {t('resetPasswordForm.labels.login')}
                 </NavLink>
               </p>

@@ -1,25 +1,22 @@
-// LoginForm.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { TextInput, Alert, Label } from 'flowbite-react';
+import { TextInput, Label } from 'flowbite-react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../redux/features/user/userSlice';
 import { useTranslation } from 'react-i18next';
 import useFontClass from '../../common/useFontClass';
 import ResetPasswordModal from './ResetPasswordModal'; // Adjust the path as needed
 import useModal from '../../common/useModal'; // Import the custom hook
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { fontClass } = useFontClass();
   const { t } = useTranslation();
-  const { isLoading, error, isAuthenticated } = useSelector(
-    (state) => state.user
-  );
-  const [message, setMessage] = useState('');
+  const { isLoading, error, isAuthenticated } = useSelector((state) => state.user);
   const { isModalOpen, openModal, closeModal } = useModal(); // Use the custom hook
 
   const formik = useFormik({
@@ -40,12 +37,18 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      setMessage(`ការចូលប្រើបានជោគជ័យ! សូមស្វាគមន៍ ${formik.values.email}!`);
+      toast.success(
+        <div className={fontClass}>{t('loginForm.success', { email: formik.values.email })}</div>
+      );
       navigate('/profile');
-    } else if (error) {
-      setMessage(error);
     }
-  }, [isAuthenticated, error, navigate, formik.values.email]);
+  }, [isAuthenticated, navigate, formik.values.email, t, fontClass]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(<div className={fontClass}>{t('loginForm.error')}</div>);
+    }
+  }, [error, t, fontClass]);
 
   return (
     <div
@@ -56,16 +59,6 @@ const LoginForm = () => {
       >
         {t('loginForm.title')}
       </h2>
-      {message && (
-        <Alert
-          color={error ? 'failure' : 'success'}
-          className={`${fontClass} text-base sm:text-lg mb-4`}
-          data-aos="fade-up"
-          data-aos-anchor-placement="top-center"
-        >
-          {t('loginForm.error')}
-        </Alert>
-      )}
       <form
         onSubmit={formik.handleSubmit}
         className="flex flex-col gap-4 sm:gap-6"
@@ -108,14 +101,10 @@ const LoginForm = () => {
             onBlur={formik.handleBlur}
             value={formik.values.password}
             color={
-              formik.touched.password && formik.errors.password
-                ? 'failure'
-                : 'gray'
+              formik.touched.password && formik.errors.password ? 'failure' : 'gray'
             }
             helperText={
-              formik.touched.password &&
-              formik.errors.password &&
-              formik.errors.password
+              formik.touched.password && formik.errors.password && formik.errors.password
             }
             className={`${fontClass} text-base sm:text-lg`}
           />
@@ -134,9 +123,7 @@ const LoginForm = () => {
           disabled={isLoading}
           className={`${fontClass} w-full bg-primary-700 text-white font-medium rounded-lg py-3 hover:bg-primary-750 disabled:opacity-50`}
         >
-          {isLoading
-            ? t('loginForm.labels.logining')
-            : t('loginForm.labels.login')}
+          {isLoading ? t('loginForm.labels.logining') : t('loginForm.labels.login')}
         </button>
       </form>
       <p

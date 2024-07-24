@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Alert } from "flowbite-react";
-import { verifyOtp } from "../../redux/features/user/userSlice";
+import { toast } from "react-toastify";
 import useFontClass from "../../common/useFontClass";
 import { useTranslation } from "react-i18next";
-import { resendOtp } from "../../redux/api/userApi";
 
 const EmailVerificationInput = ({
   email,
@@ -22,35 +20,6 @@ const EmailVerificationInput = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error } = useSelector((state) => state.user);
-  const [timer, setTimer] = useState(30);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [successCountdown, setSuccessCountdown] = useState(5);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 0));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if (showSuccess) {
-      const countdownInterval = setInterval(() => {
-        setSuccessCountdown((prevCountdown) => {
-          if (prevCountdown > 0) {
-            return prevCountdown - 1;
-          } else {
-            clearInterval(countdownInterval);
-            navigate(successRedirect);
-            return 0;
-          }
-        });
-      }, 1000);
-
-      return () => clearInterval(countdownInterval);
-    }
-  }, [showSuccess, navigate, successRedirect]);
 
   const initialValues = {
     otp_code: ["", "", "", "", "", ""],
@@ -58,44 +27,27 @@ const EmailVerificationInput = ({
 
   const validationSchema = Yup.object({
     otp_code: Yup.array()
-      .of(Yup.string().required("").length(1, "Must be 1 digit"))
-      .length(6, "OTP must be 6 digits"),
+      .of(Yup.string().required("").length(1, t("validation.digit_required")))
+      .length(6, t("validation.otp_length")),
   });
 
-  // const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
-  //   try {
-  //     const otp = values.otp_code.join("");
-  //     await dispatch(
-  //       verifyOtp({ email: localStorage.getItem("email"), otp_code: otp })
-  //     ).unwrap();
-  //     setShowSuccess(true);
-  //     setSuccessCountdown(5);
-  //   } catch (error) {
-  //     setFieldError("otp_code", t("verification.otp_code.failed"));
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  // };
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
     try {
       const otp = values.otp_code.join("");
       await dispatch(verifyAction({ email, otp_code: otp })).unwrap();
-      setShowSuccess(true);
-      setSuccessCountdown(5);
+      toast.success(<div className={`${fontClass}`}>{t("verification.otp_code.success")}</div>);
+      navigate(successRedirect);  // Navigate directly after success
     } catch (error) {
-      setFieldError("otp_code", "Verification failed"); // Adjust error handling as necessary
+      toast.error(<div className={`${fontClass}`}>{t("verification.verification_failed")}</div>);
+      setFieldError("otp_code", t("verification.verification_failed"));
     } finally {
       setSubmitting(false);
     }
   };
 
-  // const handleResendCode = () => {
-  //   setTimer(30);
-  //   dispatch(resendOtp(localStorage.getItem('email')));
-  // };
   const handleResendCode = () => {
-    setTimer(30);
     dispatch(resendAction(email));
+    toast.info(<div className={`${fontClass}`}>{t("verification.code_resend")}</div>);
   };
 
   const handlePaste = (e, setFieldValue) => {
@@ -114,7 +66,9 @@ const EmailVerificationInput = ({
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-primary-700">
         {title || t("verification.title")}
       </h2>
-      <p className="text-center text-gray-600 mb-6">{ description || t("verification.desc")}</p>
+      <p className="text-center text-gray-600 mb-6">
+        {description || t("verification.desc")}
+      </p>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -167,16 +121,7 @@ const EmailVerificationInput = ({
                 className="text-red-500 text-sm mt-2 text-center"
               />
             </div>
-            {error && (
-              <Alert color="failure" className="mb-6">
-                {error}
-              </Alert>
-            )}
-            {showSuccess && (
-              <Alert color="success" className="mb-6">
-                {t("verification.otp_code.success")} ({successCountdown})
-              </Alert>
-            )}
+            {error && toast.error(<div className={`${fontClass}`}>{error}</div>)}
             <button
               type="submit"
               disabled={isSubmitting || isLoading}
@@ -189,19 +134,11 @@ const EmailVerificationInput = ({
           </Form>
         )}
       </Formik>
-      <p className="text-center mt-6 text-sm sm:text-lg leading-6 text-gray-500">
-        {t("verification.time")} {Math.floor(timer / 60)}:
-        {timer % 60 < 10 ? "0" : ""}
-        {timer % 60}
-      </p>
       <div className="flex justify-center gap-1 sm:gap-2 mt-4 text-sm sm:text-lg leading-6">
         <p className="text-gray-500">{t("verification.unreceived")}</p>
         <button
-          className={`text-blue-600 hover:text-blue-800 ${
-            timer > 0 ? "opacity-50 cursor-not-allowed" : ""
-          }`}
+          className={`text-blue-600 hover:text-blue-800`}
           onClick={handleResendCode}
-          disabled={timer > 0}
         >
           {t("verification.resend")}
         </button>

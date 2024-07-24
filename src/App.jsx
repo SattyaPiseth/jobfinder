@@ -1,24 +1,22 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useCallback } from "react";
-import {
-  selectAllJobCategories,
-  getJobCategoriesStatus,
-  fetchJobCategories,
-} from "./redux/features/category-job/categorySlice";
-import HomePage from "./pages/HomePage";
-import "./App.css";
-import Metadata from "./lib/Metadata";
-import useThrottleScroll from "./common/useThrottleScroll";
+import React, { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchJobCategories, selectAllJobCategories, getJobCategoriesStatus } from './redux/features/category-job/categorySlice';
+import HomePage from './pages/HomePage';
+import './App.css';
+import Metadata from './lib/Metadata';
+import useThrottleScroll from './common/useThrottleScroll';
+import { fetchAllJobs, selectAllJobs } from './redux/jobs/jobsSlice';
 
 function App() {
   const dispatch = useDispatch();
   const categories = useSelector(selectAllJobCategories);
+  const jobs = useSelector(selectAllJobs);
   const status = useSelector(getJobCategoriesStatus);
-  // const error = useSelector(getJobCategoriesError);
 
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchJobCategories());
+      dispatch(fetchAllJobs());
     }
   }, [status, dispatch]);
 
@@ -46,7 +44,7 @@ function App() {
         url="https://jobquick.techinsights.guru/"
         type="website"
       />
-      <HomePage categories={categories} isLoading={status === "loading"} />
+      <HomePage categories={categories} isLoading={status === 'loading'} jobs={jobs} />
     </>
   );
 }
