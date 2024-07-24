@@ -62,7 +62,6 @@
             "password" : "Password must be 8+ characters, with uppercase, lowercase, number, and special character",
             "confirmPassword" : "confirm password is required",
             "not-match" : "confirm password not match!"
-            
         }
     },
     "verification" : {
@@ -101,32 +100,46 @@
         }
     },
     "resetPasswordForm": {
-    "title": "Reset Password",
-    "labels": {
-      "email": "Email",
-      "rememberPassword": "Remember your password?",
-      "login": "Login"
+        "title": "Reset Password",
+        "labels": {
+            "email": "Email",
+            "rememberPassword": "Remember your password?",
+            "login": "Login"
+        },
+        "placeholders": {
+            "email": "Enter your email"
+        },
+        "validation": {
+            "email": "Invalid email address",
+            "emailRequired": "Email is required"
+        },
+        "sending": "Sending...",
+        "submit": "Submit"
     },
-    "placeholders": {
-      "email": "Enter your email"
+    "HeroSection": {
+        "discover": "Discover more than",
+        "Jobs": "5000+ Jobs",
+        "description": "Great platform for the job seeker that searching for new career heights and passionate about startups.",
+        "button": "Explore more"
     },
-    "validation": {
-      "email": "Invalid email address",
-      "emailRequired": "Email is required"
+    "List-Jobs": {
+        "List": "List Jobs"
     },
-    "sending": "Sending...",
-    "submit": "Submit"
-  },
-  "HeroSection": {
-    "discover": "Discover more than",
-    "Jobs": "5000+ Jobs",
-    "description": "Great platform for the job seeker that searching for new career heights and passionate about startups.",
-    "button": "Explore more"
-  },
-  "List-Jobs": {
-    "List": "List-Jobs"
-  },
-  "Advertising": {
-    "advertising": "Advertising"
-  }
+    "Advertising": {
+        "advertising": "Advertising"
+    },
+    "About-us": {
+        "Who": "Who Are We ?",
+        "About": "About Us",
+        "About-description": "Job Quick is an online job search site created in 2024 by undergraduate students from the Center for Advanced Science and Technology Development that allows users to search, apply and track job opportunities.",
+        "Goals": "Our Mission",
+        "Perspective": "Our vision",
+        "Instructor": "Instructor",
+        "Member": "Member",
+        "detail" : {
+            "Who": "We are the second generation of Foundatiohn Scholarship students from the Center for Advanced Development in Science and Technology, having successfully completed a comprehensive four-month course.",
+            "Goals": "Our mission is to provide online job seekers with an easy-to-use, secure platform that seamlessly connects them with potential employers.",
+            "Perspective": "Create a website that is innovative and highly customizable, designed to adapt to each user's preferences and needs"
+        }
+    }
 }

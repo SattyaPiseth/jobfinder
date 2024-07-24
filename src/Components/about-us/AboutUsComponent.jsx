@@ -6,6 +6,7 @@ import { IoLogoGithub } from "react-icons/io";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { Badge } from "flowbite-react";
+import { useTranslation } from "react-i18next";
 
 const teamMembers = [
   {
@@ -78,6 +79,8 @@ const teamLead = {
 
 export default function AboutUsComponent() {
   const [loading, setLoading] = useState(true);
+  const { t, i18n } = useTranslation();
+  const isKhmer = i18n.language === "khmer";
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -85,12 +88,16 @@ export default function AboutUsComponent() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center bg-white max-sm:mt-16 max-lg:mt-28">
+    <main
+      className={`flex flex-col items-center bg-white max-sm:mt-16 max-lg:mt-28 ${
+        isKhmer ? "font-suwannaphum" : "font-kantumruy"
+      }`}
+    >
       <header
-        className="mt-16 text-3xl font-bold font-suwannaphum text-center text-primary-800"
+        className="mt-16 text-3xl font-bold text-center text-primary-800"
         data-aos="zoom-in"
       >
-        {loading ? <Skeleton width={300} height={40} /> : "ពួកយេីងជានរណា?"}
+        {loading ? <Skeleton width={300} height={40} /> : t("About-us.Who")}
       </header>
 
       <section className="my-8 w-full max-w-[1324px] max-sm:mt-4 max-md:mt-10 max-md:px-3">
@@ -100,18 +107,18 @@ export default function AboutUsComponent() {
             data-aos="fade-right"
           >
             <div className="flex flex-col py-5 text-black max-md:py-3">
-              <h2 className="text-3xl font-bold text-primary-800 font-suwannaphum text-center max-sm:text-2xl max-lg:text-2xl">
+              <h2 className="text-3xl font-bold text-primary-800 text-center max-sm:text-2xl max-lg:text-2xl">
                 {loading ? (
                   <Skeleton width={200} height={30} />
                 ) : (
-                  "អំពី​ពួក​យើង"
+                  t("About-us.About")
                 )}
               </h2>
-              <p className="mt-2.5 text-3xl text-left font-suwannaphum leading-[52px] max-sm:text-xl max-lg:text-xl">
+              <p className="mt-2.5 text-3xl text-left leading-[52px] max-sm:text-xl max-lg:text-xl">
                 {loading ? (
                   <Skeleton count={5} />
                 ) : (
-                  "Job Finder គឺជាគេហទំព័រស្វែងរកការងារតាមអ៊ីនធឺណិតដែលត្រូវបានបង្កើតឡើងក្នុងឆ្នាំ2024 ដោយនិស្សិតជំនាញមូលដ្ឋានគ្រឹះមកពីមជ្ឈមណ្ឌលវិទ្យាសាស្ត្រនិងបច្ចេកវិទ្យាអភិវឌ្ឍន៍កម្រិតខ្ពស់ដែលអនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ស្វែងរកដាក់ពាក្យនិងតាមដានឱកាសការងារសម្រួលដល់វឌ្ឍនភាពការងារដែលជំរុញដោយទិន្នន័យ។"
+                  t("About-us.About-description")
                 )}
               </p>
             </div>
@@ -151,10 +158,9 @@ export default function AboutUsComponent() {
                   alt="Team Member"
                 />
               )}
-              <h3 className="mt-2 font-bold font-suwannaphum">យើង​ជា​នរណា</h3>
-              <p className="font-suwannaphum px-2 mt-7 text-center max-sm:text-xl max-lg:text-xl">
-                ពួកយើងគឺជានិស្សិតអាហារូបករណ៍ជំនាញមូលដ្ឋានគ្រឹះជំនាន់ទីពីរនៃមជ្ឈមណ្ឌលវិទ្យាសាស្ត្រនិងបច្ចេកវិទ្យាអភិវឌ្ឍន៍កម្រិតខ្ពស់ដែលបានបញ្ចប់វគ្គសិក្សារយៈពេល៤ខែទៅលើជំនាញ
-                Java និង Website Design ។
+              <h3 className="mt-2 font-bold">{t("About-us.Who")}</h3>
+              <p className="px-2 mt-7 text-center max-sm:text-xl max-lg:text-xl">
+                {t("About-us.detail.Who")}
               </p>
             </div>
           </article>
@@ -174,11 +180,9 @@ export default function AboutUsComponent() {
                   alt="Team Member"
                 />
               )}
-              <h3 className="mt-5 font-bold font-suwannaphum">
-                បេសកម្ម​របស់​យើង
-              </h3>
-              <p className="font-suwannaphum px-2 mt-6 text-center max-sm:text-xl max-lg:text-xl">
-                បេសកម្មរបស់យើងគឺអនុញ្ញាតឱ្យអ្នកស្វែងរកការងារលើបណ្តាញអ៊ីនធឺណិតនូវវេទិកាដែលងាយស្រួលប្រើនិងសុវត្ថិភាពដែលភ្ជាប់អ្នកស្វែងរកការងារជាមួយនិយោជកប្រកបដោយប្រសិទ្ធភាព។
+              <h3 className="mt-5 font-bold">{t("About-us.Goals")}</h3>
+              <p className="px-2 mt-6 text-center max-sm:text-xl max-lg:text-xl">
+                {t("About-us.detail.Goals")}
               </p>
             </div>
           </article>
@@ -198,19 +202,17 @@ export default function AboutUsComponent() {
                   alt="Team Member"
                 />
               )}
-              <h3 className="mt-3 font-bold font-suwannaphum">
-                ទស្សនវិស័យ​របស់​យើង
-              </h3>
-              <p className="font-suwannaphum px-2 mt-8 text-center max-sm:text-xl max-lg:text-xl">
-                ក្លាយខ្លួនទៅជាគេហទំព័រមួយដែលមានភាពច្នៃប្រតិដ្ឋនិងការកែសម្រួលតាមតម្រូវការរបស់អ្នកប្រើប្រាស់។
+              <h3 className="mt-3 font-bold">{t("About-us.Perspective")}</h3>
+              <p className="px-2 mt-8 text-center max-sm:text-xl max-lg:text-xl">
+                {t("About-us.detail.Perspective")}
               </p>
             </div>
           </article>
         </div>
       </section>
 
-      <section className="mt-16 text-4xl font-suwannaphum font-bold text-primary-800 max-md:mt-10 max-sm:text-3xl">
-        អ្នកណែនាំរបស់យើង
+      <section className="mt-16 text-4xl font-bold text-primary-800 max-md:mt-10 max-sm:text-3xl">
+        {t("About-us.Instructor")}
       </section>
 
       <section className="mt-16 max-w-full w-[562px] max-md:mt-10">
@@ -247,8 +249,8 @@ export default function AboutUsComponent() {
         </div>
       </section>
 
-      <section className="mt-16 text-4xl font-suwannaphum font-bold text-primary-800 max-md:mt-10 max-sm:text-3xl">
-        សមាជិកក្រុមរបស់យើង
+      <section className="mt-16 text-4xl font-bold text-primary-800 max-md:mt-10 max-sm:text-3xl">
+        {t("About-us.Member")}
       </section>
 
       <article className="flex flex-col items-center mt-10" data-aos="fade-up">
