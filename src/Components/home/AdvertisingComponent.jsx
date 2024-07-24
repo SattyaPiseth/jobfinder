@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';
+import "react-loading-skeleton/dist/skeleton.css";
+import { useTranslation } from "react-i18next";
 
 const AdvertisingComponent = () => {
+  const { t, i18n } = useTranslation();
+  const isKhmer = i18n.language === "kh";
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -83,8 +86,12 @@ const AdvertisingComponent = () => {
           data-aos-offset="300"
           data-aos-easing="ease-in-sine"
         >
-          <h2 className="text-3xl text-left leading-7 text-black dark:text-white max-md:ml-2.5">
-            Advertising
+          <h2
+            className={`text-3xl font-medium text-left leading-7 text-black dark:text-white max-md:ml-2.5 ${
+              isKhmer ? "font-suwannaphum" : "font-kantumruy"
+            }`}
+          >
+            {t("Advertising.advertising")}
           </h2>
           <div className="mt-8 overflow-x-auto scrollbar-hide">
             <div className="flex flex-row self-stretch max-md:max-w-full">

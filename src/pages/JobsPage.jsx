@@ -14,8 +14,10 @@ import "aos/dist/aos.css";
 import Metadata from "../lib/Metadata";
 import useThrottleScroll from "../common/useThrottleScroll"; // Import the custom hook
 import SearchComponent from "../Components/home/SearchComponent";
+import { useTranslation } from "react-i18next";
 
 const JobsPage = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const jobs = useSelector(selectJobs);
   const currentPage = useSelector(selectCurrentPage);
@@ -64,7 +66,7 @@ const JobsPage = () => {
       />
       <header className="mt-20">
         <h1 className="text-blue-600 font-kantumruy text-4xl text-start font-bold">
-          Job Listing
+          {t("List-Jobs.List")}
         </h1>
       </header>
       <SearchComponent

@@ -4,8 +4,11 @@ import { Autoplay, Pagination, Scrollbar } from "swiper/modules";
 import { CardComponent } from "../feat-jobs/CardComponent";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useTranslation } from "react-i18next";
 
 const PositionCardComponent = ({ jobs, isLoading }) => {
+  const { t, i18n } = useTranslation();
+  const isKhmer = i18n.language === "kh";
   const renderSlides = () => {
     if (isLoading) {
       return Array.from({ length: 4 }).map((_, index) => (
@@ -46,8 +49,12 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
         data-aos-offset="200"
         data-aos-easing="ease-in-sine"
       >
-        <h2 className="self-start text-3xl leading-6 text-black max-md:ml-2.5">
-          List Jobs
+        <h2
+          className={`self-start text-3xl leading-6 font-medium text-black max-md:ml-2.5 ${
+            isKhmer ? "font-suwannaphum" : "font-kantumruy"
+          }`}
+        >
+          {t("List-Jobs.List")}
         </h2>
         <div className="mt-8 w-full max-md:mt-10">
           <Swiper

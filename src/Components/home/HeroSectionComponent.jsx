@@ -2,13 +2,24 @@ import React from "react";
 import { Button } from "flowbite-react";
 import { NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';
+import { useTranslation } from "react-i18next";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const HeroSectionComponent = ({ isLoading }) => {
+  const { t, i18n } = useTranslation();
+  const isKhmer = i18n.language === "kh";
+
   return (
-    <section className="flex flex-col pb-20 bg-white dark:bg-gray-900" data-aos="zoom-in-up">
+    <section
+      className="flex flex-col pb-20 bg-white dark:bg-gray-900"
+      data-aos="zoom-in-up"
+    >
       <div className="flex justify-center items-center px-4 py-10 bg-white dark:bg-gray-900 md:px-16">
-        <div className="w-full max-w-[1031px] mt-12 md:mt-10">
+        <div
+          className={`w-full max-w-[1031px] mt-12 md:mt-10 ${
+            isKhmer ? "font-suwannaphum" : "font-kantumruy"
+          }`}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="flex flex-col">
               {isLoading ? (
@@ -21,8 +32,12 @@ const HeroSectionComponent = ({ isLoading }) => {
               ) : (
                 <header className="flex flex-col mt-4 md:mt-3.5 space-y-4">
                   <h1 className="text-4xl md:text-7xl font-semibold text-blue-800 dark:text-blue-400 leading-tight md:leading-[79px] text-left">
-                    <span className="font-bold text-slate-800 dark:text-slate-200 block">Discover more than</span>
-                    <span className="font-bold text-blue-800 dark:text-blue-400 block">5000+ Jobs</span>
+                    <span className="font-bold text-slate-800 dark:text-slate-200 block">
+                      {t("HeroSection.discover")}
+                    </span>
+                    <span className="font-bold text-blue-800 dark:text-blue-400 block">
+                      {t("HeroSection.Jobs")}
+                    </span>
                   </h1>
                   <img
                     loading="lazy"
@@ -32,7 +47,9 @@ const HeroSectionComponent = ({ isLoading }) => {
                     width="455"
                     height="455"
                   />
-                  <p className="mt-1.5 text-2xl leading-10 text-slate-600 dark:text-slate-300 text-left">Great platform for the job seeker that searching for new career heights and passionate about startups.</p>
+                  <p className="mt-1.5 text-2xl leading-10 text-slate-600 dark:text-slate-300 text-left">
+                    {t("HeroSection.description")}
+                  </p>
                 </header>
               )}
               {isLoading ? (
@@ -41,7 +58,12 @@ const HeroSectionComponent = ({ isLoading }) => {
                 </div>
               ) : (
                 <NavLink to="/login" className="self-start">
-                  <Button color="blue" className="px-8 py-1.5 mt-6 text-lg font-medium leading-8 text-white bg-blue-800 hover:bg-blue-700 active:bg-blue-900 shadow-sm rounded-full md:px-5">Try now</Button>
+                  <Button
+                    color="blue"
+                    className="px-8 py-1.5 mt-6 text-xl font-medium leading-8 text-white bg-blue-800 hover:bg-blue-700 active:bg-blue-900 shadow-sm rounded-lg md:px-5"
+                  >
+                    <span className="text-xl">{t("HeroSection.button")}</span>
+                  </Button>
                 </NavLink>
               )}
             </div>

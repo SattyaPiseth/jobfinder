@@ -116,5 +116,17 @@
     },
     "sending": "Sending...",
     "submit": "Submit"
+  },
+  "HeroSection": {
+    "discover": "Discover more than",
+    "Jobs": "5000+ Jobs",
+    "description": "Great platform for the job seeker that searching for new career heights and passionate about startups.",
+    "button": "Explore more"
+  },
+  "List-Jobs": {
+    "List": "List-Jobs"
+  },
+  "Advertising": {
+    "advertising": "Advertising"
   }
 }
