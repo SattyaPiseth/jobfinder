@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { FaEdit, FaClock } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
 import PersonalInformationComponent from "./PersonalInformationComponent";
+import { updateProfile } from "../../redux/api/userApi";
+import BioComponent from "./BioComponent";
+import UserProfileComponent from "./UserProfileComponent";
 
 const ProfileDetailComponent = ({
   username,
@@ -17,77 +20,26 @@ const ProfileDetailComponent = ({
 }) => {
 
   const [isEditing, setIsEditing] = useState(false);
+  
   return (
     <div>
       <section className="flex flex-col my-20">
-        {/* <h1 className="w-full text-left text-xl font-bold leading-7 text-black uppercase max-md:max-w-full">
-          User Profile
-        </h1> */}
         <div className="w-full max-md:max-w-full">
           <div className="flex gap-5 max-md:flex-col max-md:mt-2 max-lg:mt-8 max-md:gap-0">
-            <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
-              <article className="flex flex-col grow pb-3.5 w-full bg-gray-50 rounded-lg max-md:max-w-full">
-                <div className="flex relative flex-col pt-2.5 pr-3 pl-5 w-full min-h-[127px] max-md:pl-5 max-md:max-w-full">
-                  <div>
-                    <img
-                      loading="lazy"
-                      src={
-                        cover ||
-                        "https://cdn.builder.io/api/v1/image/assets/TEMP/3f12d4226ada8a92d9f6e286bcd915f8d95f574ecbe753098a13433ce6079566?apiKey=ff00f11844934b2d9618929d5184b9ad&"
-                      }
-                      alt="cover"
-                      className="object-cover rounded-t-lg absolute inset-0 size-full"
-                    />
-                    <FaEdit className="max-md:w-[16px]" />
-                  </div>
-
-                  <img
-                    loading="lazy"
-                    src={
-                      avatar || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    }
-                    alt="User profile picture"
-                    className="z-10 mt-11 -mb-10 rounded-lg  max-w-full aspect-[1.03] w-[100px] max-md:mt-8 max-md:mb-2.5 p-0.5 rounded-lg ring-2 ring-gray-500 dark:ring-gray-500"
-                  />
-                </div>
-                <div className="flex flex-col ml-36 max-md:ml-0">
-                  <div className="flex flex-row gap-2 w-full">
-                    <h2 className="self-start -mb-2 text-2xl mt-1 font-sowanphum font-semibold leading-7 text-black max-md:ml-5">
-                      {username}
-                    </h2>
-                  </div>
-                  <span className="self-start text-sm text-gray-500 font-semibold leading-7 text-black max-md:ml-5">
-                    <span className="text-[14px]">@</span>
-                    {username}
-                  </span>
-                </div>
-                <div className="flex gap-5 justify-between items-end gap-2 mr-5 ml-5 text-base max-md:flex-wrap max-md:mr-2.5 max-md:mt-3 max-md:max-w-full">
-                  <div className="flex flex-col mt-3">
-                    <div className="flex gap-2 text-black leading-[175%]">
-                      <IoHome className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
-
-                      <p className="flex-auto text-left my-auto max-md:text-sm">
-                        {address || "No location"}
-                      </p>
-                    </div>
-                    <div className="flex mt-1 gap-2 text-black leading-[175%]">
-                      <FaClock className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
-                      <p className="flex-auto text-left my-auto max-md:text-sm">
-                        {created_at || "No date joined"}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-2 text-white whitespace-nowrap max-md:-mt-2">
-                    <button
-                    onClick={() => setIsEditing(true)}
-                    className="justify-center px-2.5 py-1.5 bg-primary-800 rounded-lg border-2 border-primary-800 hover:bg-primary-900  border-solid max-md:py-[5px] max-md:text-sm">
-                      Edit profile
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+            <UserProfileComponent
+            avatar={avatar}
+            username={username}
+            created_at={created_at}
+            cover={cover}
+            address={address}
+            setIsEditing={setIsEditing}
+            />
+            <BioComponent 
+            bio={bio}
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
+            />
+            {/* <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
               <article className="flex flex-col grow px-4 pt-2.5 pb-20 w-full bg-gray-50 rounded-lg max-md:mt-5 max-md:max-w-full">
                 <div className="flex gap-5 justify-between items-start text-xl font-semibold text-black whitespace-nowrap max-md:flex-wrap max-md:max-w-full">
                   <h3 className="mt-2 max-md:mt-2 max-md:text-sm">BIO</h3>
@@ -99,7 +51,7 @@ const ProfileDetailComponent = ({
                   {bio || "No bio"}
                 </p>
               </article>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mt-5 w-full max-md:max-w-full">
