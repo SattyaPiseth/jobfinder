@@ -3,7 +3,6 @@ import { FaEdit, FaClock } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
 import PersonalInformationComponent from "./PersonalInformationComponent";
-import { updateProfile } from "../../redux/api/userApi";
 import BioComponent from "./BioComponent";
 import UserProfileComponent from "./UserProfileComponent";
 
@@ -36,8 +35,6 @@ const ProfileDetailComponent = ({
             />
             <BioComponent 
             bio={bio}
-            isEditing={isEditing}
-            setIsEditing={setIsEditing}
             />
             {/* <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
               <article className="flex flex-col grow px-4 pt-2.5 pb-20 w-full bg-gray-50 rounded-lg max-md:mt-5 max-md:max-w-full">

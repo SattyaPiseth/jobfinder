@@ -4,7 +4,8 @@ import { updateProfile } from "../../redux/api/userApi";
 
 const token = localStorage.getItem("access");
 
-const BioComponent = ({ bio, isEditing, setIsEditing }) => {
+const BioComponent = ({ bio }) => {
+  const [isEditing, setIsEditing] = useState(false);
   const [tempBio, setTempBio] = useState(bio || "No description bio..!");
   const [isSubmitting, setIsSubmitting] = useState(false);
 

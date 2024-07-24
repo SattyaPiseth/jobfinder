@@ -2,9 +2,7 @@ import { FaEdit, FaClock } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { useState } from "react";
 import { Button, Modal } from "flowbite-react";
-import { updateProfile } from "../../redux/api/userApi";
-
-const token = localStorage.getItem('access');
+import axios from "axios";
 
 function UserProfileComponent({
   avatar,
@@ -14,22 +12,19 @@ function UserProfileComponent({
   cover,
   setIsEditing,
 }) {
-  const [selectedFile, setSelectedFile] = useState();
+  const [selectedFile, setSelectedFile] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState(
     avatar ||
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
   );
-  console.log("avatar src: ", avatar);
 
-  const handleAvatarChange = async (e) => {
+  // Handle the file selection and display the preview
+  const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-    console.log("file: ", file);
     if (file) {
-      // const formData = new FormData();
-      // formData.append("avatar", file);
-      setSelectedFile(file);
+      setSelectedFile(file); // Set the selected file
 
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -39,22 +34,39 @@ function UserProfileComponent({
     }
   };
 
+  // Handle the file upload to the server
   const handleSave = async () => {
     if (!selectedFile) return;
     setUploading(true);
-  
-      try {
-        const response = await updateProfile(token, { avatar: avatarSrc });
-        console.log("AvatarSrc: ", avatarSrc);
-        console.log("Response: ", response);
-  
-        setUploading(false);
-        setOpenModal(false);
-      } catch (error) {
-        console.error("Error updating profile:", error);
-        alert(`Error updating profile: ${error.response?.data?.message || error.message}`);
-        setUploading(false);
-      }
+
+    const formData = new FormData();
+    formData.append("avatar", selectedFile);
+
+    try {
+      const response = await axios.post(
+        "http://136.228.158.126:50002/api/upload/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("response:", response);
+      // Assuming the response contains the new avatar URL
+      setAvatarSrc(response.data.avatarUrl);
+      setSelectedFile(null); // Clear the selected file
+      setUploading(false);
+      setOpenModal(false);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert(
+        `Error updating profile: ${
+          error.response?.data?.message || error.message
+        }`
+      );
+      setUploading(false);
+    }
   };
 
   return (
