@@ -164,5 +164,8 @@
     "Perspective": "Our Perspective",
     "Instructor": "Instructors",
     "Member": "Team Members"
+  },
+  "testing": {
+    "test": "Hello"
   }
 }

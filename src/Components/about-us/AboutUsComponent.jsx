@@ -7,6 +7,7 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import { Badge } from "flowbite-react";
 import { useTranslation } from "react-i18next";
+import useFontClass from "../../common/useFontClass";
 
 const teamMembers = [
   {
@@ -78,8 +79,8 @@ const teamLead = {
 };
 export default function AboutUsComponent() {
   const [loading, setLoading] = useState(true);
-  const { t, i18n } = useTranslation();
-  const isKhmer = i18n.language === "kh";
+  const { t } = useTranslation();
+  const { fontClass } = useFontClass();
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -88,9 +89,7 @@ export default function AboutUsComponent() {
 
   return (
     <main
-      className={`flex flex-col items-center bg-white max-sm:mt-16 max-lg:mt-28 ${
-        isKhmer ? "font-suwannaphum" : "font-kantumruy"
-      }`}
+      className={`${fontClass} flex flex-col items-center bg-white max-sm:mt-16 max-lg:mt-28 `}
     >
       <header
         className="mt-16 text-3xl font-bold text-center text-primary-800"
@@ -113,7 +112,7 @@ export default function AboutUsComponent() {
                   t("About-us.About")
                 )}
               </h2>
-              <p className="mt-2.5 text-3xl text-left leading-[52px] max-sm:text-xl max-lg:text-xl">
+              <p className="mt-2.5 text-3xl text-left leading-normal max-sm:text-xl max-lg:text-xl">
                 {loading ? (
                   <Skeleton count={5} />
                 ) : (
@@ -181,8 +180,8 @@ export default function AboutUsComponent() {
                   alt="Team Member"
                 />
               )}
-              <h3 className="mt-5 font-bold">{t("About-us.Goals")}</h3>
-              <p className="px-2 mt-6 text-center max-sm:text-xl max-lg:text-xl">
+              <h3 className="mt-[15px] font-bold">{t("About-us.Goals")}</h3>
+              <p className="px-2 mt-7 text-center max-sm:text-xl max-lg:text-xl leading-tight">
                 {t("About-us.detail.Goals")}
               </p>
             </div>

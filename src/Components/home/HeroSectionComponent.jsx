@@ -10,11 +10,8 @@ const HeroSectionComponent = ({ isLoading }) => {
   const isKhmer = i18n.language === "kh";
 
   return (
-    <section
-      className="flex flex-col pb-20 bg-white dark:bg-gray-900"
-      data-aos="zoom-in-up"
-    >
-      <div className="flex justify-center items-center px-4 py-10 bg-white dark:bg-gray-900 md:px-16">
+    <section className="flex flex-col pb-20" data-aos="zoom-in-up">
+      <div className="flex justify-center items-center px-4 py-10 md:px-16">
         <div
           className={`w-full max-w-[1031px] mt-12 md:mt-10 ${
             isKhmer ? "font-suwannaphum" : "font-kantumruy"
@@ -73,11 +70,9 @@ const HeroSectionComponent = ({ isLoading }) => {
               ) : (
                 <img
                   loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/7620bd35db1e99b287d0833a4e21720c284eae51b18eac7bbdab11c40b01bc31?apiKey=391ff68a63584b0181b4aa51e20262f0&"
-                  alt="Job seeker illustration"
-                  className="w-full h-auto md:max-w-full"
-                  width="500"
-                  height="500"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a80561409e726af6d7ed574172e4be459d2b6e25d22d27c2002b385768104b1?apiKey=391ff68a63584b0181b4aa51e20262f0&&apiKey=391ff68a63584b0181b4aa51e20262f0"
+                  className="w-full aspect-[1.47] max-w-[607px]"
+                  alt=""
                 />
               )}
             </aside>
