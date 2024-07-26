@@ -23,9 +23,8 @@ import AOS from "aos"; // Import AOS
 import "swiper/swiper-bundle.css";
 import { HelmetProvider } from "react-helmet-async";
 import PasswordResetVerification from "./pages/PasswordResetVerification.jsx";
-import 'react-toastify/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
-
 
 const route = createBrowserRouter([
   {
@@ -74,7 +73,6 @@ const route = createBrowserRouter([
       }
     ],
   },
-
   {
     path: "/login",
     element: <LoginPage />,

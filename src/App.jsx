@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchJobCategories, selectAllJobCategories, getJobCategoriesStatus } from './redux/features/category-job/categorySlice';
