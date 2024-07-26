@@ -1,8 +1,14 @@
 import { FaEdit, FaClock } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Modal } from "flowbite-react";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { Formik, Form, Field } from "formik";
+import * as yup from "yup";
+import { fetchUploadUserAvatar } from "../../redux/features/avatar/avatarSlice";
+import { updateProfile } from "../../redux/api/userApi";
+
+const token = localStorage.getItem('access');
 
 function UserProfileComponent({
   avatar,
@@ -10,64 +16,53 @@ function UserProfileComponent({
   address,
   created_at,
   cover,
-  setIsEditing,
 }) {
-  const [selectedFile, setSelectedFile] = useState(null);
+  const validationSchema = yup.object({
+    file: yup.mixed().required("A file is required"),
+  });
+  const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
-  const [uploading, setUploading] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState(
     avatar ||
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
   );
+  const [file, setFile] = useState(); // State to store the selected file
 
-  // Handle the file selection and display the preview
-  const handleAvatarChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setSelectedFile(file); // Set the selected file
-
+  console.log("avatar: ", avatar);
+  const handleOnChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
       const reader = new FileReader();
-      reader.onload = (event) => {
-        setAvatarSrc(event.target.result);
+      reader.onload = () => {
+        setAvatarSrc(reader.result);
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(selectedFile);
     }
   };
 
-  // Handle the file upload to the server
-  const handleSave = async () => {
-    if (!selectedFile) return;
-    setUploading(true);
-
-    const formData = new FormData();
-    formData.append("avatar", selectedFile);
-
-    try {
-      const response = await axios.post(
-        "http://136.228.158.126:50002/api/upload/",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log("response:", response);
-      // Assuming the response contains the new avatar URL
-      setAvatarSrc(response.data.avatarUrl);
-      setSelectedFile(null); // Clear the selected file
-      setUploading(false);
-      setOpenModal(false);
-    } catch (error) {
-      console.error("Error updating profile:", error);
-      alert(
-        `Error updating profile: ${
-          error.response?.data?.message || error.message
-        }`
-      );
-      setUploading(false);
+  const handleSubmit = async () => {
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+      try {
+        const response = await dispatch(fetchUploadUserAvatar(formData)); // Dispatch the action to upload the file
+        console.log("response: ", response.payload.data.url);
+        const avatarUrl = response.payload.data.url;
+        await updateProfile(token, {avatar : avatarUrl})
+        
+      alert("Profile updated successfully!");
+      } catch (error) {
+        console.error(error);
+      }
+      setOpenModal(false); // Close the modal
+    } else {
     }
   };
+
+  useEffect(() => {
+    handleSubmit();
+  }, [])
 
   return (
     <>
@@ -89,11 +84,14 @@ function UserProfileComponent({
             <div className="absolute top-14">
               <img
                 loading="lazy"
-                src={avatarSrc}
+                src={avatar}
                 alt="User profile picture"
                 className="rounded-lg max-w-full aspect-[1.03] w-[100px] max-md:mt-8 max-md:mb-2.5"
               />
-              <FaEdit onClick={() => setOpenModal(true)} className="max-md:w-[16px] absolute left-20 bottom-2" />
+              <FaEdit
+                onClick={() => setOpenModal(true)}
+                className="max-md:w-[16px] absolute left-20 bottom-2"
+              />
             </div>
           </div>
           <div className="flex flex-col ml-36 max-md:ml-0">
@@ -124,8 +122,7 @@ function UserProfileComponent({
               </div>
             </div>
             <div className="flex gap-2 text-white whitespace-nowrap max-md:-mt-2">
-              <button className="justify-center px-2.5 py-1.5 bg-primary-800 rounded-lg border-2 border-primary-800 hover:bg-primary-900 border-solid max-md:py-[5px] max-md:text-sm"
-                onClick={() => setIsEditing(true)}>
+              <button className="justify-center px-2.5 py-1.5 bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:py-[5px] max-md:text-sm">
                 Edit profile
               </button>
             </div>
@@ -133,35 +130,55 @@ function UserProfileComponent({
         </article>
       </div>
 
-      <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
-        <Modal.Header>Choose picture profile</Modal.Header>
-        <Modal.Body>
-        <div className="h-auto w-60 mb-2">
-        <img
-                loading="lazy"
-                src={avatarSrc}
-                alt="User profile picture"
-                className="rounded-lg max-w-full max-md:mt-8 max-md:mb-2.5"
-              />
-        </div>
-          <label className="cursor-pointer underline">
-                Choose image
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleAvatarChange}
-                  disabled={uploading}
+      <Formik
+        initialValues={{
+          file: file,
+        }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {() => (
+          <Modal
+            dismissible
+            show={openModal}
+            onClick={() => handleSubmit()}
+            onClose={() => setOpenModal(false)}
+          >
+            <Modal.Header>Choose picture profile</Modal.Header>
+            <Modal.Body>
+              <div className="h-auto w-60">
+                <img
+                  loading="lazy"
+                  src={avatarSrc}
+                  alt="User profile picture"
+                  className="rounded-lg max-w-full max-md:mt-8 max-md:mb-2.5"
                 />
-              </label>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button type="submit" onClick={() => handleSave()} disabled={uploading}>Save</Button>
-          <Button color="gray" onClick={() => setOpenModal(false)}>
-            Cancel
-          </Button>
-        </Modal.Footer>
-      </Modal>
+              </div>
+              <Form>
+                <div className="mt-5">
+                  <Field
+                    name="file"
+                    type="file"
+                    onChange={handleOnChange}
+                    required
+                  />
+                  {/* <ErrorMessage
+                    component="div"
+                    name="file"
+                    className="text-red-600"
+                  /> */}
+                </div>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button type="submit" onClick={() => handleSubmit()}>Save</Button>
+              <Button color="gray" onClick={() => setOpenModal(false)}>
+                Cancel
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        )}
+      </Formik>
     </>
   );
 }
