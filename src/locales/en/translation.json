@@ -150,5 +150,22 @@
   },
   "Advertising": {
     "advertising": "Advertising"
+  },
+  "About-us": {
+    "Who": "Who We Are ? ",
+    "About": "About Us",
+    "About-description": "Job Quick, created in 2024 by undergraduate students at the Center for Advanced Science and Technology Development, is an online platform that empowers users to effortlessly search for, apply to, and track job opportunities.",
+    "Goals": "Our Goals",
+    "detail": {
+      "Who": "We are the second generation of Basic Scholarship students from the Center for Advanced Science and Technology Development, having successfully completed a four-month course.",
+      "Goals": "Our mission is to provide online job seekers with a user-friendly and secure platform that effectively connects them with employers.",
+      "Perspective": "In our perspective, our goal is to develop a website that stands out as creative, highly customizable, and exceptionally user-friendly."
+    },
+    "Perspective": "Our Perspective",
+    "Instructor": "Instructors",
+    "Member": "Team Members"
+  },
+  "testing": {
+    "test": "Hello"
   }
 }
