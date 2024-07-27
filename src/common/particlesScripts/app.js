@@ -17,7 +17,7 @@ particlesJS("particles-js", {
         color: "#0077ff",
       },
       polygon: {
-        nb_sides: 5,
+        nb_sides: 5, // Use 'sides' instead of 'nb_sides'
       },
     },
     opacity: {
@@ -53,7 +53,7 @@ particlesJS("particles-js", {
       direction: "none",
       random: false,
       straight: false,
-      out_mode: "out",
+      out_mode: "out", // 'out_mode' has been renamed to 'out_mode' in newer versions
       bounce: false,
       attract: {
         enable: false,
@@ -101,5 +101,5 @@ particlesJS("particles-js", {
       },
     },
   },
-  retina_detect: true,
+  retina_detect: true, 
 });
