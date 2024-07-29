@@ -4,9 +4,11 @@ import { NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { useTranslation } from "react-i18next";
 import "react-loading-skeleton/dist/skeleton.css";
+import TypingAnimation from "../../common/TypingAnimation";
 
 const HeroSectionComponent = ({ isLoading }) => {
   const { t, i18n } = useTranslation();
+  const texts = [t('HeroSection.Jobs')];
   const isKhmer = i18n.language === "kh";
 
   return (
@@ -32,9 +34,10 @@ const HeroSectionComponent = ({ isLoading }) => {
                     <span className="font-bold text-slate-800 dark:text-slate-200 block">
                       {t("HeroSection.discover")}
                     </span>
-                    <span className="font-bold text-blue-800 dark:text-blue-400 block">
+                    {/* <span className="font-bold text-blue-800 dark:text-blue-400 block">
                       {t("HeroSection.Jobs")}
-                    </span>
+                    </span> */}
+                     <TypingAnimation texts={texts} className="font-bold text-blue-800 dark:text-blue-400 block" />
                   </h1>
                   <img
                     loading="lazy"

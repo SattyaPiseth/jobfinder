@@ -10,38 +10,38 @@ const SliderComponent = () => {
 
   const imageUrls = [
     {
-      url: "https://cdn.builder.io/api/v1/image/assets/TEMP/c34719a5760b420da93199b245058d19f21dd1681df6e0596cf8bf1de786d308?apiKey=0bc16f2f0d6a46d9b1296b8c9a315482&",
-      width: 800,
+      url: "https://ibccambodia.com/wp-content/uploads/2019/09/Wing-Bank-01-scaled.jpg",
+      width: 2000,
       height: 600,
       alt: "Image 1 description",
     },
     {
       url: "https://cdn.builder.io/api/v1/image/assets/TEMP/1b0637bed0518cc6adfec9c73be1365577988d916ebb2ce4986966ab195df3d4?apiKey=0bc16f2f0d6a46d9b1296b8c9a315482&",
-      width: 800,
+      width: 2000,
       height: 600,
       alt: "Image 2 description",
     },
     {
-      url: "https://cdn.builder.io/api/v1/image/assets/TEMP/7e11de303ac43192e0f21e0fcf534706f392055a37b5c512820034c67bef43be?apiKey=0bc16f2f0d6a46d9b1296b8c9a315482&",
-      width: 800,
+      url: "https://ibccambodia.com/wp-content/uploads/2019/09/RMA-Logo.png",
+      width: 2000,
       height: 600,
       alt: "Image 3 description",
     },
     {
-      url: "https://cdn.builder.io/api/v1/image/assets/TEMP/626db36b70df8272aaf2363bd249d433878d9fa1c04b2c7cbf832050c92b8c1c?apiKey=0bc16f2f0d6a46d9b1296b8c9a315482&",
-      width: 800,
+      url: "https://hrincjobs-pro.s3.amazonaws.com/media/public/filer_public/33/a0/33a02da3-4d2e-4e32-bb47-1f5c0e56bbad/amk.png",
+      width: 2000,
       height: 600,
       alt: "Image 4 description",
     },
     {
       url: "https://ecommerce.techinsights.guru/file/9994758f-3018-4310-ac66-c32ead46cd05.png",
-      width: 800,
+      width: 2000,
       height: 600,
       alt: "Image 5 description",
     },
     {
-      url: "https://ibccambodia.com/wp-content/uploads/2023/09/ABA-Logo-Secondary.png.webp",
-      width: 800,
+      url: "https://cdn.builder.io/api/v1/image/assets/TEMP/8a31d4ddb445d49c683222412a95664d2d100100905c8604958e5f854bee6070?apiKey=391ff68a63584b0181b4aa51e20262f0&&apiKey=391ff68a63584b0181b4aa51e20262f0",
+      width: 2000,
       height: 600,
       alt: "Image 6 description",
     },
@@ -86,7 +86,7 @@ const SliderComponent = () => {
           spaceBetween={20}
           slidesPerView={1}
           autoplay={{
-            delay: 3000,
+            delay: 2000,
             disableOnInteraction: false,
           }}
           loop={true}

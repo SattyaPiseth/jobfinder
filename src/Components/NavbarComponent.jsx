@@ -67,7 +67,6 @@ export default function NavbarComponent() {
     { path: "/jobs", title: t("navbar.jobs") },
     { path: "/media", title: t("navbar.media") },
     { path: "/about-us", title: t("navbar.about-us") },
-    { path: "/contact-us", title: t("navbar.contact-us") },
   ];
 
   const toggleNavbar = () => {
