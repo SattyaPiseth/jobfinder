@@ -54,11 +54,7 @@ const route = createBrowserRouter([
       {
         path: "/verifyCode",
         element: <EmailVerification />,
-      },
-      {
-        path: "/contact-us",
-        element: <ContactUs />,
-      },
+      },  
       {
         path: "/media",
         element: <MediaComponent />,
