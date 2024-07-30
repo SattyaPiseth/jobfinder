@@ -52,10 +52,10 @@ const LoginForm = () => {
 
   return (
     <div
-      className={`${fontClass} bg-white rounded-lg shadow-lg p-6 sm:p-8 w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto`}
+      className={`${fontClass} bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 sm:p-8 w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto`}
     >
       <h2
-        className={`${fontClass} text-2xl sm:text-3xl font-semibold mb-6 sm:mb-8 text-left text-primary-700`}
+        className={`${fontClass} text-2xl sm:text-3xl font-semibold mb-6 sm:mb-8 text-left text-primary-700 dark:text-white`}
       >
         {t('loginForm.title')}
       </h2>
@@ -112,7 +112,7 @@ const LoginForm = () => {
         <div className="flex justify-end">
           <button
             type="button"
-            className={`${fontClass} text-base sm:text-lg text-blue-600 hover:underline`}
+            className={`${fontClass} text-base sm:text-lg text-blue-600 dark:text-slate-200 hover:underline`}
             onClick={openModal}  // Use the custom hook to open the modal
           >
             {t('loginForm.labels.forgotPassword')}
@@ -132,7 +132,7 @@ const LoginForm = () => {
         {t('loginForm.labels.unauthorized')}{' '}
         <NavLink
           to={'/register'}
-          className="text-blue-600 hover:underline font-medium"
+          className="text-blue-600 dark:text-slate-200 hover:underline font-medium"
         >
           {t('loginForm.labels.signUp')}
         </NavLink>

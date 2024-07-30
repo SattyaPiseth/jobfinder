@@ -60,7 +60,7 @@ const HeroSectionComponent = ({ isLoading }) => {
                 <NavLink to="/login" className="self-start">
                   <Button
                     color="blue"
-                    className="px-8 py-1.5 mt-6 text-xl font-medium leading-8 text-white bg-blue-800 hover:bg-blue-700 active:bg-blue-900 shadow-sm rounded-lg md:px-5"
+                    className="px-8 py-1.5 mt-6 text-xl font-medium leading-8 text-white bg-blue-800 dark:bg-blue-800 hover:bg-blue-700 active:bg-blue-900 shadow-sm rounded-lg md:px-5"
                   >
                     <span className="text-xl">{t("HeroSection.button")}</span>
                   </Button>

@@ -55,7 +55,7 @@ const ResetPasswordModal = ({ isOpen, onClose }) => {
       data-aos="zoom-up"
     >
       <Modal.Header>
-        <h2 className={`${fontClass} text-2xl text-primary-700 sm:text-3xl font-semibold text-left`}>
+        <h2 className={`${fontClass} text-2xl text-primary-700 dark:text-slate-50 sm:text-3xl font-semibold text-left`}>
           {t('resetPasswordForm.title')}
         </h2>
       </Modal.Header>
@@ -77,13 +77,13 @@ const ResetPasswordModal = ({ isOpen, onClose }) => {
               <button
                 type="submit"
                 disabled={isLoading || !formik.isValid}
-                className="w-full bg-primary-700 text-white font-medium rounded-lg py-3 hover:bg-primary-750 disabled:opacity-50 transition duration-300"
+                className="w-full bg-primary-700 text-white font-medium rounded-lg py-3 dark:bg-blue-700 hover:bg-primary-750 disabled:opacity-50 transition duration-300"
               >
                 {isLoading ? t('resetPasswordForm.sending') : t('resetPasswordForm.submit')}
               </button>
               <p className={`${fontClass} mt-6 text-base text-center text-gray-600`}>
                 {t('resetPasswordForm.labels.rememberPassword')}{' '}
-                <NavLink to="/login" className="text-blue-600 hover:underline font-medium" onClick={onClose}>
+                <NavLink to="/login" className="text-blue-600 dark:text-white  hover:underline font-medium" onClick={onClose}>
                   {t('resetPasswordForm.labels.login')}
                 </NavLink>
               </p>
