@@ -18,8 +18,47 @@ const AdvertisingComponent = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const cardData = [
+    {
+      image:
+        "https://api.istad.co/media/image/eec0362f-380e-40f5-8799-56ca9b8cafb9.png",
+      title: "តើអ្វីទៅជា WEB 3.0?",
+      description: " មុននឹងស្វែងយល់អំពី WEB 3.0 ត្រូវ...",
+      authorImage: "https://istad.co/resources/img/CSTAD_120.png",
+      authorName: "Blog",
+      date: "11-Aug-2022",
+    },
+    {
+      image:
+        "https://api.istad.co/media/image/53e118d6-58e3-4ec1-b40c-ef44f09c441e.jpg",
+      title: "ជជែកគ្នាលេងអំពី Web 4.0",
+      description: "អ្នកទាំងអស់គ្នាបានដឹងរួចមកហើយថា...",
+      authorImage: "https://istad.co/resources/img/CSTAD_120.png",
+      authorName: "Blog",
+      date: "24-Apr-2023 ",
+    },
+    {
+      image:
+        "https://api.istad.co/media/image/8665a243-b962-4a59-b51a-f31a3704b701.png",
+      title: "SQL Cheat Sheet",
+      description: "SQL commands អាចជួយអោយ...",
+      authorImage: "https://istad.co/resources/img/CSTAD_120.png",
+      authorName: "Blog",
+      date: "13-Jul-2022",
+    },
+    {
+      image:
+        "https://api.istad.co/media/image/0b7ddba0-021c-4dc3-ad73-6fe8bea44167.png",
+      title: " Developer គួរមានចំណេះដឹង",
+      description: "Docker គឺជា open source ...",
+      authorImage: "https://istad.co/resources/img/CSTAD_120.png",
+      authorName: "Blog",
+      date: "04-Aug-2022",
+    },
+  ];
+
   const renderSkeletonArticle = () => (
-    <article className="flex flex-col w-72 max-md:w-full">
+    <article className="flex flex-col w-[272px] h-[318px] max-md:w-full">
       <div className="flex flex-col grow justify-end items-start pb-6 mx-auto w-full bg-white dark:bg-gray-800 rounded-lg border border-solid shadow-md border-zinc-100 max-md:mt-10">
         <Skeleton className="self-stretch w-full aspect-[1.64] rounded-t-lg" />
         <div className="px-4 py-3 w-full">
@@ -37,38 +76,38 @@ const AdvertisingComponent = () => {
     </article>
   );
 
-  const renderArticle = () => (
-    <article className="flex flex-col w-72 max-md:w-full">
+  const renderArticle = (card) => (
+    <article className="flex flex-col w-[272px] h-[318px] max-md:w-full gap-8">
       <div className="flex flex-col grow justify-end items-start pb-6 mx-auto w-full bg-white dark:bg-gray-800 rounded-lg border border-solid shadow-md border-zinc-100 max-md:mt-10">
         <img
           loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5b56424f758fec61a49032145e42510f80e63232849847e7e8a597820af9287?apiKey=ff00f11844934b2d9618929d5184b9ad&"
-          alt="iOS App Development and Web Development className"
+          src={card.image}
+          alt={card.title}
           className="self-stretch w-full shadow-sm aspect-[1.64] rounded-t-lg"
         />
         <div className="px-4 py-3 w-full">
           <h3 className="mt-3 text-left font-bold leading-6 text-neutral-800 dark:text-neutral-200">
-            "iOS App Development" and "Web Development" class
+            {card.title}
           </h3>
           <p className="mt-2 text-left leading-5 text-slate-500 dark:text-slate-400">
-            We would like to thank the ADITI Academy for honoring ...
+            {card.description}
           </p>
           <div className="flex gap-2.5 mt-4">
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/946966d7733b47c431c3071da2dbe95c11147830f249496e392a362399c528ea?apiKey=ff00f11844934b2d9618929d5184b9ad&"
-              alt="Ryan Samuel's profile picture"
-              className="shrink-0 w-9 aspect-square rounded-full"
+              src={card.authorImage}
+              alt={`${card.authorName}'s profile picture`}
+              className="rounded-full w-12 h-12"
             />
             <div className="flex flex-col justify-center">
               <span className="text-sm font-bold text-gray-700 dark:text-gray-300">
-                Ryan Samuel
+                {card.authorName}
               </span>
               <time
-                dateTime="2022-09-10"
+                dateTime={card.date}
                 className="mt-1 text-xs text-slate-400 dark:text-slate-500"
               >
-                10 September 2022
+                {new Date(card.date).toLocaleDateString()}
               </time>
             </div>
           </div>
@@ -95,16 +134,16 @@ const AdvertisingComponent = () => {
           </h2>
           <div className="mt-8 overflow-x-auto scrollbar-hide">
             <div className="flex flex-row self-stretch max-md:max-w-full">
-              <div className="flex gap-5 py-2 max-md:flex-col max-md:gap-0">
+              <div className="flex gap-8 py-2 max-md:flex-col max-md:gap-0">
                 {isLoading
                   ? Array.from({ length: 4 }).map((_, index) => (
                       <React.Fragment key={index}>
                         {renderSkeletonArticle()}
                       </React.Fragment>
                     ))
-                  : Array.from({ length: 4 }).map((_, index) => (
+                  : cardData.map((card, index) => (
                       <React.Fragment key={index}>
-                        {renderArticle()}
+                        {renderArticle(card)}
                       </React.Fragment>
                     ))}
               </div>

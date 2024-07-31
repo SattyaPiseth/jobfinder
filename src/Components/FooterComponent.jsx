@@ -2,13 +2,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
 import { Footer } from "flowbite-react";
-import {
-  BsDribbble,
-  BsFacebook,
-  BsGithub,
-  BsInstagram,
-  BsTwitter,
-} from "react-icons/bs";
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 
 const FooterComponent = () => {
   const { fontClass } = useFontClass();
@@ -23,13 +18,13 @@ const FooterComponent = () => {
         <div className="flex flex-wrap justify-between items-center gap-8">
           <div className="flex-shrink-0 mb-6 md:mb-0 text-center md:text-left w-full md:w-auto mx-auto md:mx-0">
             <div className="flex flex-col items-center md:items-start mx-auto md:mx-0 px-12">
-              <a href="/">
+              <NavLink to="/">
                 <img
                   src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
                   className="h-12 mb-2"
                   alt="Job Quick Logo"
                 />
-              </a>
+              </NavLink>
               <span className={`text-2xl font-semibold ${fontClass}`}>
                 Job Quick
               </span>
@@ -42,8 +37,12 @@ const FooterComponent = () => {
                 className="text-gray-100 font-semibold text-lg"
               />
               <Footer.LinkGroup col className="text-base text-gray-300">
-                <Footer.Link href="#">{t("footer.website.jobs")}</Footer.Link>
-                <Footer.Link href="#">{t("footer.website.media")}</Footer.Link>
+                <NavLink to="/jobs" className="text-base text-gray-300">
+                  {t("footer.website.jobs")}
+                </NavLink>
+                <NavLink to="/media" className="text-base text-gray-300">
+                  {t("footer.website.media")}
+                </NavLink>
               </Footer.LinkGroup>
             </div>
             <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
@@ -52,8 +51,12 @@ const FooterComponent = () => {
                 className="text-gray-100 font-semibold text-lg"
               />
               <Footer.LinkGroup col className="text-base text-gray-300">
-                <Footer.Link href="#">{t("footer.information.about-us")}</Footer.Link>
-                <Footer.Link href="#">{t("footer.information.privacy-policy")}</Footer.Link>
+                <NavLink to="/about-us" className="text-base text-gray-300">
+                  {t("footer.information.about-us")}
+                </NavLink>
+                <NavLink to="/privacy-policy" className="text-base text-gray-300">
+                  {t("footer.information.privacy-policy")}
+                </NavLink>
               </Footer.LinkGroup>
             </div>
             <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
@@ -62,8 +65,12 @@ const FooterComponent = () => {
                 className="text-gray-100 font-semibold text-lg"
               />
               <Footer.LinkGroup col className="text-base text-gray-300">
-                <Footer.Link href="#">{t("footer.contact-us.phone")}</Footer.Link>
-                <Footer.Link href="#">{t("footer.contact-us.email")}</Footer.Link>
+                <NavLink to="/contact-us" className="text-base text-gray-300">
+                  {t("footer.contact-us.phone")}
+                </NavLink>
+                <NavLink to="/contact-us" className="text-base text-gray-300">
+                  {t("footer.contact-us.email")}
+                </NavLink>
               </Footer.LinkGroup>
             </div>
           </div>

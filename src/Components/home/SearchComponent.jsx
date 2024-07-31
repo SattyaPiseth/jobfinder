@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSkills, selectSkillsByCategoryId } from "../../redux/features/category-job/categorySlice";
+import {
+  fetchSkills,
+  selectSkillsByCategoryId,
+} from "../../redux/features/category-job/categorySlice";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { performGlobalSearch, clearSearchResults, selectSearchError } from "../../redux/jobs/jobsSlice";
+import {
+  performGlobalSearch,
+  clearSearchResults,
+  selectSearchError,
+} from "../../redux/jobs/jobsSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,7 +21,9 @@ const SearchComponent = ({ categories, isLoading }) => {
   const [loadingSkills, setLoadingSkills] = useState(false);
   const [query, setQuery] = useState("");
   const error = useSelector(selectSearchError);
-  const skills = useSelector(state => selectSkillsByCategoryId(state, selectedCategory));
+  const skills = useSelector((state) =>
+    selectSkillsByCategoryId(state, selectedCategory)
+  );
 
   useEffect(() => {
     if (query.trim() === "") {
@@ -45,6 +54,13 @@ const SearchComponent = ({ categories, isLoading }) => {
       }
     } else {
       dispatch(clearSearchResults());
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Prevent the default form submission if inside a form
+      handleSearch();
     }
   };
 
@@ -81,6 +97,7 @@ const SearchComponent = ({ categories, isLoading }) => {
               placeholder="Search for position"
               className="pl-14 pr-4 py-4 rounded-lg border-2 border-solid border-slate-100 bg-slate-100 w-full"
               onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleKeyDown} // Add this line
               value={query}
             />
           </div>
@@ -89,7 +106,9 @@ const SearchComponent = ({ categories, isLoading }) => {
             value={selectedCategory}
             onChange={handleCategoryChange}
           >
-            <option value="" disabled>Select a category</option>
+            <option value="" disabled>
+              Select a category
+            </option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.category_name}
