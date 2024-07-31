@@ -12,7 +12,7 @@ const FooterComponent = () => {
   return (
     <Footer
       container
-      className="w-full py-10 px-5 bg-primary-800 dark:bg-primary-900 text-white absolute left-0 right-0 no-rounded"
+      className="w-full py-10 px-5 bg-primary-800 dark:bg-gray-800 text-white absolute left-0 right-0 no-rounded"
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between items-center gap-8">

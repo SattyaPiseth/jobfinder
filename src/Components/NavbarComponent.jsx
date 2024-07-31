@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import LanguageDropdown from "../common/LanguageDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import useLogout from "../common/useLogout";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { fetchProfile } from "../redux/features/user/userSlice";
+import ThemeToggle from "../common/ThemeToggle";
 
 const MenuList = ({ isLoading, menuList, fontClass, isOpen, setIsOpen }) => (
   <div
@@ -21,8 +22,8 @@ const MenuList = ({ isLoading, menuList, fontClass, isOpen, setIsOpen }) => (
         to={menu.path}
         className={({ isActive }) =>
           isActive
-            ? `${fontClass} text-lg font-medium text-white whitespace-nowrap`
-            : `${fontClass} font-medium text-lg text-gray-300 whitespace-nowrap`
+            ? `${fontClass} text-xl font-medium text-white dark:text-white whitespace-nowrap`
+            : `${fontClass} font-medium text-xl text-gray-300 dark:text-gray-300 whitespace-nowrap`
         }
         key={index}
         onClick={() => setIsOpen(false)}
@@ -40,13 +41,9 @@ export default function NavbarComponent() {
   const [loading, setLoading] = useState(true);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const logout = useLogout();
-
   const dispatch = useDispatch();
-  const {
-    user,
-    accessToken,
-    isLoading: globalLoading,
-  } = useSelector((state) => state.user);
+  const { user, accessToken, isLoading: globalLoading } = useSelector((state) => state.user);
+  const location = useLocation(); // Hook to track location changes
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -60,6 +57,11 @@ export default function NavbarComponent() {
       dispatch(fetchProfile(accessToken));
     }
   }, [accessToken, dispatch]);
+
+  useEffect(() => {
+    // Close the mobile menu when the route changes
+    setIsOpen(false);
+  }, [location]);
 
   const isLoading = loading || globalLoading;
   const menuList = [
@@ -76,7 +78,7 @@ export default function NavbarComponent() {
   return (
     <Navbar
       fluid
-      className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50"
+      className=" bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50"
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between py-2 gap-4">
@@ -100,7 +102,7 @@ export default function NavbarComponent() {
             {loading ? (
               <div className="w-20 h-6 bg-gray-300 rounded"></div>
             ) : (
-              <div className="font-extrabold text-md sm:text-lg uppercase text-secondary-300 dark:text-blue-600 whitespace-nowrap">
+              <div className="font-extrabold text-md sm:text-lg uppercase text-white dark:text-primary-700 whitespace-nowrap font-kantumruy">
                 Job Quick
               </div>
             )}
@@ -118,6 +120,7 @@ export default function NavbarComponent() {
 
           <div className="relative flex items-center gap-x-4 xl:gap-x-8 whitespace-nowrap">
             <LanguageDropdown fontClass={fontClass} />
+            <ThemeToggle />
             {loading ? (
               <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
             ) : isAuthenticated ? (
@@ -148,7 +151,7 @@ export default function NavbarComponent() {
                   <button
                     type="button"
                     aria-label="Register"
-                    className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800 rounded-lg focus:ring-2 whitespace-nowrap"
+                    className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-primary-800 dark:hover:bg-blue-700 dark:focus:ring-sky-400 rounded-lg focus:ring-2 whitespace-nowrap"
                   >
                     <svg
                       stroke="currentColor"
@@ -173,7 +176,7 @@ export default function NavbarComponent() {
                   <button
                     type="button"
                     aria-label="Login"
-                    className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800 rounded-lg focus:ring-2 whitespace-nowrap"
+                    className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-primary-800 dark:hover:bg-blue-700 dark:focus:ring-sky-400 rounded-lg focus:ring-2 whitespace-nowrap"
                   >
                     <svg
                       stroke="currentColor"

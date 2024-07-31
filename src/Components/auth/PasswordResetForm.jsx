@@ -73,10 +73,10 @@ const PasswordResetForm = () => {
 
   return (
     <div
-      className={`${fontClass} bg-white rounded-lg shadow-lg p-6 sm:p-8 w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto`}
+      className={`${fontClass} bg-white rounded-lg shadow-lg p-6 sm:p-8 w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto dark:bg-gray-700`}
     >
       <h2
-        className={`${fontClass} text-2xl sm:text-3xl font-semibold mb-6 sm:mb-8 text-left text-primary-700`}
+        className={`${fontClass} text-2xl sm:text-3xl font-semibold mb-6 sm:mb-8 text-left text-primary-700 dark:text-white`}
       >
         {t('resetForm.title')}
       </h2>
@@ -98,10 +98,10 @@ const PasswordResetForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.otp_code}
-            className={`w-full px-3.5 py-3.5 bg-gray-50 rounded-lg border border-solid border-slate-300 text-base text-gray-500 ${fontClass}`}
+            className={`w-full px-3.5 py-3.5 bg-gray-50 rounded-lg border border-solid border-slate-300 text-base text-black ${fontClass}`}
           />
           {formik.touched.otp_code && formik.errors.otp_code && (
-            <div className="mt-1 text-red-600 text-sm">
+            <div className="mt-1 text-red-600 dark:text-red-500 text-sm font-medium">
               {formik.errors.otp_code}
             </div>
           )}

@@ -23,19 +23,16 @@ const HomePage = ({ categories, jobs }) => {
     }
   }, []);
 
-  return (
-    <div className="container mx-auto p-4">
-      <HeroSectionComponent isLoading={status === "loading"} />
-      <SliderComponent />
-      <SearchComponent
-        categories={categories}
-        isLoading={status === "loading"}
-      />
-      <PositionCardComponent jobs={jobs} isLoading={status === "loading"} />
-      <AdvertisingComponent />
-      <FeatureDetailComponent />
-    </div>
-  );
-};
+    return (
+      <div className="mx-auto p-4">
+        <HeroSectionComponent isLoading={status === 'loading'} />
+        <SliderComponent />
+        <SearchComponent categories={categories} isLoading={status === 'loading'} />
+        <PositionCardComponent jobs={jobs} isLoading={status === 'loading'}  />
+        <AdvertisingComponent />
+        <FeatureDetailComponent />
+      </div>
+    );
+  };
 
 export default HomePage;

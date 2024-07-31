@@ -72,7 +72,7 @@ const SliderComponent = () => {
       height={image.height}
       srcSet={`${image.url} 800w, ${image.url}?w=400 400w`}
       sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
-      className="w-full h-full object-cover"
+      className="w-full h-full object-cover rounded-xl"
       alt={image.alt}
       style={{ aspectRatio: `${image.width}/${image.height}` }}
     />

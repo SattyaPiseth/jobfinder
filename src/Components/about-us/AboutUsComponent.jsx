@@ -89,7 +89,7 @@ export default function AboutUsComponent() {
 
   return (
     <main
-      className={`${fontClass} flex flex-col items-center bg-white max-sm:mt-16 max-lg:mt-28 `}
+      className={`${fontClass} flex flex-col items-center max-sm:mt-16 max-lg:mt-28 `}
     >
       <header
         className="mt-16 text-3xl font-bold text-center text-primary-800"

@@ -112,7 +112,7 @@ const JobDetailComponent = ({ detail }) => {
                         {detail?.salary}
                       </div>
                       <div className="mt-1 text-sm leading-5 text-gray-500">
-                        Yearly salary
+                        Monthly salary
                       </div>
                     </div>
                   </div>
@@ -159,7 +159,7 @@ const JobDetailComponent = ({ detail }) => {
                       alt="Clock Icon"
                     />
                     <div className="mt-3 text-xs leading-5 text-gray-500 uppercase">
-                      Job expire in:
+                      Job expire on:
                     </div>
                     <div className="mt-1 text-sm font-medium leading-5 text-zinc-900">
                       14 Aug, 2021

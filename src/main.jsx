@@ -1,3 +1,4 @@
+// src/main.jsx
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -23,7 +24,7 @@ import AOS from "aos"; // Import AOS
 import "swiper/swiper-bundle.css";
 import { HelmetProvider } from "react-helmet-async";
 import PasswordResetVerification from "./pages/PasswordResetVerification.jsx";
-import "react-toastify/ReactToastify.css";
+import 'react-toastify/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 
 const route = createBrowserRouter([
@@ -69,7 +70,6 @@ const route = createBrowserRouter([
       },
     ],
   },
-
   {
     path: "/login",
     element: <LoginPage />,
@@ -81,7 +81,9 @@ const AppWrapper = () => {
   useEffect(() => {
     AOS.init();
   }, []);
-  return <RouterProvider router={route} />;
+  return (
+    <RouterProvider router={route} />
+  );
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(

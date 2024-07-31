@@ -9,7 +9,7 @@ const PasswordInput = ({ label, id, name, placeholder, value, onChange, onBlur, 
 
   return (
     <div className={`mb-4 w-full text-left ${fontClass}`}>
-      <label htmlFor={id} className={`block text-base leading-6 text-gray-900 mb-2 ${fontClass}`}>
+      <label htmlFor={id} className={`block text-base leading-6 text-gray-900 dark:text-white mb-2 ${fontClass}`}>
         {label}
       </label>
       <div className="relative">
@@ -21,7 +21,7 @@ const PasswordInput = ({ label, id, name, placeholder, value, onChange, onBlur, 
           onChange={onChange}
           onBlur={onBlur}
           value={value}
-          className={`w-full px-3.5 py-3.5 bg-gray-50 rounded-lg border border-solid border-slate-300 text-base text-gray-500 pr-10 ${fontClass}`}
+          className={`w-full px-3.5 py-3.5 bg-gray-50 rounded-lg border border-solid border-slate-300 text-base text-gray-900 pr-10 ${fontClass}`}
         />
         <div
           className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
@@ -31,7 +31,7 @@ const PasswordInput = ({ label, id, name, placeholder, value, onChange, onBlur, 
         </div>
       </div>
       {touched && error && (
-        <div className="mt-1 text-red-600 text-sm">
+        <div className="mt-1 text-red-600 text-sm dark:text-red-500 ">
           {error}
         </div>
       )}

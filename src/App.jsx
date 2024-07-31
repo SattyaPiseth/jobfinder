@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchJobCategories, selectAllJobCategories, getJobCategoriesStatus } from './redux/features/category-job/categorySlice';
@@ -12,7 +13,7 @@ function App() {
   const categories = useSelector(selectAllJobCategories);
   const jobs = useSelector(selectAllJobs);
   const status = useSelector(getJobCategoriesStatus);
-
+  const particlesUrl = "./particles.json";
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchJobCategories());

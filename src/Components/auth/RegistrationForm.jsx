@@ -74,9 +74,9 @@ const RegistrationForm = () => {
     >
       {(formik) => (
         <Form
-          className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl`}
+          className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white dark:bg-gray-700 p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl`}
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold text-primary-700 text-left mb-4">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-primary-700 dark:text-white text-left mb-4">
             {t("registrationForm.title")}
           </h2>
           <InputField
@@ -129,7 +129,7 @@ const RegistrationForm = () => {
             {t("registrationForm.labels.haveAccount")}{" "}
             <NavLink
               to="/login"
-              className="text-blue-600 hover:underline font-medium"
+              className="text-blue-600 dark:text-slate-100 hover:underline font-medium"
             >
               {t("registrationForm.labels.login")}
             </NavLink>
