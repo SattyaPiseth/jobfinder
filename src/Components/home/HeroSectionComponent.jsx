@@ -8,8 +8,11 @@ import TypingAnimation from "../../common/TypingAnimation";
 
 const HeroSectionComponent = ({ isLoading }) => {
   const { t, i18n } = useTranslation();
-  const texts = [t('HeroSection.Jobs')];
+  const texts = [t("HeroSection.Jobs")];
   const isKhmer = i18n.language === "kh";
+  const handleJobsPage = () => {
+    navigator("/jobs");
+  };
 
   return (
     <section className="flex flex-col pb-20" data-aos="zoom-in-up">
@@ -37,7 +40,10 @@ const HeroSectionComponent = ({ isLoading }) => {
                     {/* <span className="font-bold text-blue-800 dark:text-blue-400 block">
                       {t("HeroSection.Jobs")}
                     </span> */}
-                     <TypingAnimation texts={texts} className="font-bold text-blue-800 dark:text-blue-400 block" />
+                    <TypingAnimation
+                      texts={texts}
+                      className="font-bold text-blue-800 dark:text-blue-400 block"
+                    />
                   </h1>
                   <img
                     loading="lazy"
@@ -57,8 +63,9 @@ const HeroSectionComponent = ({ isLoading }) => {
                   <Skeleton height={50} width={150} className="rounded-full" />
                 </div>
               ) : (
-                <NavLink to="/login" className="self-start">
+                <NavLink to="/jobs" className="self-start">
                   <Button
+                    onClick={handleJobsPage}
                     color="blue"
                     className="px-8 py-1.5 mt-6 text-xl font-medium leading-8 text-white bg-blue-800 hover:bg-blue-700 active:bg-blue-900 shadow-sm rounded-lg md:px-5"
                   >

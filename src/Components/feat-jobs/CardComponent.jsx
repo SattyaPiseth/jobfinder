@@ -25,7 +25,10 @@ export function CardComponent({ job, isLoading }) {
   const jobTypeBadge = job.isFullTime ? "Full Time" : "Part Time";
 
   return (
-    <article data-aos="fade-up" className="hover:shadow-lg transition-shadow duration-300">
+    <article
+      data-aos="fade-up"
+      className="hover:shadow-lg transition-shadow duration-300"
+    >
       <Link to={`/jobs/${job.id}`}>
         <div className="flex flex-col p-6 text-base leading-6 bg-white border border-solid border-gray-200 rounded-lg shadow-md max-w-xs mx-auto">
           <div className="flex gap-5 justify-between items-center text-indigo-600">
@@ -35,8 +38,8 @@ export function CardComponent({ job, isLoading }) {
               className="shrink-0 w-12 h-12 rounded-full"
               alt={`${job.company_name} logo`}
             />
-            <div className="px-3 py-1 border border-indigo-600 text-indigo-600 rounded-full">
-              {jobTypeBadge}
+            <div className="px-3 py-1 border border-primary-600 text-primary-600 rounded-lg font-kantumruy">
+              {job.job_type}
             </div>
           </div>
           <div className="mt-4 text-lg font-semibold text-gray-800 text-start line-clamp-1">
