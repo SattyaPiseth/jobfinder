@@ -1,3 +1,4 @@
+// src/main.jsx
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -80,7 +81,9 @@ const AppWrapper = () => {
   useEffect(() => {
     AOS.init();
   }, []);
-  return <RouterProvider router={route} />;
+  return (
+    <RouterProvider router={route} />
+  );
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(

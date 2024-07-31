@@ -13,7 +13,7 @@ function App() {
   const categories = useSelector(selectAllJobCategories);
   const jobs = useSelector(selectAllJobs);
   const status = useSelector(getJobCategoriesStatus);
-
+  const particlesUrl = "./particles.json";
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchJobCategories());
