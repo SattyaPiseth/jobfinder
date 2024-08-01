@@ -26,7 +26,6 @@ import { HelmetProvider } from "react-helmet-async";
 import PasswordResetVerification from "./pages/PasswordResetVerification.jsx";
 import 'react-toastify/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
-
 const route = createBrowserRouter([
   {
     path: "/",
