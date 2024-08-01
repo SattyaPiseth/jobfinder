@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  confirmPasswordReset,
   getProfile,
   login,
   register,
+  requestPasswordReset,
   resendOtp,
   updateProfile,
   verifyOtpCode,
@@ -21,7 +23,7 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await register(userData);
-      console.log('email',userData.email)
+      console.log("email", userData.email);
       localStorage.setItem("email", userData.email);
       return response.data;
     } catch (error) {
@@ -36,8 +38,8 @@ export const loginUser = createAsyncThunk(
   async (userCredentials, { rejectWithValue }) => {
     try {
       const response = await login(userCredentials);
-      const { access, refresh} = response.data;
-      console.log('User Slice : ',response)
+      const { access, refresh } = response.data;
+      console.log("User Slice : ", response);
       localStorage.setItem("access", access);
       localStorage.setItem("refresh", refresh);
       return response.data;
@@ -66,6 +68,7 @@ export const fetchProfile = createAsyncThunk(
   async (token, { rejectWithValue }) => {
     try {
       const response = await getProfile(token);
+      console.log("userSlice : ", response?.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -79,6 +82,7 @@ export const updateUserProfile = createAsyncThunk(
   async ({ token, profileData }, { rejectWithValue }) => {
     try {
       const response = await updateProfile(token, profileData);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -99,6 +103,31 @@ export const resendOtpCode = createAsyncThunk(
   }
 );
 
+export const requestPasswordResetThunk = createAsyncThunk(
+  "user/requestPasswordReset",
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = await requestPasswordReset(email);
+      localStorage.setItem("email", email);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
+export const confirmPasswordResetThunk = createAsyncThunk(
+  "user/confirmPasswordReset",
+  async (resetData, { rejectWithValue }) => {
+    try {
+      const response = await confirmPasswordReset(resetData);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
 // User slice definition
 const userSlice = createSlice({
   name: "user",
@@ -109,7 +138,7 @@ const userSlice = createSlice({
     isAuthenticated: false,
     isLoading: false,
     error: null,
-    showModal: false,
+    isPasswordResetRequested: false,
   },
   reducers: {
     loginSuccess(state, action) {
@@ -129,9 +158,9 @@ const userSlice = createSlice({
     },
     // Load tokens from localStorage on initialization
     loadTokens: (state) => {
-      state.accessToken = localStorage.getItem('access');
-      state.refreshToken = localStorage.getItem('refresh');
-      state.isAuthenticated = !!localStorage.getItem('access');
+      state.accessToken = localStorage.getItem("access");
+      state.refreshToken = localStorage.getItem("refresh");
+      state.isAuthenticated = !!localStorage.getItem("access");
     },
     setIsAuthenticatedFalse(state) {
       state.isAuthenticated = false;
@@ -141,11 +170,11 @@ const userSlice = createSlice({
     builder
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
-        state.error = null;
         state.isAuthenticated = true;
       })
       .addCase(registerUser.rejected, (state, action) => {
@@ -154,6 +183,7 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -161,7 +191,6 @@ const userSlice = createSlice({
         state.accessToken = action.payload.access;
         state.refreshToken = action.payload.refresh;
         state.isAuthenticated = true;
-        state.error = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -217,8 +246,34 @@ const userSlice = createSlice({
       .addCase(resendOtpCode.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      // Handle requestPasswordResetThunk states
+      .addCase(requestPasswordResetThunk.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(requestPasswordResetThunk.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isPasswordResetRequested = true;
+      })
+      .addCase(requestPasswordResetThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(confirmPasswordResetThunk.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(confirmPasswordResetThunk.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isPasswordResetRequested = false;
+        state.error = null;
+      })
+      .addCase(confirmPasswordResetThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
-export const { logout, loadTokens, loginSuccess, setIsAuthenticatedFalse  } = userSlice.actions;
+export const { logout, loadTokens, loginSuccess, setIsAuthenticatedFalse } =
+  userSlice.actions;
 export default userSlice.reducer;

@@ -1,3 +1,4 @@
+@import "flowbite/dist/flowbite.css";
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -54,4 +55,33 @@
 /* custom.css */
 .custom-height {
   @apply h-[calc(100vh-299px)];
+}
+
+.no-rounded {
+  border-radius: 0 !important;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark body {
+  background-color: #333; /* Dark background color */
+  color: #fff; /* Light text color */
+}
+
+/* Transition for other elements if needed */
+.transition-colors {
+  transition: background-color 0.3s, color 0.3s;
 }

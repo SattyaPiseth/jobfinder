@@ -2,13 +2,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
 import { Footer } from "flowbite-react";
-import {
-  BsDribbble,
-  BsFacebook,
-  BsGithub,
-  BsInstagram,
-  BsTwitter,
-} from "react-icons/bs";
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 
 const FooterComponent = () => {
   const { fontClass } = useFontClass();
@@ -17,75 +12,76 @@ const FooterComponent = () => {
   return (
     <Footer
       container
-      className="w-full py-10 px-5 absolute left-0 right-0 bg-gray-100 dark:bg-gray-800"
+      className="w-full py-10 px-5 bg-primary-800 dark:bg-gray-800 text-white absolute left-0 right-0 no-rounded"
     >
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-between gap-4">
-          <div className="flex-shrink-0 mb-6 md:mb-0">
-            <Footer.Brand
-              href="/"
-              src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
-              alt="Job Quick Logo"
-              name="Job Quick"
-              className="font-kantumruy uppercase"
-            />
+        <div className="flex flex-wrap justify-between items-center gap-8">
+          <div className="flex-shrink-0 mb-6 md:mb-0 text-center md:text-left w-full md:w-auto mx-auto md:mx-0">
+            <div className="flex flex-col items-center md:items-start mx-auto md:mx-0 px-12">
+              <NavLink to="/">
+                <img
+                  src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
+                  className="h-12 mb-2"
+                  alt="Job Quick Logo"
+                />
+              </NavLink>
+              <span className={`text-2xl font-semibold ${fontClass}`}>
+                Job Quick
+              </span>
+            </div>
           </div>
-          <div
-            className={`${fontClass} flex-grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center`}
-          >
-            {/* Individual Sections */}
-            <div className="text-center md:text-left mb-6 md:mb-0">
+          <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-0 mx-32">
+            <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
               <Footer.Title
                 title={t("footer.website.name")}
-                className="text-gray-600 dark:text-gray-300 text-lg"
+                className="text-gray-100 font-semibold text-lg"
               />
-              <Footer.LinkGroup col className="text-base">
-                <Footer.Link href="#">{t("footer.website.jobs")}</Footer.Link>
-                <Footer.Link href="#">{t("footer.website.media")}</Footer.Link>
+              <Footer.LinkGroup col className="text-base text-gray-300">
+                <NavLink to="/jobs" className="text-base text-gray-300">
+                  {t("footer.website.jobs")}
+                </NavLink>
+                <NavLink to="/media" className="text-base text-gray-300">
+                  {t("footer.website.media")}
+                </NavLink>
               </Footer.LinkGroup>
             </div>
-            <div className="text-center md:text-left mb-6 md:mb-0">
+            <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
               <Footer.Title
                 title={t("footer.information.name")}
-                className="text-gray-600 dark:text-gray-300 text-lg"
+                className="text-gray-100 font-semibold text-lg"
               />
-              <Footer.LinkGroup col className="text-base">
-                <Footer.Link href="#">
+              <Footer.LinkGroup col className="text-base text-gray-300">
+                <NavLink to="/about-us" className="text-base text-gray-300">
                   {t("footer.information.about-us")}
-                </Footer.Link>
-                <Footer.Link href="#">
+                </NavLink>
+                <NavLink to="/privacy-policy" className="text-base text-gray-300">
                   {t("footer.information.privacy-policy")}
-                </Footer.Link>
+                </NavLink>
               </Footer.LinkGroup>
             </div>
-            <div className="text-center md:text-left mb-6 md:mb-0">
+            <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
               <Footer.Title
                 title={t("footer.contact-us.name")}
-                className="text-gray-600 dark:text-gray-300 text-lg"
+                className="text-gray-100 font-semibold text-lg"
               />
-              <Footer.LinkGroup col className="text-base">
-                <Footer.Link href="#">
+              <Footer.LinkGroup col className="text-base text-gray-300">
+                <NavLink to="/contact-us" className="text-base text-gray-300">
                   {t("footer.contact-us.phone")}
-                </Footer.Link>
-                <Footer.Link href="#">
+                </NavLink>
+                <NavLink to="/contact-us" className="text-base text-gray-300">
                   {t("footer.contact-us.email")}
-                </Footer.Link>
+                </NavLink>
               </Footer.LinkGroup>
             </div>
           </div>
-          <div className="w-full md:w-auto xl:w-96 flex justify-center md:justify-end">
-            <div>
-              <h3
-                className={`${fontClass} mb-2 text-lg uppercase font-semibold text-gray-600 dark:text-white text-left`}
-              >
+          <div className="w-full md:w-auto flex justify-center md:justify-end">
+            <div className={`text-center md:text-left ${fontClass}`}>
+              <h3 className="mb-2 text-lg uppercase font-semibold text-gray-100">
                 {t("footer.notification")}
               </h3>
-              <p
-                className={`${fontClass} text-left mb-3 text-sm font-medium text-gray-500 dark:text-gray-300`}
-              >
+              <p className="text-left mb-3 text-sm font-medium text-gray-300">
                 {t("footer.description")}
               </p>
-              {/* Email Subscription Form */}
               <form
                 action="https://app.convertkit.com/forms/4692392/subscriptions"
                 className="seva-form formkit-form"
@@ -96,10 +92,7 @@ const FooterComponent = () => {
                 data-version="5"
                 min-width="400 500 600 700"
               >
-                <div
-                  data-style="clean"
-                  className="flex flex-col md:flex-row items-end mb-3"
-                >
+                <div data-style="clean" className="flex flex-col md:flex-row items-end mb-3">
                   <ul
                     className="formkit-alert formkit-alert-error"
                     data-element="errors"
@@ -111,12 +104,10 @@ const FooterComponent = () => {
                     className="flex flex-col md:flex-row items-center w-full max-w-md mb-3 seva-fields formkit-fields"
                   >
                     <div className="relative w-full mb-3 md:mb-0 md:mr-3 formkit-field">
-                      <label htmlFor="member_email" className="sr-only">
-                        Email address
-                      </label>
+                      <label htmlFor="member_email" className="sr-only">Email address</label>
                       <input
                         id="member_email"
-                        className={`${fontClass} formkit-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+                        className={`${fontClass} formkit-input bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 rounded-md`}
                         name="email_address"
                         aria-label="Email Address"
                         placeholder={t("footer.email")}
@@ -125,7 +116,7 @@ const FooterComponent = () => {
                       />
                     </div>
                     <button data-element="submit" className="formkit-submit">
-                      <span className="px-6 py-3 text-sm font-semibold text-center text-white bg-primary-800 rounded-lg cursor-pointer hover:bg-primary-850 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                      <span className=" px-6 py-3 text-sm font-semibold text-center text-white bg-primary-900 cursor-pointer hover:bg-primary-850 focus:ring-4 focus:ring-blue-300 rounded-lg">
                         Subscribe
                       </span>
                     </button>
@@ -136,14 +127,44 @@ const FooterComponent = () => {
           </div>
         </div>
         <Footer.Divider />
-        <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between">
-          <Footer.Copyright href="#" by="Job Finder™" year={2024} />
+        <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between mt-4">
+          <Footer.Copyright
+            href="#"
+            by="Job Finder™"
+            year={2024}
+            className="text-gray-200"
+          />
           <div className="mt-4 flex space-x-6 md:mt-0 md:justify-center">
-            <Footer.Icon href="#" icon={BsFacebook} aria-label="Facebook" />
-            <Footer.Icon href="#" icon={BsInstagram} aria-label="Instagram" />
-            <Footer.Icon href="#" icon={BsTwitter} aria-label="Twitter" />
-            <Footer.Icon href="#" icon={BsGithub} aria-label="Github" />
-            <Footer.Icon href="#" icon={BsDribbble} aria-label="Dribbble" />
+            <Footer.Icon
+              href="#"
+              icon={BsFacebook}
+              aria-label="Facebook"
+              className="text-gray-200"
+            />
+            <Footer.Icon
+              href="#"
+              icon={BsInstagram}
+              aria-label="Instagram"
+              className="text-gray-200"
+            />
+            <Footer.Icon
+              href="#"
+              icon={BsTwitter}
+              aria-label="Twitter"
+              className="text-gray-200"
+            />
+            <Footer.Icon
+              href="#"
+              icon={BsGithub}
+              aria-label="Github"
+              className="text-gray-200"
+            />
+            <Footer.Icon
+              href="#"
+              icon={BsDribbble}
+              aria-label="Dribbble"
+              className="text-gray-200"
+            />
           </div>
         </div>
       </div>
