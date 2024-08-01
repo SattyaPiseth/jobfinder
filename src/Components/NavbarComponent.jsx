@@ -102,7 +102,7 @@ export default function NavbarComponent() {
             {loading ? (
               <div className="w-20 h-6 bg-gray-300 rounded"></div>
             ) : (
-              <div className="font-extrabold text-md sm:text-lg uppercase text-white dark:text-primary-700 whitespace-nowrap font-kantumruy">
+              <div className="font-extrabold text-md sm:text-lg uppercase text-white dark:text-white whitespace-nowrap font-kantumruy">
                 Job Quick
               </div>
             )}
