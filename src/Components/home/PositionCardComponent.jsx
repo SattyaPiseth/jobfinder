@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CardComponent } from "../feat-jobs/CardComponent";
 import { selectDataBySearch, fetchAllJobs } from "../../redux/jobs/jobsSlice";
@@ -22,6 +22,7 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
   const { t } = useTranslation();
   const { fontClass } = useFontClass();
 
+  // Fetch jobs if not already present
   useEffect(() => {
     if (!jobs.length) {
       dispatch(fetchAllJobs()).catch((error) => {
@@ -30,12 +31,9 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
     }
   }, [dispatch, jobs]);
 
+  // Show notification if no search results
   useEffect(() => {
-    if (
-      searchResults.length === 0 &&
-      !isLoading &&
-      !notificationShown.current
-    ) {
+    if (searchResults.length === 0 && !isLoading && !notificationShown.current) {
       if (location.pathname !== previousPath.current) {
         toast.info("No jobs found for your search query.");
         notificationShown.current = true;
@@ -43,25 +41,25 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
     }
   }, [searchResults, isLoading, location]);
 
+  // Update previousPath on location change
   useEffect(() => {
-    // Update previousPath on location change
     previousPath.current = location.pathname;
   }, [location]);
 
-  const handleRedirect = () => {
+  const handleRedirect = useCallback(() => {
     navigate("/"); // Redirect to home page
-  };
+  }, [navigate]);
 
-  const handleSeeMore = () => {
+  const handleSeeMore = useCallback(() => {
     navigate("/jobs"); // Redirect to another page
-  };
+  }, [navigate]);
 
   const displayJobs = searchResults.length ? searchResults : jobs;
 
   return (
     <div className="my-12">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-[30px] font-semibold text-gray-900">
+        <h2 className={`text-[30px] font-semibold text-gray-900 ${fontClass}`}>
           {t("List-Jobs.List")}
         </h2>
         <div

@@ -62,7 +62,6 @@ export default function NavbarComponent() {
 
   const isLoading = loading || globalLoading;
 
-  // Menu items for desktop and smartphone screens
   const desktopMenuList = [
     { path: "/", title: t("navbar.home") },
     { path: "/jobs", title: t("navbar.jobs") },
@@ -75,8 +74,10 @@ export default function NavbarComponent() {
     { path: "/jobs", title: t("navbar.jobs") },
     { path: "/media", title: t("navbar.media") },
     { path: "/about-us", title: t("navbar.about-us") },
-    { path: "/login", title: t("auth.login") },
-    { path: "/register", title: t("auth.register") },
+    ...(isAuthenticated ? [] : [
+      { path: "/login", title: t("auth.login") },
+      { path: "/register", title: t("auth.register") },
+    ]),
   ];
 
   const toggleNavbar = () => {
