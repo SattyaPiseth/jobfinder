@@ -134,7 +134,7 @@ const AdvertisingComponent = () => {
           </h2>
           <div className="mt-8 overflow-x-auto scrollbar-hide">
             <div className="flex flex-row self-stretch max-md:max-w-full">
-              <div className="flex gap-8 py-2 max-md:flex-col max-md:gap-0">
+              <div className="flex gap-8 py-6 max-md:flex-col max-md:gap-0">
                 {isLoading
                   ? Array.from({ length: 4 }).map((_, index) => (
                       <React.Fragment key={index}>

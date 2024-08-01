@@ -38,7 +38,7 @@ export function CardComponent({ job, isLoading }) {
               className="shrink-0 w-12 h-12 rounded-full"
               alt={`${job.company_name} logo`}
             />
-            <div className="px-3 py-1 border border-primary-600 text-primary-600 rounded-lg font-kantumruy">
+            <div className="px-3 py-1 border border-primary-600 text-primary-800 rounded-lg font-kantumruy">
               {job.job_type}
             </div>
           </div>

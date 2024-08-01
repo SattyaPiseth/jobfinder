@@ -129,9 +129,11 @@ const JobsPage = () => {
               <p>No jobs available</p>
             )}
           </div>
-          <div className="text-center py-10">
-            <Pagination isLoading={status === "loading"} />
-          </div>
+          {searchResults.length === 0 && (
+            <div className="text-center py-10">
+              <Pagination isLoading={status === "loading"} />
+            </div>
+          )}
         </>
       )}
     </section>
