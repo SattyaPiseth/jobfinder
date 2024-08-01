@@ -31,8 +31,8 @@
         "khmer" : "Khmer (KH)"
     },
     "auth" : {
-        "login": "log in",
-        "register" : "sign up"
+        "login": "Log in",
+        "register" : "Sign up"
     },
     "registrationForm": {
     "title": "Register",
