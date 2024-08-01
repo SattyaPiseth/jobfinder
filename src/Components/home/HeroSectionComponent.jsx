@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Button } from "flowbite-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { useTranslation } from "react-i18next";
 import "react-loading-skeleton/dist/skeleton.css";
 import TypingAnimation from "../../common/TypingAnimation";
 
-const HeroSectionComponent = ({ isLoading }) => {
+const HeroSectionComponent = React.memo(({ isLoading }) => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const texts = [t("HeroSection.Jobs")];
   const isKhmer = i18n.language === "kh";
-  const handleJobsPage = () => {
-    navigator("/jobs");
-  };
+
+  const handleJobsPage = useCallback(() => {
+    navigate("/jobs");
+  }, [navigate]);
 
   return (
     <section className="flex flex-col pb-20" data-aos="zoom-in-up">
@@ -37,9 +39,6 @@ const HeroSectionComponent = ({ isLoading }) => {
                     <span className="font-bold text-slate-800 dark:text-slate-200 block">
                       {t("HeroSection.discover")}
                     </span>
-                    {/* <span className="font-bold text-blue-800 dark:text-blue-400 block">
-                      {t("HeroSection.Jobs")}
-                    </span> */}
                     <TypingAnimation
                       texts={texts}
                       className="font-bold text-blue-800 dark:text-blue-400 block"
@@ -48,7 +47,7 @@ const HeroSectionComponent = ({ isLoading }) => {
                   <img
                     loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/d655f199c80b77e13498ccbdbb457b371b5e7da0adeaf1a1ed99dee40011475d?apiKey=ff00f11844934b2d9618929d5184b9ad&"
-                    alt="Job search illustration"
+                    alt={t("HeroSection.altIllustration")}
                     className="mt-7 w-full md:w-[455px] aspect-[11.11]"
                     width="455"
                     height="455"
@@ -82,7 +81,7 @@ const HeroSectionComponent = ({ isLoading }) => {
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a80561409e726af6d7ed574172e4be459d2b6e25d22d27c2002b385768104b1?apiKey=391ff68a63584b0181b4aa51e20262f0&&apiKey=391ff68a63584b0181b4aa51e20262f0"
                   className="w-full aspect-[1.47] max-w-[607px]"
-                  alt=""
+                  alt={t("HeroSection.altImage")}
                 />
               )}
             </aside>
@@ -91,6 +90,6 @@ const HeroSectionComponent = ({ isLoading }) => {
       </div>
     </section>
   );
-};
+});
 
 export default HeroSectionComponent;

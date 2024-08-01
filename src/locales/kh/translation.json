@@ -34,6 +34,15 @@
         "login": "ចូលគណនី",
         "register" : "ចុះឈ្មោះ"
     },
+    "search": {
+      "placeholder": "ស្វែងរកមុខតំណែង",
+      "selectCategory": "ជ្រើសប្រភេទ",
+      "selectSkill": "ជ្រើសជំនាញ",
+      "loadingSkills": "កំពុងបញ្ចូលជំនាញ...",
+      "searchButton": "ស្វែងរក",
+      "fetchSkillsError": "បរាជ័យក្នុងការទាញយកជំនាញ។",
+      "searchError": "បរាជ័យក្នុងការស្វែងរក។"
+    },
     "registrationForm": {
         "title": "ចុះឈ្មោះ",
         "validation": {

@@ -10,7 +10,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../../common/useFontClass";
 
-const INITIAL_VISIBLE_JOBS = 8; // Show two rows of cards
+const INITIAL_VISIBLE_JOBS = 8;
 
 const PositionCardComponent = ({ jobs, isLoading }) => {
   const dispatch = useDispatch();
@@ -22,16 +22,15 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
   const { t } = useTranslation();
   const { fontClass } = useFontClass();
 
-  // Fetch jobs if not already present
   useEffect(() => {
     if (!jobs.length) {
       dispatch(fetchAllJobs()).catch((error) => {
         console.error("Failed to fetch jobs:", error);
+        toast.error("Error fetching jobs. Please try again later.");
       });
     }
   }, [dispatch, jobs]);
 
-  // Show notification if no search results
   useEffect(() => {
     if (searchResults.length === 0 && !isLoading && !notificationShown.current) {
       if (location.pathname !== previousPath.current) {
@@ -41,17 +40,16 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
     }
   }, [searchResults, isLoading, location]);
 
-  // Update previousPath on location change
   useEffect(() => {
     previousPath.current = location.pathname;
   }, [location]);
 
   const handleRedirect = useCallback(() => {
-    navigate("/"); // Redirect to home page
+    navigate("/"); 
   }, [navigate]);
 
   const handleSeeMore = useCallback(() => {
-    navigate("/jobs"); // Redirect to another page
+    navigate("/jobs");
   }, [navigate]);
 
   const displayJobs = searchResults.length ? searchResults : jobs;

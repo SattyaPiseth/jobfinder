@@ -34,6 +34,15 @@
         "login": "Log in",
         "register" : "Sign up"
     },
+    "search": {
+      "placeholder": "Search for position",
+      "selectCategory": "Select a category",
+      "selectSkill": "Select a skill",
+      "loadingSkills": "Loading skills...",
+      "searchButton": "Search",
+      "fetchSkillsError": "Failed to fetch skills.",
+      "searchError": "Failed to perform search."
+    },
     "registrationForm": {
     "title": "Register",
     "validation": {
