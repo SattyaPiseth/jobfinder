@@ -34,15 +34,11 @@ function PersonalInformationForm(
   const handleSubmit = async (profile, { setSubmitting }) => {
     try {
       await updateProfile(token, profile);
-      console.log("Submitting profile:", profile);
-      alert("Profile updated successfully!");
+
       setProfile(profile); // Update the profile state with the new values
       setIsEditing(false); // Exit edit mode after submission
     } catch (error) {
-      console.error("Error updating profile:", error);
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         console.error("Error data:", error.response.data);
         console.error("Error status:", error.response.status);
         console.error("Error headers:", error.response.headers);
@@ -62,7 +58,8 @@ function PersonalInformationForm(
   };
 
   return (
-    <div className="flex flex-col px-6 py-6 text-base font-medium text-black bg-gray-50 rounded-lg max-w-[654px] max-md:px-5">
+    <>
+      <div className="flex flex-col px-6 py-6 text-base font-medium text-black bg-gray-50 rounded-lg max-md:px-5">
       <div className="text-xl font-semibold max-md:max-w-full text-left">
         PERSONAL INFORMATION
       </div>
@@ -97,15 +94,15 @@ function PersonalInformationForm(
                 </label>
                 <div role="group" aria-labelledby="gender">
                   <label>
-                    <Field className="mr-1" type="radio" name="gender" value="male" />
+                    <Field className="mr-1" type="radio" name="gender" value="Male" />
                     Male
                   </label>
                   <label className="ml-4">
-                    <Field type="radio" name="gender" value="female" />
+                    <Field type="radio" name="gender" value="Female" />
                     Female
                   </label>
                   <label className="ml-4">
-                    <Field type="radio" name="gender" value="other" />
+                    <Field type="radio" name="gender" value="Other" />
                     Other
                   </label>
                 </div>
@@ -168,14 +165,14 @@ function PersonalInformationForm(
               <button
                   type="button"
                   onClick={() => setIsEditing(false)}
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg border-2 border-red-600 hover:bg-red-700 transition-colors"
+                  className="px-8 py-2 rounded-lg hover:bg-gray-400"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="ml-2 px-4 py-2 bg-primary-800 text-white rounded-lg hover:bg-primary-900 border-2 border-primary-800 transition-colors"
+                  className="ml-2 px-10 py-2 bg-primary-800 text-white rounded-lg hover:bg-primary-900"
                 >
                   Save
                 </button> 
@@ -184,7 +181,7 @@ function PersonalInformationForm(
           )}
         </Formik>
       ) : (
-        <div className="mt-6 max-md:max-w-full text-left">
+        <div className=" max-md:max-w-full text-left">
           <div className="mt-6 max-md:max-w-full text-left">
             <label className="block mb-2">Username</label>
             <div className="w-full px-3 py-4 mt-3 rounded-lg border border-solid bg-stone-300 bg-opacity-0 border-neutral-400 max-md:pr-5 max-md:max-w-full">
@@ -221,15 +218,15 @@ function PersonalInformationForm(
           </div>
 
           <button
-            hidden
             onClick={() => setIsEditing(true)}
             className="mt-6 px-4 py-2 bg-primary-800 text-white rounded-lg hover:bg-primary-700 transition-colors"
           >
-            Edit
+            Edit information
           </button>
         </div>
-      )}
+      )} 
     </div>
+    </>
   );
 }
 
