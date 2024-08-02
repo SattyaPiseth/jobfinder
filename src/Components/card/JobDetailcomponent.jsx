@@ -4,7 +4,12 @@ const JobDetailComponent = ({ detail }) => {
   return (
     <div className="mt-20 flex flex-col text-left">
       <div className="flex flex-col md:flex-row gap-5 items-center">
-        <img loading="lazy" src={detail?.thumbnail} alt="Company Logo" />
+        <img
+          className="w-[8%]"
+          loading="lazy"
+          src={detail?.thumbnail}
+          alt="Company Logo"
+        />
         <div className="flex-1">
           <div className="text-xl md:text-2xl font-medium leading-8 text-zinc-900">
             {detail?.title}
@@ -13,16 +18,16 @@ const JobDetailComponent = ({ detail }) => {
             <div className="text-lg leading-7 text-neutral-600 min-w-max">
               {detail?.company_name}
             </div>
-            <div className="flex items-center justify-center px-3 py-1 font-semibold text-white whitespace-nowrap bg-green-600 rounded">
+            <div className="flex items-center justify-center px-3 py-1 font-semibold text-white whitespace-nowrap bg-primary-800 rounded-lg">
               {detail?.job_type}
             </div>
-            <div className="flex items-center justify-center px-3 py-1 text-red-500 whitespace-nowrap bg-rose-50 rounded-[52px]">
+            <div className="flex items-center justify-center px-3 py-1 whitespace-nowrap bg- rounded-[52px]">
               Featured
             </div>
           </div>
         </div>
       </div>
-      <div className="mt-8 w-full max-md:max-w-full">
+      <div className="mt-8 w-full max-md:max-w-full mb-10">
         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
           <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full">
             <div className="flex flex-col grow px-5 text-base leading-6 text-gray-500 max-md:mt-6 max-md:max-w-full">
@@ -107,7 +112,7 @@ const JobDetailComponent = ({ detail }) => {
                         {detail?.salary}
                       </div>
                       <div className="mt-1 text-sm leading-5 text-gray-500">
-                        Yearly salary
+                        Monthly salary
                       </div>
                     </div>
                   </div>
@@ -154,7 +159,7 @@ const JobDetailComponent = ({ detail }) => {
                       alt="Clock Icon"
                     />
                     <div className="mt-3 text-xs leading-5 text-gray-500 uppercase">
-                      Job expire in:
+                      Job expire on:
                     </div>
                     <div className="mt-1 text-sm font-medium leading-5 text-zinc-900">
                       14 Aug, 2021
@@ -228,15 +233,15 @@ const JobDetailComponent = ({ detail }) => {
                         alt="Social Icon 1"
                       />
                     </div>
-                    <div className="flex justify-center items-center p-2.5 w-10 h-10 bg-blue-700 rounded-[var(--sds-size-blur-100)]">
+                    <div className="flex justify-center items-center p-2.5 w-10 h-10 bg-sky-100 rounded-[var(--sds-size-blur-100)]">
                       <img
                         loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/6d7eca9cd6e47db7d571261c7092ba6e1186053370dee8d0ccc1f8fc1ac83eaf?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
-                        className="w-5 aspect-square"
-                        alt="Social Icon 2"
+                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4c07cfe1eb1d71a1ae82bdc06fb860532b55d901424ae34ec8f42a820600e18?apiKey=391ff68a63584b0181b4aa51e20262f0&"
+                        className="w-full aspect-square fill-blue-700 max-w-[22px]"
+                        alt=""
                       />
                     </div>
-                    <div className="flex justify-center items-center p-2.5 w-10 h-10 bg-sky-100 rounded-[var(--sds-size-blur-100)]">
+                    <div className="flex justify-center items-center p-2.5 w-10 h-10 bg-sky-100 colorrounded-[var(--sds-size-blur-100)]">
                       <img
                         loading="lazy"
                         src="https://cdn.builder.io/api/v1/image/assets/TEMP/6df5c479f5a264f19cd584ba7616c0bec50584831b3e4e86f7c0b66bad95e585?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"

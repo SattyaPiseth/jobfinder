@@ -59,7 +59,7 @@ const categorySlice = createSlice({
       .addCase(fetchSkills.rejected, (state, action) => {
         state.skillsStatus = "failed";
         state.error = action.payload || "Failed to load skills";
-      });
+      })
   }
 });
 
@@ -70,3 +70,4 @@ export const selectAllJobCategories = (state) => state.category.job_categories;
 export const getJobCategoriesStatus = (state) => state.category.status;
 export const getJobCategoriesError = (state) => state.category.error;
 export const selectSkillsByCategoryId = (state, categoryId) => state.category.skills[categoryId] || [];
+
