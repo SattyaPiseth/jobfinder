@@ -53,12 +53,12 @@ function SocialMediaComponent() {
   return (
     <section className="px-4 text-base font-semibold text-black bg-gray-50 rounded-lg max-md:gap-1 max-md:max-w-full">
       <div className="flex items-start px-px text-xl max-md:flex-wrap max-md:max-w-full"></div>
-      <h3 className="flex-auto text-2xl text-left mb-4 mt-2 max-md:pb-5 max-md:text-sm">
+      <h3 className="flex-auto text-xl text-left mb-4 mt-2 max-md:pb-2 max-md:text-sm">
         SOCIAL MEDIA ACCOUNT
       </h3>
       <button
         onClick={() => setOpenModal(true)}
-        className="w-1/4 justify-center items-center py-2 mb-4 rounded-lg border border-solid bg-slate-400 bg-opacity-0 hover:bg-gray-200 border-neutral-400 max-md:px-5 max-md:py-2 max-md:mr-1.5 max-md:max-w-1/4"
+        className="w-1/4 justify-center items-center py-2 mb-4 rounded-lg border border-solid bg-slate-400 bg-opacity-0 hover:bg-gray-200 border-neutral-400 max-md:py-2 max-md:max-w-1/4"
       >
         + Add
       </button>

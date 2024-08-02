@@ -32,7 +32,7 @@ const BioComponent = ({ bio }) => {
 
   return (
     <>
-      <div className="flex flex-col px-4 pb-4 h-auto bg-gray-50 rounded-lg max-md:mt-5 max-md:max-w-full">
+      <div className="flex flex-col px-4 pb-4 h-auto bg-gray-50 rounded-lg max-md:max-w-full">
       <div className="flex gap-5 justify-between text-xl font-semibold text-black whitespace-nowrap max-md:flex-wrap max-md:max-w-full">
         <h3 className="mt-2 max-md:mt-2 max-md:text-sm">BIO</h3>
         <div
