@@ -31,7 +31,7 @@ const AboutComponent = () => {
     {
       name: "Bour Suorcdey",
       image:
-        "https://scontent.fpnh9-2.fna.fbcdn.net/v/t39.30808-6/375309386_1025687721783408_8347306807240313504_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=pZkH4v38JJUQ7kNvgF774SI&_nc_ht=scontent.fpnh9-2.fna&oh=00_AYAqMRjr8FuSN8CN1QJruTJQ4y4H1ElTT0uk-6nignfCYA&oe=66B28873",
+        "",
       position: "Frontend Developer",
       facebookUrl:
         "https://www.facebook.com/share/UgxpZkvJV7PjWMbj/?mibextid=LQQJ4d",
