@@ -329,7 +329,7 @@ export default function AboutUsComponent() {
       <section className="my-4 flex flex-col items-center md:flex-row">
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
-            <span className="text-gradient bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
+            <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
               Deal
             </span>
             -KH
@@ -341,7 +341,7 @@ export default function AboutUsComponent() {
             favorite items to cart and wishlist all in one place.
           </p>
           <NavLink to="/" className="inline-block mt-4">
-            <button className="group relative inline-flex items-center justify-center px-4 py-2 text-sm md:text-base gap-2 rounded-full bg-gradient-to-r from-pink-500 to-yellow-500 text-white transition-transform-colors-opacity motion-reduce:transition-none">
+            <button className="group relative inline-flex items-center justify-center px-4 py-2 text-sm md:text-base gap-2 rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 text-white transition-transform-colors-opacity motion-reduce:transition-none">
               View Product
             </button>
           </NavLink>
@@ -363,7 +363,7 @@ export default function AboutUsComponent() {
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
             Our{" "}
-            <span className="text-gradient bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
+            <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
               Story
             </span>
           </p>
@@ -396,7 +396,7 @@ export default function AboutUsComponent() {
       <section className="my-4 flex flex-col items-center md:flex-row">
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
-            <span className="text-gradient bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
+            <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
               Our
             </span>{" "}
             Vision
@@ -430,7 +430,7 @@ export default function AboutUsComponent() {
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
             Our{" "}
-            <span className="text-gradient bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
+            <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
               Mission
             </span>
           </p>
@@ -463,14 +463,14 @@ export default function AboutUsComponent() {
         <p className="text-3xl font-bold" data-aos="fade-up">
           Organized{" "}
           <span
-            className="bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent"
+            className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent"
             data-aos="fade-up"
           >
             By
           </span>
         </p>
         <hr
-          className="shrink-0 bg-divider border-none mx-auto my-2 h-1 w-48 border-0 bg-gradient-to-r from-pink-500 to-yellow-500"
+          className="shrink-0 bg-divider border-none mx-auto my-2 h-1 w-48 border-0 bg-gradient-to-r from-indigo-400 to-cyan-400"
           role="separator"
           data-aos="fade-up"
         />
@@ -505,14 +505,14 @@ export default function AboutUsComponent() {
         <p class="text-3xl font-bold aos-init aos-animate" data-aos="fade-up">
           Our{" "}
           <span
-            class="bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent aos-init aos-animate"
+            class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent aos-init aos-animate"
             data-aos="fade-up"
           >
             Mentors
           </span>
         </p>
         <hr
-          class="shrink-0 bg-divider border-none mx-auto my-2 h-1 w-44 border-0 bg-gradient-to-r from-pink-500 to-yellow-500 aos-init aos-animate"
+          class="shrink-0 bg-divider border-none mx-auto my-2 h-1 w-44 border-0 bg-gradient-to-r from-indigo-400 to-cyan-400 aos-init aos-animate"
           role="separator"
           data-aos="fade-up"
         />
@@ -522,7 +522,7 @@ export default function AboutUsComponent() {
           {/* <!-- Mentor Card 1 --> */}
           <div class="w-72 max-w-sm overflow-hidden rounded-xl p-8">
             <div class="relative flex items-center justify-center">
-              <span class="absolute inset-[-0.35%] animate-spin rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#EC4899_0%,#EAB308_50%,#EC4899_100%)] p-[1px] blur-sm"></span>
+              <span class="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
               <div class="relative rounded-full bg-foreground-50 p-1">
                 <div class="relative shadow-black/5 shadow-none rounded-full">
                   <img
@@ -540,7 +540,7 @@ export default function AboutUsComponent() {
             <div class="flex w-full justify-around gap-3 px-6 py-4">
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-pink-500 via-yellow-500 to-pink-500 p-0.5 overflow-hidden"
+                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
               >
                 <svg
                   stroke="currentColor"
@@ -555,7 +555,7 @@ export default function AboutUsComponent() {
               </a>
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-pink-500 via-yellow-500 to-pink-500 p-0.5 overflow-hidden"
+                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
               >
                 <svg
                   stroke="currentColor"
@@ -570,7 +570,7 @@ export default function AboutUsComponent() {
               </a>
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-pink-500 via-yellow-500 to-pink-500 p-0.5 overflow-hidden"
+                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
               >
                 <svg
                   stroke="currentColor"
@@ -585,10 +585,11 @@ export default function AboutUsComponent() {
               </a>
             </div>
           </div>
+
           {/* <!-- Mentor Card 1 --> */}
           <div class="w-72 max-w-sm overflow-hidden rounded-xl p-8">
             <div class="relative flex items-center justify-center">
-              <span class="absolute inset-[-0.35%] animate-spin rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#EC4899_0%,#EAB308_50%,#EC4899_100%)] p-[1px] blur-sm"></span>
+              <span class="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
               <div class="relative rounded-full bg-foreground-50 p-1">
                 <div class="relative shadow-black/5 shadow-none rounded-full">
                   <img
@@ -609,7 +610,7 @@ export default function AboutUsComponent() {
             <div class="flex w-full justify-around gap-3 px-6 py-4">
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-pink-500 via-yellow-500 to-pink-500 p-0.5 overflow-hidden"
+                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
               >
                 <svg
                   stroke="currentColor"
@@ -624,7 +625,7 @@ export default function AboutUsComponent() {
               </a>
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-pink-500 via-yellow-500 to-pink-500 p-0.5 overflow-hidden"
+                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
               >
                 <svg
                   stroke="currentColor"
@@ -639,7 +640,7 @@ export default function AboutUsComponent() {
               </a>
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-pink-500 via-yellow-500 to-pink-500 p-0.5 overflow-hidden"
+                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
               >
                 <svg
                   stroke="currentColor"
@@ -660,14 +661,14 @@ export default function AboutUsComponent() {
         <p class="text-3xl font-bold aos-init aos-animate" data-aos="fade-up">
           Our{" "}
           <span
-            class="bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent aos-init aos-animate"
+            class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent aos-init aos-animate"
             data-aos="fade-up"
           >
             Members
           </span>
         </p>
         <hr
-          class="shrink-0 bg-divider border-none mx-auto my-2 h-1 w-48 border-0 bg-gradient-to-r from-pink-500 to-yellow-500 aos-init aos-animate"
+          class="shrink-0 bg-divider border-none mx-auto my-2 h-1 w-48 border-0 bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 aos-init aos-animate"
           role="separator"
           data-aos="fade-up"
         />
