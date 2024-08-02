@@ -354,7 +354,7 @@ export default function AboutUsComponent() {
             loop
             autoplay
             className="w-full max-w-[600px] h-auto"
-          ></dotlottie-player>
+          />
         </div>
       </section>
 
@@ -368,9 +368,9 @@ export default function AboutUsComponent() {
             </span>
           </p>
           <p className="mt-4 text-base md:text-lg">
-            History of Deal-Kh is a testament to its commitment to customer
+            History of Deal-KH is a testament to its commitment to customer
             satisfaction, innovation, and ethical business practices. From its
-            humble beginnings to becoming a trusted name in e-commerce, Deal-Kh
+            humble beginnings to becoming a trusted name in e-commerce, Deal-KH
             has consistently focused on enhancing the shopping experience for
             its customers.
           </p>
@@ -387,7 +387,7 @@ export default function AboutUsComponent() {
               loop
               autoplay
               className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
-            ></dotlottie-player>
+            />
           </div>
         </div>
       </section>
@@ -420,7 +420,7 @@ export default function AboutUsComponent() {
               loop
               autoplay
               className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
-            ></dotlottie-player>
+            />
           </div>
         </div>
       </section>
@@ -438,7 +438,7 @@ export default function AboutUsComponent() {
             Our mission is to provide exceptional customer satisfaction,
             continuous innovation, and uphold ethical business practices. From
             its humble beginnings to becoming a trusted name in e-commerce,
-            Deal-Kh remains committed to enhancing the shopping experience for
+            Deal-KH remains committed to enhancing the shopping experience for
             its customers.
           </p>
         </div>
@@ -454,7 +454,7 @@ export default function AboutUsComponent() {
               loop
               autoplay
               className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
-            ></dotlottie-player>
+            />
           </div>
         </div>
       </section>
@@ -475,6 +475,7 @@ export default function AboutUsComponent() {
           data-aos="fade-up"
         />
       </div>
+
       <div
         className="my-20 flex justify-center gap-10 px-10"
         data-aos="fade-up"
@@ -483,7 +484,7 @@ export default function AboutUsComponent() {
           className="relative inline-flex items-center tap-highlight-transparent outline-none focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity"
           href="https://istad.co/"
           target="_blank"
-          rel="noopener noreferrer" // Add rel="noopener noreferrer" for security reasons
+          rel="noopener noreferrer"
           tabIndex="0"
           role="link"
         >
@@ -494,60 +495,64 @@ export default function AboutUsComponent() {
             <img
               src="./src/assets/images/final-cstad-logo.png"
               className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
-              alt="About us"
+              alt="ISTAD logo"
               width="500"
               data-loaded="true"
             />
           </div>
         </NavLink>
       </div>
-      <div class="my-2 text-center">
-        <p class="text-3xl font-bold aos-init aos-animate" data-aos="fade-up">
+
+      <div className="my-2 text-center">
+        <p className="text-3xl font-bold" data-aos="fade-up">
           Our{" "}
           <span
-            class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent aos-init aos-animate"
+            className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent"
             data-aos="fade-up"
           >
             Mentors
           </span>
         </p>
         <hr
-          class="shrink-0 bg-divider border-none mx-auto my-2 h-1 w-44 border-0 bg-gradient-to-r from-indigo-400 to-cyan-400 aos-init aos-animate"
+          className="shrink-0 bg-divider border-none mx-auto my-2 h-1 w-44 border-0 bg-gradient-to-r from-indigo-400 to-cyan-400"
           role="separator"
           data-aos="fade-up"
         />
       </div>
-      <div class="flex justify-center aos-init aos-animate" data-aos="fade-up">
-        <div class="my-8 grid grid-cols-1 gap-20 sm:grid-cols-2 lg:grid-cols-2">
-          {/* <!-- Mentor Card 1 --> */}
-          <div class="w-72 max-w-sm overflow-hidden rounded-xl p-8">
-            <div class="relative flex items-center justify-center">
-              <span class="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
-              <div class="relative rounded-full bg-foreground-50 p-1">
-                <div class="relative shadow-black/5 shadow-none rounded-full">
+
+      <div className="flex justify-center" data-aos="fade-up">
+        <div className="my-8 grid grid-cols-1 gap-20 sm:grid-cols-2 lg:grid-cols-2">
+          {/* Mentor Card 1 */}
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
                   <img
                     src="./src/assets/images/ing_muyleang.jpg"
-                    class="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
                     alt="Ing Muyleang"
                     data-loaded="true"
                   />
                 </div>
               </div>
             </div>
-            <div class="px-6 py-4">
-              <div class="mb-2 text-center text-xl font-bold">Ing Muyleang</div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold">
+                Ing Muyleang
+              </div>
             </div>
-            <div class="flex w-full justify-around gap-3 px-6 py-4">
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
               >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 320 512"
-                  class="w-5 h-5 text-white"
+                  className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
@@ -555,14 +560,14 @@ export default function AboutUsComponent() {
               </a>
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
               >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 448 512"
-                  class="w-5 h-5 text-white"
+                  className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
@@ -570,54 +575,131 @@ export default function AboutUsComponent() {
               </a>
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
               >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 488 512"
-                  class="w-5 h-5 text-white"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+                  <path d="M224 258.5c-13.3 0-25.2 1.4-37.4 4-9.7-8.5-20.4-15.4-32.4-21-14.6-7.4-31.8-11.4-49.1-11.4-44.4 0-80.5 36.1-80.5 80.5 0 36.8 26.8 67.4 61.4 76.8 4.4 1.2 8.9 1.7 13.5 1.7 25.7 0 46.7-15.5 63.6-38.7 13.8 3.6 28.4 5.4 43.6 5.4 56.7 0 102.6-45.9 102.6-102.6s-45.9-102.6-102.6-102.6zm0 178.6c-42.2 0-76.7-34.6-76.7-77.4 0-42.7 34.6-77.4 76.7-77.4s76.7 34.6 76.7 77.4c0 42.7-34.6 77.4-76.7 77.4z" />
                 </svg>
               </a>
             </div>
           </div>
+          {/* Mentor Card 1 */}
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
+                  <img
+                    src="./src/assets/images/ing_muyleang.jpg"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    alt="Ing Muyleang"
+                    data-loaded="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold">
+                Ing Muyleang
+              </div>
+            </div>
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224 258.5c-13.3 0-25.2 1.4-37.4 4-9.7-8.5-20.4-15.4-32.4-21-14.6-7.4-31.8-11.4-49.1-11.4-44.4 0-80.5 36.1-80.5 80.5 0 36.8 26.8 67.4 61.4 76.8 4.4 1.2 8.9 1.7 13.5 1.7 25.7 0 46.7-15.5 63.6-38.7 13.8 3.6 28.4 5.4 43.6 5.4 56.7 0 102.6-45.9 102.6-102.6s-45.9-102.6-102.6-102.6zm0 178.6c-42.2 0-76.7-34.6-76.7-77.4 0-42.7 34.6-77.4 76.7-77.4s76.7 34.6 76.7 77.4c0 42.7-34.6 77.4-76.7 77.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          {/* <!-- Mentor Card 1 --> */}
-          <div class="w-72 max-w-sm overflow-hidden rounded-xl p-8">
-            <div class="relative flex items-center justify-center">
-              <span class="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
-              <div class="relative rounded-full bg-foreground-50 p-1">
-                <div class="relative shadow-black/5 shadow-none rounded-full">
+      {/* Team members */}
+      <div
+        className="flex justify-center aos-init aos-animate"
+        data-aos="fade-up"
+      >
+        <div className="my-8 grid grid-cols-1 gap-20">
+          {/* Mentor Card 1 */}
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
                   <img
                     src="src/assets/images/Teacher-Pheng.webp"
-                    class="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
                     alt="Kim Chansokpheng"
                     data-loaded="true"
                   />
                 </div>
               </div>
             </div>
-            <div class="px-6 py-4">
-              <div class="mb-2 text-center text-xl font-bold whitespace-nowrap">
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
                 Kim Chansokpheng
               </div>
             </div>
 
-            <div class="flex w-full justify-around gap-3 px-6 py-4">
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Facebook"
               >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 320 512"
-                  class="w-5 h-5 text-white"
+                  className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
@@ -625,14 +707,15 @@ export default function AboutUsComponent() {
               </a>
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Instagram"
               >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 448 512"
-                  class="w-5 h-5 text-white"
+                  className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
@@ -640,14 +723,15 @@ export default function AboutUsComponent() {
               </a>
               <a
                 href="#"
-                class="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
               >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 488 512"
-                  class="w-5 h-5 text-white"
+                  className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
@@ -657,21 +741,590 @@ export default function AboutUsComponent() {
           </div>
         </div>
       </div>
-      <div class="mt-8 text-center">
-        <p class="text-3xl font-bold aos-init aos-animate" data-aos="fade-up">
-          Our{" "}
-          <span
-            class="bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent aos-init aos-animate"
-            data-aos="fade-up"
-          >
-            Members
-          </span>
-        </p>
-        <hr
-          class="shrink-0 bg-divider border-none mx-auto my-2 h-1 w-48 border-0 bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 aos-init aos-animate"
-          role="separator"
-          data-aos="fade-up"
-        />
+
+      <div
+        className="flex justify-center aos-init aos-animate"
+        data-aos="fade-up"
+      >
+        <div className="my-8 grid grid-cols-1 gap-20 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Mentor Card 2 */}
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
+                  <img
+                    src="src/assets/images/ing_muyleang.jpg"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    alt="Ing Muyleang"
+                    data-loaded="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                Ing Muyleang
+              </div>
+            </div>
+
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Facebook"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Instagram"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 488 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
+                  <img
+                    src="src/assets/images/ing_muyleang.jpg"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    alt="Ing Muyleang"
+                    data-loaded="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                Ing Muyleang
+              </div>
+            </div>
+
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Facebook"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Instagram"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 488 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
+                  <img
+                    src="src/assets/images/ing_muyleang.jpg"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    alt="Ing Muyleang"
+                    data-loaded="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                Ing Muyleang
+              </div>
+            </div>
+
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Facebook"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Instagram"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 488 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
+                  <img
+                    src="src/assets/images/ing_muyleang.jpg"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    alt="Ing Muyleang"
+                    data-loaded="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                Ing Muyleang
+              </div>
+            </div>
+
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Facebook"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Instagram"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 488 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="flex justify-center aos-init aos-animate"
+        data-aos="fade-up"
+      >
+        <div className="my-8 grid grid-cols-1 gap-20 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Mentor Card 2 */}
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
+                  <img
+                    src="src/assets/images/ing_muyleang.jpg"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    alt="Ing Muyleang"
+                    data-loaded="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                Ing Muyleang
+              </div>
+            </div>
+
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Facebook"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Instagram"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 488 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
+                  <img
+                    src="src/assets/images/ing_muyleang.jpg"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    alt="Ing Muyleang"
+                    data-loaded="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                Ing Muyleang
+              </div>
+            </div>
+
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Facebook"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Instagram"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 488 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
+                  <img
+                    src="src/assets/images/ing_muyleang.jpg"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    alt="Ing Muyleang"
+                    data-loaded="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                Ing Muyleang
+              </div>
+            </div>
+
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Facebook"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Instagram"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 488 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div className="w-72 max-w-sm overflow-hidden rounded-xl p-8">
+            <div className="relative flex items-center justify-center">
+              <span className="absolute inset-[-0.35%] animate-spin rounded-full bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 p-[1px] blur-sm"></span>
+              <div className="relative rounded-full bg-foreground-50 p-1">
+                <div className="relative shadow-black/5 shadow-none rounded-full">
+                  <img
+                    src="src/assets/images/ing_muyleang.jpg"
+                    className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
+                    alt="Ing Muyleang"
+                    data-loaded="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                Ing Muyleang
+              </div>
+            </div>
+
+            <div className="flex w-full justify-around gap-3 px-6 py-4">
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Facebook"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="Instagram"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 488 512"
+                  className="w-5 h-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
