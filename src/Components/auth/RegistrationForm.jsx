@@ -4,18 +4,25 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import { NavLink, useNavigate } from "react-router-dom";
-import { registerUser, setIsAuthenticatedFalse } from "../../redux/features/user/userSlice";
+import {
+  registerUser,
+  setIsAuthenticatedFalse,
+} from "../../redux/features/user/userSlice";
 import InputField from "../../common/InputField";
 import PasswordInput from "../../common/PasswordInput"; // Import PasswordInput component
 import useFontClass from "../../common/useFontClass";
 import { toast } from "react-toastify";
+import ThemeToggle from "../../common/ThemeToggle";
 
 const RegistrationForm = () => {
   const { fontClass } = useFontClass();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, error, isAuthenticated } = useSelector((state) => state.user);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const { isLoading, error, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
   const [hasErrorToastShown, setHasErrorToastShown] = useState(false); // State to track error toast display
 
   const initialValues = {
@@ -48,12 +55,21 @@ const RegistrationForm = () => {
 
   const handleSubmit = (values) => {
     setHasErrorToastShown(false); // Reset error toast state on form submission
-    dispatch(registerUser(values));
+    dispatch(registerUser(values))
+      .then(() => {
+        setFormSubmitted(true); // Mark form as submitted after successful registration
+      })
+      .catch((error) => {
+        // Handle error here if needed
+        console.log(error);
+      });
   };
 
   useEffect(() => {
     if (isAuthenticated) {
-      toast.success(<div className={`${fontClass} `}>{t("registrationForm.success")}</div>);
+      toast.success(
+        <div className={`${fontClass} `}>{t("registrationForm.success")}</div>
+      );
       dispatch(setIsAuthenticatedFalse());
       navigate("/verifyCode");
     }
@@ -61,7 +77,9 @@ const RegistrationForm = () => {
 
   useEffect(() => {
     if (error && !hasErrorToastShown) {
-      toast.error(<div className={`${fontClass}`}>{t("registrationForm.error")}</div>);
+      toast.error(
+        <div className={`${fontClass}`}>{t("registrationForm.error")}</div>
+      );
       setHasErrorToastShown(true); // Set error toast state to true after showing the toast
     }
   }, [error, hasErrorToastShown]);
@@ -76,9 +94,14 @@ const RegistrationForm = () => {
         <Form
           className={`${fontClass} flex flex-col space-y-4 sm:space-y-6 bg-white dark:bg-gray-700 p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl`}
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold text-primary-700 dark:text-white text-left mb-4">
-            {t("registrationForm.title")}
-          </h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-primary-700 dark:text-white text-left mr-4">
+              {t("registrationForm.title")}
+            </h2>
+            <div className="bg-primary-700 rounded-lg dark:bg-transparent">
+              <ThemeToggle />
+            </div>
+          </div>
           <InputField
             label={t("registrationForm.labels.username")}
             name="username"
@@ -124,12 +147,12 @@ const RegistrationForm = () => {
               : t("registrationForm.submit")}
           </button>
           <p
-            className={`${fontClass} mt-6 text-base text-center text-gray-600`}
+            className={`${fontClass} mt-6 text-base text-center text-gray-600 dark:text-slate-300`}
           >
             {t("registrationForm.labels.haveAccount")}{" "}
             <NavLink
               to="/login"
-              className="text-blue-600 dark:text-slate-100 hover:underline font-medium"
+              className="text-blue-600 dark:text-white  hover:underline font-medium"
             >
               {t("registrationForm.labels.login")}
             </NavLink>

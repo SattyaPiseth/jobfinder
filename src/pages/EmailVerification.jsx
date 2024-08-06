@@ -29,7 +29,7 @@ const EmailVerification = () => {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/dfc88a762229238be0ba236bdc53e7231de668be5613407739ad520eb7f8a51b?apiKey=ad7733614e794f228aa68fbfd330edec&"
                 alt="Email verification illustration"
-                className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg"
+                className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg hidden lg:block relative"
               />
             </div>
             <div className="flex items-center justify-center p-4 lg:p-0">

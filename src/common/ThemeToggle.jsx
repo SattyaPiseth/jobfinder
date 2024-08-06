@@ -33,7 +33,12 @@ const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       aria-label="Toggle Dark Mode"
-      className="p-2 rounded-lg focus:ring-2 focus:ring-brand dark:focus:ring-light transition-colors"
+      className={`p-2 rounded-lg focus:ring-2 transition-colors duration-200 ${
+        isDarkMode
+          ? "focus:ring-brand dark:focus:ring-light"
+          : "focus:ring-gray-500"
+      }`}
+      type="button"
     >
       {isDarkMode ? (
         <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">

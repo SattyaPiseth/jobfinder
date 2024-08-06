@@ -48,10 +48,6 @@ const route = createBrowserRouter([
         element: <ProtectedRoute element={<ProfilePage />} />,
       },
       {
-        path: "/register",
-        element: <RegistrationPage />,
-      },
-      {
         path: "/verifyCode",
         element: <EmailVerification />,
       },  
@@ -72,6 +68,10 @@ const route = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegistrationPage />,
   },
 ]);
 

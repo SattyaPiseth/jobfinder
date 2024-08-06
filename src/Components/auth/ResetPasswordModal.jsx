@@ -81,7 +81,7 @@ const ResetPasswordModal = ({ isOpen, onClose }) => {
               >
                 {isLoading ? t('resetPasswordForm.sending') : t('resetPasswordForm.submit')}
               </button>
-              <p className={`${fontClass} mt-6 text-base text-center text-gray-600`}>
+              <p className={`${fontClass} mt-6 text-base text-center text-gray-600 dark:text-slate-300`}>
                 {t('resetPasswordForm.labels.rememberPassword')}{' '}
                 <NavLink to="/login" className="text-blue-600 dark:text-white  hover:underline font-medium" onClick={onClose}>
                   {t('resetPasswordForm.labels.login')}

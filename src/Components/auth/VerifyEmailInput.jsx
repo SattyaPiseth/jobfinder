@@ -35,10 +35,18 @@ const EmailVerificationInput = ({
     try {
       const otp = values.otp_code.join("");
       await dispatch(verifyAction({ email, otp_code: otp })).unwrap();
-      toast.success(<div className={`${fontClass}`}>{t("verification.otp_code.success")}</div>);
-      navigate(successRedirect);  // Navigate directly after success
+      toast.success(
+        <div className={`${fontClass}`}>
+          {t("verification.otp_code.success")}
+        </div>
+      );
+      navigate(successRedirect); // Navigate directly after success
     } catch (error) {
-      toast.error(<div className={`${fontClass}`}>{t("verification.verification_failed")}</div>);
+      toast.error(
+        <div className={`${fontClass}`}>
+          {t("verification.verification_failed")}
+        </div>
+      );
       setFieldError("otp_code", t("verification.verification_failed"));
     } finally {
       setSubmitting(false);
@@ -47,7 +55,9 @@ const EmailVerificationInput = ({
 
   const handleResendCode = () => {
     dispatch(resendAction(email));
-    toast.info(<div className={`${fontClass}`}>{t("verification.code_resend")}</div>);
+    toast.info(
+      <div className={`${fontClass}`}>{t("verification.code_resend")}</div>
+    );
   };
 
   const handlePaste = (e, setFieldValue) => {
@@ -60,13 +70,11 @@ const EmailVerificationInput = ({
   };
 
   return (
-    <div
-      className={`max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl w-full mx-auto bg-white rounded-lg shadow-lg p-6 sm:p-8 ${fontClass}`}
-    >
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-primary-700">
+    <div className="max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl w-full mx-auto bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 dark:bg-gray-700">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 sm:mb-6 text-primary-700 dark:text-white">
         {title || t("verification.title")}
       </h2>
-      <p className="text-center text-gray-600 mb-6">
+      <p className="text-center text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base dark:text-white">
         {description || t("verification.desc")}
       </p>
       <Formik
@@ -76,7 +84,7 @@ const EmailVerificationInput = ({
       >
         {({ isSubmitting, values, setFieldValue, errors, touched }) => (
           <Form onPaste={(e) => handlePaste(e, setFieldValue)}>
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <div className="flex gap-2 sm:gap-4 justify-center">
                 {[0, 1, 2, 3, 4, 5].map((index) => (
                   <Field
@@ -84,13 +92,13 @@ const EmailVerificationInput = ({
                     name={`otp_code[${index}]`}
                     type="text"
                     maxLength="1"
-                    className={`text-center rounded-lg border ${
+                    className={`text-center rounded-md sm:rounded-lg border ${
                       values.otp_code[index]
                         ? "border-blue-500"
                         : errors.otp_code && touched.otp_code
                         ? "border-red-500"
                         : "border-gray-300"
-                    } h-12 w-10 sm:h-16 sm:w-12 text-lg sm:text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    } h-10 w-8 sm:h-12 sm:w-10 md:h-16 md:w-12 text-lg sm:text-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-black`}
                     aria-label={`Verification code digit ${index + 1}`}
                     onChange={(e) => {
                       const { value } = e.target;
@@ -118,14 +126,15 @@ const EmailVerificationInput = ({
               <ErrorMessage
                 name="otp_code"
                 component="div"
-                className="text-red-500 text-sm mt-2 text-center"
+                className="text-red-500 text-xs sm:text-sm mt-2 text-center"
               />
             </div>
-            {error && toast.error(<div className={`${fontClass}`}>{error}</div>)}
+            {error &&
+              toast.error(<div className={`${fontClass}`}>{error}</div>)}
             <button
               type="submit"
               disabled={isSubmitting || isLoading}
-              className={`w-full h-12 sm:h-14 text-lg sm:text-xl bg-primary-700 hover:bg-primary-750 rounded-lg text-white ${fontClass}`}
+              className={`w-full h-10 sm:h-12 md:h-14 text-base sm:text-lg md:text-xl bg-primary-700 hover:bg-primary-750 rounded-md sm:rounded-lg text-white ${fontClass}`}
             >
               {isLoading
                 ? t("verification.verifying")
@@ -134,10 +143,10 @@ const EmailVerificationInput = ({
           </Form>
         )}
       </Formik>
-      <div className="flex justify-center gap-1 sm:gap-2 mt-4 text-sm sm:text-lg leading-6">
-        <p className="text-gray-500">{t("verification.unreceived")}</p>
+      <div className="flex justify-center gap-1 sm:gap-2 mt-3 sm:mt-4 text-xs sm:text-sm md:text-base leading-5 sm:leading-6">
+        <p className="text-gray-500 dark:text-slate-300">{t("verification.unreceived")}</p>
         <button
-          className={`text-blue-600 hover:text-blue-800`}
+          className={`text-blue-600 hover:text-blue-800 dark:text-white dark:hover:text-blue-500`}
           onClick={handleResendCode}
         >
           {t("verification.resend")}
