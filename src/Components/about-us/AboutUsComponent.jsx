@@ -576,16 +576,17 @@ export default function AboutUsComponent() {
               <a
                 href="#"
                 className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
               >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
                   strokeWidth="0"
-                  viewBox="0 0 448 512"
+                  viewBox="0 0 488 512"
                   className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M224 258.5c-13.3 0-25.2 1.4-37.4 4-9.7-8.5-20.4-15.4-32.4-21-14.6-7.4-31.8-11.4-49.1-11.4-44.4 0-80.5 36.1-80.5 80.5 0 36.8 26.8 67.4 61.4 76.8 4.4 1.2 8.9 1.7 13.5 1.7 25.7 0 46.7-15.5 63.6-38.7 13.8 3.6 28.4 5.4 43.6 5.4 56.7 0 102.6-45.9 102.6-102.6s-45.9-102.6-102.6-102.6zm0 178.6c-42.2 0-76.7-34.6-76.7-77.4 0-42.7 34.6-77.4 76.7-77.4s76.7 34.6 76.7 77.4c0 42.7-34.6 77.4-76.7 77.4z" />
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
                 </svg>
               </a>
             </div>
@@ -644,16 +645,17 @@ export default function AboutUsComponent() {
               <a
                 href="#"
                 className="z-0 group inline-flex items-center justify-center rounded-full w-12 h-12 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
+                aria-label="LinkedIn"
               >
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
                   strokeWidth="0"
-                  viewBox="0 0 448 512"
+                  viewBox="0 0 488 512"
                   className="w-5 h-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M224 258.5c-13.3 0-25.2 1.4-37.4 4-9.7-8.5-20.4-15.4-32.4-21-14.6-7.4-31.8-11.4-49.1-11.4-44.4 0-80.5 36.1-80.5 80.5 0 36.8 26.8 67.4 61.4 76.8 4.4 1.2 8.9 1.7 13.5 1.7 25.7 0 46.7-15.5 63.6-38.7 13.8 3.6 28.4 5.4 43.6 5.4 56.7 0 102.6-45.9 102.6-102.6s-45.9-102.6-102.6-102.6zm0 178.6c-42.2 0-76.7-34.6-76.7-77.4 0-42.7 34.6-77.4 76.7-77.4s76.7 34.6 76.7 77.4c0 42.7-34.6 77.4-76.7 77.4z" />
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
                 </svg>
               </a>
             </div>
