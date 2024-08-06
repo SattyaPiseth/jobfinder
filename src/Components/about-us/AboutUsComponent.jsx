@@ -73,7 +73,7 @@ const teachers = [
 
 const teamLead = {
   name: "Piseth Satthya",
-  image: "src\assets\images\piseth-sattya.jpg",
+  image: "src/assets/images/piseth-sattya.jpg",
   position: "Frontend Developer",
 };
 export default function AboutUsComponent() {
