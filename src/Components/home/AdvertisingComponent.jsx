@@ -77,8 +77,8 @@ const AdvertisingComponent = () => {
   );
 
   const renderArticle = (card) => (
-    <article className="flex flex-col w-[272px] h-[318px] max-md:w-full gap-8">
-      <div className="flex flex-col grow justify-end items-start pb-6 mx-auto w-full bg-white dark:bg-gray-800 rounded-lg border border-solid shadow-md border-zinc-100 max-md:mt-10">
+    <article className="flex flex-col w-full sm:w-[272px] h-auto gap-8">
+      <div className="flex flex-col grow justify-end items-start pb-6 mx-auto w-full bg-white dark:bg-gray-800 rounded-lg border border-solid shadow-md border-zinc-100 mt-10 sm:mt-0">
         <img
           loading="lazy"
           src={card.image}
@@ -134,7 +134,7 @@ const AdvertisingComponent = () => {
           </h2>
           <div className="mt-8 overflow-x-auto scrollbar-hide">
             <div className="flex flex-row self-stretch max-md:max-w-full">
-              <div className="flex gap-8 py-6 max-md:flex-col max-md:gap-0">
+              <div className="flex gap-8 py-6 max-md:flex-col max-md:gap-0 ">
                 {isLoading
                   ? Array.from({ length: 4 }).map((_, index) => (
                       <React.Fragment key={index}>
