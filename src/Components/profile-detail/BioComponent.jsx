@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { updateProfile } from "../../redux/api/userApi";
+import useFontClass from "../../common/useFontClass";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const token = localStorage.getItem("access");
 
@@ -23,8 +26,10 @@ const BioComponent = ({ bio }) => {
       await updateProfile(token, { bio: tempBio });
 
       setIsEditing(false); // Exit edit mode after successful submission
+      toast.success(<div className={`${useFontClass}`}>Bio has been updated.</div>);
     } catch (error) {
       console.error("Error updating profile:", error);
+      toast.error(<div className={`${useFontClass}`}>Failed to update bio.</div>);
     } finally {
       setIsSubmitting(false);
     }
@@ -32,21 +37,21 @@ const BioComponent = ({ bio }) => {
 
   return (
     <>
-      <div className="flex flex-col px-4 pb-4 h-auto bg-gray-50 rounded-lg max-md:max-w-full">
+      <div className="flex flex-col px-4 pb-4 h-auto bg-gray-50 rounded-lg max-md:max-w-full dark:bg-gray-900">
       <div className="flex gap-5 justify-between text-xl font-semibold text-black whitespace-nowrap max-md:flex-wrap max-md:max-w-full">
-        <h3 className="mt-2 max-md:mt-2 max-md:text-sm">BIO</h3>
+        <h3 className="mt-2 max-md:mt-2 max-md:text-sm dark:text-gray-300">BIO</h3>
         <div
-          className="p-1 mt-2 max-md:mt-0 rounded-md hover:bg-gray-200 cursor-pointer"
+          className="p-1 mt-2 max-md:mt-0 rounded-md hover:bg-gray-200 cursor-pointer dark:text-gray-300 dark:hover:bg-gray-800"
           onClick={handleEdit}
         >
-          <FaEdit className="fill-gray-700 max-md:w-[16px]" />
+          <FaEdit className="fill-gray-700 max-md:w-[16px] dark:fill-gray-300" />
         </div>
       </div>
       {isEditing ? (
         <div>
         <textarea
         rows="6"
-          className="self-start w-full rounded-md mt-4 ml-0.5 text-left text-md font-medium text-neutral-500 max-md:mt-2 max-md:text-sm max-md:max-w-full"
+          className="self-start w-full rounded-md mt-4 ml-0.5 text-left text-md font-medium text-neutral-500 max-md:mt-2 max-md:text-sm max-md:max-w-full dark:bg-gray-800 dark:text-gray-300"
           value={tempBio}
           onChange={handleChange}
         />
@@ -61,7 +66,7 @@ const BioComponent = ({ bio }) => {
         </div>
         </div>
       ) : (
-        <div className="self-start rounded-lg mt-4 text-left text-md font-medium text-neutral-500 max-md:mt-2 max-md:text-sm max-md:max-w-full line-clamp-6">
+        <div className="self-start rounded-lg mt-4 text-left text-md font-medium text-neutral-500 max-md:mt-2 max-md:text-sm max-md:max-w-full line-clamp-6 dark:text-gray-300">
           <p>{tempBio}</p>
         </div>
       )}

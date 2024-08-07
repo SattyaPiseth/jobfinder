@@ -7,6 +7,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { fetchUploadUserAvatar } from "../../redux/features/avatar/avatarSlice";
 import { updateProfile } from "../../redux/api/userApi";
+import useFontClass from "../../common/useFontClass";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const token = localStorage.getItem("access");
 
@@ -71,8 +74,10 @@ function UserProfileComponent({
           alert("Failed to upload avatar. Please try again.");
           console.error("Invalid response structure:", response);
         }
+        toast.success(<div className={`${useFontClass}`}>Profile has been updated.</div>);
       } catch (error) {
         console.error(error);
+        toast.error(<div className={`${useFontClass}`}>Failed to update profile.</div>);
       }
       setOpenModal(false); // Close the modal
       setIsSubmitting(false);
@@ -81,14 +86,14 @@ function UserProfileComponent({
 
   return (
     <>
-      <article className="flex flex-col h-auto grow bg-gray-50 rounded-lg max-md:max-w-full">
+      <article className="flex flex-col h-auto grow bg-gray-50 rounded-lg max-md:max-w-full dark:bg-gray-900">
         <div className="flex relative flex-col pt-2.5 pr-3 pl-5 w-full min-h-[127px] max-md:pl-5 max-md:max-w-full">
           <div className="">
             <img
               loading="lazy"
               src={
                 cover ||
-                "https://cdn.builder.io/api/v1/image/assets/TEMP/3f12d4226ada8a92d9f6e286bcd915f8d95f574ecbe753098a13433ce6079566?apiKey=ff00f11844934b2d9618929d5184b9ad&"
+                "https://cdn.pixabay.com/photo/2015/06/10/07/03/building-804526_1280.jpg"
               }
               alt="cover"
               className="object-cover rounded-t-lg absolute inset-0 size-full"
@@ -110,11 +115,11 @@ function UserProfileComponent({
         </div>
         <div className="flex flex-col ml-36 max-md:ml-0 max-md:mt-2">
           <div className="flex flex-row gap-2 w-full">
-            <h2 className="self-start -mb-2 text-2xl mt-1 font-sowanphum font-semibold leading-7 text-black max-md:ml-5">
+            <h2 className="self-start -mb-2 text-2xl mt-1 font-sowanphum font-semibold leading-7 text-black max-md:ml-5 dark:text-gray-300">
               {userNameOnChange}
             </h2>
           </div>
-          <span className="self-start text-sm text-gray-500 font-semibold leading-7 max-md:ml-5">
+          <span className="self-start text-sm text-gray-500 font-semibold leading-7 max-md:ml-5 dark:text-gray-300">
             <span className="text-[14px]">@</span>
             {userNameOnChange}
           </span>
@@ -122,20 +127,20 @@ function UserProfileComponent({
         <div className="flex justify-between items-end mr-5 ml-5 text-base max-md:flex-wrap max-md:mr-2.5 max-md:mt-3 max-md:pb-2 max-md:max-w-full">
           <div className="flex flex-col mt-2 max-md:mt-0.5">
             <div className="flex gap-2 text-black leading-[175%]">
-              <IoHome className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
+              <IoHome className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5 dark:fill-gray-300" />
 
-              <p className="flex-auto text-left my-auto max-md:text-sm">
+              <p className="flex-auto text-left my-auto max-md:text-sm dark:text-gray-300">
                 {addressChange || "No location"}
               </p>
             </div>
             <div className="flex gap-2 text-black leading-[175%]">
-              <FaClock className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5" />
-              <p className="flex-auto text-left my-auto max-md:text-sm">
+              <FaClock className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5 dark:fill-gray-300" />
+              <p className="flex-auto text-left my-auto max-md:text-sm dark:text-gray-300">
                 {created_at || "Unavailable"}
               </p>
             </div>
           </div>
-          <div className="flex gap-2 text-white whitespace-nowrap max-md:mb-0.5">
+          <div className="flex gap-2 mb-2 text-white whitespace-nowrap max-md:mb-0.5">
             <button
               onClick={() => setOpenModal(true)}
               className="justify-center px-2.5 py-1.5 bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-md:py-[5px] max-md:text-sm"

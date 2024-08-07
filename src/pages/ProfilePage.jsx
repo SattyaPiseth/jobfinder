@@ -49,10 +49,7 @@ const ProfilePage = () => {
           bio={user?.bio}
           phone_num={user?.phone_number}
           gender={user?.gender}
-          facebook={user?.facebook}
-          twitter={user?.twitter}
-          linkedin={user?.linkedin}
-          github={user?.github}
+          contact_info={user?.contact_info}
           avatar={user?.avatar}
         />
       </div>

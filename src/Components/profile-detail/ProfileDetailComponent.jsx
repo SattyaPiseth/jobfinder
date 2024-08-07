@@ -15,6 +15,7 @@ const ProfileDetailComponent = ({
   created_at,
   avatar,
   cover,
+  contact_info,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -32,7 +33,7 @@ const ProfileDetailComponent = ({
           />
           <BioComponent bio={bio} />
           <SkillAndInterestComponent />
-          <SocialMediaComponent />
+          <SocialMediaComponent contact_info={contact_info} />
         </div>
         <div className="col-span-1 md:cols-span-2">
           <PersonalInformationComponent

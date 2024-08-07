@@ -9,25 +9,17 @@ const initialState = {
   error: null,
 };
 
-// create fetch user
-export const fetchUploadSocialMedia = createAsyncThunk(
-  "social_media/fetchUploadSocialMedia",
-  async ({ facebook, twitter, instagram, linkedin }) => {
-    console.log("facebook:", facebook);
-    const body = JSON.stringify({
-      facebook,
-      twitter,
-      instagram,
-      linkedin,
-    });
-    console.log("body", body);
-    const response = await fetch(`${BASE_URL}social_media/`, {
-      method: "POST",
+// Create fetch social media
+export const fetchSocialMedia = createAsyncThunk(
+  "social_media/fetchSocialMedia",
+  async () => {
+    // Fetch social media data from the API
+    const response = await fetch(`${BASE_URL}profile`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body,
     });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -43,19 +35,19 @@ export const socialSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUploadSocialMedia.pending, (state) => {
+      .addCase(fetchSocialMedia.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchUploadSocialMedia.fulfilled, (state, action) => {
+      .addCase(fetchSocialMedia.fulfilled, (state, action) => {
         state.status = "success";
         state.social_media = action.payload;
       })
-      .addCase(fetchUploadSocialMedia.rejected, (state, action) => {
+      .addCase(fetchSocialMedia.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
   },
 });
 
-// export reducer
+// Export reducer
 export default socialSlice.reducer;
