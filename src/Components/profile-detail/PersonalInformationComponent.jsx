@@ -54,9 +54,6 @@ function PersonalInformationForm(
         console.error("Error message:", error.message);
       }
       toast.error(<div className={`${useFontClass}`}>Failed to update personal info.</div>);
-      alert(
-        "An error occurred while updating the profile. Check the console for more details."
-      );
     } finally {
       setSubmitting(false);
     }

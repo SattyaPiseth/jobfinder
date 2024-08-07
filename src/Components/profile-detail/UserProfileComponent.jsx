@@ -72,7 +72,7 @@ function UserProfileComponent({
           setAvatarSrc(avatarUrl);
           toast.success(<div className={`${useFontClass}`}>Profile has been updated.</div>);
         } else {
-          alert("Failed to upload avatar. Please try again.");
+          toast.error(<div className={`${useFontClass}`}>Failed to upload avatar. Please try again.</div>);
           console.error("Invalid response structure:", response);
         }
       } catch (error) {
