@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';
+import "react-loading-skeleton/dist/skeleton.css";
 
 const FeatureDetailComponent = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,11 +30,12 @@ const FeatureDetailComponent = () => {
             </h2>
             <article className="flex flex-col mt-12 text-base text-neutral-600 dark:text-neutral-300 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
               <p className="text-center max-md:max-w-full">
-                Job Finder is delighted to be covered by various Media. Our team
+                Job Quick is delighted to be covered by various Media. Our team
                 adheres to six original core values <br />
-                (Teamwork, High Ambition, Strong Confidence, Be the only ONE, Working
-                Hard, and PDCA Quality Cycle) <br />
-                to ensure we deliver what we promise to ourselves and our customers.
+                (Teamwork, High Ambition, Strong Confidence, Be the only ONE,
+                Working Hard, and PDCA Quality Cycle) <br />
+                to ensure we deliver what we promise to ourselves and our
+                customers.
               </p>
             </article>
             <div className="flex justify-center items-center w-full">

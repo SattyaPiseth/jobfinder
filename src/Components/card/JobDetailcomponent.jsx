@@ -1,6 +1,17 @@
 import React from "react";
+import { Typography, Button, Input } from "@material-tailwind/react"; // Corrected import
+import { useCopyToClipboard } from "usehooks-ts";
+import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 
 const JobDetailComponent = ({ detail }) => {
+  const [value, copy] = useCopyToClipboard();
+  const [copied, setCopied] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState(
+    "npm i @material-tailwind/react"
+  );
+  const handleError = (event) => {
+    event.target.src = "/path/to/fallback/image.jpg"; // Specify a path to your fallback image
+  };
   return (
     <div className="mt-20 flex flex-col text-left">
       <div className="flex flex-col md:flex-row gap-5 items-center">
@@ -11,45 +22,45 @@ const JobDetailComponent = ({ detail }) => {
           alt="Company Logo"
         />
         <div className="flex-1">
-          <div className="text-xl md:text-2xl font-medium leading-8 text-zinc-900">
+          <div className="text-xl md:text-2xl font-medium leading-8 text-zinc-900 dark:text-gray-300">
             {detail?.title}
           </div>
           <div className="flex flex-wrap gap-2 mt-3 text-sm leading-5">
-            <div className="text-lg leading-7 text-neutral-600 min-w-max">
+            <div className="text-lg leading-7 text-neutral-600 min-w-max dark:text-gray-300">
               {detail?.company_name}
             </div>
-            <div className="flex items-center justify-center px-3 py-1 font-semibold text-white whitespace-nowrap bg-primary-800 rounded-lg">
+            <div className="flex items-center justify-center px-3 py-1 font-semibold text-white whitespace-nowrap bg-primary-800 rounded-lg ">
               {detail?.job_type}
             </div>
-            <div className="flex items-center justify-center px-3 py-1 whitespace-nowrap bg- rounded-[52px]">
+            <div className="flex items-center justify-center px-3 py-1 whitespace-nowrap bg- rounded-[52px] dark:text-gray-300">
               Featured
             </div>
           </div>
         </div>
       </div>
-      <div className="mt-8 w-full max-md:max-w-full mb-10">
-        <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-          <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full">
-            <div className="flex flex-col grow px-5 text-base leading-6 text-gray-500 max-md:mt-6 max-md:max-w-full">
-              <div className="text-lg font-medium leading-7 text-zinc-900 max-md:max-w-full">
+      <div className="mt-8 w-full max-md:max-w-full mb-10 ">
+        <div className="flex gap-5 max-md:flex-col max-md:gap-0 h-[80px]">
+          <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full ">
+            <div className="flex flex-col grow px-5 text-base leading-6 text-gray-500 max-md:mt-6 max-md:max-w-full bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
+              <div className="text-lg font-bold leading-7 text-zinc-900 max-md:max-w-full dark:text-gray-300 ">
                 Job Description
               </div>
-              <div className="mt-4 max-md:mr-1.5 max-md:max-w-full">
+              <div className="mt-4 max-md:mr-1.5 max-md:max-w-full dark:text-gray-300">
                 {detail?.description}
               </div>
-              <div className="mt-4 font-medium leading-[150%] text-zinc-900 max-md:max-w-full">
+              <div className="mt-4 font-bold leading-[150%] text-zinc-900 max-md:max-w-full dark:text-gray-300">
                 Requirements
               </div>
-              <div className="mt-2 max-md:max-w-full">
+              <div className="mt-2 max-md:max-w-full dark:text-gray-300">
                 {detail?.job_requirements.map((requirement, index) => (
                   <div key={index}>{requirement?.requirement}</div>
                 ))}
               </div>
-              <div className="mt-4 font-medium leading-[150%] text-zinc-900 max-md:max-w-full">
+              <div className="mt-4 font-bold leading-[150%] text-zinc-900 max-md:max-w-full dark:text-gray-300">
                 Desirable:
               </div>
               <div className="mt-2 max-md:max-w-full">
-                <ul className="list-disc pl-4">
+                <ul className="list-disc pl-4 dark:text-gray-300">
                   <li>
                     Working knowledge of eCommerce platforms, ideally Shopify
                     but also others e.g. Magento, WooCommerce, Visualsoft to
@@ -59,10 +70,10 @@ const JobDetailComponent = ({ detail }) => {
                   <li>API platform experience / Building restful APIs</li>
                 </ul>
               </div>
-              <div className="mt-4 font-medium leading-[150%] text-zinc-900 max-md:max-w-full">
+              <div className="mt-4 font-bold leading-[150%] text-zinc-900 max-md:max-w-full dark:text-gray-300">
                 Benefits
               </div>
-              <div className="mt-2 max-md:max-w-full">
+              <div className="mt-2 max-md:max-w-full dark:text-gray-300">
                 <ul className="list-disc pl-4">
                   <li>
                     Early finish on Fridays for our end of week catch up (4:30
@@ -85,33 +96,23 @@ const JobDetailComponent = ({ detail }) => {
                   <li>
                     Free Breakfast on Mondays and free snacks in the office
                   </li>
-                  <li>
-                    Access to Perkbox with numerous discounts plus free points
-                    from the company to spend as you wish.
-                  </li>
-                  <li>Cycle 2 Work Scheme</li>
-                  <li>Brand new MacBook Pro</li>
-                  <li>
-                    Joining an agency on the cusp of exponential growth and
-                    being part of this exciting story.
-                  </li>
                 </ul>
               </div>
             </div>
           </div>
           <div className="flex flex-col ml-5 w-[41%] max-md:ml-0 max-md:w-full">
-            <div className="flex flex-col max-md:mt-6 max-md:max-w-full">
-              <div className="justify-center p-8 bg-white rounded-lg border-2 border-sky-100 max-md:px-5 max-md:max-w-full">
+            <div className="flex flex-col max-md:mt-6 max-md:max-w-full ">
+              <div className="justify-center p-8 max-md:px-5 max-md:max-w-full bg-gray-50 rounded-lg dark:bg-gray-700 ">
                 <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                   <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
                     <div className="flex flex-col justify-center self-stretch my-auto font-medium text-center max-md:mt-10">
-                      <div className="text-base leading-6 text-zinc-900">
+                      <div className="text-base leading-6 text-zinc-900 dark:text-gray-300">
                         Salary (USD)
                       </div>
-                      <div className="mt-3 text-xl leading-6 text-green-600">
+                      <div className="mt-3 text-xl leading-6 text-primary-800 dark:text-primary-800">
                         {detail?.salary}
                       </div>
-                      <div className="mt-1 text-sm leading-5 text-gray-500">
+                      <div className="mt-1 text-sm leading-5 text-gray-500 dark:text-gray-300">
                         Monthly salary
                       </div>
                     </div>
@@ -124,19 +125,21 @@ const JobDetailComponent = ({ detail }) => {
                         className="self-center aspect-square w-[38px]"
                         alt="Location Icon"
                       />
-                      <div className="mt-2 font-medium text-zinc-900">
+                      <div className="mt-2 font-medium text-zinc-900 dark:text-gray-300">
                         Job Location
                       </div>
-                      <div className="text-gray-500">{detail?.location}</div>
+                      <div className="text-gray-500 dark:text-gray-300">
+                        {detail?.location}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col py-8 mt-8 bg-white rounded-lg border-2 border-sky-100 max-md:max-w-full">
-                <div className="mx-8 text-lg font-medium leading-7 text-zinc-900 max-md:mr-2.5 max-md:max-w-full">
+              <div className="flex flex-col py-8 mt-4 rounded-lg bg-gray-50 dark:bg-gray-700 max-md:max-w-full">
+                <div className="mx-8 text-lg font-medium leading-7 text-zinc-900 max-md:mr-2.5 max-md:max-w-full dark:text-gray-300">
                   Job Overview
                 </div>
-                <div className="flex gap-4 mx-8 mt-5 max-md:flex-wrap max-md:mr-2.5">
+                <div className="flex gap-4 mx-8 mt-4 max-md:flex-wrap max-md:mr-2.5">
                   <div className="flex flex-col flex-1">
                     <img
                       loading="lazy"
@@ -210,52 +213,52 @@ const JobDetailComponent = ({ detail }) => {
                     </div>
                   </div>
                 </div>
-                <div className="shrink-0 mt-6 h-0.5 bg-sky-100 border-2 border-sky-100 max-md:max-w-full" />
-                <div className="flex flex-col px-8 mt-6 max-md:px-5 max-md:max-w-full">
-                  <div className="text-lg font-medium leading-7 text-zinc-900 max-md:max-w-full">
-                    Share this job:
-                  </div>
-                  <div className="flex gap-2 pr-20 mt-2 max-md:flex-wrap max-md:pr-5">
-                    <div className="flex gap-1.5 justify-center px-4 py-2 text-base font-medium leading-6 text-blue-700 bg-sky-100 rounded-[var(--sds-size-blur-100)]">
-                      <img
-                        loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/4de9d1036dc405778292cdfae4666a69184749f95d83955280b55c5d1c150274?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
-                        className="shrink-0 w-6 aspect-square"
-                        alt="Copy Icon"
-                      />
-                      <div>Copy Link</div>
+              </div>
+              <div className="justify-center p-7 rounded-lgmax-md:px-5 max-md:max-w-full mt-5 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+                  <div className="flex flex-col px-8 mt-6 max-md:px-5 max-md:max-w-full">
+                    <div className="text-lg font-medium leading-7 text-zinc-900 max-md:max-w-full">
+                      Share this job:
                     </div>
-                    <div className="flex justify-center items-center p-2.5 w-10 h-10 bg-sky-100 rounded-[var(--sds-size-blur-100)]">
-                      <img
-                        loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/a439e5c92d3856af8fdc657fd3cf2890e491d40998e95657f136aa6e25bdae5d?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
-                        className="w-5 aspect-square"
-                        alt="Social Icon 1"
-                      />
-                    </div>
-                    <div className="flex justify-center items-center p-2.5 w-10 h-10 bg-sky-100 rounded-[var(--sds-size-blur-100)]">
-                      <img
-                        loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4c07cfe1eb1d71a1ae82bdc06fb860532b55d901424ae34ec8f42a820600e18?apiKey=391ff68a63584b0181b4aa51e20262f0&"
-                        className="w-full aspect-square fill-blue-700 max-w-[22px]"
-                        alt=""
-                      />
-                    </div>
-                    <div className="flex justify-center items-center p-2.5 w-10 h-10 bg-sky-100 colorrounded-[var(--sds-size-blur-100)]">
-                      <img
-                        loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/6df5c479f5a264f19cd584ba7616c0bec50584831b3e4e86f7c0b66bad95e585?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
-                        className="w-5 aspect-square"
-                        alt="Social Icon 3"
-                      />
-                    </div>
-                    <div className="flex justify-center items-center p-2 w-10 h-10 bg-sky-100 rounded-[var(--sds-size-blur-100)]">
-                      <img
-                        loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/09e4235e1f4b86d165931d51e06eb718b87f02e11b2ec3d0ba3facccd39bb7b5?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
-                        className="w-6 aspect-square"
-                        alt="Social Icon 4"
-                      />
+                    <div className="flex gap-2 pr-20 mt-2 max-md:flex-wrap max-md:pr-5">
+                      <div className="flex items-center gap-4">
+                        <div className="w-72">
+                          <Input
+                            value={inputValue}
+                            type="email"
+                            placeholder="Enter to copy"
+                            className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
+                            labelProps={{
+                              className: "hidden",
+                            }}
+                            onChange={(e) => {
+                              setInputValue(e.target.value);
+                            }}
+                            containerProps={{ className: "min-w-[100px]" }}
+                          />
+                        </div>
+                        <Button
+                          size="md"
+                          onMouseLeave={() => setCopied(false)}
+                          onClick={() => {
+                            copy(inputValue);
+                            setCopied(true);
+                          }}
+                          className="flex items-center gap-2"
+                        >
+                          {copied ? (
+                            <>
+                              <CheckIcon className="h-4 w-4 text-white" />
+                              Copied
+                            </>
+                          ) : (
+                            <>
+                              <DocumentDuplicateIcon className="h-4 w-4 text-white" />
+                              Copy
+                            </>
+                          )}
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
