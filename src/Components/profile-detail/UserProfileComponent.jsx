@@ -70,11 +70,11 @@ function UserProfileComponent({
           const avatarUrl = response.payload.data.url;
           await updateProfile(token, { avatar: avatarUrl });
           setAvatarSrc(avatarUrl);
+          toast.success(<div className={`${useFontClass}`}>Profile has been updated.</div>);
         } else {
           alert("Failed to upload avatar. Please try again.");
           console.error("Invalid response structure:", response);
         }
-        toast.success(<div className={`${useFontClass}`}>Profile has been updated.</div>);
       } catch (error) {
         console.error(error);
         toast.error(<div className={`${useFontClass}`}>Failed to update profile.</div>);
