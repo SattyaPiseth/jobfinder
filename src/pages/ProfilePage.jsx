@@ -12,7 +12,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (accessToken) {
-      dispatch(fetchProfile());
+      dispatch(fetchProfile(accessToken));
     }
   }, [accessToken, dispatch]);
 
