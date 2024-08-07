@@ -2,7 +2,7 @@ import { IoMdAdd } from "react-icons/io";
 
 function SkillAndInterestComponent() {
   return (
-    <section className="flex flex-col bg-gray-50 rounded-lg px-4 max-md:max-w-full dark:bg-gray-900">
+    <section className="flex flex-col bg-slate-50 rounded-lg px-4 max-md:max-w-full dark:bg-gray-900">
       <div className="flex flex-row w-full justify-between">
         <h3 className="text-xl text-left mt-2 font-semibold text-black max-md:text-sm max-md:max-w-full dark:text-gray-300">
           SKILLS & INTERESTS

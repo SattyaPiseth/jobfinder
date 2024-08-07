@@ -64,7 +64,7 @@ function PersonalInformationForm(
 
   return (
     <>
-      <div className="flex flex-col px-6 py-6 text-base font-medium text-black bg-gray-50 rounded-lg max-md:px-5 dark:bg-gray-900 dark:text-gray-300">
+      <div className="flex flex-col px-6 py-6 text-base font-medium text-black bg-slate-50 rounded-lg max-md:px-5 dark:bg-gray-900 dark:text-gray-300">
       <div className="text-xl font-semibold max-md:max-w-full text-left">
         PERSONAL INFORMATION
       </div>

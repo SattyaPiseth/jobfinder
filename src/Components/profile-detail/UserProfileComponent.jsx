@@ -86,7 +86,7 @@ function UserProfileComponent({
 
   return (
     <>
-      <article className="flex flex-col h-auto grow bg-gray-50 rounded-lg max-md:max-w-full dark:bg-gray-900">
+      <article className="flex flex-col h-auto grow bg-slate-50 rounded-lg max-md:max-w-full dark:bg-gray-900">
         <div className="flex relative flex-col pt-2.5 pr-3 pl-5 w-full min-h-[127px] max-md:pl-5 max-md:max-w-full">
           <div className="">
             <img

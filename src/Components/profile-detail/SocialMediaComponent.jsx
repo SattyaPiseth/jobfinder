@@ -63,7 +63,7 @@ function SocialMediaComponent({ contact_info }) {
   };
 
   return (
-    <section className="px-4 text-base font-semibold text-black bg-gray-50 rounded-lg max-md:gap-1 max-md:max-w-full dark:bg-gray-900">
+    <section className="px-4 text-base font-semibold text-black bg-slate-50 rounded-lg max-md:gap-1 max-md:max-w-full dark:bg-gray-900">
       <div className="flex items-start px-px text-xl max-md:flex-wrap max-md:max-w-full"></div>
       <h3 className="flex-auto text-xl text-left mb-4 mt-2 max-md:pb-2 max-md:text-sm dark:text-gray-300">
         SOCIAL MEDIA ACCOUNT
