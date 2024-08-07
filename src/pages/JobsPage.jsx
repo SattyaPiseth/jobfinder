@@ -133,6 +133,7 @@ const JobsPage = () => {
             <div className="text-center py-10">
               <Pagination isLoading={status === "loading"} />
             </div>
+
           )}
         </>
       )}
