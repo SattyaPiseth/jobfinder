@@ -7,6 +7,8 @@ import { Badge } from "flowbite-react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../../common/useFontClass";
 import { NavLink } from "react-router-dom";
+import mentor_muyleang from './../../assets/images/ing_muyleang.jpg'
+import mentor_sokpheng from './../../assets/images/Teacher-Pheng.webp'
 
 export default function AboutUsComponent() {
   const [loading, setLoading] = useState(true);
@@ -67,12 +69,12 @@ export default function AboutUsComponent() {
   const teachers = [
     {
       name: t("About-us.mentors.Ing-Muyleang"),
-      image: "src/assets/images/ing_muyleang.jpg",
+      image: mentor_muyleang,
       position: "Instructor",
     },
     {
       name: t("About-us.mentors.Kim-Chansokpheng"),
-      image: "src/assets/images/Teacher-Pheng.webp",
+      image: mentor_sokpheng,
       position: "Instructor",
     },
   ];
