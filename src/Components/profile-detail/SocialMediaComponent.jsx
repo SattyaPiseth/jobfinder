@@ -18,7 +18,7 @@ function SocialMediaComponent({ contact_info }) {
   const [contacts, setContacts] = useState(contact_info || {});
 
   useEffect(() => {
-    setContacts(contact_info);
+    setContacts(contact_info || {});
   }, [contact_info]);
 
   const handleEdit = (platform) => {
@@ -93,7 +93,7 @@ function SocialMediaComponent({ contact_info }) {
         </div>
       ) : (
         <div className="text-center text-gray-500 dark:text-gray-400">
-          No social media links available.
+          {/* No social media links available. */}
         </div>
       )}
 
