@@ -39,7 +39,7 @@ const JobDetailComponent = ({ detail }) => {
         </div>
       </div>
       <div className="mt-8 w-full max-md:max-w-full mb-10 ">
-        <div className="flex gap-5 max-md:flex-col max-md:gap-0 h-[80px]">
+        <div className="flex gap-5 max-md:flex-col max-md:gap-0">
           <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full ">
             <div className="flex flex-col grow px-5 text-base leading-6 text-gray-500 max-md:mt-6 max-md:max-w-full bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
               <div className="text-lg font-bold leading-7 text-zinc-900 max-md:max-w-full dark:text-gray-300 ">
@@ -150,7 +150,7 @@ const JobDetailComponent = ({ detail }) => {
                     <div className="mt-3 text-xs leading-5 text-gray-500 uppercase">
                       Job Posted:
                     </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900">
+                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 ">
                       {detail?.created_at}
                     </div>
                   </div>
