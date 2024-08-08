@@ -39,7 +39,6 @@ export const loginUser = createAsyncThunk(
     try {
       const response = await login(userCredentials);
       const { access, refresh } = response.data;
-      console.log("User Slice : ", response);
       localStorage.setItem("access", access);
       localStorage.setItem("refresh", refresh);
       return response.data;
@@ -68,7 +67,6 @@ export const fetchProfile = createAsyncThunk(
   async (token, { rejectWithValue }) => {
     try {
       const response = await getProfile(token);
-      console.log("userSlice : ", response?.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -82,7 +80,6 @@ export const updateUserProfile = createAsyncThunk(
   async ({ token, profileData }, { rejectWithValue }) => {
     try {
       const response = await updateProfile(token, profileData);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));

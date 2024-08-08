@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { TextInput, Label } from "flowbite-react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { loginUser } from "../../redux/features/user/userSlice";
+import { loginUser,fetchProfile } from "../../redux/features/user/userSlice";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../../common/useFontClass";
 import ResetPasswordModal from "./ResetPasswordModal"; // Adjust the path as needed
@@ -17,7 +17,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const { fontClass } = useFontClass();
   const { t } = useTranslation();
-  const { isLoading, error, isAuthenticated } = useSelector(
+  const { isLoading, error, isAuthenticated, accessToken } = useSelector(
     (state) => state.user
   );
   const { isModalOpen, openModal, closeModal } = useModal(); // Use the custom hook
@@ -45,7 +45,8 @@ const LoginForm = () => {
           {t("loginForm.success", { email: formik.values.email })}
         </div>
       );
-      navigate("/profile");
+      dispatch(fetchProfile(accessToken))
+      navigate("/");
     }
   }, [isAuthenticated, navigate, formik.values.email, t, fontClass]);
 
@@ -71,7 +72,6 @@ const LoginForm = () => {
           <ThemeToggle />
         </div>
       </div>
-
       <form
         onSubmit={formik.handleSubmit}
         className="flex flex-col gap-4 sm:gap-6"

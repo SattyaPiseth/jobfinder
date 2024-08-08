@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useRef, useCallback } from "react";
+import { useSelector } from "react-redux";
 import { CardComponent } from "../feat-jobs/CardComponent";
-import { selectDataBySearch, fetchAllJobs } from "../../redux/jobs/jobsSlice";
+import { selectDataBySearch } from "../../redux/jobs/jobsSlice";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { toast } from "react-toastify";
@@ -13,7 +13,6 @@ import useFontClass from "../../common/useFontClass";
 const INITIAL_VISIBLE_JOBS = 8;
 
 const PositionCardComponent = ({ jobs, isLoading }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const searchResults = useSelector(selectDataBySearch) || [];
@@ -23,16 +22,11 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
   const { fontClass } = useFontClass();
 
   useEffect(() => {
-    if (!jobs.length) {
-      dispatch(fetchAllJobs()).catch((error) => {
-        console.error("Failed to fetch jobs:", error);
-        toast.error("Error fetching jobs. Please try again later.");
-      });
-    }
-  }, [dispatch, jobs]);
-
-  useEffect(() => {
-    if (searchResults.length === 0 && !isLoading && !notificationShown.current) {
+    if (
+      searchResults.length === 0 &&
+      !isLoading &&
+      !notificationShown.current
+    ) {
       if (location.pathname !== previousPath.current) {
         toast.info("No jobs found for your search query.");
         notificationShown.current = true;
@@ -45,7 +39,7 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
   }, [location]);
 
   const handleRedirect = useCallback(() => {
-    navigate("/"); 
+    navigate("/");
   }, [navigate]);
 
   const handleSeeMore = useCallback(() => {
