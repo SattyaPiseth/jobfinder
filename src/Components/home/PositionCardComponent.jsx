@@ -61,7 +61,7 @@ const PositionCardComponent = ({ jobs, isLoading }) => {
   return (
     <div className="my-12">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-[30px] font-semibold text-gray-900">
+        <h2 className="text-[30px] font-semibold text-gray-900 dark:text-gray-200">
           {t("List-Jobs.List")}
         </h2>
         <div

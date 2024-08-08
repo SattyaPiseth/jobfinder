@@ -2,13 +2,13 @@ import React from "react";
 import { Typography, Button, Input } from "@material-tailwind/react"; // Corrected import
 import { useCopyToClipboard } from "usehooks-ts";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
+import { WEBSITE_URL } from "../../redux/api/api";
+import { useParams } from "react-router-dom";
 
 const JobDetailComponent = ({ detail }) => {
   const [value, copy] = useCopyToClipboard();
   const [copied, setCopied] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState(
-    "npm i @material-tailwind/react"
-  );
+  const [inputValue, setInputValue] = React.useState(WEBSITE_URL);
   const handleError = (event) => {
     event.target.src = "/path/to/fallback/image.jpg"; // Specify a path to your fallback image
   };
@@ -22,18 +22,35 @@ const JobDetailComponent = ({ detail }) => {
           alt="Company Logo"
         />
         <div className="flex-1">
-          <div className="text-xl md:text-2xl font-medium leading-8 text-zinc-900 dark:text-gray-300">
-            {detail?.title}
-          </div>
-          <div className="flex flex-wrap gap-2 mt-3 text-sm leading-5">
-            <div className="text-lg leading-7 text-neutral-600 min-w-max dark:text-gray-300">
-              {detail?.company_name}
+          <div className="flex justify-between">
+            <div className="">
+              <div className="text-xl md:text-2xl font-medium leading-8 text-zinc-900 dark:text-gray-300 flex">
+                {detail?.title}
+              </div>
+              <div className="flex flex-wrap gap-2 mt-3 text-sm leading-5">
+                <div className="text-lg leading-7 text-neutral-600 min-w-max dark:text-gray-300">
+                  {detail?.company_name}
+                </div>
+                <div className="flex items-center justify-center px-3 py-1 font-semibold text-white whitespace-nowrap bg-primary-800 rounded-lg ">
+                  {detail?.job_type}
+                </div>
+                <div className="flex items-center justify-center px-3 py-1 whitespace-nowrap bg- rounded-[52px] dark:text-gray-300">
+                  Featured
+                </div>
+              </div>
             </div>
-            <div className="flex items-center justify-center px-3 py-1 font-semibold text-white whitespace-nowrap bg-primary-800 rounded-lg ">
-              {detail?.job_type}
-            </div>
-            <div className="flex items-center justify-center px-3 py-1 whitespace-nowrap bg- rounded-[52px] dark:text-gray-300">
-              Featured
+            <div>
+              <button className="flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg">
+                <span className="self-stretch my-auto  font-bold">
+                  Apply now
+                </span>
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/72c910bdc0ab047ea5955f38a3ad60282ede593a9cd52829af6c667f07736419?apiKey=391ff68a63584b0181b4aa51e20262f0&&apiKey=391ff68a63584b0181b4aa51e20262f0"
+                  className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
+                  alt=""
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -96,6 +113,16 @@ const JobDetailComponent = ({ detail }) => {
                   <li>
                     Free Breakfast on Mondays and free snacks in the office
                   </li>
+                  <li>
+                    Access to Perkbox with numerous discounts plus free points
+                    from the company to spend as you wish.
+                  </li>
+                  <li>Cycle 2 Work Scheme</li>
+                  <li>Brand new MacBook Pro</li>
+                  <li>
+                    Joining an agency on the cusp of exponential growth and
+                    being part of this exciting story.
+                  </li>
                 </ul>
               </div>
             </div>
@@ -109,7 +136,7 @@ const JobDetailComponent = ({ detail }) => {
                       <div className="text-base leading-6 text-zinc-900 dark:text-gray-300">
                         Salary (USD)
                       </div>
-                      <div className="mt-3 text-xl leading-6 text-primary-800 dark:text-primary-800">
+                      <div className="mt-3 text-xl leading-6 text-green-400 dark:text-green-400">
                         {detail?.salary}
                       </div>
                       <div className="mt-1 text-sm leading-5 text-gray-500 dark:text-gray-300">
@@ -135,22 +162,22 @@ const JobDetailComponent = ({ detail }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col py-8 mt-4 rounded-lg bg-gray-50 dark:bg-gray-700 max-md:max-w-full">
+              <div className="flex flex-col py-8 p-8 mt-4 rounded-lg bg-gray-50 dark:bg-gray-700 max-md:max-w-full">
                 <div className="mx-8 text-lg font-medium leading-7 text-zinc-900 max-md:mr-2.5 max-md:max-w-full dark:text-gray-300">
                   Job Overview
                 </div>
                 <div className="flex gap-4 mx-8 mt-4 max-md:flex-wrap max-md:mr-2.5">
-                  <div className="flex flex-col flex-1">
+                  <div className="flex flex-col flex-1 ">
                     <img
                       loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/dfbd2123267a1bfab4313eadf237420709032b0bcabf931f8af8c0e994a191e7?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
                       className="w-8 aspect-square"
                       alt="Calendar Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase">
+                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
                       Job Posted:
                     </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 ">
+                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
                       {detail?.created_at}
                     </div>
                   </div>
@@ -161,10 +188,10 @@ const JobDetailComponent = ({ detail }) => {
                       className="w-8 aspect-square"
                       alt="Clock Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase">
+                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
                       Job expire on:
                     </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900">
+                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
                       14 Aug, 2021
                     </div>
                   </div>
@@ -175,10 +202,10 @@ const JobDetailComponent = ({ detail }) => {
                       className="w-8 aspect-square"
                       alt="Level Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase">
+                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
                       Job Level:
                     </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900">
+                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
                       Entry Level
                     </div>
                   </div>
@@ -191,10 +218,10 @@ const JobDetailComponent = ({ detail }) => {
                       className="w-8 aspect-square"
                       alt="Experience Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase">
+                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400 ">
                       Experience
                     </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900">
+                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
                       $50k-80k/month
                     </div>
                   </div>
@@ -205,19 +232,19 @@ const JobDetailComponent = ({ detail }) => {
                       className="w-8 aspect-square"
                       alt="Education Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase">
+                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
                       Education
                     </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900">
+                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
                       Graduation
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="justify-center p-7 rounded-lgmax-md:px-5 max-md:max-w-full mt-5 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <div className="justify-center p-7 rounded-lgmax-md:px-5 max-md:max-w-full mt-5 bg-gray-50 dark:bg-gray-700 rounded-lg py-10 ">
                 <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                  <div className="flex flex-col px-8 mt-6 max-md:px-5 max-md:max-w-full">
-                    <div className="text-lg font-medium leading-7 text-zinc-900 max-md:max-w-full">
+                  <div className="flex flex-col px-8 max-md:px-5 max-md:max-w-full">
+                    <div className="text-lg font-medium leading-7 text-zinc-900 max-md:max-w-full dark:text-gray-300">
                       Share this job:
                     </div>
                     <div className="flex gap-2 pr-20 mt-2 max-md:flex-wrap max-md:pr-5">
