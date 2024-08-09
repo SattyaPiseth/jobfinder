@@ -2,6 +2,7 @@
 
 # # Navigate to your project directory
 # cd /path/to/your/project || exit
+git branch
 
 # Prompt the user for a branch name
 echo "Enter branch name (e.g., feature/user-authentication): "
