@@ -8,10 +8,12 @@ git branch
 echo "Enter branch name (e.g., feature/user-authentication): "
 read branchName
 
+git status
 # Prompt the user for a commit message
 echo "Enter commit message: "
 read commitMessage
 
+git remote
 # Prompt the user for the remote repository name
 echo "Enter remote repository name (e.g., origin): "
 read remoteName
