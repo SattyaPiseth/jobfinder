@@ -13,7 +13,10 @@ git status
 echo "Enter commit message: "
 read commitMessage
 
+echo "==================";
+echo "list all remote :"
 git remote
+echo "==================";
 # Prompt the user for the remote repository name
 echo "Enter remote repository name (e.g., origin): "
 read remoteName
