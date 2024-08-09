@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Navigate to your project directory
-# cd C:\Users\ASUS\Desktop\job-finder-website || exit
+# # Navigate to your project directory
+# cd /path/to/your/project || exit
 
 # Prompt the user for a branch name
 echo "Enter branch name (e.g., feature/user-authentication): "
@@ -10,6 +10,19 @@ read branchName
 # Prompt the user for a commit message
 echo "Enter commit message: "
 read commitMessage
+
+# Prompt the user for the remote repository name
+echo "Enter remote repository name (e.g., origin): "
+read remoteName
+
+# Check if the remote exists
+if git remote show $remoteName >/dev/null 2>&1; then
+    echo "Remote '$remoteName' exists."
+else
+    echo "'$remoteName' does not exist. Creating..."
+    git remote add $remoteName https://github.com/username/repository.git
+    echo "Please replace 'https://github.com/username/repository.git' with your actual repository URL."
+fi
 
 # Create and switch to the new branch
 git checkout -b $branchName
@@ -21,4 +34,4 @@ git add .
 git commit -m "$commitMessage"
 
 # Push the changes to the remote repository
-git push origin $branchName
+git push $remoteName $branchName
