@@ -7,6 +7,7 @@ import './App.css';
 import Metadata from './lib/Metadata';
 import useThrottleScroll from './common/useThrottleScroll';
 import { fetchAllJobs, selectAllJobs } from './redux/jobs/jobsSlice';
+import { fetchAppliedJobs } from './redux/features/apply-job/applyJobSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function App() {
     if (status === "idle") {
       dispatch(fetchJobCategories());
       dispatch(fetchAllJobs());
+      dispatch(fetchAppliedJobs(localStorage.getItem('access')))
     }
   }, [status, dispatch]);
 
