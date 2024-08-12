@@ -10,9 +10,9 @@ const RegistrationPage = () => {
     <>
       <Metadata
         title="Register"
-        description="Create an account to start using our services."
-        author="Your Name"
-        keywords="register, sign up, create account"
+        description="Sign up for a Job Quick account to start your job search journey. Register now to access personalized job recommendations, manage your applications, and stay updated with the latest job opportunities."
+        author="Job Quick Team"
+        keywords="register, sign up, create account, Job Quick, job search registration, user registration"
         thumbnail="https://cdn.builder.io/api/v1/image/assets/TEMP/dfc88a762229238be0ba236bdc53e7231de668be5613407739ad520eb7f8a51b?apiKey=ad7733614e794f228aa68fbfd330edec&"
         url="https://jobquick.techinsights.guru/register"
         type="website"

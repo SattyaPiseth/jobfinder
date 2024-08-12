@@ -10,9 +10,9 @@ function LoginPage() {
     <>
       <Metadata
         title="Login"
-        description="Access your account by logging in."
-        author="Your Name"
-        keywords="login, access, account"
+        description="Log in to your Job Quick account to access your personalized job search features. Securely enter your credentials to manage your profile, view job applications, and explore new opportunities."
+        author="Job Quick Team"
+        keywords="login, account access, secure login, Job Quick, job search, user account"
         thumbnail="https://cdn.builder.io/api/v1/image/assets/TEMP/336b00db8b95923de0a609ff638f4f11f286aa5d6f7453d35cdf68e5158f1387?apiKey=ad7733614e794f228aa68fbfd330edec&"
         url="https://jobquick.techinsights.guru/login"
         type="website"

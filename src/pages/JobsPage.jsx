@@ -74,10 +74,10 @@ const JobsPage = () => {
   return (
     <section>
       <Metadata
-        title="Jobs"
-        description="Browse available jobs"
-        author="Your Name"
-        keywords="jobs, careers, employment"
+        title="Job Listing"
+        description="Browse a wide range of job listings at Job Quick. Discover the latest job opportunities, apply for your ideal position, and advance your career with our user-friendly platform."
+        author="Job Quick Team"
+        keywords="job listings, job opportunities, careers, job search, job portal, apply for jobs, find jobs, employment, career advancement, online job search"
         thumbnail="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
         url="https://jobquick.techinsights.guru/jobs"
         type="website"

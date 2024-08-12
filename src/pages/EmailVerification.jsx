@@ -9,9 +9,9 @@ const EmailVerification = () => {
     <>
       <Metadata
         title="Email Verification"
-        description="Verify your email address to complete the registration process."
-        author="Your Name"
-        keywords="email verification, registration, account setup"
+        description="Complete your registration process by verifying your email address. Confirm your email to activate your Job Quick account and start exploring job opportunities."
+        author="Job Quick Team"
+        keywords="email verification, account activation, registration process, Job Quick, confirm email"
         thumbnail="https://cdn.builder.io/api/v1/image/assets/TEMP/dfc88a762229238be0ba236bdc53e7231de668be5613407739ad520eb7f8a51b?apiKey=ad7733614e794f228aa68fbfd330edec&"
         url="https://jobquick.techinsights.guru/verifyCode"
         type="website"

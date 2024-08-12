@@ -33,13 +33,13 @@ const JobDetail = () => {
   return (
     <>
       <Metadata
-        title={`${job?.title} - Job Finder`}
-        description={job?.description}
-        author="Your Name"
-        keywords="jobs, careers, employment"
+        title={`${job?.title} - Job Details | Job Quick`}
+        description={`Explore the job listing for ${job?.title} at ${job?.company}. Learn about the role's responsibilities, qualifications, benefits, and how to apply. Find out more about this exciting opportunity and advance your career with Job Quick.`}
+        author="Job Quick Team"
+        keywords={`${job?.title}, ${job?.company}, job details, job description, apply for ${job?.title}, career opportunities, employment, job openings, Job Quick`}
         thumbnail={job?.image || 'https://example.com/og-image.jpg'}
-        url={`https://example.com/jobs/${job?.id}`}
-        type="article"
+        url={`https://jobquick.techinsights.guru/jobs/${job?.id}`}
+        type="website"
       />
       {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}
     </>

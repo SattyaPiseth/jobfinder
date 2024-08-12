@@ -15,7 +15,7 @@ const Metadata = ({
 
   return (
     <Helmet>
-      <title>{title ? `${title} - Find Your Dream Job | Job Quick` : "Find Your Dream Job | Job Quick"}</title>
+      <title>{title ? `${title} - Job Quick` : "Find Your Dream Job | Job Quick"}</title>
       <meta name="title" content={title || "Find Your Dream Job | Job Quick"} />
       <meta name="description" content={description || "Explore thousands of job opportunities across various industries on Job Quick. Find jobs that match your skills and start your career today."} />
       <meta name="author" content={author || "Job Quick Team"} />
