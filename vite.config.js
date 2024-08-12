@@ -30,6 +30,7 @@ export default defineConfig(({ mode }) => {
       outDir: "dist",
       sourcemap: true, // Enable source maps
       cssCodeSplit: true, // Enable CSS code splitting
+      minify: "esbuild"
     },
     server: {
       port: 3000,
