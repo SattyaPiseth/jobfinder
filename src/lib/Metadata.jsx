@@ -18,70 +18,39 @@ const Metadata = ({
     <Helmet>
       {/* Title Tag */}
       <title>
-        {title ? `${title} - Job Quick` : "Find Your Dream Job | Job Quick"}
+        {title ? `${title} | Job Quick` : "Find Your Dream Job | Job Quick"}
       </title>
-      <meta name="title" content={title || "Find Your Dream Job | Job Quick"} />
-
-      {/* Meta Description */}
-      <meta
-        name="description"
-        content={
-          description ||
-          "Explore thousands of job opportunities across various industries on Job Quick. Find jobs that match your skills and start your career today."
-        }
-      />
+      <meta name="description" content={
+        description || 
+        "Explore thousands of job opportunities across various industries with Job Quick. Find jobs that match your skills and advance your career."
+      } />
       <meta name="author" content={author || "Job Quick Team"} />
-
-      {/* Meta Keywords */}
-      <meta
-        name="keywords"
-        content={
-          keywords ||
-          "jobs, careers, employment, job search, job opportunities, job portal, online jobs, find jobs, apply for jobs, career opportunities, hiring, job vacancies"
-        }
-      />
-      <meta name="thumbnail" content={image} />
-      <meta property="og:url" content={url || window.location.href} />
+      <meta name="keywords" content={
+        keywords || 
+        "jobs, careers, employment, job search, job opportunities, job portal, online jobs, find jobs, apply for jobs, career opportunities, hiring, job vacancies"
+      } />
 
       {/* Open Graph Meta Tags */}
       <meta property="og:url" content={fullUrl} />
       <meta property="og:type" content={type || "website"} />
-      <meta
-        property="og:title"
-        content={title || "Find Your Dream Job | Job Quick"}
-      />
-      <meta
-        property="og:description"
-        content={
-          description ||
-          "Explore thousands of job opportunities across various industries on Job Quick. Find jobs that match your skills and start your career today."
-        }
-      />
+      <meta property="og:title" content={title || "Find Your Dream Job | Job Quick"} />
+      <meta property="og:description" content={
+        description || 
+        "Explore thousands of job opportunities across various industries with Job Quick. Find jobs that match your skills and advance your career."
+      } />
       <meta property="og:image" content={image} />
-      <meta
-        property="og:image:alt"
-        content={description || "Thumbnail image for Job Quick"}
-      />
+      <meta property="og:image:alt" content={description || "Job Quick thumbnail"} />
 
       {/* Twitter Card Meta Tags */}
-      <meta name="twitter:creator" content={author || "Job Quick Team"} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        name="twitter:title"
-        content={title || "Find Your Dream Job | Job Quick"}
-      />
-      <meta
-        name="twitter:description"
-        content={
-          description ||
-          "Explore thousands of job opportunities across various industries on Job Quick. Find jobs that match your skills and start your career today."
-        }
-      />
+      <meta name="twitter:title" content={title || "Find Your Dream Job | Job Quick"} />
+      <meta name="twitter:description" content={
+        description || 
+        "Explore thousands of job opportunities across various industries with Job Quick. Find jobs that match your skills and advance your career."
+      } />
       <meta name="twitter:image" content={image} />
-      <meta
-        name="twitter:image:alt"
-        content={description || "Thumbnail image for Job Quick"}
-      />
+      <meta name="twitter:image:alt" content={description || "Job Quick thumbnail"} />
+      <meta name="twitter:creator" content={author || "Job Quick Team"} />
 
       {/* Canonical Link */}
       <link rel="canonical" href={fullUrl} />
@@ -91,15 +60,14 @@ const Metadata = ({
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "Job Quick",
-          url: fullUrl,
-          description:
-            description ||
-            "Explore thousands of job opportunities across various industries on Job Quick.",
-          image: image,
-          author: {
+          "name": "Job Quick",
+          "url": fullUrl,
+          "description": description || 
+            "Explore thousands of job opportunities across various industries with Job Quick.",
+          "image": image,
+          "author": {
             "@type": "Organization",
-            name: author || "Job Quick Team",
+            "name": author || "Job Quick Team",
           },
         })}
       </script>
