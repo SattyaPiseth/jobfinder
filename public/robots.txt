@@ -1,7 +1,9 @@
 User-agent: *
-Disallow: /private/
 Disallow: /admin/
-Allow: /admin/admin-ajax.php
-Allow: /public-allowed.html
+Disallow: /profile/
+Disallow: /test/
+Disallow: /password-reset-request/
+Disallow: /verifyCode/
+Allow: /
 
 Sitemap: https://jobquick.techinsights.guru/sitemap.xml
