@@ -15,7 +15,7 @@ const Metadata = ({
 
   return (
     <Helmet>
-      <title>{title ? `${title} | CSTAD` : "CSTAD | Your Project's name"}</title>
+      <title>{title ? `${title} - JOB QUICK` : "JOB QUICK"}</title>
       <meta name="title" content={title || "Your Project's name"} />
       <meta name="description" content={description || "Add default description here"} />
       <meta name="author" content={author} />

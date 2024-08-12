@@ -26,10 +26,60 @@ export const fetchAppliedJobs = createAsyncThunk(
   }
 );
 
+export const applyForJob = createAsyncThunk(
+  "applyJobs/applyForJob",
+  async ({ token, jobId, resume }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `${BASE_URL}applied_jobs/`,
+        {
+          job_id: jobId,
+          resume,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("apply-jobs : ", response.data);
+      return response?.data;
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
 
-const appliedJobsSlice  = createSlice({
+export const updateAppliedJob = createAsyncThunk(
+  "applyJobs/updateAppliedJob",
+  async ({ token, appliedJobId, jobId }, { rejectWithValue }) => {
+    try {
+      const response = await axios.put(
+        `${BASE_URL}applied_jobs/${appliedJobId}/`,
+        {
+          job: jobId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("update-applied-job : ", response.data);
+      return response?.data;
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
+const appliedJobsSlice = createSlice({
   name: "appliedJobs",
-  initialState: {},
+  initialState: {
+    loading: false,
+    error: null,
+  },
   reducers: {},
   extraReducers: (builder) =>
     builder
@@ -40,6 +90,26 @@ const appliedJobsSlice  = createSlice({
         state.loading = false;
       })
       .addCase(fetchAppliedJobs.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
+      .addCase(applyForJob.pending, (state, { payload }) => {
+        state.loading = true;
+      })
+      .addCase(applyForJob.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(applyForJob.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
+      .addCase(updateAppliedJob.pending, (state, { payload }) => {
+        state.loading = true;
+      })
+      .addCase(updateAppliedJob.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(updateAppliedJob.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
       }),
