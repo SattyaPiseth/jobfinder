@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import viteCompression from "vite-plugin-compression";
+import sitemap from 'vite-plugin-sitemap';
 
 export default defineConfig(({ mode }) => {
   return {
@@ -21,6 +22,9 @@ export default defineConfig(({ mode }) => {
         threshold: 10240,
         algorithm: "brotliCompress",
         ext: ".br",
+      }),
+      sitemap({
+        hostname: 'https://jobquick.techinsights.guru/',
       }),
     ],
     define: {
