@@ -21,6 +21,7 @@ const Metadata = ({
       <title>
         {title ? `${title} | Job Quick` : "Find Your Dream Job | Job Quick"}
       </title>
+      <meta name="title" content={title || "Find Your Dream Job | Job Quick"} />
 
       {/* Meta Tags */}
       <meta
@@ -38,6 +39,7 @@ const Metadata = ({
           "jobs, careers, employment, job search, job opportunities, job portal, online jobs"
         }
       />
+      <meta name="thumbnail" content={image} />
 
       {/* Open Graph Meta Tags */}
       <meta property="og:url" content={fullUrl} />
