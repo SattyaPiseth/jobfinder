@@ -15,7 +15,6 @@ import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
 import EmailVerification from "./pages/EmailVerification.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import ContactUs from "./pages/ContactUs.jsx";
 import MediaComponent from "./Components/home/MediaComponent.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import AboutUsPage from "./pages/AboutUsPage.jsx";

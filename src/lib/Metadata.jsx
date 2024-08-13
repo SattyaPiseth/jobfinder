@@ -19,7 +19,7 @@ const Metadata = ({
     <Helmet>
       {/* Title Tag */}
       <title>
-        {title ? `${title} | Job Quick` : "Find Your Dream Job | Job Quick"}
+        {title ? `${title} | Job Quick` : "Job Quick"}
       </title>
       <meta name="title" content={title || "Find Your Dream Job | Job Quick"} />
 
