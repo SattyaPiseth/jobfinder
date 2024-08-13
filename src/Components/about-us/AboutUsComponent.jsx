@@ -9,6 +9,7 @@ import useFontClass from "../../common/useFontClass";
 import { NavLink } from "react-router-dom";
 import mentor_muyleang from './../../assets/images/ing_muyleang.jpg'
 import mentor_sokpheng from './../../assets/images/Teacher-Pheng.webp'
+import piseth_sattya from './../../assets/images/PISETHSATTYA.jpg'
 
 export default function AboutUsComponent() {
   const [loading, setLoading] = useState(true);
@@ -82,8 +83,7 @@ export default function AboutUsComponent() {
   const teamLead = [
     {
       name: "Piseth Satthya",
-      image:
-        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/399618439_2118987915126245_8162232501416778588_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGrgfzolRJSM811981AJ0IqIAn3Dk-mWZkgCfcOT6ZZmXnrOJGq8cNa65ItxKJs6NcnXorE8WrU_BVZhRux4S8v&_nc_ohc=q6z-7Lu-wqAQ7kNvgGuoqAp&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYD47stbze98WAv3SIq15UISm0zfH1tJK8vvdZc5ZH3zzw&oe=669BA192",
+      image: piseth_sattya,
       position: "Team Leader",
     },
   ];
