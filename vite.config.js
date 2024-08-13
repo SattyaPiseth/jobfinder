@@ -46,12 +46,12 @@ export default defineConfig(({ mode }) => {
           start_url: "/",
           icons: [
             {
-              src: "/public/pwa-icon-192x192.png",
+              src: "/public/android-chrome-192x192.png",
               sizes: "192x192",
               type: "image/png",
             },
             {
-              src: "/public/pwa-icon-512x512.png",
+              src: "/public/android-chrome-512x512.png",
               sizes: "425x469",
               type: "image/png",
             },
