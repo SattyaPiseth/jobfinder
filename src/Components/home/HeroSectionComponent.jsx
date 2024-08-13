@@ -46,7 +46,7 @@ const HeroSectionComponent = React.memo(({ isLoading }) => {
                   </h1>
                   <img
                     loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/d655f199c80b77e13498ccbdbb457b371b5e7da0adeaf1a1ed99dee40011475d?apiKey=ff00f11844934b2d9618929d5184b9ad&"
+                    src="https://job-quick-api.techinsights.guru/media/uploads/hero-section_LEi7MwS.png"
                     alt={t("HeroSection.altIllustration")}
                     className="mt-7 w-full md:w-[455px] aspect-[11.11]"
                     width="455"
