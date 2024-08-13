@@ -22,7 +22,7 @@ function App() {
     if (status === "idle") {
       dispatch(fetchJobCategories());
       dispatch(fetchAllJobs());
-      dispatch(fetchAppliedJobs(localStorage.getItem("access")));
+      // dispatch(fetchAppliedJobs(localStorage.getItem("access")));
     }
   }, [status, dispatch]);
 
