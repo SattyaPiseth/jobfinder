@@ -40,12 +40,12 @@ export default defineConfig(({ mode }) => {
           scope: "/",
           icons: [
             {
-              src: "https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png", // Make sure to provide the correct path to your icons
+              src: "https://job-quick-api.techinsights.guru/media/uploads/icon_632abff944151.svg", // Make sure to provide the correct path to your icons
               sizes: "192x192",
               type: "image/png",
             },
             {
-              src: "https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png", // Provide higher resolution icons
+              src: "https://job-quick-api.techinsights.guru/media/uploads/icon_632abff944151.svg", // Provide higher resolution icons
               sizes: "512x512",
               type: "image/png",
             },
