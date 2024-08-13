@@ -1,7 +1,5 @@
 User-agent: *
-Disallow: /private/
 Disallow: /admin/
-Allow: /admin/admin-ajax.php
-Allow: /public-allowed.html
+Allow: /
 
 Sitemap: https://jobquick.techinsights.guru/sitemap.xml

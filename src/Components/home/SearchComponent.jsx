@@ -13,14 +13,17 @@ import {
 } from "../../redux/jobs/jobsSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
+import useFontClass from "../../common/useFontClass";
 
 const SearchComponent = ({ categories, isLoading }) => {
+  const { t } = useTranslation(); // Initialize translation hook
+  const { fontClass } = useFontClass();
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSkill, setSelectedSkill] = useState("");
   const [loadingSkills, setLoadingSkills] = useState(false);
   const [query, setQuery] = useState("");
-  const error = useSelector(selectSearchError);
   const skills = useSelector((state) =>
     selectSkillsByCategoryId(state, selectedCategory)
   );
@@ -39,7 +42,7 @@ const SearchComponent = ({ categories, isLoading }) => {
     try {
       await dispatch(fetchSkills(categoryId)).unwrap();
     } catch (error) {
-      toast.error(error.message || "Failed to fetch skills.");
+      toast.error(error.message || <span className={`${fontClass}`}>{t('search.fetchSkillsError')}</span>);
     } finally {
       setLoadingSkills(false);
     }
@@ -50,11 +53,14 @@ const SearchComponent = ({ categories, isLoading }) => {
       try {
         await dispatch(performGlobalSearch(query)).unwrap();
       } catch (error) {
-        toast.error(error || "Failed to perform search.");
+        toast.error(error.message || <span className={`${fontClass}`}>{t('search.searchError')}</span>);
       }
     } else {
       dispatch(clearSearchResults());
     }
+    // Clear selected options
+    setSelectedCategory("");
+    setSelectedSkill("");
   };
 
   const handleKeyDown = (e) => {
@@ -94,10 +100,10 @@ const SearchComponent = ({ categories, isLoading }) => {
             </span>
             <input
               type="text"
-              placeholder="Search for position"
+              placeholder={t('search.placeholder')}
               className="pl-14 pr-4 py-4 rounded-lg border-2 border-solid border-slate-100 bg-slate-100 w-full"
               onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown} // Add this line
+              onKeyDown={handleKeyDown}
               value={query}
             />
           </div>
@@ -107,7 +113,7 @@ const SearchComponent = ({ categories, isLoading }) => {
             onChange={handleCategoryChange}
           >
             <option value="" disabled>
-              Select a category
+              {t('search.selectCategory')}
             </option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
@@ -122,7 +128,7 @@ const SearchComponent = ({ categories, isLoading }) => {
             disabled={!skills.length || loadingSkills}
           >
             <option value="" disabled>
-              {loadingSkills ? "Loading skills..." : "Select a skill"}
+              {loadingSkills ? t('search.loadingSkills') : t('search.selectSkill')}
             </option>
             {skills.map((skill) => (
               <option key={skill.id} value={skill.id}>
@@ -131,10 +137,10 @@ const SearchComponent = ({ categories, isLoading }) => {
             ))}
           </select>
           <button
-            className="justify-center p-2 px-8 text-white font-kantumruy text-xl bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-lg:text-lg max-xl:text-xl max-2xl:text-xl max-md:px-6"
+            className="justify-center p-2 px-8 text-white font-kantumruy text-lg bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-lg:text-lg max-xl:text-xl max-2xl:text-xl max-md:px-6"
             onClick={handleSearch}
           >
-            Search
+            <span className={`${fontClass}`}>{t('search.searchButton')}</span>
           </button>
         </>
       )}

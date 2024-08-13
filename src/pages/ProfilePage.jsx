@@ -10,11 +10,11 @@ const ProfilePage = () => {
     (state) => state.user
   );
 
-  useEffect(() => {
-    if (accessToken) {
-      dispatch(fetchProfile());
-    }
-  }, [accessToken, dispatch]);
+  // useEffect(() => {
+  //   if (accessToken) {
+  //     dispatch(fetchProfile(accessToken));
+  //   }
+  // }, [accessToken, dispatch]);
 
   if (isLoading) {
     return <LoadingComponent />;
@@ -31,12 +31,12 @@ const ProfilePage = () => {
   return (
     <>
       <Metadata
-        title={`${user.username}'s Profile`}
-        description={`View the profile of ${user.username}`}
+        title={`${user.username} - Profile | Job Quick`}
+        description={`Explore the profile of ${user.username} on Job Quick. View their experience, skills, and career accomplishments. Connect with ${user.username} and discover more about their professional journey.`}
         author={user.username}
-        keywords="profile, user, details"
+        keywords={`${user.username}, user profile, professional profile, career details, Job Quick`}
         thumbnail={user.avatar || 'https://example.com/default-avatar.jpg'}
-        url={`https://example.com/profile`}
+        url={`https://jobquick.techinsights.guru/profile`}
         type="profile"
       />
       <div className="mt-20">

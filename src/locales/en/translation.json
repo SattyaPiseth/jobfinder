@@ -173,7 +173,11 @@
   },
   "Perspective": "Our Perspective",
   "Instructor": "Instructors",
-  "Member": "Team Members"
+  "Member": "Team Members",
+  "mentors": {
+    "Ing-Muyleang" : "Ing Muyleang",
+    "Kim-Chansokpheng" : "Kim Chansokpheng"
+  }
 },
 "Contact-us": {
   "title": "Contact us",

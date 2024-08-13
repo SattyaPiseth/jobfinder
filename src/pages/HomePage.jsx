@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SliderComponent from "../Components/home/SliderComponent";
 import HeroSectionComponent from "../Components/home/HeroSectionComponent";
 import SearchComponent from "../Components/home/SearchComponent";
@@ -9,11 +9,15 @@ import FeatureDetailComponent from "../Components/home/FeatureDetailComponent";
 import { selectStatus } from "../redux/jobs/jobsSlice";
 import useThrottleScroll from "../common/useThrottleScroll";
 
-const HomePage = ({ categories, jobs }) => {
+// Wrap HomePage in React.memo for performance optimization
+const HomePage = React.memo(({ categories, jobs }) => {
   const status = useSelector(selectStatus);
+
   const saveScrollPosition = useCallback(() => {
     localStorage.setItem("scrollPosition", window.scrollY);
   }, []);
+
+  // Throttle the scroll event to improve performance
   useThrottleScroll(saveScrollPosition, 200);
 
   useEffect(() => {
@@ -23,16 +27,16 @@ const HomePage = ({ categories, jobs }) => {
     }
   }, []);
 
-    return (
-      <div className="mx-auto p-4">
-        <HeroSectionComponent isLoading={status === 'loading'} />
-        <SliderComponent />
-        <SearchComponent categories={categories} isLoading={status === 'loading'} />
-        <PositionCardComponent jobs={jobs} isLoading={status === 'loading'}  />
-        <AdvertisingComponent />
-        <FeatureDetailComponent />
-      </div>
-    );
-  };
+  return (
+    <section className="mx-auto p-4">
+      <HeroSectionComponent isLoading={status === 'loading'} />
+      <SliderComponent />
+      <SearchComponent categories={categories} isLoading={status === 'loading'} />
+      <PositionCardComponent jobs={jobs} isLoading={status === 'loading'} />
+      <AdvertisingComponent />
+      <FeatureDetailComponent />
+    </section>
+  );
+});
 
 export default HomePage;

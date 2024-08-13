@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+// No need for React.memo if there are no props or performance issues
 const FeatureDetailComponent = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading delay
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // Adjust as needed for real data loading time
+    }, 2000); // Adjust based on your data fetching needs
 
     return () => clearTimeout(timer);
   }, []);
