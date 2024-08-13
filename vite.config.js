@@ -28,76 +28,65 @@ export default defineConfig(({ mode }) => {
         hostname: "https://jobquick.techinsights.guru/",
       }),
       VitePWA({
+        registerType: "autoUpdate", // Auto-update service worker
+        includeAssets: [
+          "favicon.ico",
+          "robots.txt",
+          "apple-touch-icon.png",
+          "icons/*.svg",
+        ], // Include assets
         manifest: {
-          name: "Job Quick - Find Your Dream Job",
+          name: "JobQuick - Find Your Dream Job",
           short_name: "JobQuick",
           description:
-            "A platform to find your dream job quickly and efficiently.",
+            "A platform to help you find your dream job quickly and efficiently. Job Quick, established in 2024 by a group of ambitious undergraduate students from the Center for Advanced Science and Technology Development, is an innovative online platform designed to simplify the job search process. Our platform empowers users to effortlessly find, apply to, and track job opportunities, making the job search experience more streamlined and efficient.",
           theme_color: "#4a90e2",
           background_color: "#ffffff",
           display: "standalone",
           start_url: "/",
-          scope: "/",
           icons: [
             {
-              src: "https://job-quick-api.techinsights.guru/media/uploads/icon_632abff944151.svg", // Make sure to provide the correct path to your icons
+              src: "/public/pwa-icon-192x192.png",
               sizes: "192x192",
               type: "image/png",
             },
             {
-              src: "https://job-quick-api.techinsights.guru/media/uploads/icon_632abff944151.svg", // Provide higher resolution icons
-              sizes: "512x512",
+              src: "/public/pwa-icon-512x512.png",
+              sizes: "425x469",
               type: "image/png",
             },
           ],
         },
         workbox: {
+          globPatterns: ["**/*.{js,css,html,png,svg,ico}"], // Cache all necessary assets
           runtimeCaching: [
             {
+              urlPattern: ({ url }) => url.origin === self.location.origin,
+              handler: "NetworkFirst",
+              options: {
+                cacheName: "pages",
+                expiration: {
+                  maxEntries: 50,
+                  maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+                },
+              },
+            },
+            {
               urlPattern: ({ url }) => url.pathname.startsWith("/api/"),
-              handler: "NetworkFirst", // Prioritize getting the latest data from the API
+              handler: "NetworkFirst", // Always try to get fresh data from the API
               options: {
                 cacheName: "api-cache",
                 networkTimeoutSeconds: 10,
                 expiration: {
-                  maxEntries: 50,
-                  maxAgeSeconds: 60 * 60 * 24, // Cache for 1 day
+                  maxEntries: 100,
+                  maxAgeSeconds: 7 * 24 * 60 * 60, // 7 Days
                 },
-              },
-            },
-            {
-              urlPattern: ({ url }) => url.pathname.endsWith(".json"),
-              handler: "StaleWhileRevalidate", // Useful for mock data or static JSON files
-              options: {
-                cacheName: "json-cache",
-                expiration: {
-                  maxEntries: 20,
-                  maxAgeSeconds: 60 * 60 * 24 * 7, // Cache for 7 days
-                },
-              },
-            },
-            {
-              urlPattern: /^https:\/\/fonts\.googleapis\.com\//,
-              handler: "StaleWhileRevalidate",
-              options: {
-                cacheName: "google-fonts-stylesheets",
-              },
-            },
-            {
-              urlPattern: /^https:\/\/fonts\.gstatic\.com\//,
-              handler: "CacheFirst",
-              options: {
-                cacheName: "google-fonts-webfonts",
-                expiration: {
-                  maxEntries: 30,
-                  maxAgeSeconds: 60 * 60 * 24 * 365, // Cache for 1 year
+                cacheableResponse: {
+                  statuses: [0, 200],
                 },
               },
             },
           ],
-        },
-        devOptions: {
-          enabled: true,
         },
       }),
     ],
