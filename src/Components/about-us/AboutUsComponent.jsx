@@ -375,7 +375,7 @@ export default function AboutUsComponent() {
               <div className="relative rounded-full bg-foreground-50 p-1">
                 <div className="relative shadow-black/5 shadow-none rounded-full">
                   <img
-                    src="src/assets/images/Teacher-Pheng.webp"
+                    src={lead.image}
                     className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none duration-300 rounded-full h-[210px] w-[210px]"
                     alt={lead.name}
                     data-loaded="true"
