@@ -5,10 +5,10 @@ import {fetchSkillsByCategoryId} from "../../api/jobCategoryApi.js";
 
 export const fetchJobCategories = createAsyncThunk(
   "job_category/fetchJobCategories",
-  async (_, { rejectWithValue }) => {
+  async (_,{ rejectWithValue }) => {
     try {
-      const data = await fetchCategoriesAPI();
-      return data.results;
+      const response = await fetchCategoriesAPI();
+      return response.data.results;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -20,7 +20,6 @@ export const fetchSkills = createAsyncThunk(
   async (categoryId, { rejectWithValue }) => {
     try {
       const skills = await fetchSkillsByCategoryId(categoryId);
-      console.log('categoryId',categoryId , 'skills',skills)
       return { categoryId, skills };
     } catch (error) {
       return rejectWithValue(error.message);

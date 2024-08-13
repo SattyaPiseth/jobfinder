@@ -11,27 +11,31 @@ import "aos/dist/aos.css";
 import { fetchProfile } from "../redux/features/user/userSlice";
 import ThemeToggle from "../common/ThemeToggle";
 
-const MenuList = React.memo(({ isLoading, menuList, fontClass, isOpen, setIsOpen }) => (
-  <div
-    className={`flex flex-col xl:flex-row xl:space-x-10 transition-all duration-300 ease-in-out ${isOpen ? "block" : "hidden"} xl:block`}
-    style={{ textAlign: 'center' }}
-  >
-    {menuList.map((menu, index) => (
-      <NavLink
-        to={menu.path}
-        className={({ isActive }) =>
-          isActive
-            ? `${fontClass} text-xl font-medium text-white dark:text-white`
-            : `${fontClass} font-medium text-xl text-gray-300 dark:text-gray-300`
-        }
-        key={index}
-        onClick={() => setIsOpen(false)}
-      >
-        {menu.title}
-      </NavLink>
-    ))}
-  </div>
-));
+const MenuList = React.memo(
+  ({ isLoading, menuList, fontClass, isOpen, setIsOpen }) => (
+    <div
+      className={`flex flex-col xl:flex-row xl:space-x-10 transition-all duration-300 ease-in-out ${
+        isOpen ? "block" : "hidden"
+      } xl:block`}
+      style={{ textAlign: "center" }}
+    >
+      {menuList.map((menu, index) => (
+        <NavLink
+          to={menu.path}
+          className={({ isActive }) =>
+            isActive
+              ? `${fontClass} text-xl font-medium text-white dark:text-white`
+              : `${fontClass} font-medium text-xl text-gray-300 dark:text-gray-300`
+          }
+          key={index}
+          onClick={() => setIsOpen(false)}
+        >
+          {menu.title}
+        </NavLink>
+      ))}
+    </div>
+  )
+);
 
 export default function NavbarComponent() {
   const { t } = useTranslation();
@@ -41,7 +45,11 @@ export default function NavbarComponent() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const logout = useLogout();
   const dispatch = useDispatch();
-  const { user, accessToken, isLoading: globalLoading } = useSelector((state) => state.user);
+  const {
+    user,
+    accessToken,
+    isLoading: globalLoading,
+  } = useSelector((state) => state.user);
   const location = useLocation();
 
   useEffect(() => {
@@ -50,11 +58,11 @@ export default function NavbarComponent() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    if (accessToken) {
-      dispatch(fetchProfile(accessToken));
-    }
-  }, [accessToken, dispatch]);
+  // useEffect(() => {
+  //   if (accessToken) {
+  //     dispatch(fetchProfile(accessToken));
+  //   }
+  // }, [accessToken, dispatch]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -74,21 +82,29 @@ export default function NavbarComponent() {
     { path: "/jobs", title: t("navbar.jobs") },
     { path: "/media", title: t("navbar.media") },
     { path: "/about-us", title: t("navbar.about-us") },
-    ...(isAuthenticated ? [] : [
-      { path: "/login", title: t("auth.login") },
-      { path: "/register", title: t("auth.register") },
-    ]),
+    ...(isAuthenticated
+      ? []
+      : [
+          { path: "/login", title: t("auth.login") },
+          { path: "/register", title: t("auth.register") },
+        ]),
   ];
 
   const toggleNavbar = () => {
-    setIsOpen(prev => !prev);
+    setIsOpen((prev) => !prev);
   };
 
   return (
-    <Navbar fluid className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50">
+    <Navbar
+      fluid
+      className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50"
+    >
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between py-2 gap-4">
-          <Navbar.Brand href="/" className="flex items-center whitespace-nowrap">
+          <Navbar.Brand
+            href="/"
+            className="flex items-center whitespace-nowrap"
+          >
             {loading ? (
               <div className="w-7 h-7 bg-gray-300 rounded-full mr-3"></div>
             ) : (
@@ -99,7 +115,7 @@ export default function NavbarComponent() {
                 height="48"
                 decoding="async"
                 className="mr-3 w-7 h-7 object-contain"
-                src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
+                src="https://job-quick-api.techinsights.guru/media/uploads/icon_632abff944151.svg"
               />
             )}
             {loading ? (
@@ -127,12 +143,24 @@ export default function NavbarComponent() {
             {loading ? (
               <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
             ) : isAuthenticated ? (
-              <Dropdown arrowIcon={false} inline label={<Avatar alt="User settings" img={user?.avatar} rounded />}>
+              <Dropdown
+                arrowIcon={false}
+                inline
+                label={
+                  <Avatar alt="User settings" img={user?.avatar} rounded />
+                }
+              >
                 <Dropdown.Header>
-                  <span className="block text-sm text-left">{user?.username}</span>
-                  <span className="block truncate text-sm font-medium">{user?.email}</span>
+                  <span className="block text-sm text-left">
+                    {user?.username}
+                  </span>
+                  <span className="block truncate text-sm font-medium">
+                    {user?.email}
+                  </span>
                 </Dropdown.Header>
-                <Dropdown.Item as={Link} to="/profile">Settings</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/profile">
+                  Settings
+                </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
               </Dropdown>
@@ -157,7 +185,9 @@ export default function NavbarComponent() {
                       >
                         <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
                       </svg>
-                      <span className={`${fontClass} hidden xl:inline font-medium uppercase`}>
+                      <span
+                        className={`${fontClass} hidden xl:inline font-medium uppercase`}
+                      >
                         {t("auth.register")}
                       </span>
                     </button>
@@ -193,7 +223,9 @@ export default function NavbarComponent() {
                           d="M288 336l80-80-80-80M80 256h272"
                         ></path>
                       </svg>
-                      <span className={`${fontClass} hidden xl:inline font-medium uppercase`}>
+                      <span
+                        className={`${fontClass} hidden xl:inline font-medium uppercase`}
+                      >
                         {t("auth.login")}
                       </span>
                     </button>
@@ -215,7 +247,11 @@ export default function NavbarComponent() {
                 stroke="currentColor"
                 strokeWidth={2}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </button>
           </div>

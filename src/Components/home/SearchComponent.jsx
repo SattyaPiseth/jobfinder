@@ -24,7 +24,6 @@ const SearchComponent = ({ categories, isLoading }) => {
   const [selectedSkill, setSelectedSkill] = useState("");
   const [loadingSkills, setLoadingSkills] = useState(false);
   const [query, setQuery] = useState("");
-  const error = useSelector(selectSearchError);
   const skills = useSelector((state) =>
     selectSkillsByCategoryId(state, selectedCategory)
   );

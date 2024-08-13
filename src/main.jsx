@@ -15,7 +15,6 @@ import ProtectedRoute from "./common/ProtectedRoute.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
 import EmailVerification from "./pages/EmailVerification.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import ContactUs from "./pages/ContactUs.jsx";
 import MediaComponent from "./Components/home/MediaComponent.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import AboutUsPage from "./pages/AboutUsPage.jsx";
@@ -26,7 +25,6 @@ import { HelmetProvider } from "react-helmet-async";
 import PasswordResetVerification from "./pages/PasswordResetVerification.jsx";
 import 'react-toastify/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
-
 const route = createBrowserRouter([
   {
     path: "/",
@@ -49,10 +47,6 @@ const route = createBrowserRouter([
         element: <ProtectedRoute element={<ProfilePage />} />,
       },
       {
-        path: "/register",
-        element: <RegistrationPage />,
-      },
-      {
         path: "/verifyCode",
         element: <EmailVerification />,
       },  
@@ -73,6 +67,10 @@ const route = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegistrationPage />,
   },
 ]);
 

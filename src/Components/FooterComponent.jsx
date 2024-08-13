@@ -2,7 +2,13 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
 import { Footer } from "flowbite-react";
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
+import {
+  BsDribbble,
+  BsFacebook,
+  BsGithub,
+  BsInstagram,
+  BsTwitter,
+} from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 
 const FooterComponent = () => {
@@ -12,7 +18,7 @@ const FooterComponent = () => {
   return (
     <Footer
       container
-      className="w-full py-10 px-5 bg-primary-800 dark:bg-gray-800 text-white absolute left-0 right-0 no-rounded"
+      className={`w-full py-10 px-5 bg-primary-800 dark:bg-gray-800 text-white absolute left-0 right-0 no-rounded ${fontClass}`}
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between items-center gap-8">
@@ -20,7 +26,7 @@ const FooterComponent = () => {
             <div className="flex flex-col items-center md:items-start mx-auto md:mx-0 px-12">
               <NavLink to="/">
                 <img
-                  src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
+                  src="https://job-quick-api.techinsights.guru/media/uploads/icon_632abff944151.svg"
                   className="h-12 mb-2"
                   alt="Job Quick Logo"
                 />
@@ -31,7 +37,9 @@ const FooterComponent = () => {
             </div>
           </div>
           <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-0 mx-32">
-            <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
+            <div
+              className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}
+            >
               <Footer.Title
                 title={t("footer.website.name")}
                 className="text-gray-100 font-semibold text-lg"
@@ -45,7 +53,9 @@ const FooterComponent = () => {
                 </NavLink>
               </Footer.LinkGroup>
             </div>
-            <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
+            <div
+              className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}
+            >
               <Footer.Title
                 title={t("footer.information.name")}
                 className="text-gray-100 font-semibold text-lg"
@@ -54,12 +64,17 @@ const FooterComponent = () => {
                 <NavLink to="/about-us" className="text-base text-gray-300">
                   {t("footer.information.about-us")}
                 </NavLink>
-                <NavLink to="/privacy-policy" className="text-base text-gray-300">
+                <NavLink
+                  to="/privacy-policy"
+                  className="text-base text-gray-300"
+                >
                   {t("footer.information.privacy-policy")}
                 </NavLink>
               </Footer.LinkGroup>
             </div>
-            <div className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}>
+            <div
+              className={`text-center sm:text-left mb-6 sm:mb-0 ${fontClass}`}
+            >
               <Footer.Title
                 title={t("footer.contact-us.name")}
                 className="text-gray-100 font-semibold text-lg"
@@ -92,7 +107,10 @@ const FooterComponent = () => {
                 data-version="5"
                 min-width="400 500 600 700"
               >
-                <div data-style="clean" className="flex flex-col md:flex-row items-end mb-3">
+                <div
+                  data-style="clean"
+                  className="flex flex-col md:flex-row items-end mb-3"
+                >
                   <ul
                     className="formkit-alert formkit-alert-error"
                     data-element="errors"
@@ -104,7 +122,9 @@ const FooterComponent = () => {
                     className="flex flex-col md:flex-row items-center w-full max-w-md mb-3 seva-fields formkit-fields"
                   >
                     <div className="relative w-full mb-3 md:mb-0 md:mr-3 formkit-field">
-                      <label htmlFor="member_email" className="sr-only">Email address</label>
+                      <label htmlFor="member_email" className="sr-only">
+                        Email address
+                      </label>
                       <input
                         id="member_email"
                         className={`${fontClass} formkit-input bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 rounded-md`}
@@ -116,7 +136,7 @@ const FooterComponent = () => {
                       />
                     </div>
                     <button data-element="submit" className="formkit-submit">
-                      <span className=" px-6 py-3 text-sm font-semibold text-center text-white bg-primary-900 cursor-pointer hover:bg-primary-850 focus:ring-4 focus:ring-blue-300 rounded-lg">
+                      <span className="px-6 py-3 text-sm font-semibold text-center text-white bg-primary-900 cursor-pointer hover:bg-primary-850 focus:ring-4 focus:ring-blue-300 rounded-lg">
                         Subscribe
                       </span>
                     </button>

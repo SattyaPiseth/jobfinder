@@ -70,7 +70,6 @@ function UserProfileComponent({
       formData.append("file", file);
       try {
         const response = await dispatch(fetchUploadUserAvatar(formData)); // Dispatch the action to upload the file
-        console.log("response: ", response.payload);
 
         if (response?.payload?.data?.url) {
           const avatarUrl = response.payload.data.url;

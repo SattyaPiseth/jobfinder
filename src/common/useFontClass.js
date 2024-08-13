@@ -7,7 +7,7 @@ const useFontClass = () => {
   const [fontClass, setFontClass] = useState(localStorage.getItem('fontClass') || "font-kantumruy");
 
   useEffect(() => {
-    const newFontClass = currentLang === "kh" ? "font-suwannaphum" : "font-kantumruy";
+    const newFontClass = currentLang === "kh" ? "font-suwannaphum" : "font-poppins";
     setFontClass(newFontClass);
     localStorage.setItem('fontClass', newFontClass);
   }, [currentLang]);

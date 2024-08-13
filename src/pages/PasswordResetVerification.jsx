@@ -8,11 +8,11 @@ const PasswordResetVerification = () => {
     <>
       <Metadata
         title="Password Reset Verification"
-        description="Verify your email address to reset your password."
-        author="PISETH Sattya"
-        keywords="password reset, email verification, account recovery"
+        description="Verify your email address to complete the password reset process and regain access to your Job Quick account. Follow the instructions to securely reset your password and restore your account access."
+        author="Job Quick Team"
+        keywords="password reset, email verification, account recovery, Job Quick, secure password reset"
         thumbnail="https://cdn.builder.io/api/v1/image/assets/TEMP/dfc88a762229238be0ba236bdc53e7231de668be5613407739ad520eb7f8a51b?apiKey=ad7733614e794f228aa68fbfd330edec&"
-        url="https://jobquick.techinsights.guru/password-reset-verification"
+        url="https://jobquick.techinsights.guru/password-reset-request"
         type="website"
       />
       <main
