@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       <Metadata
-        // title="Home"
+        title="JOB QUICK"
         description="Job Quick, established in 2024 by a group of ambitious undergraduate students from the Center for Advanced Science and Technology Development, is an innovative online platform designed to simplify the job search process. Our platform empowers users to effortlessly find, apply to, and track job opportunities, making the job search experience more streamlined and efficient."
         author="Job Quick Team"
         keywords="job search, apply jobs, job tracking, employment, careers, job opportunities, job portal, online jobs, Job Quick"

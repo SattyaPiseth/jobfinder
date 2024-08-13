@@ -28,14 +28,14 @@ const HomePage = React.memo(({ categories, jobs }) => {
   }, []);
 
   return (
-    <div className="mx-auto p-4">
+    <section className="mx-auto p-4">
       <HeroSectionComponent isLoading={status === 'loading'} />
       <SliderComponent />
       <SearchComponent categories={categories} isLoading={status === 'loading'} />
       <PositionCardComponent jobs={jobs} isLoading={status === 'loading'} />
       <AdvertisingComponent />
       <FeatureDetailComponent />
-    </div>
+    </section>
   );
 });
 
