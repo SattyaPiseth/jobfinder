@@ -44,14 +44,14 @@ const HeroSectionComponent = React.memo(({ isLoading }) => {
                       className="font-bold text-blue-800 dark:text-blue-400 block"
                     />
                   </h1>
-                  <img
+                  {/* <img
                     loading="lazy"
                     src="https://job-quick-api.techinsights.guru/media/uploads/hero-section_LEi7MwS.png"
                     alt={t("HeroSection.altIllustration")}
                     className="mt-7 w-full md:w-[455px] aspect-[11.11]"
                     width="455"
                     height="455"
-                  />
+                  /> */}
                   <p className="mt-1.5 text-2xl leading-10 text-slate-600 dark:text-slate-300 text-left">
                     {t("HeroSection.description")}
                   </p>
@@ -79,7 +79,7 @@ const HeroSectionComponent = React.memo(({ isLoading }) => {
               ) : (
                 <img
                   loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a80561409e726af6d7ed574172e4be459d2b6e25d22d27c2002b385768104b1?apiKey=391ff68a63584b0181b4aa51e20262f0&&apiKey=391ff68a63584b0181b4aa51e20262f0"
+                  src="https://job-quick-api.techinsights.guru/media/uploads/hero-section_LEi7MwS.png"
                   className="w-full aspect-[1.47] max-w-[607px]"
                   alt={t("HeroSection.altImage")}
                 />
