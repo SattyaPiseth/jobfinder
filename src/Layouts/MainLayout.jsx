@@ -15,7 +15,7 @@ const MainLayout = () => {
       <header>
         <NavbarComponent />
       </header>
-      <main>
+      <main style={{position: 'relative', zIndex: 1}}>
         <Outlet />
       </main>
     </div>
