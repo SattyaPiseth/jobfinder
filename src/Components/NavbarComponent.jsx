@@ -115,7 +115,7 @@ export default function NavbarComponent() {
                 height="48"
                 decoding="async"
                 className="mr-3 w-7 h-7 object-contain"
-                src="https://ecommerce.techinsights.guru/file/3d3e78e2-5f53-4d18-8818-7b01f9cef98c.png"
+                src="https://job-quick-api.techinsights.guru/media/uploads/icon_632abff944151.svg"
               />
             )}
             {loading ? (
