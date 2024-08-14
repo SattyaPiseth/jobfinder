@@ -22,6 +22,7 @@ import {
   selectAllJobCategories,
 } from "../redux/features/category-job/categorySlice";
 import { Metadata } from "../lib/Metadata";
+import { Helmet } from "react-helmet-async";
 
 const JobsPage = () => {
   const { t } = useTranslation();
@@ -73,7 +74,7 @@ const JobsPage = () => {
 
   return (
     <section>
-      <Metadata
+      {/* <Metadata
         title="Job Listing"
         description="Browse a wide range of job listings at Job Quick. Discover the latest job opportunities, apply for your ideal position, and advance your career with our user-friendly platform."
         author="Job Quick Team"
@@ -81,7 +82,59 @@ const JobsPage = () => {
         thumbnail="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
         url="https://jobquick.techinsights.guru/jobs"
         type="website"
-      />
+      /> */}
+      <Helmet>
+        <meta charSet="UTF-8" />
+        <title>JobQuick | Job Listing</title>
+        <link rel="canonical" href="https://jobquick.techinsights.guru/jobs" />
+        <meta name="title" content="JobQuick - Job Listing" />
+        <meta
+          name="description"
+          content="Browse a wide range of job listings at Job Quick. Discover the latest job opportunities, apply for your ideal position, and advance your career with our user-friendly platform."
+        />
+        <meta name="author" content="Job Quick Team" />
+        <meta
+          name="keywords"
+          content="job listings, job opportunities, careers, job search, job portal, apply for jobs, find jobs, employment, career advancement, online job search"
+        />
+        <meta
+          name="thumbnail"
+          content="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+        />
+
+        {/* Open Graph / Facebook */}
+        <meta
+          property="og:url"
+          content="https://jobquick.techinsights.guru/jobs"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="JobQuick - Job Listing" />
+        <meta
+          property="og:description"
+          content="Discover thousands of job opportunities tailored to your skills. JobQuick makes the job search process easier and more effective."
+        />
+        <meta
+          property="og:image"
+          content="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+        />
+        <meta property="og:site_name" content="JobQuick" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="JobQuick - Job Listing" />
+        <meta
+          name="twitter:description"
+          content="Join JobQuick today and take the first step towards your dream career."
+        />
+        <meta
+          name="twitter:image"
+          content="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+        />
+        <meta
+          name="twitter:url"
+          content="https://jobquick.techinsights.guru/jobs"
+        />
+      </Helmet>
       <header className="mt-20">
         <h1
           className={`${fontClass} text-blue-600 font-kantumruy text-4xl text-start font-bold`}
@@ -133,7 +186,6 @@ const JobsPage = () => {
             <div className="text-center py-10">
               <Pagination isLoading={status === "loading"} />
             </div>
-
           )}
         </>
       )}
