@@ -12,7 +12,7 @@ export const Metadata = ({
 }) => {
   return (
     <Helmet>
-      <title>{`JOBQUICK | ${title || "Find Your Dream Job"}`}</title>
+      <title>{`JobQuick | ${title || "Find Your Dream Job"}`}</title>
       <meta name="title" content={title || "JobQuick - Find Your Dream Job"} />
       <meta
         name="description"
