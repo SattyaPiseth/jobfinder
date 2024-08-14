@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 export const Metadata = ({
   title,
@@ -8,13 +8,11 @@ export const Metadata = ({
   keywords,
   thumbnail,
   url,
-  type,
+  type
 }) => {
   return (
     <Helmet>
-      <meta charset="UTF-8" />
       <title>{`JobQuick | ${title || "Find Your Dream Job"}`}</title>
-      <link rel="canonical" href="http://jobquick.techinsights.guru/" />
       <meta name="title" content={title || "JobQuick - Find Your Dream Job"} />
       <meta
         name="description"
@@ -40,10 +38,7 @@ export const Metadata = ({
       />
 
       {/* Open Graph / Facebook */}
-      <meta
-        property="og:url"
-        content={url || "https://jobquick.techinsights.guru"}
-      />
+      <meta property="og:url" content={url || "https://jobquick.techinsights.guru"} />
       <meta property="og:type" content={type || "website"} />
       <meta
         property="og:title"
@@ -85,10 +80,7 @@ export const Metadata = ({
           "https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
         }
       />
-      <meta
-        name="twitter:url"
-        content={url || "https://jobquick.techinsights.guru"}
-      />
+      <meta name="twitter:url" content={url || "https://jobquick.techinsights.guru"} />
     </Helmet>
   );
 };
