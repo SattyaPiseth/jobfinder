@@ -79,20 +79,23 @@ const appliedJobsSlice = createSlice({
   initialState: {
     loading: false,
     error: null,
+    appliedJobs: [], // Store applied jobs if needed
   },
   reducers: {},
   extraReducers: (builder) =>
     builder
-      .addCase(fetchAppliedJobs.pending, (state, { payload }) => {
+      .addCase(fetchAppliedJobs.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchAppliedJobs.fulfilled, (state, { payload }) => {
         state.loading = false;
+        state.appliedJobs = payload; // Assuming payload is the list of applied jobs
       })
       .addCase(fetchAppliedJobs.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
       })
+
       .addCase(applyForJob.pending, (state, { payload }) => {
         state.loading = true;
       })

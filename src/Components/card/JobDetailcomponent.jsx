@@ -19,14 +19,14 @@ const JobDetailComponent = ({ detail }) => {
           className="w-[8%]"
           loading="lazy"
           src={detail?.thumbnail}
-          alt="Company Logo"
+          alt={`${detail?.title} at ${detail?.company_name}`}
         />
         <div className="flex-1">
           <div className="flex justify-between">
-            <div className="">
-              <div className="text-xl md:text-2xl font-medium leading-8 text-zinc-900 dark:text-gray-300 flex">
+            <div>
+              <h1 className="text-2xl md:text-2xl font-bold leading-8 text-zinc-900 dark:text-gray-300 flex">
                 {detail?.title}
-              </div>
+              </h1>
               <div className="flex flex-wrap gap-2 mt-3 text-sm leading-5">
                 <div className="text-lg leading-7 text-neutral-600 min-w-max dark:text-gray-300">
                   {detail?.company_name}

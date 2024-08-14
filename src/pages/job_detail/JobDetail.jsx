@@ -1,10 +1,11 @@
-import React, { useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchJobById, selectJobById } from '../../redux/jobs/jobsSlice';
-import useThrottleScroll from '../../common/useThrottleScroll'; // Import the custom hook
-import JobDetailComponent from '../../Components/card/JobDetailcomponent';
-import { Metadata } from '../../lib/Metadata';
+import React, { useEffect, useCallback } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchJobById, selectJobById } from "../../redux/jobs/jobsSlice";
+import useThrottleScroll from "../../common/useThrottleScroll"; // Import the custom hook
+import JobDetailComponent from "../../Components/card/JobDetailcomponent";
+import { Metadata } from "../../lib/Metadata";
+import ApplyButton from "../../Components/apply-job/ApplyButton";
 
 const JobDetail = () => {
   const { id } = useParams();
@@ -18,13 +19,13 @@ const JobDetail = () => {
   }, [dispatch, id]);
 
   const saveScrollPosition = useCallback(() => {
-    localStorage.setItem('scrollPosition', window.scrollY);
+    localStorage.setItem("scrollPosition", window.scrollY);
   }, []);
 
   useThrottleScroll(saveScrollPosition, 200);
 
   useEffect(() => {
-    const savedPosition = localStorage.getItem('scrollPosition');
+    const savedPosition = localStorage.getItem("scrollPosition");
     if (savedPosition) {
       window.scrollTo(0, parseInt(savedPosition, 10));
     }
@@ -34,14 +35,19 @@ const JobDetail = () => {
     <>
       <Metadata
         title={`${job?.title} - Job Details | Job Quick`}
-        description={`Explore the job listing for ${job?.title} at ${job?.company}. Learn about the role's responsibilities, qualifications, benefits, and how to apply. Find out more about this exciting opportunity and advance your career with Job Quick.`}
+        description={`Find out all the details about ${job?.title} at ${job?.company}. Apply today and take the next step in your career with Job Quick.`}
         author="Job Quick Team"
         keywords={`${job?.title}, ${job?.company}, job details, job description, apply for ${job?.title}, career opportunities, employment, job openings, Job Quick`}
-        thumbnail={job?.image || 'https://job-quick-api.techinsights.guru/media/uploads/hero-section.png'}
+        thumbnail={
+          job?.image ||
+          "https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+        }
         url={`https://jobquick.techinsights.guru/jobs/${job?.id}`}
         type="website"
       />
+      {/* {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>} */}
       {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}
+      <ApplyButton jobId={job?.id} resume="path_to_resume_file" />
     </>
   );
 };
