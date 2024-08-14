@@ -86,6 +86,20 @@ export default defineConfig(({ mode }) => {
                 },
               },
             },
+            {
+              urlPattern: ({ url }) => url.pathname.match(/\/assets\/.*/),
+              handler: "CacheFirst",
+              options: {
+                cacheName: "assets-cache",
+                expiration: {
+                  maxEntries: 100,
+                  maxAgeSeconds: 60 * 24 * 60 * 60, // 60 Days
+                },
+                cacheableResponse: {
+                  statuses: [0, 200],
+                },
+              },
+            },
           ],
         },
       }),

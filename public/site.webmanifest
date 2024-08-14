@@ -2,6 +2,10 @@
     "name": "JobQuick - Find Your Dream Job",
     "short_name": "JobQuick",
     "description": "Explore thousands of job opportunities with Job Quick. Find jobs that match your skills and advance your career. A platform to help you find your dream job quickly and efficiently.",
+    "theme_color": "#4a90e2",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,8 +17,5 @@
             "sizes": "512x512",
             "type": "image/png"
         }
-    ],
-    "theme_color": "#4a90e2",
-    "background_color": "#ffffff",
-    "display": "standalone"
+    ]
 }
