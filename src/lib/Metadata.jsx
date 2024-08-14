@@ -1,83 +1,86 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
-const Metadata = ({
+export const Metadata = ({
   title,
   description,
   author,
   keywords,
   thumbnail,
   url,
-  type,
+  type
 }) => {
-  const defaultThumbnail = "/default-thumbnail.jpg"; // Default image path
-  const image = thumbnail || defaultThumbnail;
-  const fullUrl =
-    url || (typeof window !== "undefined" ? window.location.href : "");
-
   return (
     <Helmet>
-      {/* Title Tag */}
-      <title>
-        {title ? `${title} | Job Quick` : "JOB QUICK"}
-      </title>
-      <meta name="title" content={title || "Find Your Dream Job | Job Quick"} />
-
-      {/* Meta Tags */}
+      <title>{`JobQuick | ${title || "Find Your Dream Job"}`}</title>
+      <meta name="title" content={title || "JobQuick - Find Your Dream Job"} />
       <meta
         name="description"
         content={
           description ||
-          "Explore thousands of job opportunities with Job Quick. Find jobs that match your skills and advance your career."
+          "JobQuick is a platform designed to help you find your dream job quickly and efficiently. Search and apply for job opportunities, track your applications, and stay ahead in your career."
         }
       />
-      <meta name="author" content={author || "Job Quick Team"} />
+      <meta name="author" content={author || "JobQuick Team"} />
       <meta
         name="keywords"
         content={
           keywords ||
-          "jobs, careers, employment, job search, job opportunities, job portal, online jobs"
+          "job search, careers, employment, job opportunities, job applications, JobQuick"
         }
       />
-      <meta name="thumbnail" content={image} />
+      <meta
+        name="thumbnail"
+        content={
+          thumbnail ||
+          "https://jobquick.techinsights.guru/assets/jobquick-thumbnail.png"
+        }
+      />
 
-      {/* Open Graph Meta Tags */}
-      <meta property="og:url" content={fullUrl} />
+      {/* Open Graph / Facebook */}
+      <meta property="og:url" content={url || "https://jobquick.techinsights.guru"} />
       <meta property="og:type" content={type || "website"} />
       <meta
         property="og:title"
-        content={title || "Find Your Dream Job | Job Quick"}
+        content={title || "JobQuick - Find Your Dream Job"}
       />
       <meta
         property="og:description"
         content={
           description ||
-          "Explore thousands of job opportunities with Job Quick. Find jobs that match your skills and advance your career."
+          "Discover thousands of job opportunities tailored to your skills. JobQuick makes the job search process easier and more effective."
         }
       />
-      <meta property="og:image" content={image} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta
+        property="og:image"
+        content={
+          thumbnail ||
+          "https://jobquick.techinsights.guru/assets/jobquick-thumbnail.png"
+        }
+      />
+      <meta property="og:site_name" content="JobQuick" />
 
-      {/* Twitter Card Meta Tags */}
+      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:title"
-        content={title || "Find Your Dream Job | Job Quick"}
+        content={title || "JobQuick - Find Your Dream Job"}
       />
       <meta
         name="twitter:description"
         content={
           description ||
-          "Explore thousands of job opportunities with Job Quick. Find jobs that match your skills and advance your career."
+          "Join JobQuick today and take the first step towards your dream career."
         }
       />
-      <meta name="twitter:image" content={image} />
-
-      {/* Canonical Link */}
-      <link rel="canonical" href={fullUrl} />
+      <meta
+        name="twitter:image"
+        content={
+          thumbnail ||
+          "https://jobquick.techinsights.guru/assets/jobquick-thumbnail.png"
+        }
+      />
+      <meta name="twitter:url" content={url || "https://jobquick.techinsights.guru"} />
     </Helmet>
   );
 };
-
-export default Metadata;

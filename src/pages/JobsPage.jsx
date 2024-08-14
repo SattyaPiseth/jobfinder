@@ -13,7 +13,6 @@ import {
 import { CardComponent } from "../Components/feat-jobs/CardComponent";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Metadata from "../lib/Metadata";
 import useThrottleScroll from "../common/useThrottleScroll";
 import SearchComponent from "../Components/home/SearchComponent";
 import { useTranslation } from "react-i18next";
@@ -22,6 +21,7 @@ import {
   fetchJobCategories,
   selectAllJobCategories,
 } from "../redux/features/category-job/categorySlice";
+import { Metadata } from "../lib/Metadata";
 
 const JobsPage = () => {
   const { t } = useTranslation();

@@ -2,9 +2,9 @@ import React, { useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchJobById, selectJobById } from '../../redux/jobs/jobsSlice';
-import Metadata from '../../lib/Metadata';
 import useThrottleScroll from '../../common/useThrottleScroll'; // Import the custom hook
 import JobDetailComponent from '../../Components/card/JobDetailcomponent';
+import { Metadata } from '../../lib/Metadata';
 
 const JobDetail = () => {
   const { id } = useParams();

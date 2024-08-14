@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
           name: "JobQuick - Find Your Dream Job",
           short_name: "JobQuick",
           description:
-            "A platform to help you find your dream job quickly and efficiently. Job Quick, established in 2024 by a group of ambitious undergraduate students from the Center for Advanced Science and Technology Development, is an innovative online platform designed to simplify the job search process. Our platform empowers users to effortlessly find, apply to, and track job opportunities, making the job search experience more streamlined and efficient.",
+            "Explore thousands of job opportunities with Job Quick. Find jobs that match your skills and advance your career.",
           theme_color: "#4a90e2",
           background_color: "#ffffff",
           display: "standalone",

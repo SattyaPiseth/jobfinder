@@ -1,6 +1,7 @@
 import React from 'react'
 import AboutUsComponent from '../Components/about-us/AboutUsComponent'
-import Metadata from '../lib/Metadata'
+import { Metadata } from '../lib/Metadata'
+
 
 const AboutUsPage = () => {
   return (

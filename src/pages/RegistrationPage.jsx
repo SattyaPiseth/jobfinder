@@ -1,7 +1,7 @@
 import React from "react";
-import Metadata from '../lib/Metadata';
 import RegistrationForm from "../Components/auth/RegistrationForm";
 import ParticlesBackground from "../common/ParticlesBackground";
+import { Metadata } from "../lib/Metadata";
 
 const RegistrationPage = () => {
   const particlesUrl = "/particles.json";
