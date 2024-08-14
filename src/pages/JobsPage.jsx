@@ -22,7 +22,7 @@ import {
   selectAllJobCategories,
 } from "../redux/features/category-job/categorySlice";
 import { Metadata } from "../lib/Metadata";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 const JobsPage = () => {
   const { t } = useTranslation();
@@ -73,7 +73,7 @@ const JobsPage = () => {
   }, []);
 
   return (
-    <section>
+    <>
       {/* <Metadata
         title="Job Listing"
         description="Browse a wide range of job listings at Job Quick. Discover the latest job opportunities, apply for your ideal position, and advance your career with our user-friendly platform."
@@ -189,7 +189,7 @@ const JobsPage = () => {
           )}
         </>
       )}
-    </section>
+    </>
   );
 };
 
