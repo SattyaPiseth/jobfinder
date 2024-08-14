@@ -21,10 +21,10 @@ import AboutUsPage from "./pages/AboutUsPage.jsx";
 import "aos/dist/aos.css"; // Import AOS CSS
 import AOS from "aos"; // Import AOS
 import "swiper/swiper-bundle.css";
-import { HelmetProvider } from "react-helmet-async";
 import PasswordResetVerification from "./pages/PasswordResetVerification.jsx";
 import 'react-toastify/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+import { HelmetProvider } from "react-helmet-async";
 const route = createBrowserRouter([
   {
     path: "/",
