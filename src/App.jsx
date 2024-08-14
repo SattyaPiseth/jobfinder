@@ -46,7 +46,7 @@ function App() {
         description="JobQuick helps you discover and apply for your dream job with ease. Join us today to streamline your job search process and get hired faster!"
         author="JobQuick Team"
         keywords="job search, find jobs, job opportunities, career, employment, JobQuick"
-        thumbnail="https://jobquick.techinsights.guru/assets/images/jobquick-thumbnail.png"
+        thumbnail="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
         url={"https://jobquick.techinsights.guru"}
         type={"website"}
       />

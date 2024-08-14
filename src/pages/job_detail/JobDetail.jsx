@@ -37,7 +37,7 @@ const JobDetail = () => {
         description={`Explore the job listing for ${job?.title} at ${job?.company}. Learn about the role's responsibilities, qualifications, benefits, and how to apply. Find out more about this exciting opportunity and advance your career with Job Quick.`}
         author="Job Quick Team"
         keywords={`${job?.title}, ${job?.company}, job details, job description, apply for ${job?.title}, career opportunities, employment, job openings, Job Quick`}
-        thumbnail={job?.image || 'https://example.com/og-image.jpg'}
+        thumbnail={job?.image || 'https://job-quick-api.techinsights.guru/media/uploads/hero-section.png'}
         url={`https://jobquick.techinsights.guru/jobs/${job?.id}`}
         type="website"
       />

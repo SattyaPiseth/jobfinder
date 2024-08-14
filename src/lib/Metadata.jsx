@@ -12,7 +12,7 @@ export const Metadata = ({
 }) => {
   return (
     <Helmet>
-      <title>{`JobQuick | ${title || "Find Your Dream Job"}`}</title>
+      <title>{`JOBQUICK | ${title || "Find Your Dream Job"}`}</title>
       <meta name="title" content={title || "JobQuick - Find Your Dream Job"} />
       <meta
         name="description"
@@ -33,7 +33,7 @@ export const Metadata = ({
         name="thumbnail"
         content={
           thumbnail ||
-          "https://jobquick.techinsights.guru/assets/jobquick-thumbnail.png"
+          "https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
         }
       />
 
@@ -55,7 +55,7 @@ export const Metadata = ({
         property="og:image"
         content={
           thumbnail ||
-          "https://jobquick.techinsights.guru/assets/jobquick-thumbnail.png"
+          "https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
         }
       />
       <meta property="og:site_name" content="JobQuick" />
@@ -77,7 +77,7 @@ export const Metadata = ({
         name="twitter:image"
         content={
           thumbnail ||
-          "https://jobquick.techinsights.guru/assets/jobquick-thumbnail.png"
+          "https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
         }
       />
       <meta name="twitter:url" content={url || "https://jobquick.techinsights.guru"} />
