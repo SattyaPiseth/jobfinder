@@ -38,7 +38,7 @@ const JobDetail = () => {
         author="Job Quick Team"
         keywords={`${job?.title}, ${job?.company}, job details, job description, apply for ${job?.title}, career opportunities, employment, job openings, Job Quick`}
         thumbnail={
-          job?.image ||
+          job?.thumbnail ||
           "https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
         }
         url={`https://jobquick.techinsights.guru/jobs/${job?.id}`}
