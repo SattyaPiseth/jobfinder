@@ -37,7 +37,7 @@ export default function AboutUsComponent() {
     {
       name: t('About-us.team_members.jun_thearith'),
       image: thearith,
-      position: t('About-us.team_members.chao_kimhay'),
+      position: "Team Member",
     },
     {
       name: t('About-us.team_members.bour_suorcdey'),
