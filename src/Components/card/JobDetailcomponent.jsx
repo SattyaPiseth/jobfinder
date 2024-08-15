@@ -1,14 +1,20 @@
 import React from "react";
-import { Typography, Button, Input } from "@material-tailwind/react"; // Corrected import
+import { Typography, Button, Input } from "@material-tailwind/react";
 import { useCopyToClipboard } from "usehooks-ts";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
-import { WEBSITE_URL } from "../../redux/api/api";
 import { useParams } from "react-router-dom";
 
+const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL;
+
 const JobDetailComponent = ({ detail }) => {
+  const { id } = useParams(); // Correct parameter usage
   const [value, copy] = useCopyToClipboard();
   const [copied, setCopied] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState(WEBSITE_URL);
+
+  const fullUrl = `${WEBSITE_URL}/jobs/${id}`;
+  const [inputValue, setInputValue] = React.useState(fullUrl);
+
+  // Handle any image errors
   const handleError = (event) => {
     event.target.src = "/path/to/fallback/image.jpg"; // Specify a path to your fallback image
   };
@@ -248,8 +254,22 @@ const JobDetailComponent = ({ detail }) => {
                       Share this job:
                     </div>
                     <div className="flex gap-2 pr-20 mt-2 max-md:flex-wrap max-md:pr-5">
-                      <div className="">
-                        <div className="w-72"></div>
+                      <div className="flex items-center gap-4">
+                        <div className="w-72">
+                          <Input
+                            value={inputValue}
+                            type="email"
+                            placeholder="Enter to copy"
+                            className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
+                            labelProps={{
+                              className: "hidden",
+                            }}
+                            onChange={(e) => {
+                              setInputValue(e.target.value);
+                            }}
+                            containerProps={{ className: "min-w-[100px]" }}
+                          />
+                        </div>
                         <Button
                           size="md"
                           onMouseLeave={() => setCopied(false)}
