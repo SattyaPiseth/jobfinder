@@ -52,7 +52,9 @@ const JobDetailComponent = ({ detail }) => {
                   alt=""
                 />
               </button> */}
-              <ApplyButton jobId={detail?.id} resume="path_to_resume_file" />
+              <ApplyButton
+                jobId={detail?.id}
+              />
             </div>
           </div>
         </div>
