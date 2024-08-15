@@ -46,7 +46,6 @@ const JobDetail = () => {
       />
       {/* {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>} */}
       {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}
-      
     </>
   );
 };
