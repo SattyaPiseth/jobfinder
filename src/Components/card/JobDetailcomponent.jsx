@@ -12,7 +12,7 @@ const JobDetailComponent = ({ detail }) => {
   const [value, copy] = useCopyToClipboard();
   const [copied, setCopied] = React.useState(false);
 
-  const fullUrl = `${WEBSITE_URL}/jobs/${id}`;
+  const fullUrl = `${WEBSITE_URL}jobs/${id}`;
   const [inputValue, setInputValue] = React.useState(fullUrl);
 
   // Handle any image errors
