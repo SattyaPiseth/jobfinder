@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { applyForJob } from '../../redux/features/apply-job/applyJobSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useFontClass from '../../common/useFontClass';
 
 const ApplyButton = ({ jobId }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.applyJobs);
   const fileInputRef = useRef(null);
+  const {fontClass} = useFontClass()
   
   // Check if the user is authenticated
   const token = localStorage.getItem('access');
@@ -61,7 +63,7 @@ const ApplyButton = ({ jobId }) => {
   };
 
   return (
-    <div>
+    <div className={`${fontClass}`}>
       <input
         type="file"
         accept=".pdf,.doc,.docx"

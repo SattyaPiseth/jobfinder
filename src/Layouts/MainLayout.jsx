@@ -9,17 +9,17 @@ const MainLayout = () => {
 
   return (
     <>
-    {/* { style={{ position: 'relative', minHeight: '100vh' }}} */}
-    <div>
-      <ParticlesBackground url={particlesUrl} />
-      <header>
-        <NavbarComponent />
-      </header>
-      <main style={{position: 'relative', zIndex: 1}}>
-        <Outlet />
-      </main>
-    </div>
-    <FooterComponent />
+      {/* { style={{ position: 'relative', minHeight: '100vh' }}} */}
+      <div>
+        <ParticlesBackground url={particlesUrl} />
+        <header>
+          <NavbarComponent />
+        </header>
+        <main style={{ position: "relative", zIndex: 1 }}>
+          <Outlet />
+        </main>
+      </div>
+      <FooterComponent />
     </>
   );
 };
