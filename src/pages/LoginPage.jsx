@@ -1,8 +1,8 @@
 import React from "react";
 
-import Metadata from "../lib/Metadata";
 import LoginForm from "../Components/auth/LoginForm";
 import ParticlesBackground from "../common/ParticlesBackground";
+import { Metadata } from "../lib/Metadata";
 
 function LoginPage() {
   const particlesUrl = "/particles.json";

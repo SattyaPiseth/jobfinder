@@ -8,10 +8,10 @@ import {
 } from "./redux/features/category-job/categorySlice";
 import HomePage from "./pages/HomePage";
 import "./App.css";
-import Metadata from "./lib/Metadata";
 import useThrottleScroll from "./common/useThrottleScroll";
 import { fetchAllJobs, selectAllJobs } from "./redux/jobs/jobsSlice";
 import { fetchAppliedJobs } from "./redux/features/apply-job/applyJobSlice";
+import { Metadata } from "./lib/Metadata";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function App() {
     if (status === "idle") {
       dispatch(fetchJobCategories());
       dispatch(fetchAllJobs());
-      // dispatch(fetchAppliedJobs(localStorage.getItem("access")));
+      dispatch(fetchAppliedJobs(localStorage.getItem("access")));
     }
   }, [status, dispatch]);
 
@@ -42,13 +42,13 @@ function App() {
   return (
     <>
       <Metadata
-        // title="JOB QUICK"
-        description="Job Quick, established in 2024 by a group of ambitious undergraduate students from the Center for Advanced Science and Technology Development, is an innovative online platform designed to simplify the job search process. Our platform empowers users to effortlessly find, apply to, and track job opportunities, making the job search experience more streamlined and efficient."
-        author="Job Quick Team"
-        keywords="job search, apply jobs, job tracking, employment, careers, job opportunities, job portal, online jobs, Job Quick"
-        thumbnail="https://cdn.builder.io/api/v1/image/assets/TEMP/0a80561409e726af6d7ed574172e4be459d2b6e25d22d27c2002b385768104b1?apiKey=391ff68a63584b0181b4aa51e20262f0&&apiKey=391ff68a63584b0181b4aa51e20262f0"
-        url="https://jobquick.techinsights.guru/"
-        type="website"
+        title="Find Your Dream Job with JobQuick"
+        description="JobQuick helps you discover and apply for your dream job with ease. Join us today to streamline your job search process and get hired faster!"
+        author="JobQuick Team"
+        keywords="job search, find jobs, job opportunities, career, employment, JobQuick"
+        thumbnail="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+        url={"https://jobquick.techinsights.guru"}
+        type={"website"}
       />
       <HomePage
         categories={categories}

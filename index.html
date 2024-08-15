@@ -8,42 +8,91 @@
       content="3JG7Pshufp2vc1ffFA1I4frevKXNNWjq2SEGpnaWoRo"
     />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="canonical" href="https://jobquick.techinsights.guru/" />
-    <meta name="title" content="Find Your Dream Job | Job Quick" />
+    <meta name="theme-color" content="#4a90e2" />
+    <title>JobQuick | Find Your Dream Job</title>
+    <link rel="canonical" href="http://jobquick.techinsights.guru/" />
+    <meta
+      name="title"
+      content="Find Your Dream Job with JobQuick"
+      data-react-helmet="true"
+    />
     <meta
       name="description"
-      content="Explore thousands of job opportunities with Job Quick. Find jobs that match your skills and advance your career."
+      content="JobQuick helps you discover and apply for your dream job with ease. Join us today to streamline your job search process and get hired faster!"
+      data-react-helmet="true"
+    />
+    <meta
+      name="keywords"
+      content="job search, find jobs, job opportunities, career, employment, JobQuick"
+      data-react-helmet="true"
     />
     <meta
       name="thumbnail"
-      content="https://cdn.builder.io/api/v1/image/assets/TEMP/0a80561409e726af6d7ed574172e4be459d2b6e25d22d27c2002b385768104b1?apiKey=391ff68a63584b0181b4aa51e20262f0&&apiKey=391ff68a63584b0181b4aa51e20262f0"
+      content="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+      data-react-helmet="true"
     />
-    <meta property="og:title" content="Find Your Dream Job | Job Quick" />
+    <meta
+      property="og:title"
+      content="Find Your Dream Job with JobQuick"
+      data-react-helmet="true"
+    />
     <meta
       property="og:description"
-      content="Explore thousands of job opportunities with Job Quick. Find jobs that match your skills and advance your career."
+      content="JobQuick helps you discover and apply for your dream job with ease. Join us today to streamline your job search process and get hired faster!"
+      data-react-helmet="true"
     />
     <meta
       property="og:image"
-      content="https://cdn.builder.io/api/v1/image/assets/TEMP/0a80561409e726af6d7ed574172e4be459d2b6e25d22d27c2002b385768104b1?apiKey=391ff68a63584b0181b4aa51e20262f0&&apiKey=391ff68a63584b0181b4aa51e20262f0"
+      content="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+      data-react-helmet="true"
     />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="https://job-quick-api.techinsights.guru/media/uploads/icon_632abff944151.svg"
+    <meta
+      property="og:url"
+      content="https://jobquick.techinsights.guru"
+      data-react-helmet="true"
     />
-    <link rel="stylesheet" href="style.css" />
+    <meta property="og:type" content="website" data-react-helmet="true" />
+    <meta property="og:site_name" content="JobQuick" data-react-helmet="true" />
+    <meta
+      name="twitter:title"
+      content="Find Your Dream Job with JobQuick"
+      data-react-helmet="true"
+    />
+    <meta
+      name="twitter:description"
+      content="JobQuick helps you discover and apply for your dream job with ease. Join us today to streamline your job search process and get hired faster!"
+      data-react-helmet="true"
+    />
+    <meta
+      name="twitter:image"
+      content="https://job-quick-api.techinsights.guru/media/uploads/hero-section.png"
+      data-react-helmet="true"
+    />
+    <meta
+      name="twitter:url"
+      content="https://jobquick.techinsights.guru"
+      data-react-helmet="true"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- Favicon and Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
 
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Preload and load Google Fonts asynchronously -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&display=swap"
       rel="stylesheet"
     />
-
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Suwannaphum:wght@100;300;400;700;900&display=swap"
@@ -56,7 +105,8 @@
         href="https://fonts.googleapis.com/css2?family=Suwannaphum:wght@100;300;400;700;900&display=swap"
       />
     </noscript>
-    <!-- Preload and load Font Awesome CSS asynchronously -->
+
+    <!-- Preload Font Awesome -->
     <link
       rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -72,13 +122,7 @@
         referrerpolicy="no-referrer"
       />
     </noscript>
-    <!-- Preload critical images -->
-    <link
-      rel="preload"
-      href="/src/assets/images/hero-section.webp"
-      as="image"
-    />
-    <link rel="preload" href="/src/assets/images/react.svg" as="image" />
+
     <!-- Inline critical CSS -->
     <style>
       body {
@@ -90,19 +134,10 @@
         position: fixed;
         width: 100%;
         height: 100%;
-        /* z-index: 1;
-      pointer-events: auto; */
-        background-color: rgb(
-          255,
-          255,
-          255,
-          0
-        ); /* fallback for background color */
+        background-color: rgb(255, 255, 255, 0);
       }
       #media-container {
         position: relative;
-        /* z-index: 0;
-      pointer-events: none; */
       }
       .hero-section {
         display: flex;
@@ -141,6 +176,8 @@
         background-color: #2b6cb0;
       }
     </style>
+
+    <!-- Title and canonical URL will be managed by React Helmet -->
   </head>
   <body class="dark:bg-gray-800">
     <div id="particles-js"></div>

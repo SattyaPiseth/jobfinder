@@ -4,6 +4,7 @@ import { useCopyToClipboard } from "usehooks-ts";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import { WEBSITE_URL } from "../../redux/api/api";
 import { useParams } from "react-router-dom";
+import ApplyButton from "../apply-job/ApplyButton";
 
 const JobDetailComponent = ({ detail }) => {
   const [value, copy] = useCopyToClipboard();
@@ -19,14 +20,14 @@ const JobDetailComponent = ({ detail }) => {
           className="w-[8%]"
           loading="lazy"
           src={detail?.thumbnail}
-          alt="Company Logo"
+          alt={`${detail?.title} at ${detail?.company_name}`}
         />
         <div className="flex-1">
           <div className="flex justify-between">
-            <div className="">
-              <div className="text-xl md:text-2xl font-medium leading-8 text-zinc-900 dark:text-gray-300 flex">
+            <div>
+              <h1 className="text-2xl md:text-2xl font-bold leading-8 text-zinc-900 dark:text-gray-300 flex">
                 {detail?.title}
-              </div>
+              </h1>
               <div className="flex flex-wrap gap-2 mt-3 text-sm leading-5">
                 <div className="text-lg leading-7 text-neutral-600 min-w-max dark:text-gray-300">
                   {detail?.company_name}
@@ -40,7 +41,7 @@ const JobDetailComponent = ({ detail }) => {
               </div>
             </div>
             <div>
-              <button className="flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg">
+              {/* <button className="flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg">
                 <span className="self-stretch my-auto  font-bold">
                   Apply now
                 </span>
@@ -50,7 +51,10 @@ const JobDetailComponent = ({ detail }) => {
                   className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
                   alt=""
                 />
-              </button>
+              </button> */}
+              <ApplyButton
+                jobId={detail?.id}
+              />
             </div>
           </div>
         </div>
