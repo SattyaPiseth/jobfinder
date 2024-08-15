@@ -14,8 +14,8 @@ import kimhay from "./../../assets/images/kimhay.jpg";
 import sopheak from "./../../assets/images/sopheak.jpg";
 import sreynit from "./../../assets/images/sreynit.jpg";
 import rotha from "./../../assets/images/rotha.jpg";
-import triya from "./../../assets/images/triya.JPG";
-import bunrong from "./../../assets/images/bunrong.JPG";
+import triya from "./../../assets/images/triya.jpg";
+import bunrong from "./../../assets/images/bunrong.jpg";
 import soursdey from "./../../assets/images/soursdey.jpg";
 import thearith from "./../../assets/images/thearith.jpg";
 
