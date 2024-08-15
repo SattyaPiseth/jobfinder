@@ -25,6 +25,7 @@ import PasswordResetVerification from "./pages/PasswordResetVerification.jsx";
 import "react-toastify/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { HelmetProvider } from "react-helmet-async";
+import AppliedJobRecord from "./pages/AppliedJobRecord.jsx";
 const route = createBrowserRouter([
   {
     path: "/",
@@ -48,6 +49,7 @@ const route = createBrowserRouter([
       },
       {
         path: "/applied-records",
+        element: <AppliedJobRecord />
       },
       {
         path: "/verifyCode",

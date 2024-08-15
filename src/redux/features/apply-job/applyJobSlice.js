@@ -73,6 +73,7 @@ export const updateAppliedJob = createAsyncThunk(
 const appliedJobsSlice = createSlice({
   name: "appliedJobs",
   initialState: {
+    accessToken: localStorage.getItem("access" || null),
     loading: false,
     error: null,
     appliedJobs: [], // Store applied jobs if needed
