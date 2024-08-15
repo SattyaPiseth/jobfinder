@@ -52,6 +52,7 @@ const ProfilePage = () => {
           gender={user?.gender}
           contact_info={user?.contact_info}
           avatar={user?.avatar}
+          created_at={user?.created_at}
         />
       </div>
     </>
