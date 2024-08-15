@@ -18,7 +18,8 @@ import rotha from "./../../assets/images/rotha.jpg";
 // import bunrong from "./../../assets/images/bunrong.jpg";
 import soursdey from "./../../assets/images/soursdey.jpg";
 import thearith from "./../../assets/images/thearith.jpg";
-
+import ContactForm from "../contactUs/ContactUsForm";
+import Skeleton from "react-loading-skeleton";
 
 export default function AboutUsComponent() {
   const [loading, setLoading] = useState(true);
@@ -30,42 +31,43 @@ export default function AboutUsComponent() {
   }, []);
   const teamMembers = [
     {
-      name: t('About-us.team_members.chao_kimhay'),
+      name: t("About-us.team_members.chao_kimhay"),
       image: kimhay,
       position: "Team Member",
     },
     {
-      name: t('About-us.team_members.jun_thearith'),
+      name: t("About-us.team_members.jun_thearith"),
       image: thearith,
       position: "Team Member",
     },
     {
-      name: t('About-us.team_members.bour_suorcdey'),
+      name: t("About-us.team_members.bour_suorcdey"),
       image: soursdey,
       position: "Team Member",
     },
     {
-      name: t('About-us.team_members.oum_chansopheak'),
+      name: t("About-us.team_members.oum_chansopheak"),
       image: sopheak,
       position: "Team Member",
     },
     {
-      name: t('About-us.team_members.sey_bunrong'),
-      image: "https://job-quick-api.techinsights.guru/media/uploads/bunrong.jpg",
+      name: t("About-us.team_members.sey_bunrong"),
+      image:
+        "https://job-quick-api.techinsights.guru/media/uploads/bunrong.jpg",
       position: "Team Member",
     },
     {
-      name: t('About-us.team_members.porn_sreynit'),
+      name: t("About-us.team_members.porn_sreynit"),
       image: sreynit,
       position: "Team Member",
     },
     {
-      name: t('About-us.team_members.mom_rotha'),
+      name: t("About-us.team_members.mom_rotha"),
       image: rotha,
       position: "Team Member",
     },
     {
-      name: t('About-us.team_members.choeurn_triya'),
+      name: t("About-us.team_members.choeurn_triya"),
       image: "https://job-quick-api.techinsights.guru/media/uploads/triya.jpg",
       position: "Team Member",
     },
@@ -86,7 +88,7 @@ export default function AboutUsComponent() {
 
   const teamLead = [
     {
-      name: t('About-us.teamLead'),
+      name: t("About-us.teamLead"),
       image: piseth_sattya,
       position: "Team Leader",
     },
@@ -97,34 +99,55 @@ export default function AboutUsComponent() {
     >
       {/* Hero Section */}
       <section className="my-4 flex flex-col items-center md:flex-row">
-        <div className="text-center md:w-1/2 md:text-left mt-10">
-          <p className="text-3xl md:text-4xl font-bold">
-            <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent font-kantumruy">
-              JOB-QUICK
-            </span>
-          </p>
-          <p
-            className="mt-4 text-2xl md:text-2xl leading-5"
-            style={{ lineHeight: "1.35" }}
-          >
-            {t("About-us.About-description")}
-          </p>
+        <div className="text-center md:w-1/2 md:text-left mt-10 ">
+          {loading ? (
+            <>
+              <Skeleton
+                height={40}
+                width={200}
+                className="mb-4 animate-pulse"
+              />
+              <Skeleton
+                count={4}
+                height={40}
+                width={300}
+                className="my-2 animate-pulse"
+              />
+            </>
+          ) : (
+            <>
+              <p className="text-3xl md:text-4xl font-bold">
+                <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent font-kantumruy">
+                  JOB-QUICK
+                </span>
+              </p>
+              <p
+                className="mt-4 text-2xl md:text-2xl leading-5"
+                style={{ lineHeight: "1.35" }}
+              >
+                {t("About-us.About-description")}
+              </p>
+            </>
+          )}
           <NavLink to="/" className="inline-block mt-4"></NavLink>
         </div>
         <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0">
-          <dotlottie-player
-            src="https://lottie.host/cfff7526-566f-4764-b29d-10c719def776/BUxubb72Ow.json"
-            background="transparent"
-            speed="1"
-            loop
-            autoplay
-            className="w-full max-w-[600px] h-auto"
-          />
+          {loading ? (
+            <Skeleton height={300} width={600} className="animate-pulse" />
+          ) : (
+            <dotlottie-player
+              src="https://lottie.host/cfff7526-566f-4764-b29d-10c719def776/BUxubb72Ow.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+              className="w-full max-w-[600px] h-auto"
+            />
+          )}
         </div>
       </section>
-
       {/* Story Section */}
-      <section className="my-4 flex flex-col items-center md:flex-row-reverse">
+      {/* <section className="my-4 flex flex-col items-center md:flex-row-reverse">
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
             <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
@@ -153,10 +176,66 @@ export default function AboutUsComponent() {
             />
           </div>
         </div>
+      </section> */}
+      <section className="my-4 flex flex-col items-center md:flex-row-reverse">
+        <div className="text-center md:w-1/2 md:text-left">
+          {loading ? (
+            <>
+              <Skeleton
+                height={40}
+                width={400}
+                className="mb-4  ml-[2rem] animate-pulse"
+              />
+              <Skeleton
+                count={4}
+                height={40}
+                width={500}
+                className="my-2 ml-[2rem] animate-pulse"
+              />
+            </>
+          ) : (
+            <>
+              <p className="text-3xl md:text-4xl font-bold">
+                <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                  {t("About-us.Who")}
+                </span>
+              </p>
+              <p
+                className="mt-4 text-2xl md:text-2xl leading-5"
+                style={{ lineHeight: "1.35" }}
+              >
+                {t("About-us.detail.Who")}
+              </p>
+            </>
+          )}
+        </div>
+        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0">
+          {loading ? (
+            <Skeleton
+              height={300}
+              width={500}
+              className="animate-pulse mr-[5rem]"
+            />
+          ) : (
+            <div
+              className="relative rounded-lg overflow-hidden"
+              style={{ maxWidth: "600px" }}
+            >
+              <dotlottie-player
+                src="https://lottie.host/53455f25-9247-48ec-87ad-410632cb9302/xwjx7kMkSG.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
+              />
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Vision Section */}
-      <section className="my-4 flex flex-col items-center md:flex-row">
+      {/* <section className="my-4 flex flex-col items-center md:flex-row">
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
             <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
@@ -170,7 +249,7 @@ export default function AboutUsComponent() {
             {t("About-us.detail.Goals")}
           </p>
         </div>
-        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0">
+        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0 ">
           <div
             className="relative rounded-lg overflow-hidden"
             style={{ maxWidth: "600px" }}
@@ -185,10 +264,62 @@ export default function AboutUsComponent() {
             />
           </div>
         </div>
+      </section> */}
+      <section className="my-4 flex flex-col items-center md:flex-row">
+        <div className="text-center md:w-1/2 md:text-left">
+          {loading ? (
+            <>
+              <Skeleton height={40} width={300} className="mb-4 mx-4 md:mx-0" />
+              <Skeleton
+                count={4}
+                height={30}
+                width={350}
+                className="my-2 mx-4 md:mx-0"
+              />
+            </>
+          ) : (
+            <>
+              <p className="text-3xl md:text-4xl font-bold">
+                <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                  {t("About-us.Goals")}
+                </span>
+              </p>
+              <p
+                className="mt-4 text-2xl md:text-2xl leading-5"
+                style={{ lineHeight: "1.35" }}
+              >
+                {t("About-us.detail.Goals")}
+              </p>
+            </>
+          )}
+        </div>
+        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0">
+          {loading ? (
+            <Skeleton
+              height={300}
+              width={400}
+              className="animate-pulse mx-4 md:mx-0"
+            />
+          ) : (
+            <div
+              className="relative rounded-lg overflow-hidden"
+              style={{ maxWidth: "600px" }}
+            >
+              <dotlottie-player
+                src="https://lottie.host/449a6380-e148-4f89-bef8-fd012d6e6faa/criFar5eMA.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
+              />
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Mission Section */}
-      <section className="my-4 flex flex-col items-center md:flex-row-reverse">
+      {/* <section className="my-4 flex flex-col items-center md:flex-row-reverse">
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
             <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
@@ -216,6 +347,65 @@ export default function AboutUsComponent() {
               className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
             />
           </div>
+        </div>
+      </section> */}
+      <section className="my-4 flex flex-col items-center md:flex-row-reverse">
+        <div className="text-center md:w-1/2 md:text-left">
+          {loading ? (
+            <>
+              {/* Title Skeleton */}
+              <Skeleton
+                height={40}
+                width="60%"
+                className="mb-4 mx-auto md:mx-0"
+              />
+              {/* Paragraph Skeleton */}
+              <Skeleton
+                count={3}
+                height={30}
+                width="80%"
+                className="my-2 mx-auto md:mx-0"
+              />
+            </>
+          ) : (
+            <>
+              <p className="text-3xl md:text-4xl font-bold">
+                <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                  {t("About-us.Perspective")}
+                </span>
+              </p>
+              <p
+                className="mt-4 text-2xl md:text-2xl leading-5"
+                style={{ lineHeight: "1.35" }}
+              >
+                {t("About-us.detail.Perspective")}
+              </p>
+            </>
+          )}
+        </div>
+        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0 md:pr-16">
+          {loading ? (
+            <Skeleton
+              height={300}
+              width="100%"
+              className="animate-pulse"
+              style={{ maxWidth: "600px" }}
+            />
+          ) : (
+            <div
+              className="relative rounded-lg overflow-hidden"
+              style={{ maxWidth: "600px" }}
+            >
+              <dotlottie-player
+                src="https://lottie.host/3ee76f97-26c0-4d36-a2d9-9b85674dd2d0/CLpwN8efCJ.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -301,7 +491,7 @@ export default function AboutUsComponent() {
                 </div>
                 <div className="text-center text-xl font-bold"></div>
                 <Badge className="text-sm flex justify-center bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400">
-                {teacher.position}
+                  {teacher.position}
                 </Badge>
               </div>
               <div className="flex w-full justify-around gap-3 px-6 py-4">
@@ -363,7 +553,9 @@ export default function AboutUsComponent() {
         className="text-3xl font-suwannaphum font-bold text-blue-600 max-md:mt-10 mb-12 "
         data-aos="fade-up"
       >
-        <span className={`${fontClass} text-4xl text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent`}>
+        <span
+          className={`${fontClass} text-4xl text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent`}
+        >
           {t("About-us.Member")}
         </span>
       </div>
@@ -533,7 +725,7 @@ export default function AboutUsComponent() {
         ))}
       </div>
 
-      <div className="flex flex-wrap items-center my-10">
+      {/* <div className="flex flex-wrap items-center my-10">
         <div className="w-full md:w-6/12 order-2 md:order-1 mt-20">
           <dotlottie-player
             src="https://lottie.host/3751fb5a-7130-4e52-8cf8-993e5a07512f/0xxfoUoJ4E.json"
@@ -588,7 +780,8 @@ export default function AboutUsComponent() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <ContactForm fontClass={fontClass} />
     </div>
   );
 }

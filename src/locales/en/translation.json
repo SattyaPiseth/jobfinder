@@ -198,6 +198,7 @@
   "name": "Name",
   "email": "Email",
   "message": "Message",
-  "send_message": "Send Message"
+  "send_message": "Send Message",
+  "type-your-message" : "Type your message..."
 }
 }
