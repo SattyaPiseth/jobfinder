@@ -18,7 +18,6 @@ export const fetchAppliedJobs = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("apply-jobs : ", response.data);
       return response?.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
