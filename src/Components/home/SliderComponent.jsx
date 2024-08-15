@@ -31,7 +31,7 @@ const imageUrls = [
     alt: "Image 4 description",
   },
   {
-    url: "https://ecommerce.techinsights.guru/file/9994758f-3018-4310-ac66-c32ead46cd05.png",
+    url: "https://job-quick-api.techinsights.guru/media/uploads/maybank-logo.png",
     width: 2000,
     height: 600,
     alt: "Image 5 description",

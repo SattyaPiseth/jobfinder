@@ -36,7 +36,7 @@ const ProfilePage = () => {
         description={`Explore the profile of ${user.username} on Job Quick. View their experience, skills, and career accomplishments. Connect with ${user.username} and discover more about their professional journey.`}
         author={user.username}
         keywords={`${user.username}, user profile, professional profile, career details, Job Quick`}
-        thumbnail={user.avatar || 'https://example.com/default-avatar.jpg'}
+        thumbnail={user?.avatar || 'https://job-quick-api.techinsights.guru/media/uploads/hero-section.png'}
         url={`https://jobquick.techinsights.guru/profile`}
         type="profile"
       />
