@@ -94,7 +94,7 @@ const PasswordResetForm = () => {
             id="otp_code"
             name="otp_code"
             type="text"
-            placeholder="123456"
+            placeholder={t('resetForm.labels.placeholder')}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.otp_code}

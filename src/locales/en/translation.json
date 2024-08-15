@@ -135,7 +135,8 @@
     "password": "New Password",
     "confirmPassword": "Confirm New Password",
     "resetting": "Resetting...",
-    "reset": "Reset Password"
+    "reset": "Reset Password",
+    "placeholder" : "Enter OTP Code"
   },
   "validation": {
     "otp": "OTP code is required",
