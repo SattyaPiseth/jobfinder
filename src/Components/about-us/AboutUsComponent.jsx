@@ -30,42 +30,42 @@ export default function AboutUsComponent() {
   }, []);
   const teamMembers = [
     {
-      name: "Chao Kimhay",
+      name: t('About-us.team_members.chao_kimhay'),
       image: kimhay,
       position: "Team Member",
     },
     {
-      name: "Jun Thearith",
+      name: t('About-us.team_members.jun_thearith'),
       image: thearith,
-      position: "Team Member",
+      position: t('About-us.team_members.chao_kimhay'),
     },
     {
-      name: "Bour Suorcdey",
+      name: t('About-us.team_members.bour_suorcdey'),
       image: soursdey,
       position: "Team Member",
     },
     {
-      name: "Oum Chansopheak",
+      name: t('About-us.team_members.oum_chansopheak'),
       image: sopheak,
       position: "Team Member",
     },
     {
-      name: "Sey Bunrong",
+      name: t('About-us.team_members.sey_bunrong'),
       image: "https://job-quick-api.techinsights.guru/media/uploads/bunrong.jpg",
       position: "Team Member",
     },
     {
-      name: "Porn Sreynit",
+      name: t('About-us.team_members.porn_sreynit'),
       image: sreynit,
       position: "Team Member",
     },
     {
-      name: "Mom Rotha",
+      name: t('About-us.team_members.mom_rotha'),
       image: rotha,
       position: "Team Member",
     },
     {
-      name: "Choeurn Triya",
+      name: t('About-us.team_members.choeurn_triya'),
       image: "https://job-quick-api.techinsights.guru/media/uploads/triya.jpg",
       position: "Team Member",
     },
@@ -86,7 +86,7 @@ export default function AboutUsComponent() {
 
   const teamLead = [
     {
-      name: "Piseth Satthya",
+      name: t('About-us.teamLead'),
       image: piseth_sattya,
       position: "Team Leader",
     },
@@ -296,12 +296,12 @@ export default function AboutUsComponent() {
                 </div>
               </div>
               <div className="px-6 py-2">
-                <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                <div className="mb-2 text-center text-xl font-bold whitespace-nowrap pt-3">
                   {teacher.name}
                 </div>
                 <div className="text-center text-xl font-bold"></div>
                 <Badge className="text-sm flex justify-center bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400">
-                  {teacher.position}
+                {teacher.position}
                 </Badge>
               </div>
               <div className="flex w-full justify-around gap-3 px-6 py-4">
@@ -363,7 +363,7 @@ export default function AboutUsComponent() {
         className="text-3xl font-suwannaphum font-bold text-blue-600 max-md:mt-10 mb-24  "
         data-aos="fade-up"
       >
-        <span className="text-4xl text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+        <span className={`${fontClass} text-4xl text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent`}>
           {t("About-us.Member")}
         </span>
       </div>
@@ -388,7 +388,7 @@ export default function AboutUsComponent() {
               </div>
             </div>
             <div className="px-6 py-2">
-              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap pt-3">
                 {lead.name}
               </div>
               {/* <div className="text-center text-lg">{lead.name}</div> */}
@@ -471,7 +471,7 @@ export default function AboutUsComponent() {
               </div>
             </div>
             <div className="px-6 py-2">
-              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap pt-3">
                 {member.name}
               </div>
               <Badge className="text-sm flex justify-center bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400">
@@ -547,41 +547,41 @@ export default function AboutUsComponent() {
           data-aos="zoom-in-up"
           className="w-full md:w-6/12 order-1 md:order-2 mt-10"
         >
-          <div className="flex flex-col grow text-left font-suwannaphum text-xl whitespace-nowrap text-black text-opacity-60 max-md:mt-10 max-md:max-w-full">
+          <div className={`${fontClass} flex flex-col grow text-left font-suwannaphum text-xl whitespace-nowrap text-black text-opacity-60 max-md:mt-10 max-md:max-w-full`}>
             <div
               data-aos="zoom-in-up"
               className="text-blue-600 text-left text-3xl font-bold max-md:max-w-full"
             >
-              <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent text-4xl">
+              <span className={`${fontClass} text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent text-4xl`}>
                 {t("Contact-us.title")}
               </span>
             </div>
             <div
               data-aos="zoom-in-up"
-              className=" mt-4 text-2xl text-black max-md:flex-col max-md:max-w-full max-md:mt-3 dark:text-gray-300"
+              className={`${fontClass} mt-4 text-2xl text-black max-md:flex-col max-md:max-w-full max-md:mt-3 dark:text-gray-300`}
             >
               {t("Contact-us.description")} <br />
               {t("Contact-us.description2")}
             </div>
-            <div className="self-start mt-4 max-md:mt-10 max-md:ml-2.5 dark:text-gray-300">
+            <div className={`${fontClass} self-start mt-4 max-md:mt-10 max-md:ml-2.5 dark:text-gray-300`}>
               {t("Contact-us.name")}
             </div>
             <input
               type="text"
-              className="shrink-0 mt-2.5 rounded-lg border border-black border-solid h-[50px] max-md:max-w-full"
+              className={`${fontClass} shrink-0 mt-2.5 rounded-lg border border-black border-solid h-[50px] max-md:max-w-full text-black`}
             />
-            <div className="self-start mt-3 max-md:ml-2.5 dark:text-gray-300">
+            <div className={`${fontClass} self-start mt-3 max-md:ml-2.5 dark:text-gray-300`}>
               {t("Contact-us.email")}
             </div>
             <input
               type="email"
-              className="shrink-0 mt-3 rounded-lg border border-black border-solid h-[50px] max-md:max-w-full"
+              className={`${fontClass} shrink-0 mt-3 rounded-lg border border-black border-solid h-[50px] max-md:max-w-full text-black`}
             />
-            <div className="flex flex-col mt-2.5 max-md:max-w-full dark:text-gray-300">
+            <div className={`${fontClass} flex flex-col mt-2.5 max-md:max-w-full dark:text-gray-300`}>
               <div className="self-start ">{t("Contact-us.message")}</div>
-              <textarea className="shrink-0 mt-3 rounded-lg border border-black border-solid h-[150px] max-md:max-w-full"></textarea>
+              <textarea className="shrink-0 mt-3 rounded-lg border border-black border-solid h-[150px] max-md:max-w-full text-black"></textarea>
             </div>
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className={`${fontClass} mt-6 flex flex-wrap gap-2`}>
               <Button type="submit" color="blue">
                 {t("Contact-us.send_message")}
               </Button>
