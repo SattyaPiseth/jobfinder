@@ -7,17 +7,17 @@ import { Badge } from "flowbite-react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../../common/useFontClass";
 import { NavLink } from "react-router-dom";
-import mentor_muyleang from "src/assets/images/ing_muyleang.jpg";
-import mentor_sokpheng from "src/assets/images/Teacher-Pheng.webp";
-import piseth_sattya from "src/assets/images/PISETHSATTYA.jpg";
-import kimhay from "src/assets/images/kimhay.jpg";
-import sopheak from "src/assets/images/sopheak.jpg";
-import sreynit from "src/assets/images/sreynit.jpg";
-import rotha from "src/assets/images/rotha.jpg";
-import triya from "src/assets/images/triya.JPG";
-import bunrong from "src/assets/images/bunrong.JPG";
-import soursdey from "src/assets/images/soursdey.jpg";
-import thearith from "src/assets/images/thearith.jpg";
+import mentor_muyleang from "./../../assets/images/ing_muyleang.jpg";
+import mentor_sokpheng from "./../../assets/images/Teacher-Pheng.webp";
+import piseth_sattya from "./../../assets/images/PISETHSATTYA.jpg";
+import kimhay from "./../../assets/images/kimhay.jpg";
+import sopheak from "./../../assets/images/sopheak.jpg";
+import sreynit from "./../../assets/images/sreynit.jpg";
+import rotha from "./../../assets/images/rotha.jpg";
+import triya from "./../../assets/images/triya.JPG";
+import bunrong from "./../../assets/images/bunrong.JPG";
+import soursdey from "./../../assets/images/soursdey.jpg";
+import thearith from "./../../assets/images/thearith.jpg";
 
 export default function AboutUsComponent() {
   const [loading, setLoading] = useState(true);
