@@ -162,6 +162,10 @@ export default function NavbarComponent() {
                   Settings
                 </Dropdown.Item>
                 <Dropdown.Divider />
+                <Dropdown.Item as={Link} to="/applied-records">
+                  Applied Records
+                </Dropdown.Item>
+                <Dropdown.Divider />
                 <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
               </Dropdown>
             ) : (

@@ -47,6 +47,9 @@ const route = createBrowserRouter([
         element: <ProtectedRoute element={<ProfilePage />} />,
       },
       {
+        path: "/applied-records",
+      },
+      {
         path: "/verifyCode",
         element: <EmailVerification />,
       },
