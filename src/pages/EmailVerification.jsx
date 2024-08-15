@@ -1,7 +1,7 @@
 import React from "react";
-import Metadata from "../lib/Metadata";
 import EmailVerificationInput from "../Components/auth/VerifyEmailInput";
 import { resendOtpCode, verifyOtp } from "../redux/features/user/userSlice";
+import { Metadata } from "../lib/Metadata";
 
 const EmailVerification = () => {
   const email = localStorage.getItem("email"); // Assume email is stored in localStorage after registration

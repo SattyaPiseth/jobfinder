@@ -1,6 +1,6 @@
 import React from "react";
-import Metadata from "../lib/Metadata";
 import PasswordResetForm from "../Components/auth/PasswordResetForm";
+import { Metadata } from "../lib/Metadata";
 
 const PasswordResetVerification = () => {
   const email = localStorage.getItem("email"); // Assume email is stored in localStorage after registration

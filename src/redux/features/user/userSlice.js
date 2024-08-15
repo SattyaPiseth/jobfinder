@@ -9,6 +9,8 @@ import {
   updateProfile,
   verifyOtpCode,
 } from "../../api/userApi";
+import axios from "axios";
+import { BASE_URL } from "../../api/api";
 
 // Helper function to extract error message
 const getErrorMessage = (error) => {
@@ -125,6 +127,26 @@ export const confirmPasswordResetThunk = createAsyncThunk(
   }
 );
 
+export const uploadFile = createAsyncThunk(
+  "user/uploadFile",
+  async (file, token, { rejectWithValue }) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await axios.post(`${BASE_URL}upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
 // User slice definition
 const userSlice = createSlice({
   name: "user",
@@ -136,6 +158,7 @@ const userSlice = createSlice({
     isLoading: false,
     error: null,
     isPasswordResetRequested: false,
+    fileUpload: null
   },
   reducers: {
     loginSuccess(state, action) {
@@ -267,6 +290,17 @@ const userSlice = createSlice({
       })
       .addCase(confirmPasswordResetThunk.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(uploadFile.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(uploadFile.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.fileUpload = action.payload;
+      })
+      .addCase(uploadFile.rejected, (state, action) => {
+        state.status = 'failed';
         state.error = action.payload;
       });
   },

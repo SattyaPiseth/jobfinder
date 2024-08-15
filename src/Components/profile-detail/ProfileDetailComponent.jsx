@@ -15,13 +15,14 @@ const ProfileDetailComponent = ({
   created_at,
   avatar,
   cover,
+  contact_info,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
     <>
-      <section className="my-20 grid grid-cols-2 md:grid-cols-2 gap-4">
-        <div className="col-span-1">
+      <section className="my-20 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid gap-4 col-span-1">
           <UserProfileComponent
             avatar={avatar}
             username={username}
@@ -30,9 +31,9 @@ const ProfileDetailComponent = ({
             address={address}
             setIsEditing={setIsEditing}
           />
-        </div>
-        <div className="col-span-1 md:cols-span-2">
           <BioComponent bio={bio} />
+          <SkillAndInterestComponent />
+          <SocialMediaComponent contact_info={contact_info} />
         </div>
         <div className="col-span-1 md:cols-span-2">
           <PersonalInformationComponent
@@ -45,15 +46,6 @@ const ProfileDetailComponent = ({
             setIsEditing={setIsEditing}
           />
         </div>
-        <div className="grid grid-row-2 md:cols-span-2">
-          <div className="col-span-1 md:cols-span-2">
-            <SkillAndInterestComponent />
-          </div>
-          <div className="col-span-1 md:cols-span-2">
-            <SocialMediaComponent />
-          </div>
-        </div>
-        
       </section>
     </>
   );

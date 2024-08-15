@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { updateProfile } from "../../redux/api/userApi";
+import useFontClass from "../../common/useFontClass";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const token = localStorage.getItem('access');
 
@@ -37,6 +40,7 @@ function PersonalInformationForm(
 
       setProfile(profile); // Update the profile state with the new values
       setIsEditing(false); // Exit edit mode after submission
+      toast.success(<div className={`${useFontClass}`}>Personal info have been updated.</div>);
     } catch (error) {
       if (error.response) {
         console.error("Error data:", error.response.data);
@@ -49,9 +53,7 @@ function PersonalInformationForm(
         // Something happened in setting up the request that triggered an Error
         console.error("Error message:", error.message);
       }
-      alert(
-        "An error occurred while updating the profile. Check the console for more details."
-      );
+      toast.error(<div className={`${useFontClass}`}>Failed to update personal info.</div>);
     } finally {
       setSubmitting(false);
     }
@@ -59,7 +61,7 @@ function PersonalInformationForm(
 
   return (
     <>
-      <div className="flex flex-col px-6 py-6 text-base font-medium text-black bg-gray-50 rounded-lg max-md:px-5">
+      <div className="flex flex-col px-6 py-6 text-base font-medium text-black bg-slate-50 rounded-lg max-md:px-5 dark:bg-gray-900 dark:text-gray-300">
       <div className="text-xl font-semibold max-md:max-w-full text-left">
         PERSONAL INFORMATION
       </div>

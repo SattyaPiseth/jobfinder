@@ -4,7 +4,6 @@ import userSlice from "./features/user/userSlice";
 import jobsSlice from "./jobs/jobsSlice";
 import applyJobSlice from "./features/apply-job/applyJobSlice";
 
-
 export const store = configureStore({
     reducer: {
         category: categorySlice,

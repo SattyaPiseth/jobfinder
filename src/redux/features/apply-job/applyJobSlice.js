@@ -30,22 +30,20 @@ export const applyForJob = createAsyncThunk(
   "applyJobs/applyForJob",
   async ({ token, jobId, resume }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${BASE_URL}applied_jobs/`,
-        {
-          job_id: jobId,
-          resume,
+      const formData = new FormData(); // Initialize FormData
+      formData.append("job_id", jobId); // Append job_id
+      formData.append("resume", resume); // Append the file
+
+      const response = await axios.post(`${BASE_URL}applied_jobs/`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data", // Important for file uploads
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      });
       console.log("apply-jobs : ", response.data);
       return response?.data;
     } catch (error) {
-      return rejectWithValue(getErrorMessage(error));
+      return rejectWithValue(error.response?.data || error.message);
     }
   }
 );
@@ -79,20 +77,23 @@ const appliedJobsSlice = createSlice({
   initialState: {
     loading: false,
     error: null,
+    appliedJobs: [], // Store applied jobs if needed
   },
   reducers: {},
   extraReducers: (builder) =>
     builder
-      .addCase(fetchAppliedJobs.pending, (state, { payload }) => {
+      .addCase(fetchAppliedJobs.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchAppliedJobs.fulfilled, (state, { payload }) => {
         state.loading = false;
+        state.appliedJobs = payload; // Assuming payload is the list of applied jobs
       })
       .addCase(fetchAppliedJobs.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
       })
+
       .addCase(applyForJob.pending, (state, { payload }) => {
         state.loading = true;
       })
