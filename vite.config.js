@@ -57,51 +57,51 @@ export default defineConfig(({ mode }) => {
             },
           ],
         },
-        // workbox: {
-        //   globPatterns: ["**/*.{js,css,html,png,svg,ico}"], // Cache all necessary assets
-        //   runtimeCaching: [
-        //     {
-        //       urlPattern: ({ url }) => url.origin === self.location.origin,
-        //       handler: "NetworkFirst",
-        //       options: {
-        //         cacheName: "pages",
-        //         expiration: {
-        //           maxEntries: 50,
-        //           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-        //         },
-        //       },
-        //     },
-        //     {
-        //       urlPattern: ({ url }) => url.pathname.startsWith("/api/"),
-        //       handler: "NetworkFirst", // Always try to get fresh data from the API
-        //       options: {
-        //         cacheName: "api-cache",
-        //         networkTimeoutSeconds: 10,
-        //         expiration: {
-        //           maxEntries: 100,
-        //           maxAgeSeconds: 7 * 24 * 60 * 60, // 7 Days
-        //         },
-        //         cacheableResponse: {
-        //           statuses: [0, 200],
-        //         },
-        //       },
-        //     },
-        //     {
-        //       urlPattern: ({ url }) => url.pathname.match(/\/assets\/.*/),
-        //       handler: "CacheFirst",
-        //       options: {
-        //         cacheName: "assets-cache",
-        //         expiration: {
-        //           maxEntries: 100,
-        //           maxAgeSeconds: 60 * 24 * 60 * 60, // 60 Days
-        //         },
-        //         cacheableResponse: {
-        //           statuses: [0, 200],
-        //         },
-        //       },
-        //     },
-        //   ],
-        // },
+        workbox: {
+          globPatterns: ["**/*.{js,css,html,png,svg,ico}"], // Cache all necessary assets
+          runtimeCaching: [
+            {
+              urlPattern: ({ url }) => url.origin === self.location.origin,
+              handler: "NetworkFirst",
+              options: {
+                cacheName: "pages",
+                expiration: {
+                  maxEntries: 50,
+                  maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+                },
+              },
+            },
+            {
+              urlPattern: ({ url }) => url.pathname.startsWith("/api/"),
+              handler: "NetworkFirst", // Always try to get fresh data from the API
+              options: {
+                cacheName: "api-cache",
+                networkTimeoutSeconds: 10,
+                expiration: {
+                  maxEntries: 100,
+                  maxAgeSeconds: 7 * 24 * 60 * 60, // 7 Days
+                },
+                cacheableResponse: {
+                  statuses: [0, 200],
+                },
+              },
+            },
+            {
+              urlPattern: ({ url }) => url.pathname.match(/\/assets\/.*/),
+              handler: "CacheFirst",
+              options: {
+                cacheName: "assets-cache",
+                expiration: {
+                  maxEntries: 100,
+                  maxAgeSeconds: 60 * 24 * 60 * 60, // 60 Days
+                },
+                cacheableResponse: {
+                  statuses: [0, 200],
+                },
+              },
+            },
+          ],
+        },
       }),
     ],
     define: {
