@@ -92,7 +92,7 @@ export default function AboutUsComponent() {
     },
   ];
   return (
-    <main
+    <div
       className={`${fontClass} flex flex-col items-center px-4 py-6 md:px-10 md:py-10`}
     >
       {/* Hero Section */}
@@ -219,7 +219,7 @@ export default function AboutUsComponent() {
         </div>
       </section>
 
-      <div className="my-2 text-center">
+      <div className="my-2 text-center mt-10">
         <p className="text-3xl font-bold" data-aos="fade-up">
           Organized{" "}
           <span
@@ -360,7 +360,7 @@ export default function AboutUsComponent() {
         </div>
       </div>
       <div
-        className="text-3xl font-suwannaphum font-bold text-blue-600 max-md:mt-10 mb-24  "
+        className="text-3xl font-suwannaphum font-bold text-blue-600 max-md:mt-10 mb-12 "
         data-aos="fade-up"
       >
         <span className={`${fontClass} text-4xl text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent`}>
@@ -589,6 +589,6 @@ export default function AboutUsComponent() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
