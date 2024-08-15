@@ -7,9 +7,17 @@ import { Badge } from "flowbite-react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../../common/useFontClass";
 import { NavLink } from "react-router-dom";
-import mentor_muyleang from './../../assets/images/ing_muyleang.jpg'
-import mentor_sokpheng from './../../assets/images/Teacher-Pheng.webp'
-import piseth_sattya from './../../assets/images/PISETHSATTYA.jpg'
+import mentor_muyleang from "src/assets/images/ing_muyleang.jpg";
+import mentor_sokpheng from "src/assets/images/Teacher-Pheng.webp";
+import piseth_sattya from "src/assets/images/PISETHSATTYA.jpg";
+import kimhay from "src/assets/images/kimhay.jpg";
+import sopheak from "src/assets/images/sopheak.jpg";
+import sreynit from "src/assets/images/sreynit.jpg";
+import rotha from "src/assets/images/rotha.jpg";
+import triya from "src/assets/images/triya.JPG";
+import bunrong from "src/assets/images/bunrong.JPG";
+import soursdey from "src/assets/images/soursdey.jpg";
+import thearith from "src/assets/images/thearith.jpg";
 
 export default function AboutUsComponent() {
   const [loading, setLoading] = useState(true);
@@ -22,47 +30,42 @@ export default function AboutUsComponent() {
   const teamMembers = [
     {
       name: "Chao Kimhay",
-      image:
-        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/441192084_1916856482089375_4465425687677839651_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEOwV9NHKz7kaI-FckHxiquqiiZEnV9P_CqKJkSdX0_8CXFvrWozGSpWPfL8ERnwi-pVtXomuoWoCbMaO9ypMau&_nc_ohc=H28TCZyNKfEQ7kNvgF_R77m&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYCxZEWFy2C8Pkk6VetGaa4wBYFW6Khtyf4s69lD42Sc9w&oe=669BBFEE",
+      image: kimhay,
       position: "Team Member",
     },
     {
       name: "Jun Thearith",
-      image:
-        "https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/449477760_3586716934973920_8504040381177330817_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGmOimc66FuBKIkdaXenR8UbBvoWt64ACFsG-ha3rgAIT6kBl-fELq8SKwJNzOM5zm1UUR4bc1dMNQaKrumdVIG&_nc_ohc=g3X-ZQto3isQ7kNvgHgqhM1&_nc_ht=scontent.fpnh10-1.fna&oh=00_AYBjTnDP0OE1vIqYQBaIhUBLY7IQzFkbx4V6HxpYAt_1lQ&oe=669AC143",
+      image: thearith,
       position: "Team Member",
     },
     {
       name: "Bour Suorcdey",
-      image:
-        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/434657101_1137410810611098_2617317298085307546_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEzfVe8c8bVoAD4ZsdFuKKJA9RmOUreuAUD1GY5St64BduDaF1nIahWMU8OdNISHnrFYn-tHSishFOD_OgO1l2R&_nc_ohc=FIzCr2CasU8Q7kNvgF7zckT&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYCK7ZN_JlP5I18tHBHmetCVu6ykOrMt3jqVi1TGfccxGw&oe=669BD38A",
+      image: soursdey,
       position: "Team Member",
     },
     {
       name: "Oum Chansopheak",
-      image:
-        "https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-1/332167642_1006353843669992_1168317270522529645_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeEvDvAuChivUuWkVGJxubEL-DIuSFUchNz4Mi5IVRyE3B4XmtpYNPST6lk_s3O6G6snds7bLCBiJK7osz2OxX9q&_nc_ohc=91NAue9CuRQQ7kNvgHLocIT&_nc_ht=scontent.fpnh10-1.fna&oh=00_AYAu73m3D8TrnrePkkWc4WnZxoqDsu-afEdCuskcIHs1qg&oe=669AAD01",
+      image: sopheak,
       position: "Team Member",
     },
     {
       name: "Sey Bunrong",
-      image: "https://avatar.iran.liara.run/public/boy",
+      image: bunrong,
       position: "Team Member",
     },
     {
       name: "Porn Sreynit",
-      image: "https://avatar.iran.liara.run/public/girl",
+      image: sreynit,
       position: "Team Member",
     },
     {
       name: "Mom Rotha",
-      image:
-        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/320925807_692883932440956_39998940771575535_n.jpg?stp=cp6_dst-jpg_p720x720&_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGOkMg6O78QyHrY1QuFLjeIC5ViwBM8zkYLlWLAEzzORsYXGaUmscW0KPBsFreOdoYLTEqH1BWzWKOnu3C7r16R&_nc_ohc=l0q8lMhlSYYQ7kNvgHAJVhp&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYBSfHETbm6ggvUuMpsKfv8HF-oZ_rKATT5aW_8NgRCXyQ&oe=669BC72E",
+      image: rotha,
       position: "Team Member",
     },
     {
       name: "Choeurn Triya",
-      image: "https://avatar.iran.liara.run/public/girl",
+      image: triya,
       position: "Team Member",
     },
   ];
