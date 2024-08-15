@@ -20,10 +20,10 @@ const ApplyButton = ({ jobId, resume }) => {
     <button
       onClick={handleApply}
       disabled={loading}
-      className={`apply-button ${loading ? 'loading' : ''}`}
+      className={`apply-button ${loading ? 'loading' : ''} flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg`}
     >
       {loading ? 'Applying...' : 'Apply Now'}
-      {error && <p className="error-message">{error}</p>}
+      {/* {error && <p className="error-message">{error}</p>} */}
     </button>
   );
 };

@@ -4,6 +4,7 @@ import { useCopyToClipboard } from "usehooks-ts";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import { WEBSITE_URL } from "../../redux/api/api";
 import { useParams } from "react-router-dom";
+import ApplyButton from "../apply-job/ApplyButton";
 
 const JobDetailComponent = ({ detail }) => {
   const [value, copy] = useCopyToClipboard();
@@ -40,7 +41,7 @@ const JobDetailComponent = ({ detail }) => {
               </div>
             </div>
             <div>
-              <button className="flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg">
+              {/* <button className="flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg">
                 <span className="self-stretch my-auto  font-bold">
                   Apply now
                 </span>
@@ -50,7 +51,8 @@ const JobDetailComponent = ({ detail }) => {
                   className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
                   alt=""
                 />
-              </button>
+              </button> */}
+              <ApplyButton jobId={detail?.id} resume="path_to_resume_file" />
             </div>
           </div>
         </div>

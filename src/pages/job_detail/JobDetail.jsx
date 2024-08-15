@@ -5,7 +5,6 @@ import { fetchJobById, selectJobById } from "../../redux/jobs/jobsSlice";
 import useThrottleScroll from "../../common/useThrottleScroll"; // Import the custom hook
 import JobDetailComponent from "../../Components/card/JobDetailcomponent";
 import { Metadata } from "../../lib/Metadata";
-import ApplyButton from "../../Components/apply-job/ApplyButton";
 
 const JobDetail = () => {
   const { id } = useParams();
@@ -47,7 +46,7 @@ const JobDetail = () => {
       />
       {/* {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>} */}
       {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}
-      <ApplyButton jobId={job?.id} resume="path_to_resume_file" />
+      
     </>
   );
 };
