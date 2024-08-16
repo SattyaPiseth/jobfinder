@@ -9,55 +9,86 @@ import "react-loading-skeleton/dist/skeleton.css";
 import {
   performGlobalSearch,
   clearSearchResults,
-  selectSearchError,
+  fetchJobsByCategory,
+  clearJobsByCategory,
 } from "../../redux/jobs/jobsSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useTranslation } from 'react-i18next'; // Import useTranslation hook
+import { useTranslation } from "react-i18next";
 import useFontClass from "../../common/useFontClass";
 
 const SearchComponent = ({ categories, isLoading }) => {
-  const { t } = useTranslation(); // Initialize translation hook
+  const { t } = useTranslation();
   const { fontClass } = useFontClass();
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSkill, setSelectedSkill] = useState("");
   const [loadingSkills, setLoadingSkills] = useState(false);
   const [query, setQuery] = useState("");
+
   const skills = useSelector((state) =>
     selectSkillsByCategoryId(state, selectedCategory)
   );
 
+  // Clear search results and jobs by category when query is empty
   useEffect(() => {
     if (query.trim() === "") {
       dispatch(clearSearchResults());
+      dispatch(clearJobsByCategory());
     }
   }, [query, dispatch]);
 
+  // Handle category change
   const handleCategoryChange = async (e) => {
     const categoryId = e.target.value;
     setSelectedCategory(categoryId);
     setSelectedSkill("");
     setLoadingSkills(true);
+
     try {
       await dispatch(fetchSkills(categoryId)).unwrap();
+      const selectedCategoryName = categories.find(
+        (category) => category.id === categoryId
+      )?.category_name;
+      if (selectedCategoryName) {
+        dispatch(fetchJobsByCategory(selectedCategoryName));
+      }
     } catch (error) {
-      toast.error(error.message || <span className={`${fontClass}`}>{t('search.fetchSkillsError')}</span>);
+      toast.error(
+        error.message || (
+          <span className={`${fontClass}`}>{t("search.fetchSkillsError")}</span>
+        )
+      );
     } finally {
       setLoadingSkills(false);
     }
   };
 
+  // Handle search action
   const handleSearch = async () => {
     if (query.trim()) {
       try {
         await dispatch(performGlobalSearch(query)).unwrap();
+        const searchResults = useSelector((state) => state.jobs.searchResults);
+
+        if (searchResults.length === 0) {
+          toast.info(t("search.noResultsFound"));
+          dispatch(clearSearchResults());
+          dispatch(clearJobsByCategory());
+          window.location.reload(); // Refresh the page
+        }
       } catch (error) {
-        toast.error(error.message || <span className={`${fontClass}`}>{t('search.searchError')}</span>);
+        toast.error(
+          error.message || (
+            <span className={`${fontClass}`}>{t("search.searchError")}</span>
+          )
+        );
       }
     } else {
       dispatch(clearSearchResults());
+      dispatch(clearJobsByCategory());
     }
+
     // Clear selected options
     setSelectedCategory("");
     setSelectedSkill("");
@@ -65,7 +96,7 @@ const SearchComponent = ({ categories, isLoading }) => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Prevent the default form submission if inside a form
+      e.preventDefault();
       handleSearch();
     }
   };
@@ -100,7 +131,7 @@ const SearchComponent = ({ categories, isLoading }) => {
             </span>
             <input
               type="text"
-              placeholder={t('search.placeholder')}
+              placeholder={t("search.placeholder")}
               className="pl-14 pr-4 py-4 rounded-lg border-2 border-solid border-slate-100 bg-slate-100 w-full"
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -113,7 +144,7 @@ const SearchComponent = ({ categories, isLoading }) => {
             onChange={handleCategoryChange}
           >
             <option value="" disabled>
-              {t('search.selectCategory')}
+              {t("search.selectCategory")}
             </option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
@@ -128,7 +159,9 @@ const SearchComponent = ({ categories, isLoading }) => {
             disabled={!skills.length || loadingSkills}
           >
             <option value="" disabled>
-              {loadingSkills ? t('search.loadingSkills') : t('search.selectSkill')}
+              {loadingSkills
+                ? t("search.loadingSkills")
+                : t("search.selectSkill")}
             </option>
             {skills.map((skill) => (
               <option key={skill.id} value={skill.id}>
@@ -140,7 +173,7 @@ const SearchComponent = ({ categories, isLoading }) => {
             className="justify-center p-2 px-8 text-white font-kantumruy text-lg bg-blue-800 rounded-lg border-2 border-blue-800 border-solid max-lg:text-lg max-xl:text-xl max-2xl:text-xl max-md:px-6"
             onClick={handleSearch}
           >
-            <span className={`${fontClass}`}>{t('search.searchButton')}</span>
+            <span className={`${fontClass}`}>{t("search.searchButton")}</span>
           </button>
         </>
       )}
