@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
-import { Navbar, Dropdown, Avatar, Banner } from "flowbite-react";
+import { Navbar, Dropdown, Avatar } from "flowbite-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import LanguageDropdown from "../common/LanguageDropdown";
 import { useSelector } from "react-redux";
@@ -49,6 +49,7 @@ export default function NavbarComponent() {
     const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
+
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
@@ -84,7 +85,6 @@ export default function NavbarComponent() {
       fluid
       className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50"
     >
-      
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between py-2 gap-4">
           <Navbar.Brand
@@ -124,8 +124,11 @@ export default function NavbarComponent() {
           </div>
 
           <div className="relative flex items-center gap-x-4 xl:gap-x-8 whitespace-nowrap">
-            <LanguageDropdown fontClass={fontClass} />
-            <ThemeToggle />
+            {/* Conditionally hide icons on small screens */}
+            <div className="hidden sm:flex gap-x-4">
+              <LanguageDropdown fontClass={fontClass} />
+              <ThemeToggle />
+            </div>
             {loading ? (
               <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
             ) : isAuthenticated ? (
@@ -202,20 +205,8 @@ export default function NavbarComponent() {
                         width="1em"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <path
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="32"
-                          d="M192 176v-40a40 40 0 0140-40h160a40 40 0 0140 40v240a40 40 0 01-40 40H240c-22.09 0-48-17.91-48-40v-40"
-                        ></path>
-                        <path
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="32"
-                          d="M288 336l80-80-80-80M80 256h272"
-                        ></path>
+                        <path d="M502.6 233.4l-96-96c-4.6-4.6-11-7-17.6-7-13.8 0-24 11.2-24 24v56H272c-13.3 0-24 10.7-24 24v64c0 13.3 10.7 24 24 24h93v56c0 13.8 11.2 24 24 24 6.6 0 13-2.4 17.6-7l96-96c9.4-9.4 9.4-24.6 0-33.9z"></path>
+                        <path d="M400 32H112C85.5 32 64 53.5 64 80v112c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V96h256v320H128v-96c0-13.3-10.7-24-24-24H88c-13.3 0-24 10.7-24 24v112c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"></path>
                       </svg>
                       <span
                         className={`${fontClass} hidden xl:inline font-medium uppercase`}
@@ -227,30 +218,36 @@ export default function NavbarComponent() {
                 </div>
               </>
             )}
+
+            {/* Mobile menu toggle button */}
             <button
+              type="button"
+              className="inline-flex items-center xl:hidden p-2 text-sm text-white bg-primary-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-650 dark:text-gray-400 dark:hover:bg-primary-850 dark:focus:ring-primary-800"
               onClick={toggleNavbar}
-              className="xl:hidden ml-3 p-2 text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 rounded-lg focus:ring-2"
-              aria-label="Toggle navigation"
-              aria-expanded={isOpen}
             >
               <svg
+                className="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                  fillRule="evenodd"
+                  d="M3 5a1 1 0 012 0h10a1 1 0 110 2H5a1 1 0 01-2 0V5zm0 5a1 1 0 012 0h10a1 1 0 110 2H5a1 1 0 01-2 0v-2zm0 5a1 1 0 012 0h10a1 1 0 110 2H5a1 1 0 01-2 0v-2z"
+                  clipRule="evenodd"
+                ></path>
               </svg>
             </button>
           </div>
         </div>
-        <div className="block xl:hidden mx-auto">
+
+        {/* Mobile menu */}
+        <div
+          className={`${
+            isOpen ? "block" : "hidden"
+          } w-full xl:hidden transition-all duration-300 ease-in-out`}
+        >
           <MenuList
             isLoading={isLoading}
             menuList={mobileMenuList}
@@ -258,6 +255,12 @@ export default function NavbarComponent() {
             isOpen={isOpen}
             setIsOpen={setIsOpen}
           />
+          <div className="flex justify-center gap-4 mt-4">
+            <span className="m-4">
+              <LanguageDropdown fontClass={fontClass} />
+            </span>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </Navbar>
