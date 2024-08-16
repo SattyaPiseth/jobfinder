@@ -2,13 +2,13 @@ import { Modal } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"; // Importing icons
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { updateProfile } from "../../redux/api/userApi";
 import useFontClass from "../../common/useFontClass";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
 
 const token = localStorage.getItem("access");
 
@@ -28,11 +28,17 @@ function SocialMediaComponent({ contact_info }) {
     }));
   };
 
-  const platforms = ["facebook", "twitter", "instagram", "linkedin"];
+  // Platforms with associated icons
+  const platforms = [
+    { name: "facebook", icon: FaFacebook },
+    { name: "twitter", icon: FaTwitter },
+    { name: "instagram", icon: FaInstagram },
+    { name: "linkedin", icon: FaLinkedin },
+  ];
 
   const getInitialValues = () => {
     return platforms.reduce((acc, platform) => {
-      acc[platform] = contacts[platform] || "";
+      acc[platform.name] = contacts[platform.name] || "";
       return acc;
     }, {});
   };
@@ -40,8 +46,8 @@ function SocialMediaComponent({ contact_info }) {
   const getValidationSchema = () => {
     return Yup.object(
       platforms.reduce((acc, platform) => {
-        if (editing[platform]) {
-          acc[platform] = Yup.string()
+        if (editing[platform.name]) {
+          acc[platform.name] = Yup.string()
             .url("Invalid URL format")
             .required("Required");
         }
@@ -73,20 +79,16 @@ function SocialMediaComponent({ contact_info }) {
       {Object.keys(contacts).length > 0 ? (
         <div className="grid grid-cols-2 gap-4 mb-2 max-md:grid-cols-1">
           {platforms.map((platform) => (
-            contacts[platform] ? (
+            contacts[platform.name] ? (
               <a
-                key={platform}
-                href={contacts[platform]}
+                key={platform.name}
+                href={contacts[platform.name]}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 p-2 border border-gray-300 rounded-lg"
               >
-                <img
-                  src={`path_to_icons/${platform}.png`} // Replace with the correct path to your icons
-                  alt={`${platform} icon`}
-                  className="w-6 h-6"
-                />
-                <span className="text-gray-700 dark:text-gray-300">{platform}</span>
+                <platform.icon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                <span className="text-gray-700 dark:text-gray-300">{platform.name}</span>
               </a>
             ) : null
           ))}
@@ -115,28 +117,28 @@ function SocialMediaComponent({ contact_info }) {
             {() => (
               <Form>
                 {platforms.map((platform) => (
-                  <div key={platform} className="mb-4">
-                    <h4 className="mb-2 text-xl">{platform}</h4>
-                    {editing[platform] ? (
+                  <div key={platform.name} className="mb-4">
+                    <h4 className="mb-2 text-xl">{platform.name}</h4>
+                    {editing[platform.name] ? (
                       <>
                         <div className="flex flex-col mb-2">
                           <label className="text-md text-gray-700">
-                            {platform} URL
+                            {platform.name} URL
                           </label>
                           <Field
                             className="text-sm rounded-lg dark:bg-gray-600"
                             type="text"
-                            name={platform}
+                            name={platform.name}
                           />
                           <ErrorMessage
-                            name={platform}
+                            name={platform.name}
                             component="div"
                             className="text-red-500 text-sm"
                           />
                         </div>
                         <button
                           type="button"
-                          onClick={() => handleEdit(platform)}
+                          onClick={() => handleEdit(platform.name)}
                           className="flex flex-row p-1 items-center rounded-lg text-gray-700 hover:bg-gray-200 dark:text-red-600 dark:hover:bg-slate-600"
                         >
                           <FaTrashAlt />
@@ -146,11 +148,11 @@ function SocialMediaComponent({ contact_info }) {
                     ) : (
                       <button
                         type="button"
-                        onClick={() => handleEdit(platform)}
+                        onClick={() => handleEdit(platform.name)}
                         className="flex flex-row p-1 items-center rounded-lg text-blue-700 hover:bg-blue-200 dark:hover:bg-slate-600"
                       >
                         <IoMdAdd />
-                        &nbsp;Add {platform}
+                        &nbsp;Add {platform.name}
                       </button>
                     )}
                   </div>

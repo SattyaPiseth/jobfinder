@@ -7,9 +7,19 @@ import { Badge } from "flowbite-react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../../common/useFontClass";
 import { NavLink } from "react-router-dom";
-import mentor_muyleang from './../../assets/images/ing_muyleang.jpg'
-import mentor_sokpheng from './../../assets/images/Teacher-Pheng.webp'
-import piseth_sattya from './../../assets/images/PISETHSATTYA.jpg'
+import mentor_muyleang from "./../../assets/images/ing_muyleang.jpg";
+import mentor_sokpheng from "./../../assets/images/Teacher-Pheng.webp";
+import piseth_sattya from "./../../assets/images/PISETHSATTYA.jpg";
+import kimhay from "./../../assets/images/kimhay.jpg";
+import sopheak from "./../../assets/images/sopheak.jpg";
+import sreynit from "./../../assets/images/sreynit.jpg";
+import rotha from "./../../assets/images/rotha.jpg";
+// import triya from "./../../assets/images/triya.jpg";
+// import bunrong from "./../../assets/images/bunrong.jpg";
+import soursdey from "./../../assets/images/soursdey.jpg";
+import thearith from "./../../assets/images/thearith.jpg";
+import ContactForm from "../contactUs/ContactUsForm";
+import Skeleton from "react-loading-skeleton";
 
 export default function AboutUsComponent() {
   const [loading, setLoading] = useState(true);
@@ -21,48 +31,44 @@ export default function AboutUsComponent() {
   }, []);
   const teamMembers = [
     {
-      name: "Chao Kimhay",
+      name: t("About-us.team_members.chao_kimhay"),
+      image: kimhay,
+      position: "Team Member",
+    },
+    {
+      name: t("About-us.team_members.jun_thearith"),
+      image: thearith,
+      position: "Team Member",
+    },
+    {
+      name: t("About-us.team_members.bour_suorcdey"),
+      image: soursdey,
+      position: "Team Member",
+    },
+    {
+      name: t("About-us.team_members.oum_chansopheak"),
+      image: sopheak,
+      position: "Team Member",
+    },
+    {
+      name: t("About-us.team_members.sey_bunrong"),
       image:
-        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/441192084_1916856482089375_4465425687677839651_n.jpg?stp=cp6_dst-jpg&_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEOwV9NHKz7kaI-FckHxiquqiiZEnV9P_CqKJkSdX0_8CXFvrWozGSpWPfL8ERnwi-pVtXomuoWoCbMaO9ypMau&_nc_ohc=H28TCZyNKfEQ7kNvgF_R77m&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYCxZEWFy2C8Pkk6VetGaa4wBYFW6Khtyf4s69lD42Sc9w&oe=669BBFEE",
+        "https://job-quick-api.techinsights.guru/media/uploads/bunrong.jpg",
       position: "Team Member",
     },
     {
-      name: "Jun Thearith",
-      image:
-        "https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-6/449477760_3586716934973920_8504040381177330817_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGmOimc66FuBKIkdaXenR8UbBvoWt64ACFsG-ha3rgAIT6kBl-fELq8SKwJNzOM5zm1UUR4bc1dMNQaKrumdVIG&_nc_ohc=g3X-ZQto3isQ7kNvgHgqhM1&_nc_ht=scontent.fpnh10-1.fna&oh=00_AYBjTnDP0OE1vIqYQBaIhUBLY7IQzFkbx4V6HxpYAt_1lQ&oe=669AC143",
+      name: t("About-us.team_members.porn_sreynit"),
+      image: sreynit,
       position: "Team Member",
     },
     {
-      name: "Bour Suorcdey",
-      image:
-        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/434657101_1137410810611098_2617317298085307546_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEzfVe8c8bVoAD4ZsdFuKKJA9RmOUreuAUD1GY5St64BduDaF1nIahWMU8OdNISHnrFYn-tHSishFOD_OgO1l2R&_nc_ohc=FIzCr2CasU8Q7kNvgF7zckT&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYCK7ZN_JlP5I18tHBHmetCVu6ykOrMt3jqVi1TGfccxGw&oe=669BD38A",
+      name: t("About-us.team_members.mom_rotha"),
+      image: rotha,
       position: "Team Member",
     },
     {
-      name: "Oum Chansopheak",
-      image:
-        "https://scontent.fpnh10-1.fna.fbcdn.net/v/t39.30808-1/332167642_1006353843669992_1168317270522529645_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeEvDvAuChivUuWkVGJxubEL-DIuSFUchNz4Mi5IVRyE3B4XmtpYNPST6lk_s3O6G6snds7bLCBiJK7osz2OxX9q&_nc_ohc=91NAue9CuRQQ7kNvgHLocIT&_nc_ht=scontent.fpnh10-1.fna&oh=00_AYAu73m3D8TrnrePkkWc4WnZxoqDsu-afEdCuskcIHs1qg&oe=669AAD01",
-      position: "Team Member",
-    },
-    {
-      name: "Sey Bunrong",
-      image: "https://avatar.iran.liara.run/public/boy",
-      position: "Team Member",
-    },
-    {
-      name: "Porn Sreynit",
-      image: "https://avatar.iran.liara.run/public/girl",
-      position: "Team Member",
-    },
-    {
-      name: "Mom Rotha",
-      image:
-        "https://scontent.fpnh24-1.fna.fbcdn.net/v/t39.30808-6/320925807_692883932440956_39998940771575535_n.jpg?stp=cp6_dst-jpg_p720x720&_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGOkMg6O78QyHrY1QuFLjeIC5ViwBM8zkYLlWLAEzzORsYXGaUmscW0KPBsFreOdoYLTEqH1BWzWKOnu3C7r16R&_nc_ohc=l0q8lMhlSYYQ7kNvgHAJVhp&_nc_ht=scontent.fpnh24-1.fna&oh=00_AYBSfHETbm6ggvUuMpsKfv8HF-oZ_rKATT5aW_8NgRCXyQ&oe=669BC72E",
-      position: "Team Member",
-    },
-    {
-      name: "Choeurn Triya",
-      image: "https://avatar.iran.liara.run/public/girl",
+      name: t("About-us.team_members.choeurn_triya"),
+      image: "https://job-quick-api.techinsights.guru/media/uploads/triya.jpg",
       position: "Team Member",
     },
   ];
@@ -82,45 +88,66 @@ export default function AboutUsComponent() {
 
   const teamLead = [
     {
-      name: "Piseth Satthya",
+      name: t("About-us.teamLead"),
       image: piseth_sattya,
       position: "Team Leader",
     },
   ];
   return (
-    <main
+    <div
       className={`${fontClass} flex flex-col items-center px-4 py-6 md:px-10 md:py-10`}
     >
       {/* Hero Section */}
       <section className="my-4 flex flex-col items-center md:flex-row">
-        <div className="text-center md:w-1/2 md:text-left mt-10">
-          <p className="text-3xl md:text-4xl font-bold">
-            <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent font-kantumruy">
-              JOB-QUICK
-            </span>
-          </p>
-          <p
-            className="mt-4 text-2xl md:text-2xl leading-5"
-            style={{ lineHeight: "1.35" }}
-          >
-            {t("About-us.About-description")}
-          </p>
+        <div className="text-center md:w-1/2 md:text-left mt-10 ">
+          {loading ? (
+            <>
+              <Skeleton
+                height={40}
+                width={200}
+                className="mb-4 animate-pulse"
+              />
+              <Skeleton
+                count={4}
+                height={40}
+                width={300}
+                className="my-2 animate-pulse"
+              />
+            </>
+          ) : (
+            <>
+              <p className="text-3xl md:text-4xl font-bold">
+                <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent font-kantumruy">
+                  JOB-QUICK
+                </span>
+              </p>
+              <p
+                className="mt-4 text-2xl md:text-2xl leading-5"
+                style={{ lineHeight: "1.35" }}
+              >
+                {t("About-us.About-description")}
+              </p>
+            </>
+          )}
           <NavLink to="/" className="inline-block mt-4"></NavLink>
         </div>
         <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0">
-          <dotlottie-player
-            src="https://lottie.host/cfff7526-566f-4764-b29d-10c719def776/BUxubb72Ow.json"
-            background="transparent"
-            speed="1"
-            loop
-            autoplay
-            className="w-full max-w-[600px] h-auto"
-          />
+          {loading ? (
+            <Skeleton height={300} width={600} className="animate-pulse" />
+          ) : (
+            <dotlottie-player
+              src="https://lottie.host/cfff7526-566f-4764-b29d-10c719def776/BUxubb72Ow.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+              className="w-full max-w-[600px] h-auto"
+            />
+          )}
         </div>
       </section>
-
       {/* Story Section */}
-      <section className="my-4 flex flex-col items-center md:flex-row-reverse">
+      {/* <section className="my-4 flex flex-col items-center md:flex-row-reverse">
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
             <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
@@ -149,10 +176,66 @@ export default function AboutUsComponent() {
             />
           </div>
         </div>
+      </section> */}
+      <section className="my-4 flex flex-col items-center md:flex-row-reverse">
+        <div className="text-center md:w-1/2 md:text-left">
+          {loading ? (
+            <>
+              <Skeleton
+                height={40}
+                width={400}
+                className="mb-4  ml-[2rem] animate-pulse"
+              />
+              <Skeleton
+                count={4}
+                height={40}
+                width={500}
+                className="my-2 ml-[2rem] animate-pulse"
+              />
+            </>
+          ) : (
+            <>
+              <p className="text-3xl md:text-4xl font-bold">
+                <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                  {t("About-us.Who")}
+                </span>
+              </p>
+              <p
+                className="mt-4 text-2xl md:text-2xl leading-5"
+                style={{ lineHeight: "1.35" }}
+              >
+                {t("About-us.detail.Who")}
+              </p>
+            </>
+          )}
+        </div>
+        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0">
+          {loading ? (
+            <Skeleton
+              height={300}
+              width={500}
+              className="animate-pulse mr-[5rem]"
+            />
+          ) : (
+            <div
+              className="relative rounded-lg overflow-hidden"
+              style={{ maxWidth: "600px" }}
+            >
+              <dotlottie-player
+                src="https://lottie.host/53455f25-9247-48ec-87ad-410632cb9302/xwjx7kMkSG.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
+              />
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Vision Section */}
-      <section className="my-4 flex flex-col items-center md:flex-row">
+      {/* <section className="my-4 flex flex-col items-center md:flex-row">
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
             <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
@@ -166,7 +249,7 @@ export default function AboutUsComponent() {
             {t("About-us.detail.Goals")}
           </p>
         </div>
-        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0">
+        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0 ">
           <div
             className="relative rounded-lg overflow-hidden"
             style={{ maxWidth: "600px" }}
@@ -181,10 +264,62 @@ export default function AboutUsComponent() {
             />
           </div>
         </div>
+      </section> */}
+      <section className="my-4 flex flex-col items-center md:flex-row">
+        <div className="text-center md:w-1/2 md:text-left">
+          {loading ? (
+            <>
+              <Skeleton height={40} width={300} className="mb-4 mx-4 md:mx-0" />
+              <Skeleton
+                count={4}
+                height={30}
+                width={350}
+                className="my-2 mx-4 md:mx-0"
+              />
+            </>
+          ) : (
+            <>
+              <p className="text-3xl md:text-4xl font-bold">
+                <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                  {t("About-us.Goals")}
+                </span>
+              </p>
+              <p
+                className="mt-4 text-2xl md:text-2xl leading-5"
+                style={{ lineHeight: "1.35" }}
+              >
+                {t("About-us.detail.Goals")}
+              </p>
+            </>
+          )}
+        </div>
+        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0">
+          {loading ? (
+            <Skeleton
+              height={300}
+              width={400}
+              className="animate-pulse mx-4 md:mx-0"
+            />
+          ) : (
+            <div
+              className="relative rounded-lg overflow-hidden"
+              style={{ maxWidth: "600px" }}
+            >
+              <dotlottie-player
+                src="https://lottie.host/449a6380-e148-4f89-bef8-fd012d6e6faa/criFar5eMA.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
+              />
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Mission Section */}
-      <section className="my-4 flex flex-col items-center md:flex-row-reverse">
+      {/* <section className="my-4 flex flex-col items-center md:flex-row-reverse">
         <div className="text-center md:w-1/2 md:text-left">
           <p className="text-3xl md:text-4xl font-bold">
             <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
@@ -213,9 +348,68 @@ export default function AboutUsComponent() {
             />
           </div>
         </div>
+      </section> */}
+      <section className="my-4 flex flex-col items-center md:flex-row-reverse">
+        <div className="text-center md:w-1/2 md:text-left">
+          {loading ? (
+            <>
+              {/* Title Skeleton */}
+              <Skeleton
+                height={40}
+                width="60%"
+                className="mb-4 mx-auto md:mx-0"
+              />
+              {/* Paragraph Skeleton */}
+              <Skeleton
+                count={3}
+                height={30}
+                width="80%"
+                className="my-2 mx-auto md:mx-0"
+              />
+            </>
+          ) : (
+            <>
+              <p className="text-3xl md:text-4xl font-bold">
+                <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                  {t("About-us.Perspective")}
+                </span>
+              </p>
+              <p
+                className="mt-4 text-2xl md:text-2xl leading-5"
+                style={{ lineHeight: "1.35" }}
+              >
+                {t("About-us.detail.Perspective")}
+              </p>
+            </>
+          )}
+        </div>
+        <div className="md:w-1/2 flex justify-center items-center mt-4 md:mt-0 md:pr-16">
+          {loading ? (
+            <Skeleton
+              height={300}
+              width="100%"
+              className="animate-pulse"
+              style={{ maxWidth: "600px" }}
+            />
+          ) : (
+            <div
+              className="relative rounded-lg overflow-hidden"
+              style={{ maxWidth: "600px" }}
+            >
+              <dotlottie-player
+                src="https://lottie.host/3ee76f97-26c0-4d36-a2d9-9b85674dd2d0/CLpwN8efCJ.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                className="relative z-10 opacity-0 data-[loaded=true]:opacity-100 transition-opacity duration-300 rounded-lg"
+              />
+            </div>
+          )}
+        </div>
       </section>
 
-      <div className="my-2 text-center">
+      <div className="my-2 text-center mt-10">
         <p className="text-3xl font-bold" data-aos="fade-up">
           Organized{" "}
           <span
@@ -292,7 +486,7 @@ export default function AboutUsComponent() {
                 </div>
               </div>
               <div className="px-6 py-2">
-                <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+                <div className="mb-2 text-center text-xl font-bold whitespace-nowrap pt-3">
                   {teacher.name}
                 </div>
                 <div className="text-center text-xl font-bold"></div>
@@ -356,10 +550,12 @@ export default function AboutUsComponent() {
         </div>
       </div>
       <div
-        className="text-3xl font-suwannaphum font-bold text-blue-600 max-md:mt-10 mb-24  "
+        className="text-3xl font-suwannaphum font-bold text-blue-600 max-md:mt-10 mb-12 "
         data-aos="fade-up"
       >
-        <span className="text-4xl text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+        <span
+          className={`${fontClass} text-4xl text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent`}
+        >
           {t("About-us.Member")}
         </span>
       </div>
@@ -384,7 +580,7 @@ export default function AboutUsComponent() {
               </div>
             </div>
             <div className="px-6 py-2">
-              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap pt-3">
                 {lead.name}
               </div>
               {/* <div className="text-center text-lg">{lead.name}</div> */}
@@ -467,7 +663,7 @@ export default function AboutUsComponent() {
               </div>
             </div>
             <div className="px-6 py-2">
-              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap">
+              <div className="mb-2 text-center text-xl font-bold whitespace-nowrap pt-3">
                 {member.name}
               </div>
               <Badge className="text-sm flex justify-center bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400">
@@ -529,7 +725,7 @@ export default function AboutUsComponent() {
         ))}
       </div>
 
-      <div className="flex flex-wrap items-center my-10">
+      {/* <div className="flex flex-wrap items-center my-10">
         <div className="w-full md:w-6/12 order-2 md:order-1 mt-20">
           <dotlottie-player
             src="https://lottie.host/3751fb5a-7130-4e52-8cf8-993e5a07512f/0xxfoUoJ4E.json"
@@ -543,48 +739,49 @@ export default function AboutUsComponent() {
           data-aos="zoom-in-up"
           className="w-full md:w-6/12 order-1 md:order-2 mt-10"
         >
-          <div className="flex flex-col grow text-left font-suwannaphum text-xl whitespace-nowrap text-black text-opacity-60 max-md:mt-10 max-md:max-w-full">
+          <div className={`${fontClass} flex flex-col grow text-left font-suwannaphum text-xl whitespace-nowrap text-black text-opacity-60 max-md:mt-10 max-md:max-w-full`}>
             <div
               data-aos="zoom-in-up"
               className="text-blue-600 text-left text-3xl font-bold max-md:max-w-full"
             >
-              <span className="text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent text-4xl">
+              <span className={`${fontClass} text-gradient bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent text-4xl`}>
                 {t("Contact-us.title")}
               </span>
             </div>
             <div
               data-aos="zoom-in-up"
-              className=" mt-4 text-2xl text-black max-md:flex-col max-md:max-w-full max-md:mt-3 dark:text-gray-300"
+              className={`${fontClass} mt-4 text-2xl text-black max-md:flex-col max-md:max-w-full max-md:mt-3 dark:text-gray-300`}
             >
               {t("Contact-us.description")} <br />
               {t("Contact-us.description2")}
             </div>
-            <div className="self-start mt-4 max-md:mt-10 max-md:ml-2.5 dark:text-gray-300">
+            <div className={`${fontClass} self-start mt-4 max-md:mt-10 max-md:ml-2.5 dark:text-gray-300`}>
               {t("Contact-us.name")}
             </div>
             <input
               type="text"
-              className="shrink-0 mt-2.5 rounded-lg border border-black border-solid h-[50px] max-md:max-w-full"
+              className={`${fontClass} shrink-0 mt-2.5 rounded-lg border border-black border-solid h-[50px] max-md:max-w-full text-black`}
             />
-            <div className="self-start mt-3 max-md:ml-2.5 dark:text-gray-300">
+            <div className={`${fontClass} self-start mt-3 max-md:ml-2.5 dark:text-gray-300`}>
               {t("Contact-us.email")}
             </div>
             <input
               type="email"
-              className="shrink-0 mt-3 rounded-lg border border-black border-solid h-[50px] max-md:max-w-full"
+              className={`${fontClass} shrink-0 mt-3 rounded-lg border border-black border-solid h-[50px] max-md:max-w-full text-black`}
             />
-            <div className="flex flex-col mt-2.5 max-md:max-w-full dark:text-gray-300">
+            <div className={`${fontClass} flex flex-col mt-2.5 max-md:max-w-full dark:text-gray-300`}>
               <div className="self-start ">{t("Contact-us.message")}</div>
-              <textarea className="shrink-0 mt-3 rounded-lg border border-black border-solid h-[150px] max-md:max-w-full"></textarea>
+              <textarea className="shrink-0 mt-3 rounded-lg border border-black border-solid h-[150px] max-md:max-w-full text-black"></textarea>
             </div>
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className={`${fontClass} mt-6 flex flex-wrap gap-2`}>
               <Button type="submit" color="blue">
                 {t("Contact-us.send_message")}
               </Button>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </div> */}
+      <ContactForm fontClass={fontClass} />
+    </div>
   );
 }

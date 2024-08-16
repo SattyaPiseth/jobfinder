@@ -50,6 +50,13 @@ function UserProfileComponent({
       handleSubmit(selectedFile);
     }
   };
+  // Format created_at into MM, YYYY
+  const formattedCreatedAt = created_at
+    ? new Date(created_at).toLocaleDateString("en-US", {
+        month: "long",
+        year: "numeric",
+      })
+    : "Unavailable";
 
   useEffect(() => {
     setAvatarSrc(avatar);
@@ -141,7 +148,7 @@ function UserProfileComponent({
           <div className="flex gap-2 text-black leading-[175%]">
             <FaClock className="self-center w-4 rounded-full aspect-square fill-gray-700 fill-opacity-50 max-md:w-5 dark:fill-gray-300" />
             <p className="flex-auto text-left my-auto max-md:text-sm dark:text-gray-300">
-              {created_at || "Unavailable"}
+              {formattedCreatedAt}
             </p>
           </div>
         </div>

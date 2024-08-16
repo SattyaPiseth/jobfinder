@@ -18,7 +18,6 @@ export const fetchAppliedJobs = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("apply-jobs : ", response.data);
       return response?.data;
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -40,7 +39,6 @@ export const applyForJob = createAsyncThunk(
           "Content-Type": "multipart/form-data", // Important for file uploads
         },
       });
-      console.log("apply-jobs : ", response.data);
       return response?.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);

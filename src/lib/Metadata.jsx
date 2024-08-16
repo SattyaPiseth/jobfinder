@@ -81,6 +81,7 @@ export const Metadata = ({
         }
       />
       <meta name="twitter:url" content={url || "https://jobquick.techinsights.guru"} />
+      <link rel="canonical" href={url || "http://jobquick.techinsights.guru/"} />
     </Helmet>
   );
 };

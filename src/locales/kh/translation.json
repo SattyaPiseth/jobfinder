@@ -63,7 +63,7 @@
         "login": "ចូល"
       },
       "placeholders": {
-        "username": "បញ្ចូលឈ្មោះអ្នកប្រើ",
+        "username": "បញ្ចូលឈ្មោះអ្នកប្រើប្រាស់",
         "email": "បញ្ចូលអ៊ីមែលរបស់អ្នក",
         "password": "បញ្ចូលពាក្យសម្ងាត់របស់អ្នក",
         "confirmPassword": "បញ្ជាក់ពាក្យសម្ងាត់របស់អ្នក"
@@ -135,7 +135,8 @@
     "password": "ពាក្យសម្ងាត់ថ្មី",
     "confirmPassword": "បញ្ជាក់ពាក្យសម្ងាត់ថ្មី",
     "resetting": "កំពុងកំណត់ឡើងវិញ...",
-    "reset": "កំណត់ពាក្យសម្ងាត់ឡើងវិញ"
+    "reset": "កំណត់ពាក្យសម្ងាត់ឡើងវិញ",
+    "placeholder" : "បញ្ចូលពាក្យសម្ងាត់៦ខ្ទង់"
   },
   "validation": {
     "otp": "ត្រូវបំពេញលេខកូដ OTP",
@@ -177,6 +178,17 @@
   "mentors": {
     "Ing-Muyleang" : "អ៊ឹង មួយលៀង",
     "Kim-Chansokpheng" : "គឹម ចាន់សុផេង"
+  } ,
+  "teamLead" : "ពិសិដ្ឋ សត្យា",
+  "team_members": {
+    "chao_kimhay": "ចៅ គឹមហៃ",
+    "jun_thearith": "ជន ធារិត",
+    "bour_suorcdey": "បួរ សួស្ដី",
+    "oum_chansopheak": "អ៊ុំ ចាន់សុភ័ក្រ",
+    "sey_bunrong": "សី ប៊ុនរ៉ុង",
+    "porn_sreynit": "ប៉​ន ស្រីនិត",
+    "mom_rotha": "មុំ រដ្ឋា",
+    "choeurn_triya": "ជឿន ទ្រីយ៉ា"
   }
 },  
 "Contact-us": {
@@ -186,6 +198,7 @@
   "name": "ឈ្មោះ",
   "email": "អ៊ីមែល",
   "message": "សារ",
-  "send_message": "ផ្ញើសារ"
+  "send_message": "ផ្ញើសារ",
+  "type-your-message" : "វាយបញ្ចូលសាររបស់អ្នក..."
 }
 }
