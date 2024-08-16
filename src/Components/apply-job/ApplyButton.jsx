@@ -63,7 +63,7 @@ const ApplyButton = ({ jobId }) => {
   };
 
   return (
-    <div className={`${fontClass}`}>
+    <div className={`${fontClass} `}>
       <input
         type="file"
         accept=".pdf,.doc,.docx"
