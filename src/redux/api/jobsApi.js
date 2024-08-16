@@ -20,7 +20,7 @@ export const getJobs = async (page, pageSize = 12) => {
   jobs = jobs.concat(results1.slice(offset));
   totalJobs = count;
 
-  if (jobs.length < pageSize && (currentPage * jobsPerPage < totalJobs)) {
+  if (jobs.length < pageSize && currentPage * jobsPerPage < totalJobs) {
     // Fetch the next page to get additional jobs
     const response2 = await axios.get(`${BASE_URL}jobs/`, {
       params: {
@@ -71,8 +71,50 @@ export const getAllJobs = async () => {
   };
 };
 
-
 export const fetchGlobalSearch = async (query) => {
   const response = await axios.get(`${BASE_URL}global_search/?q=${query}`);
   return response.data.jobs;
+};
+
+export const getJobsByCategory = async (category, pageSize = 10) => {
+  let allJobs = [];
+  let page = 1;
+  let totalJobs = 0;
+  let hasMore = true;
+
+  try {
+    while (hasMore) {
+      const response = await axios.get(`${BASE_URL}jobs/`, {
+        params: {
+          category: category,
+          page: page,
+          pageSize: pageSize,
+        },
+      });
+
+      const { results, count } = response.data;
+
+      // Merge the current page results with the cumulative results
+      allJobs = [...allJobs, ...results];
+
+      totalJobs = count;
+
+      // Check if we have fetched all jobs
+      hasMore = allJobs.length < totalJobs;
+
+      // Increment the page number for the next iteration
+      page += 1;
+
+      // Optional: Add a delay between requests to avoid server overload (e.g., 100ms delay)
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+  } catch (error) {
+    console.error("Error fetching jobs by category:", error);
+    throw error;
+  }
+
+  return {
+    jobs: allJobs,
+    totalJobs: totalJobs,
+  };
 };

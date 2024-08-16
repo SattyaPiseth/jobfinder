@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL } from "../../api/api";
+import { getAllAppliedJobs } from "../../api/appliedJobApi";
 
 // Helper function to extract error message
 const getErrorMessage = (error) => {
@@ -19,6 +20,17 @@ export const fetchAppliedJobs = createAsyncThunk(
         },
       });
       return response?.data;
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+export const fetchAllAppliedJobs = createAsyncThunk(
+  "applyJobs/fetchAllAppliedJobs",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { jobs } = await getAllAppliedJobs();
+      return { jobs };
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
     }
@@ -73,9 +85,11 @@ export const updateAppliedJob = createAsyncThunk(
 const appliedJobsSlice = createSlice({
   name: "appliedJobs",
   initialState: {
+    accessToken: localStorage.getItem("access" || null),
     loading: false,
     error: null,
     appliedJobs: [], // Store applied jobs if needed
+    appliedAllJobs: []
   },
   reducers: {},
   extraReducers: (builder) =>
@@ -91,7 +105,6 @@ const appliedJobsSlice = createSlice({
         state.loading = false;
         state.error = payload;
       })
-
       .addCase(applyForJob.pending, (state, { payload }) => {
         state.loading = true;
       })
@@ -111,8 +124,22 @@ const appliedJobsSlice = createSlice({
       .addCase(updateAppliedJob.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
-      }),
+      })
+      .addCase(fetchAllAppliedJobs.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchAllAppliedJobs.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.appliedAllJobs = payload; // Assuming payload is the list of applied jobs
+        console.log("payload: ",payload);
+        
+      })
+      .addCase(fetchAllAppliedJobs.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
 });
 
 export const { invalidate } = appliedJobsSlice.actions;
 export default appliedJobsSlice.reducer;
+export const selectAllAppliedJobs = (state) => state.applyJobs.appliedAllJobs;

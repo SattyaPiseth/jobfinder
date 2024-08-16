@@ -1,5 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchGlobalSearch, getAllJobs, getJobById, getJobs } from "../api/jobsApi";
+import {
+  fetchGlobalSearch,
+  getAllJobs,
+  getJobById,
+  getJobs,
+  getJobsByCategory,
+} from "../api/jobsApi";
 
 // Utility function to extract error messages
 const getErrorMessage = (error) => {
@@ -54,15 +60,30 @@ export const performGlobalSearch = createAsyncThunk(
   }
 );
 
+export const fetchJobsByCategory = createAsyncThunk(
+  "jobs/fetchJobsByCategory",
+  async (category, { rejectWithValue }) => {
+    try {
+      const data = await getJobsByCategory(category);
+      console.log("category : ", category);
+      return data;
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
 // Slice definition
 const jobsSlice = createSlice({
   name: "jobs",
   initialState: {
+    jobsByCategory: [], // Jobs by category
+    totalJobs: 0, // Total number of jobs
     jobs: [],
     allJobs: [],
     job: null,
     status: "idle",
-    searchQuery: '',
+    searchQuery: "",
     data: null,
     error: null,
     totalJobs: 0,
@@ -78,6 +99,9 @@ const jobsSlice = createSlice({
     },
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
+    },
+    clearJobsByCategory(state) {
+      state.jobsByCategory = [];
     },
   },
   extraReducers: (builder) => {
@@ -126,12 +150,30 @@ const jobsSlice = createSlice({
       .addCase(performGlobalSearch.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
+      })
+      .addCase(fetchJobsByCategory.pending, (state) => {
+        state.loading = true;
+        state.error = null; // Reset error state
+      })
+      .addCase(fetchJobsByCategory.fulfilled, (state, action) => {
+        state.jobsByCategory = action.payload.jobs; // Store the jobs
+        state.totalJobs = action.payload.totalJobs; // Store the total number of jobs
+        state.loading = false; // Reset loading state
+      })
+      .addCase(fetchJobsByCategory.rejected, (state, action) => {
+        state.loading = false; // Reset loading state
+        state.error = action.payload; // Set the error message
       });
   },
 });
 
 // Export actions and reducer
-export const { setPage, clearSearchResults, setSearchQuery } = jobsSlice.actions;
+export const {
+  setPage,
+  clearSearchResults,
+  setSearchQuery,
+  clearJobsByCategory,
+} = jobsSlice.actions;
 export default jobsSlice.reducer;
 
 // Export selectors
@@ -145,3 +187,5 @@ export const selectStatus = (state) => state.jobs.status;
 export const selectDataBySearch = (state) => state.jobs.data;
 export const selectSearchQuery = (state) => state.jobs.searchQuery;
 export const selectSearchError = (state) => state.jobs.error;
+export const selectJobsByCategory = (state) => state.jobs.jobsByCategory;
+export const selectJobsLoading = (state) => state.jobs.loading;

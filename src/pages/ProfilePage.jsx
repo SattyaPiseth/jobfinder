@@ -11,11 +11,11 @@ const ProfilePage = () => {
     (state) => state.user
   );
 
-  // useEffect(() => {
-  //   if (accessToken) {
-  //     dispatch(fetchProfile(accessToken));
-  //   }
-  // }, [accessToken, dispatch]);
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(fetchProfile(accessToken));
+    }
+  }, [accessToken, dispatch]);
 
   if (isLoading) {
     return <LoadingComponent />;

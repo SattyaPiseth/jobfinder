@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { Pagination } from "../Components/card/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,6 +9,10 @@ import {
   selectTotalJobs,
   selectDataBySearch,
   clearSearchResults,
+  selectJobsByCategory,
+  fetchJobsByCategory,
+  setPage,
+  clearJobsByCategory, // Add setPage action
 } from "../redux/jobs/jobsSlice";
 import { CardComponent } from "../Components/feat-jobs/CardComponent";
 import AOS from "aos";
@@ -27,6 +31,7 @@ const JobsPage = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const jobs = useSelector(selectJobs);
+  const jobsByCategory = useSelector(selectJobsByCategory); // Jobs filtered by category
   const searchResults = useSelector(selectDataBySearch) || [];
   const currentPage = useSelector(selectCurrentPage);
   const pageSize = useSelector(selectPageSize);
@@ -34,13 +39,24 @@ const JobsPage = () => {
   const status = useSelector((state) => state.jobs.status);
   const categories = useSelector(selectAllJobCategories); // Fetch categories from Redux
   const { fontClass } = useFontClass();
+  const [selectedCategory, setSelectedCategory] = useState(""); // State for selected category
 
+  // Load initial state from localStorage or set default values
   useEffect(() => {
-    // Fetch jobs when the page is loaded or search results are cleared
-    if (searchResults.length === 0) {
+    const savedCategory = localStorage.getItem("selectedCategory");
+    const savedScrollPosition = localStorage.getItem("scrollPosition");
+
+    if (savedCategory) {
+      setSelectedCategory(savedCategory);
+      dispatch(fetchJobsByCategory(savedCategory));
+    } else {
       dispatch(fetchJobs({ page: currentPage, pageSize }));
     }
-  }, [dispatch, currentPage, pageSize, searchResults]);
+
+    if (savedScrollPosition) {
+      window.scrollTo(0, parseInt(savedScrollPosition, 10));
+    }
+  }, [dispatch, currentPage, pageSize]);
 
   useEffect(() => {
     // Fetch job categories when the page is loaded
@@ -52,24 +68,39 @@ const JobsPage = () => {
   }, [jobs]);
 
   useEffect(() => {
-    // Clear search results when navigating away
+    // Clear search results when navigating away or changing category
     return () => {
       dispatch(clearSearchResults());
     };
   }, [dispatch]);
+
+  const handleCategoryChange = (categoryId) => {
+    setSelectedCategory(categoryId);
+    localStorage.setItem("selectedCategory", categoryId);
+
+    if (categoryId) {
+      dispatch(fetchJobsByCategory(categoryId));
+    } else {
+      dispatch(clearJobsByCategory()); // Clear jobs by category
+      dispatch(fetchJobs({ page: 1, pageSize })); // Fetch all jobs
+      dispatch(setPage(1)); // Reset to the first page
+    }
+  };
+
+  const handleSearch = (searchQuery) => {
+    if (searchQuery) {
+      // Handle search functionality here
+      // Example: dispatch(fetchJobsBySearch(searchQuery));
+    } else {
+      dispatch(fetchJobs({ page: currentPage, pageSize }));
+    }
+  };
 
   const saveScrollPosition = useCallback(() => {
     localStorage.setItem("scrollPosition", window.scrollY);
   }, []);
 
   useThrottleScroll(saveScrollPosition, 200);
-
-  useEffect(() => {
-    const savedPosition = localStorage.getItem("scrollPosition");
-    if (savedPosition) {
-      window.scrollTo(0, parseInt(savedPosition, 10));
-    }
-  }, []);
 
   return (
     <section>
@@ -92,6 +123,8 @@ const JobsPage = () => {
       <SearchComponent
         categories={categories} // Pass categories to SearchComponent
         isLoading={status === "loading"} // Pass loading state to SearchComponent
+        onCategoryChange={handleCategoryChange} // Pass the handler to SearchComponent
+        onSearch={handleSearch} // Pass the search handler to SearchComponent
       />
       {status === "loading" && (
         <div className="grid gap-5 mt-10 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -123,17 +156,20 @@ const JobsPage = () => {
               searchResults.map((job) => (
                 <CardComponent key={job.id} job={job} />
               ))
+            ) : jobsByCategory.length > 0 ? (
+              jobsByCategory.map((job) => (
+                <CardComponent key={job.id} job={job} />
+              ))
             ) : jobs.length > 0 ? (
               jobs.map((job) => <CardComponent key={job.id} job={job} />)
             ) : (
               <p>No jobs available</p>
             )}
           </div>
-          {searchResults.length === 0 && (
+          {searchResults.length === 0 && !selectedCategory && (
             <div className="text-center py-10">
               <Pagination isLoading={status === "loading"} />
             </div>
-
           )}
         </>
       )}
