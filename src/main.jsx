@@ -49,7 +49,7 @@ const route = createBrowserRouter([
       },
       {
         path: "/applied-records",
-        element: <AppliedJobRecord />
+        element: <ProtectedRoute element={<AppliedJobRecord />}/>
       },
       {
         path: "/verifyCode",
