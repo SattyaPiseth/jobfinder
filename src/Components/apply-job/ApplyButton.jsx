@@ -1,72 +1,69 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { applyForJob } from '../../redux/features/apply-job/applyJobSlice';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useFontClass from '../../common/useFontClass';
 
 const ApplyButton = ({ jobId }) => {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.applyJobs);
-  const [resume, setResume] = useState(null);
-  const [fileError, setFileError] = useState(null);
+  const { loading } = useSelector((state) => state.applyJobs);
   const fileInputRef = useRef(null);
-
-  const clearFileInput = () => {
-    setResume(null);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
-  };
+  const {fontClass} = useFontClass()
+  
+  // Check if the user is authenticated
+  const token = localStorage.getItem('access');
+  const isAuthenticated = !!token;
 
   const handleResumeChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      const validTypes = [
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      ];
       if (validTypes.includes(file.type)) {
-        setResume(file);
-        setFileError(null);
-        handleApply(file); 
+        handleApply(file);
       } else {
-        setFileError('Please upload a valid PDF or DOC file.');
         toast.error('Please upload a valid PDF or DOC file.');
-        clearFileInput();  
+        clearFileInput();
       }
     }
   };
 
   const handleApplyClick = () => {
-    if (resume) {
-      handleApply(resume);  
-    } else {
-      fileInputRef.current.click(); 
+    if (!isAuthenticated) {
+      toast.error('User is not authenticated. Please log in to apply.');
+      return;
     }
+
+    fileInputRef.current.click(); 
   };
 
   const handleApply = (resumeFile) => {
-    const token = localStorage.getItem('access');
-    if (token && resumeFile) {
+    if (isAuthenticated) {
       dispatch(applyForJob({ token, jobId, resume: resumeFile }))
+        .unwrap()
         .then(() => {
           toast.success('Application submitted successfully!');
           clearFileInput(); 
         })
-        .catch(() => {
-          toast.error('Failed to submit the application.');
+        .catch((err) => {
+          const errorMessage = err.response?.data?.message || 'Failed to submit the application.';
+          toast.error(errorMessage);
         });
-    } else {
-      if (!resumeFile) {
-        setFileError('Please upload your resume.');
-        toast.error('Please upload your resume.');
-      }
-      if (!token) {
-        console.error('User is not authenticated.');
-        toast.error('User is not authenticated.');
-      }
+    }
+  };
+
+  const clearFileInput = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
     }
   };
 
   return (
-    <div>
+    <div className={`${fontClass} `}>
       <input
         type="file"
         accept=".pdf,.doc,.docx"
@@ -77,15 +74,10 @@ const ApplyButton = ({ jobId }) => {
       <button
         onClick={handleApplyClick}
         disabled={loading}
-        className={`apply-button ${loading ? 'loading' : ''} flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg`}
+        className={` apply-button ${loading ? 'loading' : ''} flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg`}
       >
         {loading ? 'Applying...' : 'Apply Now'}
       </button>
-      {fileError && <p className="error-message">{fileError}</p>}
-      {error && <p className="error-message">{error}</p>}
-      <ToastContainer 
-        style={{ marginTop: '80px' }}
-      />
     </div>
   );
 };

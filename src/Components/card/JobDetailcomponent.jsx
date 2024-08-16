@@ -4,6 +4,7 @@ import { useCopyToClipboard } from "usehooks-ts";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import { useParams } from "react-router-dom";
 import ApplyButton from "../apply-job/ApplyButton";
+import { addDays, format } from "date-fns";
 
 const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL;
 
@@ -19,8 +20,16 @@ const JobDetailComponent = ({ detail }) => {
   const handleError = (event) => {
     event.target.src = "/path/to/fallback/image.jpg"; // Specify a path to your fallback image
   };
+
+  const startedDate = detail?.created_at
+    ? format(new Date(detail?.created_at), "MMM d, yyyy")
+    : "";
+  const extendedDate = startedDate ? addDays(startedDate, 30) : null;
+
+  const expiredDate = extendedDate ? format(extendedDate, "MMM d, yyyy") : "";
+
   return (
-    <div className="mt-20 flex flex-col text-left">
+    <div className="mt-20 flex flex-col text-left font-poppins">
       <div className="flex flex-col md:flex-row gap-5 items-center">
         <img
           className="w-[8%]"
@@ -41,26 +50,10 @@ const JobDetailComponent = ({ detail }) => {
                 <div className="flex items-center justify-center px-3 py-1 font-semibold text-white whitespace-nowrap bg-primary-800 rounded-lg ">
                   {detail?.job_type}
                 </div>
-                <div className="flex items-center justify-center px-3 py-1 whitespace-nowrap bg- rounded-[52px] dark:text-gray-300">
-                  Featured
-                </div>
               </div>
             </div>
             <div>
-              {/* <button className="flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg">
-                <span className="self-stretch my-auto  font-bold">
-                  Apply now
-                </span>
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/72c910bdc0ab047ea5955f38a3ad60282ede593a9cd52829af6c667f07736419?apiKey=391ff68a63584b0181b4aa51e20262f0&&apiKey=391ff68a63584b0181b4aa51e20262f0"
-                  className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square"
-                  alt=""
-                />
-              </button> */}
-              <ApplyButton
-                jobId={detail?.id}
-              />
+              <ApplyButton jobId={detail?.id} />
             </div>
           </div>
         </div>
@@ -70,7 +63,7 @@ const JobDetailComponent = ({ detail }) => {
           <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full ">
             <div className="flex flex-col grow px-5 text-base leading-6 text-gray-500 max-md:mt-6 max-md:max-w-full bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
               <div className="text-lg font-bold leading-7 text-zinc-900 max-md:max-w-full dark:text-gray-300 ">
-                Job Description
+                Job Overview
               </div>
               <div className="mt-4 max-md:mr-1.5 max-md:max-w-full dark:text-gray-300">
                 {detail?.description}
@@ -80,9 +73,39 @@ const JobDetailComponent = ({ detail }) => {
               </div>
               <div className="mt-2 max-md:max-w-full dark:text-gray-300">
                 {detail?.job_requirements.map((requirement, index) => (
-                  <div key={index}>{requirement?.requirement}</div>
+                  <li key={index}>{requirement?.requirement}</li>
                 ))}
               </div>
+              <div className="mt-4 font-bold leading-[150%] text-zinc-900 max-md:max-w-full dark:text-gray-300">
+                Skills
+              </div>
+              <div className="mt-2 grid grid-cols-2 gap-4 max-md:grid-cols-1 max-md:gap-2 dark:text-gray-300">
+                {detail?.skills.map((skill, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center space-x-2 py-2 px-3 bg-gray-100 rounded-lg shadow-sm dark:bg-gray-800"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      className="w-5 h-5 text-indigo-600 dark:text-indigo-400"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-sm font-medium text-zinc-900 dark:text-gray-300">
+                      {skill?.name}
+                    </span>
+                  </li>
+                ))}
+              </div>
+
               <div className="mt-4 font-bold leading-[150%] text-zinc-900 max-md:max-w-full dark:text-gray-300">
                 Desirable:
               </div>
@@ -102,37 +125,7 @@ const JobDetailComponent = ({ detail }) => {
               </div>
               <div className="mt-2 max-md:max-w-full dark:text-gray-300">
                 <ul className="list-disc pl-4">
-                  <li>
-                    Early finish on Fridays for our end of week catch up (4:30
-                    finish, and drink of your choice from the bar)
-                  </li>
-                  <li>
-                    28 days holiday (including bank holidays) rising by 1 day
-                    per year PLUS an additional day off on your birthday
-                  </li>
-                  <li>Generous annual bonus.</li>
-                  <li>Healthcare package</li>
-                  <li>
-                    Paid community days to volunteer for a charity of your
-                    choice
-                  </li>
-                  <li>
-                    £100 contribution for your own personal learning and
-                    development
-                  </li>
-                  <li>
-                    Free Breakfast on Mondays and free snacks in the office
-                  </li>
-                  <li>
-                    Access to Perkbox with numerous discounts plus free points
-                    from the company to spend as you wish.
-                  </li>
-                  <li>Cycle 2 Work Scheme</li>
-                  <li>Brand new MacBook Pro</li>
-                  <li>
-                    Joining an agency on the cusp of exponential growth and
-                    being part of this exciting story.
-                  </li>
+                  <li>{detail?.benefits}</li>
                 </ul>
               </div>
             </div>
@@ -163,7 +156,7 @@ const JobDetailComponent = ({ detail }) => {
                         alt="Location Icon"
                       />
                       <div className="mt-2 font-medium text-zinc-900 dark:text-gray-300">
-                        Job Location
+                        Location
                       </div>
                       <div className="text-gray-500 dark:text-gray-300">
                         {detail?.location}
@@ -172,106 +165,119 @@ const JobDetailComponent = ({ detail }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col py-8 p-8 mt-4 rounded-lg bg-gray-50 dark:bg-gray-700 max-md:max-w-full">
-                <div className="mx-8 text-lg font-medium leading-7 text-zinc-900 max-md:mr-2.5 max-md:max-w-full dark:text-gray-300">
-                  Job Overview
-                </div>
-                <div className="flex gap-4 mx-8 mt-4 max-md:flex-wrap max-md:mr-2.5">
-                  <div className="flex flex-col flex-1 ">
+              <section className="p-5 mt-4 bg-gray-50 dark:bg-gray-700 rounded-lg max-md:px-5 max-md:max-w-full">
+                <header className="text-lg font-medium leading-7 text-zinc-900 dark:text-gray-300 mb-4">
+                  Job Details
+                </header>
+                <div className="flex flex-wrap gap-4 max-md:gap-3 max-md:flex-col max-md:items-center">
+                  <div className="flex flex-col items-center flex-1 max-w-[calc(33.333%-1rem)] max-md:max-w-full">
                     <img
                       loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/dfbd2123267a1bfab4313eadf237420709032b0bcabf931f8af8c0e994a191e7?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
                       className="w-8 aspect-square"
                       alt="Calendar Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
+                    <span className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
                       Job Posted:
-                    </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
-                      {detail?.created_at}
-                    </div>
+                    </span>
+                    <span className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
+                      {startedDate}
+                    </span>
                   </div>
-                  <div className="flex flex-col flex-1">
+                  <div className="flex flex-col items-center flex-1 max-w-[calc(33.333%-1rem)] max-md:max-w-full">
                     <img
                       loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/46997f710a4214bf9b5b9bbe447fe1b90db5b0843d4f54430a357c74bc27e322?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
                       className="w-8 aspect-square"
                       alt="Clock Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
-                      Job expire on:
-                    </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
-                      14 Aug, 2021
-                    </div>
+                    <span className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
+                      Job Expires:
+                    </span>
+                    <span className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
+                      {expiredDate}
+                    </span>
                   </div>
-                  <div className="flex flex-col flex-1">
+                  <div className="flex flex-col items-center flex-1 max-w-[calc(33.333%-1rem)] max-md:max-w-full">
                     <img
                       loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/6f83d81f9e32da470b3b37f7b398da538503fb147090b3bc9f6b620a335d3968?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
                       className="w-8 aspect-square"
                       alt="Level Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
-                      Job Level:
-                    </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
-                      Entry Level
-                    </div>
+                    <span className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
+                      Job Type:
+                    </span>
+                    <span className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
+                      {detail?.job_type}
+                    </span>
                   </div>
                 </div>
-                <div className="flex gap-5 mx-8 mt-5 whitespace-nowrap max-md:flex-wrap max-md:mr-2.5">
-                  <div className="flex flex-col">
+                <div className="my-10"></div>
+                <div className="flex flex-wrap gap-4 max-md:gap-3 max-md:flex-col max-md:items-center">
+                  <div className="flex flex-col items-center flex-1 max-w-[calc(33.333%-1rem)] max-md:max-w-full">
                     <img
                       loading="lazy"
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/072c8645bbe25f4f5198d6e8b3f0971b24d156767c8e5db77651e9151a59e159?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/dfbd2123267a1bfab4313eadf237420709032b0bcabf931f8af8c0e994a191e7?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
                       className="w-8 aspect-square"
-                      alt="Experience Icon"
+                      alt="Calendar Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400 ">
-                      Experience
-                    </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
-                      $50k-80k/month
-                    </div>
+                    <span className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
+                      Job Posted:
+                    </span>
+                    <span className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
+                      {startedDate}
+                    </span>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-center flex-1 max-w-[calc(33.333%-1rem)] max-md:max-w-full">
                     <img
                       loading="lazy"
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/c3a198ddbceae3d0065f7061d6cffdf79eaaae7729491c8e0131c21fe231cf37?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/46997f710a4214bf9b5b9bbe447fe1b90db5b0843d4f54430a357c74bc27e322?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
                       className="w-8 aspect-square"
-                      alt="Education Icon"
+                      alt="Clock Icon"
                     />
-                    <div className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
-                      Education
-                    </div>
-                    <div className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
-                      Graduation
-                    </div>
+                    <span className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
+                      Job Expires:
+                    </span>
+                    <span className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
+                      {expiredDate}
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center flex-1 max-w-[calc(33.333%-1rem)] max-md:max-w-full">
+                    <img
+                      loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/6f83d81f9e32da470b3b37f7b398da538503fb147090b3bc9f6b620a335d3968?apiKey=4ca16dc24a9e4ca79331f0aa6ebbe35c&"
+                      className="w-8 aspect-square"
+                      alt="Level Icon"
+                    />
+                    <span className="mt-3 text-xs leading-5 text-gray-500 uppercase dark:text-gray-400">
+                      Job Type:
+                    </span>
+                    <span className="mt-1 text-sm font-medium leading-5 text-zinc-900 dark:text-gray-300">
+                      {detail?.job_type}
+                    </span>
                   </div>
                 </div>
-              </div>
-              <div className="justify-center p-7 rounded-lgmax-md:px-5 max-md:max-w-full mt-5 bg-gray-50 dark:bg-gray-700 rounded-lg py-10 ">
-                <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                  <div className="flex flex-col px-8 max-md:px-5 max-md:max-w-full">
-                    <div className="text-lg font-medium leading-7 text-zinc-900 max-md:max-w-full dark:text-gray-300">
-                      Share this job:
-                    </div>
-                    <div className="flex gap-2 pr-20 mt-2 max-md:flex-wrap max-md:pr-5">
+                
+              </section>
+              <section className="p-5 mt-5 bg-gray-50 dark:bg-gray-700 rounded-lg max-md:px-5 max-md:max-w-full">
+                <div className="flex flex-col gap-5 max-md:flex-col max-md:gap-0">
+                  <h2 className="text-lg font-medium leading-7 text-zinc-900 dark:text-gray-300">
+                    Share this job:
+                  </h2>
+                  <div className="flex flex-col max-md:px-5 max-md:max-w-full">
+                    <div className="flex gap-2 mt-2 max-md:flex-wrap max-md:gap-2 max-md:pr-5">
                       <div className="flex items-center gap-4">
-                        <div className="w-72">
+                        <div className="relative w-[20rem] max-w-md">
                           <Input
                             value={inputValue}
-                            type="email"
+                            type="text" // Changed from 'email' to 'text' as it's used for copying
                             placeholder="Enter to copy"
-                            className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
-                            labelProps={{
-                              className: "hidden",
-                            }}
-                            onChange={(e) => {
-                              setInputValue(e.target.value);
-                            }}
+                            className="w-full bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 focus:ring-gray-900/10 border border-gray-300 rounded-md"
+                            labelProps={{ className: "hidden" }}
+                            onChange={(e) => setInputValue(e.target.value)}
                             containerProps={{ className: "min-w-[100px]" }}
+                            readOnly // Added readOnly to prevent manual editing
                           />
                         </div>
                         <Button
@@ -281,17 +287,18 @@ const JobDetailComponent = ({ detail }) => {
                             copy(inputValue);
                             setCopied(true);
                           }}
-                          className="flex items-center gap-2"
+                          className="flex items-center gap-2 bg-gray-900 text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all"
+                          aria-label={copied ? "Copied" : "Copy link"}
                         >
                           {copied ? (
                             <>
-                              <CheckIcon className="h-4 w-4 text-white" />
-                              Copied
+                              <CheckIcon className="h-4 w-4" />
+                              <span>Copied</span>
                             </>
                           ) : (
                             <>
-                              <DocumentDuplicateIcon className="h-4 w-4 text-white" />
-                              Copy
+                              <DocumentDuplicateIcon className="h-4 w-4" />
+                              <span>Copy</span>
                             </>
                           )}
                         </Button>
@@ -299,7 +306,7 @@ const JobDetailComponent = ({ detail }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             </div>
           </div>
         </div>

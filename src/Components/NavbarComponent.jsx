@@ -1,41 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../common/useFontClass";
-import { Navbar, Dropdown, Avatar } from "flowbite-react";
+import { Navbar, Dropdown, Avatar, Banner } from "flowbite-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import LanguageDropdown from "../common/LanguageDropdown";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useLogout from "../common/useLogout";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { fetchProfile } from "../redux/features/user/userSlice";
 import ThemeToggle from "../common/ThemeToggle";
 
-const MenuList = React.memo(
-  ({ isLoading, menuList, fontClass, isOpen, setIsOpen }) => (
-    <div
-      className={`flex flex-col xl:flex-row xl:space-x-10 transition-all duration-300 ease-in-out ${
-        isOpen ? "block" : "hidden"
-      } xl:block`}
-      style={{ textAlign: "center" }}
-    >
-      {menuList.map((menu, index) => (
-        <NavLink
-          to={menu.path}
-          className={({ isActive }) =>
-            isActive
-              ? `${fontClass} text-xl font-medium text-white dark:text-white`
-              : `${fontClass} font-medium text-xl text-gray-300 dark:text-gray-300`
-          }
-          key={index}
-          onClick={() => setIsOpen(false)}
-        >
-          {menu.title}
-        </NavLink>
-      ))}
-    </div>
-  )
-);
+const MenuList = React.memo(({ menuList, fontClass, isOpen, setIsOpen }) => (
+  <div
+    className={`flex flex-col xl:flex-row xl:space-x-10 transition-all duration-300 ease-in-out ${
+      isOpen ? "block" : "hidden"
+    } xl:block`}
+    style={{ textAlign: "center" }}
+  >
+    {menuList.map((menu, index) => (
+      <NavLink
+        to={menu.path}
+        className={({ isActive }) =>
+          isActive
+            ? `${fontClass} text-xl font-medium text-white dark:text-white`
+            : `${fontClass} font-medium text-xl text-gray-300 dark:text-gray-300`
+        }
+        key={index}
+        onClick={() => setIsOpen(false)}
+      >
+        {menu.title}
+      </NavLink>
+    ))}
+  </div>
+));
 
 export default function NavbarComponent() {
   const { t } = useTranslation();
@@ -44,12 +41,7 @@ export default function NavbarComponent() {
   const [loading, setLoading] = useState(true);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const logout = useLogout();
-  const dispatch = useDispatch();
-  const {
-    user,
-    accessToken,
-    isLoading: globalLoading,
-  } = useSelector((state) => state.user);
+  const { user, isLoading: globalLoading } = useSelector((state) => state.user);
   const location = useLocation();
 
   useEffect(() => {
@@ -57,13 +49,6 @@ export default function NavbarComponent() {
     const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
-
-  // useEffect(() => {
-  //   if (accessToken) {
-  //     dispatch(fetchProfile(accessToken));
-  //   }
-  // }, [accessToken, dispatch]);
-
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
@@ -99,6 +84,7 @@ export default function NavbarComponent() {
       fluid
       className="bg-primary-800 shadow-md fixed top-0 left-0 right-0 z-50"
     >
+      
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between py-2 gap-4">
           <Navbar.Brand
@@ -147,7 +133,15 @@ export default function NavbarComponent() {
                 arrowIcon={false}
                 inline
                 label={
-                  <Avatar alt="User settings" img={user?.avatar} rounded />
+                  <Avatar
+                    alt="User settings"
+                    img={user?.avatar}
+                    rounded
+                    status="online"
+                    statusPosition="top-right"
+                    bordered
+                    color=""
+                  />
                 }
               >
                 <Dropdown.Header>

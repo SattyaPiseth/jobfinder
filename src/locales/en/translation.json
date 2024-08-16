@@ -135,7 +135,8 @@
     "password": "New Password",
     "confirmPassword": "Confirm New Password",
     "resetting": "Resetting...",
-    "reset": "Reset Password"
+    "reset": "Reset Password",
+    "placeholder" : "Enter OTP Code"
   },
   "validation": {
     "otp": "OTP code is required",
@@ -197,6 +198,15 @@
   "name": "Name",
   "email": "Email",
   "message": "Message",
-  "send_message": "Send Message"
-}
+  "send_message": "Send Message",
+  "type-your-message" : "Type your message..."
+},
+  "FeatureSection": {
+    "heading": "Feature on",
+    "description": "Job Quick is delighted to be covered by various on job. Our team adheres to five original core values (Teamwork, High Ambition, Strong Confidence, Be the only ONE and Working Hard) to ensure we deliver what we promise to ourselves and our customers."
+},
+  "Organize":{
+    "organize1": "Organized  ",
+    "organize2": "By"
+  }
 }

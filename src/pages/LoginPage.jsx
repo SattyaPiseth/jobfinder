@@ -18,13 +18,7 @@ function LoginPage() {
         type="website"
       />
       <ParticlesBackground url={particlesUrl} />
-      <main
-        className="min-h-screen flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8"
-        data-aos="fade-left"
-        data-aos-anchor="#example-anchor"
-        data-aos-offset="500"
-        data-aos-duration="500"
-      >
+      <main className="min-h-screen flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div className="w-full max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div className="flex items-center justify-center px-4 lg:px-0">

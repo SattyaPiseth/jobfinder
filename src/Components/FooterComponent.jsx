@@ -150,7 +150,7 @@ const FooterComponent = () => {
         <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between mt-4">
           <Footer.Copyright
             href="#"
-            by="Job Finder™"
+            by="Job Quick™"
             year={2024}
             className="text-gray-200"
           />
