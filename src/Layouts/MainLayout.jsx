@@ -10,7 +10,7 @@ const MainLayout = () => {
   return (
     <>
       {/* { style={{ position: 'relative', minHeight: '100vh' }}} */}
-      <div>
+      <div style={{ position: "relative", minHeight: "100vh" }}>
         <ParticlesBackground url={particlesUrl} />
         <header>
           <NavbarComponent />
