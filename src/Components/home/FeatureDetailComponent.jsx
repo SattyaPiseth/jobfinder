@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -13,6 +14,7 @@ const FeatureDetailComponent = () => {
 
     return () => clearTimeout(timer);
   }, []);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -26,16 +28,11 @@ const FeatureDetailComponent = () => {
         ) : (
           <>
             <h2 className="self-center text-4xl leading-6 text-black dark:text-white">
-              Feature on
+              {t("FeatureSection.heading")}
             </h2>
             <article className="flex flex-col mt-12 text-base text-neutral-600 dark:text-neutral-300 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
-              <p className="text-center max-md:max-w-full">
-                Job Quick is delighted to be covered by various Media. Our team
-                adheres to six original core values <br />
-                (Teamwork, High Ambition, Strong Confidence, Be the only ONE,
-                Working Hard, and PDCA Quality Cycle) <br />
-                to ensure we deliver what we promise to ourselves and our
-                customers.
+              <p className="text-center max-md:max-w-full px-40">
+                {t("FeatureSection.description")}
               </p>
             </article>
             <div className="flex justify-center items-center w-full">

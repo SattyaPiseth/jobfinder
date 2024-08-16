@@ -34,42 +34,66 @@ export default function AboutUsComponent() {
       name: t("About-us.team_members.chao_kimhay"),
       image: kimhay,
       position: "Team Member",
+      fb: "https://www.facebook.com/jin.hay.5",
+      git: "https://github.com/ChaoKimhay",
+      gmail: "chaokimhay@gmail.com",
     },
     {
       name: t("About-us.team_members.jun_thearith"),
       image: thearith,
       position: "Team Member",
+      fb: "https://www.facebook.com/profile.php?id=100085375058298",
+      git: "https://github.com/sokpheng001",
+      gmail: "kimchansokpheng123@gmail.com",
     },
     {
       name: t("About-us.team_members.bour_suorcdey"),
       image: soursdey,
       position: "Team Member",
+      fb: "https://www.facebook.com/hi.llo.92?mibextid=LQQJ4d",
+      git: "https://github.com/BourSuorcdey",
+      gmail: "suorcdeybour@gmail.com",
     },
     {
       name: t("About-us.team_members.oum_chansopheak"),
       image: sopheak,
       position: "Team Member",
+      fb: "https://www.facebook.com/chan.sopheakk?mibextid=LQQJ4d",
+      git: "https://github.com/sopheakchan",
+      gmail: "chansopheakoum.dvc@gmail.com",
     },
     {
       name: t("About-us.team_members.sey_bunrong"),
       image:
         "https://job-quick-api.techinsights.guru/media/uploads/bunrong.jpg",
       position: "Team Member",
+      fb: "https://www.facebook.com/profile.php?id=100085375058298",
+      git: "https://github.com/sokpheng001",
+      gmail: "kimchansokpheng123@gmail.com",
     },
     {
       name: t("About-us.team_members.porn_sreynit"),
       image: sreynit,
       position: "Team Member",
+      fb: "https://www.facebook.com/profile.php?id=100085375058298",
+      git: "https://github.com/sokpheng001",
+      gmail: "kimchansokpheng123@gmail.com",
     },
     {
       name: t("About-us.team_members.mom_rotha"),
       image: rotha,
       position: "Team Member",
+      fb: "https://www.facebook.com/ah.rotha.71271",
+      git: "https://github.com/momrotha",
+      gmail: "email:rothamom22@gmail.com",
     },
     {
       name: t("About-us.team_members.choeurn_triya"),
       image: "https://job-quick-api.techinsights.guru/media/uploads/triya.jpg",
       position: "Team Member",
+      fb: "https://www.facebook.com/triya.choeurn?mibextid=LQQJ4d",
+      git: "https://github.com/ChoeurnTriya",
+      gmail: "choeurntriya@gmail.com",
     },
   ];
 
@@ -78,11 +102,17 @@ export default function AboutUsComponent() {
       name: t("About-us.mentors.Ing-Muyleang"),
       image: mentor_muyleang,
       position: "Instructor",
+      fb: "https://www.facebook.com/profile.php?id=100087853805063",
+      git: "https://github.com/MuyleangIng",
+      gmail: "Muyleanging@gmail.com",
     },
     {
       name: t("About-us.mentors.Kim-Chansokpheng"),
       image: mentor_sokpheng,
       position: "Instructor",
+      fb: "https://www.facebook.com/profile.php?id=100085375058298",
+      git: "https://github.com/sokpheng001",
+      gmail: "kimchansokpheng123@gmail.com",
     },
   ];
 
@@ -91,6 +121,9 @@ export default function AboutUsComponent() {
       name: t("About-us.teamLead"),
       image: piseth_sattya,
       position: "Team Leader",
+      fb: "https://www.facebook.com/piseth.sattya.1/",
+      git: "https://github.com/SattyaPiseth",
+      gmail: "pisethsattya33@gmail.com",
     },
   ];
   return (
@@ -411,12 +444,17 @@ export default function AboutUsComponent() {
 
       <div className="my-2 text-center mt-10">
         <p className="text-3xl font-bold" data-aos="fade-up">
-          Organized{" "}
           <span
             className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent"
             data-aos="fade-up"
           >
-            By
+            {t("Organize.organize1")}
+          </span>
+          <span
+            className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent"
+            data-aos="fade-up"
+          >
+            {t("Organize.organize2")}
           </span>
         </p>
         <hr
@@ -496,7 +534,7 @@ export default function AboutUsComponent() {
               </div>
               <div className="flex w-full justify-around gap-3 px-6 py-4">
                 <a
-                  href="#"
+                  href={teacher.fb}
                   className="z-0 group inline-flex items-center justify-center rounded-full w-10 h-10 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
                   aria-label="Facebook"
                 >
@@ -512,23 +550,19 @@ export default function AboutUsComponent() {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href={teacher.git}
                   className="z-0 group inline-flex items-center justify-center rounded-full w-10 h-10 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
                   aria-label="Instagram"
                 >
-                  <svg
-                    stroke="currentColor"
-                    fill="currentColor"
-                    strokeWidth="0"
-                    viewBox="0 0 448 512"
-                    className="w-5 h-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
-                  </svg>
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/123a29d2545de368f2a4f98674cc9850846b4a8e05cd9bad996ae71bc0774d33?placeholderIfAbsent=true&apiKey=391ff68a63584b0181b4aa51e20262f0"
+                    className="w-5 h-5 filter brightness-0 invert"
+                    alt=""
+                  />
                 </a>
                 <a
-                  href="#"
+                  href={teacher.gmail}
                   className="z-0 group inline-flex items-center justify-center rounded-full w-10 h-10 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
                   aria-label="LinkedIn"
                 >
@@ -591,7 +625,7 @@ export default function AboutUsComponent() {
 
             <div className="flex w-full justify-around gap-3 px-6 py-4">
               <a
-                href="#"
+                href={lead.fb}
                 className="z-0 group inline-flex items-center justify-center rounded-full w-10 h-10 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
                 aria-label="Facebook"
               >
@@ -607,23 +641,19 @@ export default function AboutUsComponent() {
                 </svg>
               </a>
               <a
-                href="#"
+                href={lead.git}
                 className="z-0 group inline-flex items-center justify-center rounded-full w-10 h-10 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
                 aria-label="Instagram"
               >
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 448 512"
-                  className="w-5 h-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
-                </svg>
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/123a29d2545de368f2a4f98674cc9850846b4a8e05cd9bad996ae71bc0774d33?placeholderIfAbsent=true&apiKey=391ff68a63584b0181b4aa51e20262f0"
+                  className="w-5 h-5 filter brightness-0 invert"
+                  alt=""
+                />
               </a>
               <a
-                href="#"
+                href={lead.gmail}
                 className="z-0 group inline-flex items-center justify-center rounded-full w-10 h-10 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
                 aria-label="LinkedIn"
               >
@@ -673,7 +703,7 @@ export default function AboutUsComponent() {
 
             <div className="flex w-full justify-around gap-3 px-6 py-4">
               <a
-                href="#"
+                href={member.fb}
                 className="z-0 group inline-flex items-center justify-center rounded-full w-10 h-10 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden "
                 aria-label="Facebook"
               >
@@ -689,23 +719,19 @@ export default function AboutUsComponent() {
                 </svg>
               </a>
               <a
-                href="#"
+                href={member.git}
                 className="z-0 group inline-flex items-center justify-center rounded-full w-10 h-10 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
                 aria-label="Instagram"
               >
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 448 512"
-                  className="w-5 h-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z" />
-                </svg>
+                <img
+                  loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/123a29d2545de368f2a4f98674cc9850846b4a8e05cd9bad996ae71bc0774d33?placeholderIfAbsent=true&apiKey=391ff68a63584b0181b4aa51e20262f0"
+                  className="w-5 h-5 filter brightness-0 invert"
+                  alt=""
+                />
               </a>
               <a
-                href="#"
+                href={member.gmail}
                 className="z-0 group inline-flex items-center justify-center rounded-full w-10 h-10 border-2 transition-transform-colors-opacity motion-reduce:transition-none border-transparent bg-gradient-to-r from-blue-600 via-blue-600 to-violet-600 p-0.5 overflow-hidden"
                 aria-label="LinkedIn"
               >
