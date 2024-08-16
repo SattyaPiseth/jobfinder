@@ -12,7 +12,7 @@ import {
   selectJobsByCategory,
   fetchJobsByCategory,
   setPage,
-  clearJobsByCategory, // Add setPage action
+  clearJobsByCategory,
 } from "../redux/jobs/jobsSlice";
 import { CardComponent } from "../Components/feat-jobs/CardComponent";
 import AOS from "aos";
@@ -31,17 +31,16 @@ const JobsPage = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const jobs = useSelector(selectJobs);
-  const jobsByCategory = useSelector(selectJobsByCategory); // Jobs filtered by category
+  const jobsByCategory = useSelector(selectJobsByCategory);
   const searchResults = useSelector(selectDataBySearch) || [];
   const currentPage = useSelector(selectCurrentPage);
   const pageSize = useSelector(selectPageSize);
   const totalJobs = useSelector(selectTotalJobs);
   const status = useSelector((state) => state.jobs.status);
-  const categories = useSelector(selectAllJobCategories); // Fetch categories from Redux
+  const categories = useSelector(selectAllJobCategories);
   const { fontClass } = useFontClass();
-  const [selectedCategory, setSelectedCategory] = useState(""); // State for selected category
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  // Load initial state from localStorage or set default values
   useEffect(() => {
     const savedCategory = localStorage.getItem("selectedCategory");
     const savedScrollPosition = localStorage.getItem("scrollPosition");
@@ -59,16 +58,14 @@ const JobsPage = () => {
   }, [dispatch, currentPage, pageSize]);
 
   useEffect(() => {
-    // Fetch job categories when the page is loaded
     dispatch(fetchJobCategories());
   }, [dispatch]);
 
   useEffect(() => {
-    AOS.refresh(); // Refresh AOS animations when jobs change
+    AOS.refresh();
   }, [jobs]);
 
   useEffect(() => {
-    // Clear search results when navigating away or changing category
     return () => {
       dispatch(clearSearchResults());
     };
@@ -81,16 +78,15 @@ const JobsPage = () => {
     if (categoryId) {
       dispatch(fetchJobsByCategory(categoryId));
     } else {
-      dispatch(clearJobsByCategory()); // Clear jobs by category
-      dispatch(fetchJobs({ page: 1, pageSize })); // Fetch all jobs
-      dispatch(setPage(1)); // Reset to the first page
+      dispatch(clearJobsByCategory());
+      dispatch(fetchJobs({ page: 1, pageSize }));
+      dispatch(setPage(1));
     }
   };
 
   const handleSearch = (searchQuery) => {
     if (searchQuery) {
-      // Handle search functionality here
-      // Example: dispatch(fetchJobsBySearch(searchQuery));
+      // Handle search functionality
     } else {
       dispatch(fetchJobs({ page: currentPage, pageSize }));
     }
@@ -114,17 +110,15 @@ const JobsPage = () => {
         type="website"
       />
       <header className="mt-20">
-        <h1
-          className={`${fontClass} text-blue-600 font-kantumruy text-4xl text-start font-bold`}
-        >
+        <h1 className={`${fontClass} text-blue-600 font-kantumruy text-4xl text-start font-bold`}>
           {t("List-Jobs.List")}
         </h1>
       </header>
       <SearchComponent
-        categories={categories} // Pass categories to SearchComponent
-        isLoading={status === "loading"} // Pass loading state to SearchComponent
-        onCategoryChange={handleCategoryChange} // Pass the handler to SearchComponent
-        onSearch={handleSearch} // Pass the search handler to SearchComponent
+        categories={categories}
+        isLoading={status === "loading"}
+        onCategoryChange={handleCategoryChange}
+        onSearch={handleSearch}
       />
       {status === "loading" && (
         <div className="grid gap-5 mt-10 justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

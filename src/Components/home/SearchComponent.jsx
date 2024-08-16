@@ -9,6 +9,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import {
   performGlobalSearch,
   clearSearchResults,
+  selectSearchError,
   fetchJobsByCategory,
   clearJobsByCategory,
 } from "../../redux/jobs/jobsSlice";
@@ -38,7 +39,6 @@ const SearchComponent = ({ categories, isLoading }) => {
     }
   }, [query, dispatch]);
 
-  // Handle category change
   const handleCategoryChange = async (e) => {
     const categoryId = e.target.value;
     setSelectedCategory(categoryId);
@@ -47,6 +47,7 @@ const SearchComponent = ({ categories, isLoading }) => {
 
     try {
       await dispatch(fetchSkills(categoryId)).unwrap();
+      // Dispatch fetchJobsByCategory when category is selected
       const selectedCategoryName = categories.find(
         (category) => category.id === categoryId
       )?.category_name;
@@ -64,19 +65,10 @@ const SearchComponent = ({ categories, isLoading }) => {
     }
   };
 
-  // Handle search action
   const handleSearch = async () => {
     if (query.trim()) {
       try {
         await dispatch(performGlobalSearch(query)).unwrap();
-        const searchResults = useSelector((state) => state.jobs.searchResults);
-
-        if (searchResults.length === 0) {
-          toast.info(t("search.noResultsFound"));
-          dispatch(clearSearchResults());
-          dispatch(clearJobsByCategory());
-          window.location.reload(); // Refresh the page
-        }
       } catch (error) {
         toast.error(
           error.message || (
@@ -88,7 +80,6 @@ const SearchComponent = ({ categories, isLoading }) => {
       dispatch(clearSearchResults());
       dispatch(clearJobsByCategory());
     }
-
     // Clear selected options
     setSelectedCategory("");
     setSelectedSkill("");
