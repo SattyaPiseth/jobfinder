@@ -27,14 +27,15 @@ const FeatureDetailComponent = () => {
           </>
         ) : (
           <>
-            <h2 className="self-center text-4xl leading-6 text-black dark:text-white">
+            <h2 className="self-center text-center text-2xl md:text-4xl leading-6 text-black dark:text-white">
               {t("FeatureSection.heading")}
             </h2>
-            <article className="flex flex-col mt-12 text-base text-neutral-600 dark:text-neutral-300 max-md:pl-5 max-md:mt-10 max-md:max-w-full">
-              <p className="text-center max-md:max-w-full px-40">
+            <article className="flex flex-col mt-8 md:mt-12 text-sm md:text-base text-neutral-600 dark:text-neutral-300 max-md:pl-5">
+              <p className="text-center px-6 md:px-20 lg:px-40">
                 {t("FeatureSection.description")}
               </p>
             </article>
+
             <div className="flex justify-center items-center w-full">
               <img
                 loading="lazy"

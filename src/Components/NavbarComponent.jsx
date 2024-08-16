@@ -256,9 +256,7 @@ export default function NavbarComponent() {
             setIsOpen={setIsOpen}
           />
           <div className="flex justify-center gap-4 mt-4">
-            <span className="m-4">
-              <LanguageDropdown fontClass={fontClass} />
-            </span>
+            <LanguageDropdown fontClass={fontClass} />
             <ThemeToggle />
           </div>
         </div>
