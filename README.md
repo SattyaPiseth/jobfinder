@@ -59,6 +59,7 @@ Check out our [video demonstration](https://jobquick.techinsights.guru/) to see 
 ## 🌐 Access JobQuick
 
 Explore the platform at [JobQuick Website](https://jobquick.techinsights.guru/).
+Explore the platform at [Vercel](https://jobfinder-eta-dun.vercel.app/).
 
 ## 🧑‍💻 Meet the Team
 
