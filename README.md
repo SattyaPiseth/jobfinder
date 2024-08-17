@@ -1,4 +1,4 @@
-Based on the JobQuick presentation features and structure, README file for the JobQuick project:
+README file for the JobQuick project:
 ---
 
 # JobQuick
