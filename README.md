@@ -33,7 +33,7 @@ Check out our [video demonstration](https://jobquick.techinsights.guru/) to see 
 ## 🛠️ Tech Stack
 
 - **Frontend:** React.js, Tailwind CSS, Flowbite React, Material Tailwind React
-- **Backend:** Node.js, Express
+- **Backend:** Django, Python
 - **State Management:** Redux Toolkit
 - **Build Tool:** Vite
 - **Deployment:** Docker
