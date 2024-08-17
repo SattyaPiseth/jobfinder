@@ -59,7 +59,7 @@ Check out our [video demonstration](https://jobquick.techinsights.guru/) to see 
 
 ## 🌐 Access JobQuick
 
-Explore the platform at [JobQuick Website](http://git.istad.co:3248/cstad-foundation-2nd-generation/job-finder/job-finder-website.git).
+Explore the platform at [JobQuick Website](https://jobquick.techinsights.guru/).
 
 ## 🧑‍💻 Meet the Team
 
@@ -87,7 +87,7 @@ Explore the platform at [JobQuick Website](http://git.istad.co:3248/cstad-founda
 For any inquiries, please contact us at:
 
 - Email: jobquick@info.com
-- Website: [JobQuick](https://jobquick.com)
+- Website: [JobQuick](https://jobquick.techinsights.guru)
 
 ---
 
