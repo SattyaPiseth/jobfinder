@@ -1,8 +1,94 @@
-# React + Vite
+Based on the JobQuick presentation features and structure, here's a best-practice README file for the JobQuick project:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# JobQuick
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**JobQuick** is a dedicated platform designed to simplify the process of finding jobs and internships for college students. Whether you're looking for internships, part-time jobs, or full-time employment, JobQuick streamlines the job search process with advanced features like targeted listings, efficient search capabilities, and multimedia resources.
+
+## 🚀 Features
+
+### 1. **Target Listing**
+   - Provides a focused list of internships and part-time jobs specifically for students, ensuring that opportunities are relevant and accessible.
+
+### 2. **Efficient Search**
+   - Advanced search and filtering options allow students to quickly find opportunities that match their skills and preferences.
+
+### 3. **Saved Job Search**
+   - Easily save job listings, making it convenient to revisit and apply for new opportunities later.
+
+### 4. **Multimedia Resources**
+   - Access articles, news, and employer insights to develop essential skills through engaging content.
+
+### 5. **Job Search Workflow**
+   - **Job Search:** Users can explore a wide range of job opportunities.
+   - **Job Listing:** Provides preview information about positions and companies.
+   - **Job Details:** Offers comprehensive information on qualifications and application instructions.
+   - **Save/Apply:** Users must log in to save jobs or apply, allowing them to list their skills and personal information.
+
+## 📺 Video Demonstration
+
+Check out our [video demonstration](https://jobquick.techinsights.guru/) to see JobQuick in action.
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js, Tailwind CSS, Flowbite React, Material Tailwind React
+- **Backend:** Node.js, Express
+- **State Management:** Redux Toolkit
+- **Build Tool:** Vite
+- **Deployment:** Docker
+
+## 📝 Scripts
+
+- **Development:**
+  - `dev`: Run the development server.
+  - `dev:stage`: Run the development server with the staging environment.
+  - `dev:production`: Run the development server with the production environment.
+
+- **Build:**
+  - `build`: Build the project for production.
+  - `build:development`: Build the project for development.
+  - `build:stage`: Build the project for staging.
+  - `build:production`: Build the project for production.
+
+- **Preview:**
+  - `serve`: Preview the production build locally.
+
+- **Generate Sitemap:**
+  - `generate-sitemap`: Generate a sitemap for the website.
+
+## 🌐 Access JobQuick
+
+Explore the platform at [JobQuick Website](http://git.istad.co:3248/cstad-foundation-2nd-generation/job-finder/job-finder-website.git).
+
+## 🧑‍💻 Meet the Team
+
+- **Mentors:**
+  - Kim Chansopheng
+  - Ing Muyleang
+
+- **Frontend Developers:**
+  - Sey Bunrong
+  - Chao Kimhay
+  - Oum Chansopheak
+  - Jun Thearith
+  - Bour Suorcdey
+
+- **UX/UI Designers:**
+  - Choeurn Triya
+  - Mom Rotha
+  - Porn Sreynit
+
+- **Team Lead:**
+  - Piseth Sattya
+
+## 💬 Contact Us
+
+For any inquiries, please contact us at:
+
+- Email: jobquick@info.com
+- Website: [JobQuick](https://jobquick.com)
+
+---
+
+This README includes all the essential information about the JobQuick project, from its features and technology stack to how to get started with the codebase and contact the team.
