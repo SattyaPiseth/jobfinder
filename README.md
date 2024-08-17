@@ -86,7 +86,6 @@ Explore the platform at [Vercel](https://jobfinder-eta-dun.vercel.app/).
 
 For any inquiries, please contact us at:
 
-- Email: jobquick@info.com
 - Website: [JobQuick](https://jobquick.techinsights.guru)
 
 ---
