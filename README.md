@@ -14,8 +14,8 @@ Based on the JobQuick presentation features and structure, here's a best-practic
 ### 2. **Efficient Search**
    - Advanced search and filtering options allow students to quickly find opportunities that match their skills and preferences.
 
-### 3. **Saved Job Search**
-   - Easily save job listings, making it convenient to revisit and apply for new opportunities later.
+### 3. **Applied Job Search**
+   - Easily making it convenient to revisit and apply for new opportunities later.
 
 ### 4. **Multimedia Resources**
    - Access articles, news, and employer insights to develop essential skills through engaging content.
