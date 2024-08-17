@@ -1,4 +1,3 @@
-Based on the JobQuick presentation features and structure, here's a best-practice README file for the JobQuick project:
 
 ---
 
