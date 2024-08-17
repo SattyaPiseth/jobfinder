@@ -56,6 +56,10 @@ Check out our [video demonstration](https://jobquick.techinsights.guru/) to see 
 - **Generate Sitemap:**
   - `generate-sitemap`: Generate a sitemap for the website.
 
+## 🎨 Access JobQuick
+
+Explore the figma at [Figma](https://www.figma.com/design/Yy0lawus9XNHc4ItPaYQtv/JOB-FINDER?node-id=1-2&t=EyhnrEjE8JhyYI1t-1).
+
 ## 🌐 Access JobQuick
 
 Explore the platform at [JobQuick Website](https://jobquick.techinsights.guru/).
