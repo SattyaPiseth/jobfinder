@@ -125,7 +125,7 @@ export default function NavbarComponent() {
 
           <div className="relative flex items-center gap-x-4 xl:gap-x-8 whitespace-nowrap">
             {/* Conditionally hide icons on small screens */}
-            <div className="hidden sm:flex gap-x-4">
+            <div className="hidden sm:flex gap-x-4 items-center">
               <LanguageDropdown fontClass={fontClass} />
               <ThemeToggle />
             </div>
@@ -143,7 +143,6 @@ export default function NavbarComponent() {
                     status="online"
                     statusPosition="top-right"
                     bordered
-                    color=""
                   />
                 }
               >
@@ -166,69 +165,68 @@ export default function NavbarComponent() {
                 <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
               </Dropdown>
             ) : (
-              <>
-                <div className="hidden xl:flex gap-x-4">
-                  <NavLink to="/register">
-                    <button
-                      type="button"
-                      aria-label="Register"
-                      className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-primary-800 dark:hover:bg-blue-700 dark:focus:ring-sky-400 rounded-lg focus:ring-2 whitespace-nowrap"
+              <div className="hidden xl:flex gap-x-4">
+                <NavLink to="/register">
+                  <button
+                    type="button"
+                    aria-label="Register"
+                    className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-primary-800 dark:hover:bg-blue-700 dark:focus:ring-sky-400 rounded-lg focus:ring-2 whitespace-nowrap"
+                  >
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      strokeWidth="0"
+                      viewBox="0 0 640 512"
+                      className="h-5 w-5 mr-2"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth="0"
-                        viewBox="0 0 640 512"
-                        className="h-5 w-5 mr-2"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
-                      </svg>
-                      <span
-                        className={`${fontClass} hidden xl:inline font-medium uppercase`}
-                      >
-                        {t("auth.register")}
-                      </span>
-                    </button>
-                  </NavLink>
-                  <NavLink to="/login">
-                    <button
-                      type="button"
-                      aria-label="Login"
-                      className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-primary-800 dark:hover:bg-blue-700 dark:focus:ring-sky-400 rounded-lg focus:ring-2 whitespace-nowrap"
+                      <path d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
+                    </svg>
+                    <span
+                      className={`${fontClass} hidden xl:inline font-medium uppercase`}
                     >
-                      <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth="0"
-                        viewBox="0 0 512 512"
-                        className="h-5 w-5 mr-2"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M502.6 233.4l-96-96c-4.6-4.6-11-7-17.6-7-13.8 0-24 11.2-24 24v56H272c-13.3 0-24 10.7-24 24v64c0 13.3 10.7 24 24 24h93v56c0 13.8 11.2 24 24 24 6.6 0 13-2.4 17.6-7l96-96c9.4-9.4 9.4-24.6 0-33.9z"></path>
-                        <path d="M400 32H112C85.5 32 64 53.5 64 80v112c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V96h256v320H128v-96c0-13.3-10.7-24-24-24H88c-13.3 0-24 10.7-24 24v112c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"></path>
-                      </svg>
-                      <span
-                        className={`${fontClass} hidden xl:inline font-medium uppercase`}
-                      >
-                        {t("auth.login")}
-                      </span>
-                    </button>
-                  </NavLink>
-                </div>
-              </>
+                      {t("auth.register")}
+                    </span>
+                  </button>
+                </NavLink>
+                <NavLink to="/login">
+                  <button
+                    type="button"
+                    aria-label="Login"
+                    className="flex items-center px-4 py-2 text-center font-medium text-white bg-primary-900 hover:bg-primary-850 focus:ring-primary-650 dark:bg-primary-800 dark:hover:bg-blue-700 dark:focus:ring-sky-400 rounded-lg focus:ring-2 whitespace-nowrap"
+                  >
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      strokeWidth="0"
+                      viewBox="0 0 512 512"
+                      className="h-5 w-5 mr-2"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M377.4 284.5l-144 136c-6.8 6.5-17.1 8.3-25.9 4.4-8.7-3.8-14.4-12.4-14.4-22.1V320H48c-26.5 0-48-21.5-48-48V240c0-26.5 21.5-48 48-48h144v-83.7c0-9.7 5.7-18.3 14.4-22.1 8.8-3.9 19.1-2.1 25.9 4.4l144 136c9.7 9.1 9.7 24.7 0 33.8zM432 32H272c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h160c8.8 0 16 7.2 16 16v384c0 8.8-7.2 16-16 16H272c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h160c44.2 0 80-35.8 80-80V112c0-44.2-35.8-80-80-80z"></path>
+                    </svg>
+                    <span
+                      className={`${fontClass} hidden xl:inline font-medium uppercase`}
+                    >
+                      {t("auth.login")}
+                    </span>
+                  </button>
+                </NavLink>
+              </div>
             )}
-
-            {/* Mobile menu toggle button */}
+            {/* Hamburger icon for small screens */}
             <button
               type="button"
-              className="inline-flex items-center xl:hidden p-2 text-sm text-white bg-primary-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-650 dark:text-gray-400 dark:hover:bg-primary-850 dark:focus:ring-primary-800"
               onClick={toggleNavbar}
+              className="block xl:hidden p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-600"
+              aria-controls="mobile-menu"
+              aria-expanded={isOpen ? "true" : "false"}
             >
+              <span className="sr-only">Open main menu</span>
               <svg
                 className="w-6 h-6"
                 aria-hidden="true"
@@ -238,30 +236,35 @@ export default function NavbarComponent() {
               >
                 <path
                   fillRule="evenodd"
-                  d="M3 5a1 1 0 012 0h10a1 1 0 110 2H5a1 1 0 01-2 0V5zm0 5a1 1 0 012 0h10a1 1 0 110 2H5a1 1 0 01-2 0v-2zm0 5a1 1 0 012 0h10a1 1 0 110 2H5a1 1 0 01-2 0v-2z"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM4 14a1 1 0 100 2h12a1 1 0 100-2H4z"
                   clipRule="evenodd"
                 ></path>
               </svg>
             </button>
           </div>
-        </div>
 
-        {/* Mobile menu */}
-        <div
-          className={`${
-            isOpen ? "block" : "hidden"
-          } w-full xl:hidden transition-all duration-300 ease-in-out`}
-        >
-          <MenuList
-            isLoading={isLoading}
-            menuList={mobileMenuList}
-            fontClass={fontClass}
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-          />
-          <div className="flex justify-center gap-4 mt-4">
-            <LanguageDropdown fontClass={fontClass} />
-            <ThemeToggle />
+          <div
+            className={`${
+              isOpen ? "block" : "hidden"
+            } w-full xl:hidden transition-all ease-in-out duration-300`}
+            id="mobile-menu"
+          >
+            <div className="flex flex-col items-center text-center space-y-4 py-4 gap-y-4">
+              {/* Mobile Language and Dark Mode Toggles */}
+              <div className="flex gap-x-4 items-center">
+                <LanguageDropdown fontClass={fontClass} />
+                <ThemeToggle />
+              </div>
+
+              {/* Mobile Menu Links */}
+              <MenuList
+                isLoading={isLoading}
+                menuList={mobileMenuList}
+                fontClass={fontClass}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+              />
+            </div>
           </div>
         </div>
       </div>
