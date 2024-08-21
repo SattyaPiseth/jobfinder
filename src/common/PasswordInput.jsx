@@ -8,8 +8,8 @@ const PasswordInput = ({ label, id, name, placeholder, value, onChange, onBlur, 
   const { t } = useTranslation();
 
   return (
-    <div className={`mb-4 w-full text-left ${fontClass}`}>
-      <label htmlFor={id} className={`block text-base leading-6 text-gray-900 dark:text-white mb-2 ${fontClass}`}>
+    <div className={`mb-4 w-full text-left ${fontClass} `}>
+      <label htmlFor={id} className={`block text-base leading-6 text-gray-900 dark:text-white mb-2 ${fontClass} `}>
         {label}
       </label>
       <div className="relative">
@@ -21,7 +21,7 @@ const PasswordInput = ({ label, id, name, placeholder, value, onChange, onBlur, 
           onChange={onChange}
           onBlur={onBlur}
           value={value}
-          className={`w-full px-3.5 py-3.5 bg-gray-50 rounded-lg border border-solid border-slate-300 text-base text-gray-900 pr-10 ${fontClass}`}
+          className={`w-full px-3.5 py-3.5 bg-gray-50 rounded-lg border border-solid border-slate-300 text-base text-gray-900 pr-10 ${fontClass} dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500`}
         />
         <div
           className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"

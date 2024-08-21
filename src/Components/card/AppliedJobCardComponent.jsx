@@ -1,27 +1,33 @@
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Button, Modal } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { RxCross2 } from "react-icons/rx";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteAppliedJob } from "../../redux/api/appliedJobApi";
+import {
+  fetchAllAppliedJobs,
+  fetchDeleteAppliedJobs,
+} from "../../redux/features/apply-job/applyJobSlice";
+import { Link } from "react-router-dom";
 
 function AppliedJobCardComponent({ appliedJob }) {
   const [openModal, setOpenModal] = useState(false);
-  const accessToken = localStorage.getItem('access');
-  
+  const dispatch = useDispatch();
+  const accessToken = localStorage.getItem("access");
+
   const handleDelete = () => {
-    console.log("applied job id: ", appliedJob?.applied_job_id);
     setOpenModal(true);
   };
-  const handleDeleteAppliedJob = async (appliedJobId) => {
-    try {
-      await deleteAppliedJob(accessToken, appliedJobId);
-      setOpenModal(false);
-    } catch (error) {
-      console.log(error);
-    }
+
+  const handleDeleteAppliedJob = () => {
+    dispatch(
+      fetchDeleteAppliedJobs({
+        token: accessToken,
+        appliedJobId: appliedJob?.applied_job_id,
+      })
+    );
+    setOpenModal(false);
   };
+
   return (
     <div className="flex flex-row items-start max-md:flex-row gap-4 p-2 m-2 bg-slate-100 max-sm:flex-row">
       <Link to={`/jobs/${appliedJob?.job?.id}`} className="flex-grow w-full">
@@ -73,16 +79,10 @@ function AppliedJobCardComponent({ appliedJob }) {
           <div className="text-center">
             <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
             <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-              Are you sure you want to delete this product?
+              Are you sure you want to delete this job application?
             </h3>
             <div className="flex justify-center gap-4">
-              <Button
-              type="submit"
-                color="failure"
-                onClick={() =>
-                  handleDeleteAppliedJob(appliedJob?.applied_job_id)
-                }
-              >
+              <Button color="failure" onClick={handleDeleteAppliedJob}>
                 {"Yes, I'm sure"}
               </Button>
               <Button color="gray" onClick={() => setOpenModal(false)}>

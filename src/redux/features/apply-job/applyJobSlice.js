@@ -30,7 +30,7 @@ export const fetchAllAppliedJobs = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { jobs } = await getAllAppliedJobs();
-    
+
       return { jobs };
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
@@ -40,16 +40,16 @@ export const fetchAllAppliedJobs = createAsyncThunk(
 
 export const fetchDeleteAppliedJobs = createAsyncThunk(
   "applyJobs/fetchDeleteAppliedJobs",
-  async ({token, appliedJobId}) => {
+  async ({ token, appliedJobId }) => {
     try {
       const response = await deleteAppliedJob(token, appliedJobId);
       console.log("delete response : ", response.data);
       return response.data;
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   }
-)
+);
 
 export const applyForJob = createAsyncThunk(
   "applyJobs/applyForJob",
@@ -104,7 +104,7 @@ const appliedJobsSlice = createSlice({
     error: null,
     appliedJobs: [], // Store applied jobs if needed
     appliedAllJobs: [],
-    status: "idle"
+    status: "idle",
   },
   reducers: {},
   extraReducers: (builder) =>
@@ -146,7 +146,6 @@ const appliedJobsSlice = createSlice({
       .addCase(fetchAllAppliedJobs.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.appliedAllJobs = payload;
-        
       })
       .addCase(fetchAllAppliedJobs.rejected, (state, { payload }) => {
         state.loading = false;
@@ -155,14 +154,17 @@ const appliedJobsSlice = createSlice({
       .addCase(fetchDeleteAppliedJobs.pending, (state) => {
         state.loading = true;
       })
-      .addCase(fetchDeleteAppliedJobs.fulfilled, (state, {payload}) => {
+      .addCase(fetchDeleteAppliedJobs.fulfilled, (state, { payload }) => {
         state.status = "success";
-        console.log(payload);
+        state.appliedAllJobs = state.appliedAllJobs.filter(
+          (job) => job?.applied_job_id !== payload
+        );
+        console.log("payload", payload);
       })
-      .addCase(fetchDeleteAppliedJobs.rejected, (state, { payload}) => {
+      .addCase(fetchDeleteAppliedJobs.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
-      })
+      }),
 });
 
 export const { invalidate } = appliedJobsSlice.actions;

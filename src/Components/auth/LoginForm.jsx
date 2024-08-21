@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { TextInput, Label } from "flowbite-react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { loginUser,fetchProfile } from "../../redux/features/user/userSlice";
+import { loginUser, fetchProfile } from "../../redux/features/user/userSlice";
 import { useTranslation } from "react-i18next";
 import useFontClass from "../../common/useFontClass";
 import ResetPasswordModal from "./ResetPasswordModal"; // Adjust the path as needed
 import useModal from "../../common/useModal"; // Import the custom hook
 import { toast } from "react-toastify";
 import ThemeToggle from "../../common/ThemeToggle";
+import PasswordInput from "../../common/PasswordInput";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const LoginForm = () => {
           {t("loginForm.success", { email: formik.values.email })}
         </div>
       );
-      dispatch(fetchProfile(accessToken))
+      dispatch(fetchProfile(accessToken));
       navigate("/");
     }
   }, [isAuthenticated, navigate, formik.values.email, t, fontClass]);
@@ -86,7 +87,7 @@ const LoginForm = () => {
             id="email"
             name="email"
             type="email"
-            placeholder="name@example.com"
+            placeholder={t("loginForm.placeholderEmail")}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
@@ -105,7 +106,7 @@ const LoginForm = () => {
             value={t("loginForm.labels.password")}
             className={`${fontClass} text-base mb-2`}
           />
-          <TextInput
+          {/* <TextInput
             id="password"
             name="password"
             type="password"
@@ -124,6 +125,17 @@ const LoginForm = () => {
               formik.errors.password
             }
             className={`${fontClass} text-base sm:text-lg`}
+          /> */}
+          <PasswordInput
+            id="password"
+            name="password"
+            placeholder={t("loginForm.placeholderPassword")}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.password && formik.errors.password}
+            touched={formik.touched.password}
+            fontClass={fontClass}
           />
         </div>
         <div className="flex justify-end">

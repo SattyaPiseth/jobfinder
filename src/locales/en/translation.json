@@ -107,7 +107,9 @@
       "signUp": "Sign Up"
       },
       "success": "Login successful! Welcome, {{email}}!",
-      "error": "Invalid email or password"
+      "error": "Invalid email or password",
+      "placeholderEmail" : "Enter your email",
+      "placeholderPassword" : "Enter your password"
   },
   "resetPasswordForm": {
   "title": "Reset Password",

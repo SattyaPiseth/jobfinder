@@ -10,7 +10,7 @@ export const getAllAppliedJobs = async () => {
 
   while (hasMore) {
     const response = await axios.get(
-      `http://136.228.158.126:50002/api/applied_jobs/`,
+      `${BASE_URL}applied_jobs/`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access")}`,
