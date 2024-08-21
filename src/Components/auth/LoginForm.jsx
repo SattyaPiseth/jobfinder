@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
@@ -11,7 +11,7 @@ import ResetPasswordModal from "./ResetPasswordModal"; // Adjust the path as nee
 import useModal from "../../common/useModal"; // Import the custom hook
 import { toast } from "react-toastify";
 import ThemeToggle from "../../common/ThemeToggle";
-import PasswordInput from "../../common/PasswordInput";
+import { HiEye, HiEyeOff } from "react-icons/hi";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const LoginForm = () => {
     (state) => state.user
   );
   const { isModalOpen, openModal, closeModal } = useModal(); // Use the custom hook
+  const [showPassword, setShowPassword] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -87,7 +88,7 @@ const LoginForm = () => {
             id="email"
             name="email"
             type="email"
-            placeholder={t("loginForm.placeholderEmail")}
+            placeholder={t('loginForm.placeholderEmail')}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
@@ -106,37 +107,44 @@ const LoginForm = () => {
             value={t("loginForm.labels.password")}
             className={`${fontClass} text-base mb-2`}
           />
-          {/* <TextInput
-            id="password"
-            name="password"
-            type="password"
-            placeholder="••••••••"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            color={
-              formik.touched.password && formik.errors.password
-                ? "failure"
-                : "gray"
-            }
-            helperText={
-              formik.touched.password &&
-              formik.errors.password &&
-              formik.errors.password
-            }
-            className={`${fontClass} text-base sm:text-lg`}
-          /> */}
-          <PasswordInput
-            id="password"
-            name="password"
-            placeholder={t("loginForm.placeholderPassword")}
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.password && formik.errors.password}
-            touched={formik.touched.password}
-            fontClass={fontClass}
-          />
+          <div className="relative">
+            <input
+              id="password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder={t('loginForm.placeholderPassword')}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              className={`border rounded-lg w-full text-base sm:text-base pr-10 ${
+                formik.touched.password && formik.errors.password
+                  ? "border-red-500"
+                  : "border-gray-300"
+              } ${fontClass} border-gray-300 bg-gray-50 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500`}
+            />
+            <div
+              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+              style={{ top: "50%", transform: "translateY(-50%)" }}
+            >
+              {showPassword ? (
+                <HiEyeOff className="h-5 w-5 text-gray-500" />
+              ) : (
+                <HiEye className="h-5 w-5 text-gray-500" />
+              )}
+            </div>
+            <div
+              className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-500"
+              style={{ top: "50%", transform: "translateY(-50%)" }}
+            >
+              {/* Placeholder icon */}
+              {showPassword ? (
+                <HiEyeOff className="h-5 w-5" />
+              ) : (
+                <HiEye className="h-5 w-5" />
+              )}
+            </div>
+          </div>
         </div>
         <div className="flex justify-end">
           <button
