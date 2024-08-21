@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL } from "../../api/api";
-import { getAllAppliedJobs } from "../../api/appliedJobApi";
+import { deleteAppliedJob, getAllAppliedJobs } from "../../api/appliedJobApi";
 
 // Helper function to extract error message
 const getErrorMessage = (error) => {
@@ -30,12 +30,26 @@ export const fetchAllAppliedJobs = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { jobs } = await getAllAppliedJobs();
+    
       return { jobs };
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
     }
   }
 );
+
+export const fetchDeleteAppliedJobs = createAsyncThunk(
+  "applyJobs/fetchDeleteAppliedJobs",
+  async ({token, appliedJobId}) => {
+    try {
+      const response = await deleteAppliedJob(token, appliedJobId);
+      console.log("delete response : ", response.data);
+      return response.data;
+    } catch(error) {
+      console.log(error);
+    }
+  }
+)
 
 export const applyForJob = createAsyncThunk(
   "applyJobs/applyForJob",
@@ -89,7 +103,8 @@ const appliedJobsSlice = createSlice({
     loading: false,
     error: null,
     appliedJobs: [], // Store applied jobs if needed
-    appliedAllJobs: []
+    appliedAllJobs: [],
+    status: "idle"
   },
   reducers: {},
   extraReducers: (builder) =>
@@ -130,11 +145,21 @@ const appliedJobsSlice = createSlice({
       })
       .addCase(fetchAllAppliedJobs.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.appliedAllJobs = payload; // Assuming payload is the list of applied jobs
-        console.log("payload: ",payload);
+        state.appliedAllJobs = payload;
         
       })
       .addCase(fetchAllAppliedJobs.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
+      .addCase(fetchDeleteAppliedJobs.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchDeleteAppliedJobs.fulfilled, (state, {payload}) => {
+        state.status = "success";
+        console.log(payload);
+      })
+      .addCase(fetchDeleteAppliedJobs.rejected, (state, { payload}) => {
         state.loading = false;
         state.error = payload;
       })

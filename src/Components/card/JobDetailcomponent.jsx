@@ -8,13 +8,15 @@ import { addDays, format } from "date-fns";
 
 const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL;
 
-const JobDetailComponent = ({ detail }) => {
+const JobDetailComponent = ({ appliedJobs, detail }) => {
   const { id } = useParams(); // Correct parameter usage
   const [value, copy] = useCopyToClipboard();
   const [copied, setCopied] = React.useState(false);
 
   const fullUrl = `${WEBSITE_URL}jobs/${id}`;
   const [inputValue, setInputValue] = React.useState(fullUrl);
+
+  
 
   // Handle any image errors
   const handleError = (event) => {
@@ -27,6 +29,9 @@ const JobDetailComponent = ({ detail }) => {
   const extendedDate = startedDate ? addDays(startedDate, 30) : null;
 
   const expiredDate = extendedDate ? format(extendedDate, "MMM d, yyyy") : "";
+
+  // Check if the job has been applied to
+  const isJobApplied = appliedJobs?.some((job) => job.job.id === detail?.id);
 
   return (
     <div className="mt-20 flex flex-col text-left font-poppins">
@@ -53,7 +58,17 @@ const JobDetailComponent = ({ detail }) => {
               </div>
             </div>
             <div>
-              <ApplyButton jobId={detail?.id} />
+              {isJobApplied ? (
+                <Button
+                  size="md"
+                  disabled
+                  className="flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg"
+                >
+                  Applied
+                </Button>
+              ) : (
+                <ApplyButton jobId={detail?.id} />
+              )}
             </div>
           </div>
         </div>

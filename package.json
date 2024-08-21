@@ -24,6 +24,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "aos": "^2.3.4",
     "axios": "^1.7.2",
+    "cors": "^2.8.5",
     "date-fns": "^3.6.0",
     "flowbite": "^2.4.1",
     "flowbite-react": "^0.10.1",

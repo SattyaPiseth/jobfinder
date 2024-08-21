@@ -1,40 +1,40 @@
-import React, { useEffect } from "react";
 import AppliedJobCardComponent from "../Components/card/AppliedJobCardComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllAppliedJobs, fetchAppliedJobs, selectAllAppliedJobs } from "../redux/features/apply-job/applyJobSlice";
+import {
+  fetchAllAppliedJobs,
+  fetchAppliedJobs,
+  selectAllAppliedJobs,
+} from "../redux/features/apply-job/applyJobSlice";
+import { useEffect, useState } from "react";
 
 function AppliedJobRecord() {
   const dispatch = useDispatch();
-  const { appliedJobs, accessToken, isLoading, error } = useSelector(
+  const { accessToken } = useSelector(
     (state) => state.applyJobs
   );
+
   const appliedAllJobs = useSelector(selectAllAppliedJobs);
   const { user } = useSelector((state) => state?.user);
 
   useEffect(() => {
     if (accessToken) {
-      dispatch(fetchAppliedJobs(accessToken));
-      dispatch(fetchAllAppliedJobs(accessToken));
+      dispatch(fetchAllAppliedJobs(accessToken)); 
     }
   }, [accessToken, dispatch]);
-  
+
   const filterAppliedJobs = appliedAllJobs?.jobs?.filter(
     (job) => job?.user.id === user?.id
   );
-  console.log("filter: ",filterAppliedJobs);
-  
-  
 
   return (
     <div className="mt-20">
-        {filterAppliedJobs && filterAppliedJobs.length > 0 ? (
+      {filterAppliedJobs && filterAppliedJobs.length > 0 ? (
         filterAppliedJobs.map((appliedJob, index) => {
           return (
-            <AppliedJobCardComponent 
-              key={index}
-              appliedJobInfo={appliedJob?.job}
-              applied_at={appliedJob.applied_at}
-            />
+            <AppliedJobCardComponent
+            key={index}
+            appliedJob={appliedJob}
+          />
           );
         })
       ) : (

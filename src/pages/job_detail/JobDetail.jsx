@@ -5,12 +5,25 @@ import { fetchJobById, selectJobById } from "../../redux/jobs/jobsSlice";
 import useThrottleScroll from "../../common/useThrottleScroll"; // Import the custom hook
 import JobDetailComponent from "../../Components/card/JobDetailcomponent";
 import { Metadata } from "../../lib/Metadata";
+import { fetchAllAppliedJobs, selectAllAppliedJobs } from "../../redux/features/apply-job/applyJobSlice";
 
 const JobDetail = () => {
   const { id } = useParams();
+  const accessToken = localStorage.getItem("access");
   const dispatch = useDispatch();
   const job = useSelector((state) => selectJobById(state, id));
-
+  const { user } = useSelector((state) => state?.user);
+  const appliedAllJobs = useSelector(selectAllAppliedJobs);
+  const filterAppliedJobs = appliedAllJobs?.jobs?.filter(
+    (job) => job?.user.id === user?.id
+  );
+  
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(fetchAllAppliedJobs(accessToken));
+    }
+  }, [accessToken, dispatch]);
+  
   useEffect(() => {
     if (id) {
       dispatch(fetchJobById(id));
@@ -44,7 +57,7 @@ const JobDetail = () => {
         type="website"
       />
       {/* {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>} */}
-      {job ? <JobDetailComponent detail={job} /> : <p>Loading...</p>}
+      {job ? <JobDetailComponent appliedJobs={filterAppliedJobs} detail={job} /> : <p>Loading...</p>}
     </>
   );
 };
