@@ -4,6 +4,7 @@ import { Button } from "flowbite-react";
 import { useTranslation } from "react-i18next";
 import { PUBLIC_KEY, SERVICE_ID, TEMPLATE_ID } from "../../redux/api/api";
 import Skeleton from "react-loading-skeleton";
+import { toast } from "react-toastify";
 
 const ContactForm = ({ fontClass }) => {
   const [loading, setLoading] = useState(true);
@@ -21,12 +22,17 @@ const ContactForm = ({ fontClass }) => {
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
       (result) => {
         console.log(result.text);
-        alert("Message sent successfully!");
+        // alert("Message sent successfully!");
+        toast.success(
+          <div className={fontClass}>
+            {t("contact.success")}
+          </div>
+        );
         e.target.reset(); // Clear the form after successful submission
       },
       (error) => {
         console.log(error.text);
-        alert("Failed to send the message, please try again.");
+        toast.error(<div className={fontClass}>{t("contact.failed")}</div>);
       }
     );
   };
