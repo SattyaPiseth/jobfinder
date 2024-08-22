@@ -48,13 +48,15 @@ const ApplyButton = ({ jobId }) => {
         .then(() => {
           toast.success("Application submitted successfully!");
           clearFileInput();
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000); // Reload after 2000 milliseconds (2 seconds)    
         })
         .catch((err) => {
           const errorMessage =
             err.response?.data?.message || "Failed to submit the application.";
           toast.error(errorMessage);
         });
-      window.location.reload();
     }
   };
 
