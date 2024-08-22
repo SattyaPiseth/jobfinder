@@ -1,32 +1,32 @@
-import React, { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { applyForJob } from '../../redux/features/apply-job/applyJobSlice';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import useFontClass from '../../common/useFontClass';
+import React, { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { applyForJob } from "../../redux/features/apply-job/applyJobSlice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import useFontClass from "../../common/useFontClass";
 
 const ApplyButton = ({ jobId }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.applyJobs);
   const fileInputRef = useRef(null);
-  const {fontClass} = useFontClass()
-  
+  const { fontClass } = useFontClass();
+
   // Check if the user is authenticated
-  const token = localStorage.getItem('access');
+  const token = localStorage.getItem("access");
   const isAuthenticated = !!token;
 
   const handleResumeChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const validTypes = [
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       ];
       if (validTypes.includes(file.type)) {
         handleApply(file);
       } else {
-        toast.error('Please upload a valid PDF or DOC file.');
+        toast.error("Please upload a valid PDF or DOC file.");
         clearFileInput();
       }
     }
@@ -34,11 +34,11 @@ const ApplyButton = ({ jobId }) => {
 
   const handleApplyClick = () => {
     if (!isAuthenticated) {
-      toast.error('User is not authenticated. Please log in to apply.');
+      toast.error("User is not authenticated. Please log in to apply.");
       return;
     }
 
-    fileInputRef.current.click(); 
+    fileInputRef.current.click();
   };
 
   const handleApply = (resumeFile) => {
@@ -46,19 +46,21 @@ const ApplyButton = ({ jobId }) => {
       dispatch(applyForJob({ token, jobId, resume: resumeFile }))
         .unwrap()
         .then(() => {
-          toast.success('Application submitted successfully!');
-          clearFileInput(); 
+          toast.success("Application submitted successfully!");
+          clearFileInput();
         })
         .catch((err) => {
-          const errorMessage = err.response?.data?.message || 'Failed to submit the application.';
+          const errorMessage =
+            err.response?.data?.message || "Failed to submit the application.";
           toast.error(errorMessage);
         });
+      window.location.reload();
     }
   };
 
   const clearFileInput = () => {
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      fileInputRef.current.value = "";
     }
   };
 
@@ -74,9 +76,11 @@ const ApplyButton = ({ jobId }) => {
       <button
         onClick={handleApplyClick}
         disabled={loading}
-        className={` apply-button ${loading ? 'loading' : ''} flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg`}
+        className={` apply-button ${
+          loading ? "loading" : ""
+        } flex gap-3 justify-center items-center px-7 mt-3 py-3 text-base font-semibold text-white capitalize bg-blue-800 rounded-lg`}
       >
-        {loading ? 'Applying...' : 'Apply Now'}
+        {loading ? "Applying..." : "Apply Now"}
       </button>
     </div>
   );

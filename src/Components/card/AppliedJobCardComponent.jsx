@@ -26,6 +26,9 @@ function AppliedJobCardComponent({ appliedJob }) {
       })
     );
     setOpenModal(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000); // Reload after 2000 milliseconds (2 seconds)    
   };
 
   return (

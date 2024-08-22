@@ -214,5 +214,8 @@
   "contact" : {
     "success" : "Success! We’ve received your message and will respond soon.",
     "failed" : "Oops! Something went wrong. We couldn’t send your message. Please try again."
+  },
+  "apply-job":{
+    "deleted" : "Deleted successfully!"
   }
 }

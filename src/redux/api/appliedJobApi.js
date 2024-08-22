@@ -21,7 +21,7 @@ export const getAllAppliedJobs = async () => {
         },
       }
     );
-    //   console.log("response api", response);
+ 
     const { results, count } = response.data;
     allAppliedJobs = [...allAppliedJobs, ...results];
     totalAppliedJobs = count;

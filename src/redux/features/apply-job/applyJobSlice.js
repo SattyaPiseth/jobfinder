@@ -30,7 +30,6 @@ export const fetchAllAppliedJobs = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { jobs } = await getAllAppliedJobs();
-
       return { jobs };
     } catch (error) {
       return rejectWithValue(getErrorMessage(error));
