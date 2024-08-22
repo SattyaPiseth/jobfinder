@@ -4,12 +4,14 @@ import { applyForJob } from "../../redux/features/apply-job/applyJobSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useFontClass from "../../common/useFontClass";
+import { useNavigate } from "react-router-dom";
 
 const ApplyButton = ({ jobId }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.applyJobs);
   const fileInputRef = useRef(null);
   const { fontClass } = useFontClass();
+  const navigate = useNavigate()
 
   // Check if the user is authenticated
   const token = localStorage.getItem("access");
@@ -35,7 +37,8 @@ const ApplyButton = ({ jobId }) => {
   const handleApplyClick = () => {
     if (!isAuthenticated) {
       toast.error("User is not authenticated. Please log in to apply.");
-      return;
+      
+      return navigate('/login');
     }
 
     fileInputRef.current.click();
